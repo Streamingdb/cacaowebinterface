@@ -12,6 +12,9 @@
 	
 	<div id="fb-root"></div>
 	<script>
+	
+		/** facebook related code and language management 
+		*/
 		var lang;
 		var fb_lang;
 		var nav_lang;
@@ -50,7 +53,7 @@
 		};
 		(function() {
 			var e = document.createElement('script');
-			e.src = document.location.protocol + '//connect.facebook.net/' + fb_lang + '/all.js';
+			e.src = 'http://connect.facebook.net/' + fb_lang + '/all.js';
 			e.async = true;
 			document.getElementById('fb-root').appendChild(e);
 		}());
@@ -66,11 +69,12 @@
 			default:
 				lang = 'en';
 		}
+		
 	</script>
 	
 	<div class="wrapper">
 		<div id="gradient"></div>
-		<div id="logo"><a href="http://www.cacaoweb.org/?noredirect=yes"><img src="logo.png" /></a></div>
+		<div id="logo"><a href="http://www.cacaoweb.org/?noredirect=yes"><img src="logo.png" width="140" height="37"/></a></div>
 		<div class="tabarea">
 			<div class="tab">
 				<a id="mana" href="admin.html">Management</a>
@@ -79,7 +83,7 @@
 		<div id="warningarea" class="warning" style="display:none"></div>
 		<div id="inputarea">
 			<input name="search" id="search" size="51" onkeypress="searchboxkeypress(event, this);" autocomplete="off" type="text" />
-			<div id="launchbutton" onclick="processUserEntry()"><a href="javascript://"><img src="launchbutton.png" /></a></div>
+			<div id="launchbutton" onclick="processUserEntry()"><a href="javascript://"><img src="launchbutton.png" width="13" height="20"/></a></div>
 			<div id="searchhints"></div>
 		</div>
 		<div id="searchresultsarea">
@@ -96,7 +100,7 @@
 		</div>
 		<div id="playerarea" style="display:none">
 			<div id="player"></div>
-			<div id="playershadow"><img src="playershadow.png" /></div>
+			<div id="playershadow"><img src="playershadow.png" width="795" height="39"/></div>
 		</div>
 		<div class="push"></div>
 	</div>
@@ -173,6 +177,7 @@
 			document.getElementById('player').innerHTML = playerobj;
 			document.getElementById('playerarea').style.display = '';
 		}
+		
 		var fb_username;
 		var fb_usergender;
 		var fb_userbirthday;
@@ -200,8 +205,12 @@
 			if (!(window.FB === undefined || window.location.hostname == "127.0.0.1")) {
 				var fb_session = FB.getSession();
 				if (!fb_session) {
-					facebookloginandplay(link); // play est toujours appelee par un click donc le popup facebook marche
-					document.getElementById('searchhints').innerHTML = langstrings[lang]['needfacebook'];
+					if (Math.floor(Math.random() * 5) == 0) { // only ask for facebook one out of 5 times
+						facebookloginandplay(link); // play est toujours appelee par un click donc le popup facebook marche
+						document.getElementById('searchhints').innerHTML = langstrings[lang]['needfacebook'];
+					} else {
+						realplay(link);
+					}
 				} else {
 					realplay(link);
 					savefbinfo();
