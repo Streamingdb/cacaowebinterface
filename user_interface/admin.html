@@ -27,17 +27,7 @@
 			
 				<div id="uploads">
 					<h2 id="h2myuploads"></h2>
-					<table id="myuploads" class="uploads"></table>
-					<div id="linkdisplay" style="display:none"> <!-- TODO: a integrer dans le lien -->
-						<p>
-							<label for="link" id="smalllink"></label>
-							<input name="link" id="link" size="80"></input>
-						</p>
-						<p>
-							<label for="embed" id="smallembed"></label>
-							<textarea name="embed" id="embed" rows="4" cols="60"></textarea>
-						</p>
-					</div>
+					<div id="myuploads" class="myuploads"></div>
 				</div>
 				
 				<h2 id="h2newupload"></h2>
@@ -157,9 +147,7 @@
 		//document.getElementsByTagName('title').item(0).innerHTML = langstrings[lang]['cacaowebadmin'];
 		document.getElementById('h2mydownloads').innerHTML = langstrings[lang]['mydownloads'];
 		document.getElementById('h2myuploads').innerHTML = langstrings[lang]['myuploads'];
-		document.getElementById('h2newupload').innerHTML = langstrings[lang]['newupload'];
-		document.getElementById('smalllink').innerHTML = langstrings[lang]['smalllink'];
-		document.getElementById('smallembed').innerHTML = langstrings[lang]['smallembed'];
+		//document.getElementById('h2newupload').innerHTML = langstrings[lang]['newupload'];
 		document.getElementById('smallupload').innerHTML = langstrings[lang]['smallupload'];
 		document.getElementById('smallremoteupload').innerHTML = langstrings[lang]['smallremoteupload'];
 		document.getElementById('choose').innerHTML = langstrings[lang]['choose'];
@@ -194,22 +182,6 @@
 			$("button").button();
 			$( "#upload-tabs" ).tabs();
 		});
-
-
-		function includeScript(filename, scriptname) {
-			var htmlDoc = document.getElementsByTagName('body').item(0);
-			var scriptblock = document.getElementById(scriptname); 
-			if (scriptblock) {
-				htmlDoc.removeChild(scriptblock);
-			}
-			var script = document.createElement("script");
-		
-			script.id = scriptname;
-			script.src = filename;
-			script.language = 'javascript';
-			script.type = 'text/javascript';
-			htmlDoc.appendChild(script);
-		}
 		
 		
 		function quit() {
@@ -227,7 +199,7 @@
 			alert(langstrings[lang]['uninstalled']);
 		}
 
-		function playWithPlayer(link) {
+		function ajaxrequest(link) {
 			$.ajax({
 				url: link,
 				success: function() {}
@@ -255,7 +227,7 @@
 				success: getdownloads()
 			});
 		}
-		function deleteFileDownload(fileid) {
+		function deleteFileDownload(fileid) { // TODO: faire tout ca avec un this et un obj, c'est mieux
 			$.ajax({
 				url: "file/delete.caml?fileid=" + fileid,
 				success: getdownloads()
@@ -308,15 +280,12 @@
 						b = true;
 					}
 				});
-				
 				if(!b) {
 					$(this).remove();
 				}
 			});
 			
 			
-			//filedownloads.forEach(function(item) {
-			//for(var item in megavideodownloads) {
 			jQuery.each(filedownloads, function (i, item) {
 				if ($("#rowdown" + item.fileid).length > 0) {
 					$("#downloadprogressbar" + item.fileid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
@@ -328,7 +297,7 @@
 					var rowdownload = "<td><a class='savebutton' title='download' href=\"" + downloadurl + "\"><span>save</span></a></td>";
 					var vlcplayback = "";
 					if (isplayerinstalled) { 
-						vlcplayback = "<td><a class='playbutton' title='play' href='#' onclick=\"playWithPlayer('play.caml?playurl=http://" + window.location.host + "/?f=" + item.fileid + "')\"><span>play</span></a></td>";
+						vlcplayback = "<td><a class='playbutton' title='play' href='#' onclick=\"ajaxrequest('play.caml?playurl=http://" + window.location.host + "/?f=" + item.fileid + "')\"><span>play</span></a></td>";
 					} 
 					$("#mydownloads").append('<tr id="rowdown' + item.fileid + '" colspan="4">' + rowtitle  + rowprogress + rowdelete + vlcplayback + rowdownload + "</tr>\r\n");
 					$("#downloadprogressbar" + item.fileid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
@@ -345,7 +314,7 @@
 					var rowdownload = "<td><a class='savebutton' title='download' href=\"" + downloadurl + "\"><span>save</span></a></td>";
 					var vlcplayback = "";
 					if (isplayerinstalled) { 
-						vlcplayback = "<td><a class='playbutton' title='play' href='#' onclick=\"playWithPlayer('play.caml?playurl=http://" + window.location.host + "/" + item.provider + "/" + item.provider + ".caml?videoid=" + item.videoid + "')\"><span>play</span></a></td>";
+						vlcplayback = "<td><a class='playbutton' title='play' href='#' onclick=\"ajaxrequest('play.caml?playurl=http://" + window.location.host + "/" + item.provider + "/" + item.provider + ".caml?videoid=" + item.videoid + "')\"><span>play</span></a></td>";
 					} 
 					$("#mydownloads").append('<tr id="rowdown' + item.videoid + '" colspan="4">' + rowtitle  + rowprogress + rowdelete + vlcplayback + rowdownload + "</tr>\r\n");
 					$("#downloadprogressbar" + item.videoid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
@@ -356,16 +325,10 @@
 				$("#downloads").hide();
 			}
 		}
-		function toggleLink(fileid) {
-			var link = 'http://127.0.0.1:4001/?f=' + fileid;
-			var embed = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="640" height="397"><param name="allowScriptAccess" value="always" /><param name="allowFullScreen" value="true" /><param name="quality" value="best" /><param name="bgcolor" value="#000000" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="http://www.cacaoweb.org/player/currentplayer.swf" /><embed src="http://www.cacaoweb.org/player/currentplayer.swf" flashvars="file=' + link + '" quality="best" bgcolor="#000000" width="640" height="397" allowScriptAccess="always" enablejs="true" allowFullScreen="true" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" /></object>';
-			if (!(link == $("#link").val())) {
-				$("#link").val(link);
-				$("#embed").val(embed);
-				$("#linkdisplay").show('fast');
-			} else {
-				$("#linkdisplay").toggle('fast');
-			}
+		
+		function toggleLink(e, o) {
+			var linksdiv = o.parentNode.nextSibling;
+			$(linksdiv).toggle('fast');
 		}
 		function parseXMLuploads(xml) {
 			var uploads = Array();
@@ -395,12 +358,21 @@
 				if ($("#rowup" + item.fileid).length > 0) {
 					$("#uploadprogressbar" + item.fileid).progressBar(item.progress);
 				} else {
-					var rowtitle = '<td class="title">' + item.title + '</td>';
+					var rowtitle = '<div class="title">' + item.title + '</div>';
 					//var rowfileid = '<td class="two">' + fileid + '</td>';
-					var rowprogress = '<td class="progress"><div id="uploadprogressbar' + item.fileid + '"></div></td>';
-					var rowdelete = "<td class='delete'><a class='deletebutton' href='#' title='delete' onclick=\"removePublishedFile('" + item.fileid + "')\"><span>delete</span></a></td>";
-					var rowshowlink = "<td id='showlink" + item.fileid + "' class='showlink'><a href='#' onclick=\"toggleLink('" + item.fileid + "')\">show link</a></td>";
-					$("#myuploads").append('<tr id="rowup' + item.fileid + '" colspan="4">' + rowtitle  + rowprogress + rowdelete + rowshowlink + '</tr>');
+					var rowprogress = '<div class="progress"><div id="uploadprogressbar' + item.fileid + '"></div></div>';
+					var rowdelete = "<div class='delete'><a href='#' title='delete' onclick=\"removePublishedFile('" + item.fileid + "')\"></a><img src='b_drop.png' /></div>";
+					var rowshowlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\">show link</a></div>";
+					var rowlinks = "<div class='linkdisplay' style='display:none'><div>" + langstrings[lang]['smalllink'] + "</div><input name=\"link\" id=\"link\" size=\"80\"></input><div>" + langstrings[lang]['smallembed'] + "</div><textarea name=\"embed\" id=\"embed\" rows=\"4\" cols=\"60\"></textarea></div>";
+					var link = 'http://127.0.0.1:4001/?f=' + item.fileid;
+					var embed = '<object width="640" height="360"><param name="allowFullScreen" value="true" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="http://http://127.0.0.1:4001/player.swf" /><embed src="http://127.0.0.1:4001/player.swf" flashvars="file=' + link + '" width="640" height="360" allowFullScreen="true" /></object>';
+					var div = document.createElement("div");
+					div.id = "rowup" + item.fileid;
+					div.setAttribute("colspan", "4");
+					div.innerHTML = rowtitle  + rowprogress + rowdelete + rowshowlink + rowlinks;
+					$("#myuploads").append(div);
+					$(div).find(".linkdisplay > input").val(link);
+					$(div).find(".linkdisplay > textarea").val(embed);
 					$("#uploadprogressbar" + item.fileid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: { 0:	'progressbg_red.gif', 30: 'progressbg_orange.gif', 70: 'progressbg_green.gif' }});
 				}
 			});

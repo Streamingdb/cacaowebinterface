@@ -40,8 +40,9 @@ a:active, a:active img {
 }
 
 h2 {
-	margin-bottom: 20px;
-	margin-top: 10px;
+	clear: left;
+	padding-bottom: 10px;
+	padding-top: 10px;
 }
 
 
@@ -250,12 +251,8 @@ h2 {
   page Admin 
  
   */
+  
 
-#linkdisplay {
-	padding-top: 15px;
-	padding-bottom: 5px;
-
-}
 
 table.fourcolumns td.one {width:300px;color:#8a8a8a;padding-left:5px;}
 table.fourcolumns td.two {width:140px;color:#8a8a8a;padding-left:5px;padding-top:3px;}
@@ -263,8 +260,13 @@ table.fourcolumns td.three {}
 table.fourcolumns td.four {width:28px;}
 table.fourcolumns td.five {width:28px;padding-left:7px;}
 
-table.uploads td.title { width: 300px; color: #8a8a8a; padding-left: 5px; }
-table.uploads td.progress { width: 140px; color: #8a8a8a; padding-left: 5px; padding-top: 3px; }
+
+div.myuploads div.title { float: left; width: 300px; color: #8a8a8a; padding-left: 5px; }
+div.myuploads div.progress { float: left; width: 140px; color: #8a8a8a; padding-left: 5px; padding-top: 3px; }
+div.myuploads div.delete { float: left; padding-left: 3px; }
+div.myuploads div.showlink { float: left; padding-left: 5px; }
+div.myuploads div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
+
 .deletebutton { display: block; width:16px; height:16px; background-image:url('b_drop.png'); background-repeat: no-repeat; }
 .deletebutton  span { display: none; }
 .playbutton { display: block; width:18px; height:17px; background-image:url('VLC.png'); background-repeat: no-repeat; }
@@ -272,7 +274,15 @@ table.uploads td.progress { width: 140px; color: #8a8a8a; padding-left: 5px; pad
 .savebutton { display: block; width:16px; height:16px; background-image:url('download.png'); background-repeat: no-repeat; }
 .savebutton  span { display: none; }
 
-table.uploads td.showlink { width: 60px; }
+.linkdisplay div {
+	float: left;
+	clear: left;
+	margin: 10px;
+}
+.linkdisplay textarea, input {
+	font-size: 11px;
+	margin-bottom: 10px; 
+}
 
 #addupload p label {
 	display: block;
