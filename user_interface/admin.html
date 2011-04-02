@@ -31,7 +31,20 @@
 				</div>
 				
 				<div class="authbox">
-					<button onclick="javascript:register()">Register</button>
+					<button onclick="javascript:login()">Login</button>
+					<button onclick="javascript:register()">Create my account</button>
+					<div id="login-form" title="Login">
+						<p id="validateTipsLogin">All form fields are required.</p>
+						<form>
+						<fieldset>
+							<label for="name">Name</label>
+							<input type="text" name="name" id="loginname" class="text ui-widget-content ui-corner-all" />
+							<label for="password">Password</label>
+							<input type="password" id="loginpassword" value="" class="text ui-widget-content ui-corner-all" />
+						</fieldset>
+						</form>
+					</div>
+
 					<div id="createuser-form" title="Create new user">
 						<p class="validateTips">All form fields are required.</p>
 
@@ -198,7 +211,19 @@
 
 	<script>
 	
-	
+		function includeScript(filename, scriptname) {
+			var htmlDoc = document.getElementsByTagName('body').item(0);
+			var scriptblock = document.getElementById(scriptname); 
+			if (scriptblock) {
+				htmlDoc.removeChild(scriptblock);
+			}
+			var script = document.createElement("script");
+		
+			script.id = scriptname;
+			script.src = filename;
+			script.type = 'text/javascript';
+			htmlDoc.appendChild(script);
+		}
 		function ajaxrequest(link) {
 			$.ajax({
 				url: link,
@@ -589,9 +614,10 @@
 					// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
 					bValid = bValid && checkRegexp(email,/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i,"eg. bill@microsoft.com");
 					bValid = bValid && checkRegexp(password,/^([0-9a-zA-Z])+$/,"Password field only allow : a-z 0-9");
-					
 					if (bValid) {
-						$.post('createaccount.php', { username : name.val(), password : password.val(), email : email.val()  },
+						includeScript('http://uploads.cacaoweb.org/register.php?' + "username=" + $("#name").val() + "&password=" + $("#password").val() + "&email=" + $("#email").val(), 'registerscript');
+						$(this).dialog('close');
+						/*$.post('createaccount.php', { username : name.val(), password : password.val(), email : email.val()  },
 							function(data) {
 								if (data == 1) {
 									alert('Your account has been created. You can now login.');
@@ -599,7 +625,7 @@
 									window.location = 'index.php';
 								} 
 							}
-						);
+						);*/
 					}
 				},
 				Cancel: function() {
@@ -611,8 +637,43 @@
 			}
 		});
 		
+		$("#login-form").dialog({
+			autoOpen: false,
+			height: 350,
+			width: 350,
+			modal: true,
+			buttons: {
+				'Login': function() {
+					$("#loginname").removeClass('ui-state-error');
+					$.post('login.php', { username : $("#loginname").val(), password : $("#loginpassword").val()  },
+						function(data) {
+							if (data == 1) {
+								$(this).dialog('close');
+								window.location = 'index.php';
+							} else {
+								$("#loginname").addClass('ui-state-error');
+								$("#validateTipsLogin").text('Username or password is wrong').addClass('ui-state-highlight');
+								setTimeout(function() {
+									$("#validateTipsLogin").removeClass('ui-state-highlight', 1500);
+								}, 500);
+							}
+						}
+					);
+				},
+				Cancel: function() {
+					$(this).dialog('close');
+				}
+			},
+			close: function() {
+				$("#loginname").removeClass('ui-state-error');
+			}
+		});
+		
 		function register() {
 			$('#createuser-form').dialog('open');
+		}
+		function login() {
+			$('#login-form').dialog('open');
 		}
 		
 		

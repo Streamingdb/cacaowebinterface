@@ -4,7 +4,7 @@
 html, body { 	
 	background: url(bgpattern.png) repeat; 
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-	font-size: 12px; 
+	font-size: 11px; 
 	color: DarkGray;
 	height: 100%;
 	padding: 0px;
@@ -320,7 +320,7 @@ div.myuploads div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px;
 }
 #mainleftcolumn {
 	float: left;
-	width: 580px;
+	width: 520px;
 	margin-top: 30px;
 }
 #mainrightcolumn {
@@ -335,7 +335,6 @@ input.text { margin-bottom:12px; width:95%; padding: .4em; }
 fieldset { padding:0; border:0; margin-top:25px; }
 .ui-dialog .ui-state-error { padding: .3em; }
 .validateTips { border: 1px solid transparent; padding: 0.3em; }
-		
 		
 /**
   end page Admin 
