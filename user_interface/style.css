@@ -256,6 +256,11 @@ h2 {
 	clear: left;
 	padding-top: 20px;
 }
+.auth-notification {
+	float: left;
+	padding-top: 7px;
+	padding-right: 20px;
+}
 
 
 table.fourcolumns td.one {width:300px;color:#8a8a8a;padding-left:5px;}
@@ -314,7 +319,7 @@ div.myuploads div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px;
 	text-align: center;
 }
 #maincontent {
-	padding-top: 50px;
+	padding-top: 20px;
 	width: 90%;
 	margin: 10px auto;
 }
