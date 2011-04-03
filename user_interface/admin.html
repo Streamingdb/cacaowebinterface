@@ -30,10 +30,12 @@
 					<div id="myuploads" class="myuploads"></div>
 				</div>
 				
-				<div class="authbox">
-					<div class="auth-notification"><p>Your are not logged in</p></div>
-					<button onclick="javascript:login()">Login</button>
-					<button onclick="javascript:register()">Create my account</button>
+				<div class="authbox" style="display:none">
+					<div class="auth-notification">Your are not logged in</div>
+					<div class="auth-buttons">
+						<button onclick="javascript:login()">Login</button>
+						<button onclick="javascript:register()">Create my account</button>
+					</div>
 					<div id="login-form" title="Login">
 						<p id="validateTipsLogin">All form fields are required.</p>
 						<form>
@@ -45,22 +47,20 @@
 						</fieldset>
 						</form>
 					</div>
-
 					<div id="createuser-form" title="Create new user">
 						<p class="validateTips">All form fields are required.</p>
 
 						<form>
 						<fieldset>
 							<label for="name">Name</label>
-							<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+							<input type="text" name="name" id="registername" class="text ui-widget-content ui-corner-all" />
 							<label for="email">Email</label>
 							<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
 							<label for="password">Password</label>
-							<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
+							<input type="password" name="password" id="registerpassword" value="" class="text ui-widget-content ui-corner-all" />
 						</fieldset>
 						</form>
 					</div>
-					
 				</div>
 				
 				<h2 id="h2newupload"></h2>
@@ -155,7 +155,7 @@
 			</div>
 		</div>
 		
-	
+
 	
 	<script src="languagestrings.js" type="text/javascript"></script>
 	<script type="text/javascript">	
@@ -312,12 +312,12 @@
 				var id = $(this).attr('id').substring(7);
 				
 				var b = false;
-				jQuery.each(downloads, function (i, megavideoitem) {
+				$.each(downloads, function (i, megavideoitem) {
 					if (megavideoitem.videoid == id) {
 						b = true;
 					}
 				});
-				jQuery.each(filedownloads, function (i, fileitem) {
+				$.each(filedownloads, function (i, fileitem) {
 					if (fileitem.fileid == id) {
 						b = true;
 					}
@@ -328,7 +328,7 @@
 			});
 			
 			
-			jQuery.each(filedownloads, function (i, item) {
+			$.each(filedownloads, function (i, item) {
 				if ($("#rowdown" + item.fileid).length > 0) {
 					$("#downloadprogressbar" + item.fileid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
 				} else {
@@ -345,7 +345,7 @@
 					$("#downloadprogressbar" + item.fileid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
 				}
 			});
-			jQuery.each(downloads, function (i, item) {
+			$.each(downloads, function (i, item) {
 				if ($("#rowdown" + item.videoid).length > 0) {
 					$("#downloadprogressbar" + item.videoid).progressBar(item.progress);
 				} else {
@@ -386,7 +386,7 @@
 				var id = $(this).attr('id').substring(5);
 				
 				var b = false;
-				jQuery.each(uploads, function (i, fileitem) {
+				$.each(uploads, function (i, fileitem) {
 					if (fileitem.fileid == id) {
 						b = true;
 					}
@@ -396,7 +396,7 @@
 					$(this).remove();
 				}
 			});
-			jQuery.each(uploads, function (i, item) {
+			$.each(uploads, function (i, item) {
 				if ($("#rowup" + item.fileid).length > 0) {
 					$("#uploadprogressbar" + item.fileid).progressBar(item.progress);
 				} else {
@@ -489,16 +489,16 @@
 			var selectedtab = $( "#upload-tabs" ).tabs( "option", "selected" );
 			if (selectedtab == 0) { // Browse
 							
-				/* var filelink = jQuery('#filelink').val();
+				/* var filelink = $('#filelink').val();
 				var pos1 = filelink.indexOf('f=');
 				if (pos1 > -1) {
 					filelink = filelink.substr(pos1 + 2);
 				}
-				var actionstring = "user=&fileid=" + filelink + "&contenttype=" + jQuery('#contenttype').val() + '&language=' + jQuery('#language').val() + '&title=' + jQuery('#title').val() + '&showtitle=' + jQuery('#showtitle').val() + '&season=' + jQuery('#season').val() + '&episode=' + jQuery('#episode').val();
+				var actionstring = "user=&fileid=" + filelink + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 				includeScript('http://h264stage.com/metainfoupload.php?' + actionstring, 'metainfoupload');*/
 				
 			} else if (selectedtab == 1) { // Remote Upload
-				var url = jQuery('#url').val();
+				var url = $('#url').val();
 				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
 					var pos1 = url.indexOf('v=');
 					var megavideoid = url.substr(pos1 + 2);
@@ -518,41 +518,44 @@
 			
 			
 		function updatefields() {
-			var newcontenttype = jQuery('#contenttype').val();
+			var newcontenttype = $('#contenttype').val();
 			if (newcontenttype == 'tvshow') {
-				jQuery('#tvshowdetails').show("fast");
+				$('#tvshowdetails').show("fast");
 				
-				var lang = jQuery('#language').val();
+				var lang = $('#language').val();
 				if (lang == 'fr' || lang == 'en') {
-					jQuery('#tvshowstitle').show();
-					jQuery('#normaltitle').hide();
-					/*jQuery.ajax({
-						url: 'getshows.php?lang=' + jQuery('#language').val(),
+					$('#tvshowstitle').show();
+					$('#normaltitle').hide();
+					/*$.ajax({
+						url: 'getshows.php?lang=' + $('#language').val(),
 						success: function(data) {
 							var shows = JSON.parse(data);
 							populateshows(shows);
 						}
 					});*/
 				} else {
-					jQuery('#tvshowstitle').hide();
-					jQuery('#normaltitle').show();
+					$('#tvshowstitle').hide();
+					$('#normaltitle').show();
 				}
 			} else {
-				jQuery('#tvshowdetails').hide("fast");
-				jQuery('#tvshowstitle').hide();
-				jQuery('#normaltitle').show();
+				$('#tvshowdetails').hide("fast");
+				$('#tvshowstitle').hide();
+				$('#normaltitle').show();
 			}
 		}
-		jQuery('#contenttype').change(function() {
+		$('#contenttype').change(function() {
 			updatefields();
 		});
 		
-		jQuery('#language').change(function() {
+		$('#language').change(function() {
 			updatefields();
 		});
 			
 		updatefields();
 		
+		
+		
+
 		
 		/** 
 		  jquery controls initialization
@@ -563,13 +566,19 @@
 		/** 
 		  authentication functions like login and register 
 		*/
-		var name = $( "#name" ),
-			email = $( "#email" ),
-			password = $( "#password" ),
-			allFields = $( [] ).add( name ).add( email ).add( password ),
-			tips = $( ".validateTips" );
+		
+		function register() {
+			$('#createuser-form').dialog('open');
+		}
+		function login() {
+			$('#login-form').dialog('open');
+		}
+		
+		
+		
 
 		function updateTips( t ) {
+			var tips = $( ".validateTips" );
 			tips
 				.text( t )
 				.addClass( "ui-state-highlight" );
@@ -597,6 +606,10 @@
 				return true;
 			}
 		}
+		
+		var username;
+		var currentauthdialog;
+		var allFields = $( [] ).add( $("#registername") ).add( $("#email") ).add( $("#registerpassword") );
 		$("#createuser-form").dialog({
 			autoOpen: false,
 			height: 350,
@@ -607,26 +620,18 @@
 					var bValid = true;
 					allFields.removeClass('ui-state-error');
 
-					bValid = bValid && checkLength(name,"username",3,16);
-					bValid = bValid && checkLength(email,"email",6,80);
-					bValid = bValid && checkLength(password,"password",5,16);
+					bValid = bValid && checkLength($("#registername"), "username", 3, 16);
+					bValid = bValid && checkLength($("#email"), "email", 6, 80);
+					bValid = bValid && checkLength($("#registerpassword"), "password", 4, 16);
 
-					bValid = bValid && checkRegexp(name,/^[a-z]([0-9a-z_])+$/i,"Username may consist of a-z, 0-9, underscores, begin with a letter.");
+					bValid = bValid && checkRegexp($("#registername"), /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter.");
 					// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
-					bValid = bValid && checkRegexp(email,/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i,"eg. bill@microsoft.com");
-					bValid = bValid && checkRegexp(password,/^([0-9a-zA-Z])+$/,"Password field only allow : a-z 0-9");
+					bValid = bValid && checkRegexp($("#email"),/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. albert@ducon.com");
+					bValid = bValid && checkRegexp($("#registerpassword"), /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9");
 					if (bValid) {
-						includeScript('http://uploads.cacaoweb.org/register.php?' + "username=" + $("#name").val() + "&password=" + $("#password").val() + "&email=" + $("#email").val(), 'registerscript');
-						$(this).dialog('close');
-						/*$.post('createaccount.php', { username : name.val(), password : password.val(), email : email.val()  },
-							function(data) {
-								if (data == 1) {
-									alert('Your account has been created. You can now login.');
-									$(this).dialog('close');
-									window.location = 'index.php';
-								} 
-							}
-						);*/
+						includeScript('http://uploads.cacaoweb.org/register.php?' + "username=" + $("#registername").val() + "&password=" + $("#registerpassword").val() + "&email=" + $("#email").val(), 'registerscript');
+						username = $("#registername").val();
+						currentauthdialog = $(this);
 					}
 				},
 				Cancel: function() {
@@ -646,20 +651,9 @@
 			buttons: {
 				'Login': function() {
 					$("#loginname").removeClass('ui-state-error');
-					$.post('login.php', { username : $("#loginname").val(), password : $("#loginpassword").val()  },
-						function(data) {
-							if (data == 1) {
-								$(this).dialog('close');
-								window.location = 'index.php';
-							} else {
-								$("#loginname").addClass('ui-state-error');
-								$("#validateTipsLogin").text('Username or password is wrong').addClass('ui-state-highlight');
-								setTimeout(function() {
-									$("#validateTipsLogin").removeClass('ui-state-highlight', 1500);
-								}, 500);
-							}
-						}
-					);
+					includeScript('http://uploads.cacaoweb.org/login.php?' + "username=" + $("#loginname").val() + "&password=" + $("#loginpassword").val(), 'loginscript');
+					username = $("#loginname").val();
+					currentauthdialog = $(this);
 				},
 				Cancel: function() {
 					$(this).dialog('close');
@@ -670,17 +664,53 @@
 			}
 		});
 		
-		function register() {
-			$('#createuser-form').dialog('open');
+		function registercallback(result) {
+			if (result == 1) {
+				$(".auth-buttons").hide();
+				$(".auth-notification").text("Welcome " + username + " !");
+				$(".auth-notification").css('font-size', '12px');
+				currentauthdialog.dialog('close');
+			} else {
+				$("#registername").addClass('ui-state-error');
+				$(".validateTips").text('Username already exists, please choose another one.').addClass('ui-state-highlight');
+				setTimeout(function() {
+					$(".validateTips").removeClass('ui-state-highlight', 1500);
+				}, 500);
+			}
 		}
-		function login() {
-			$('#login-form').dialog('open');
+		function logincallback(result) {
+			if (result == 1) {
+				$(".auth-buttons").hide();
+				$(".auth-notification").text("Welcome " + username + " !");
+				$(".auth-notification").css('font-size', '12px');
+				currentauthdialog.dialog('close');
+			} else {
+				$("#loginname").addClass('ui-state-error');
+				$("#validateTipsLogin").text('Username or password is wrong').addClass('ui-state-highlight');
+				setTimeout(function() {
+					$("#validateTipsLogin").removeClass('ui-state-highlight', 1500);
+				}, 500);
+			}
 		}
+		function isloggedincallback(result, user) {
+			if (result == 1) {
+				username = user;
+				$(".auth-buttons").hide();
+				$(".auth-notification").text("Welcome " + user + " !");
+				$(".auth-notification").css('font-size', '12px');
+			} 
+			$(".authbox").show();
+		}
+		
+		includeScript('http://uploads.cacaoweb.org/isloggedin.php?', 'loginscript');
+		
 		
 		
 
     </script>
 
 
+
+	
 </body>
 </html>
