@@ -74,7 +74,7 @@
 							<p>
 								<label for="file" id="smallupload"></label>
 								<input name="file" id="file" size="40"></input>
-								<button tabindex="1" value="Publish" onclick="javascript:publish()" id="choose"></button>
+								<button tabindex="1" value="Choose" onclick="javascript:choose()" id="choose"></button>
 							</p>
 						</div>
 					</div>
@@ -247,20 +247,7 @@
 		}
 
 	
-		function publish() {
-			if ($('#file').val() != "") {
-				$.ajax({
-					url: "upload?filepath=" + $('#file').val(),
-					success: function() {}
-				});
-				$('#file').val('');
-			} else {
-				$.ajax({
-					url: "openfiledialogforupload",
-					success: function(xml) {}
-				});
-			}
-		}
+
 		
 		function deleteDownload(provider, videoid) {
 			$.ajax({
@@ -484,18 +471,24 @@
 		setInterval('checkstatus()', 2000);
 		
 		
+
+		
+		
+		
+		/** 
+		  upload management
+		*/
+		
 		function submit() {
 			var selectedtab = $( "#upload-tabs" ).tabs( "option", "selected" );
 			if (selectedtab == 0) { // Browse
-							
-				/* var filelink = $('#filelink').val();
-				var pos1 = filelink.indexOf('f=');
-				if (pos1 > -1) {
-					filelink = filelink.substr(pos1 + 2);
-				}
-				var actionstring = "user=&fileid=" + filelink + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
-				includeScript('http://h264stage.com/metainfoupload.php?' + actionstring, 'metainfoupload');*/
-				
+				$.ajax({
+					url: "upload?filepath=" + $('#file').val(),
+					success: function(fileid) {
+							var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+							includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
+						}
+				});				
 			} else if (selectedtab == 1) { // Remote Upload
 				var url = $('#url').val();
 				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
@@ -506,17 +499,32 @@
 				} else if (url.indexOf('videobb.com/video/') > -1) { // videobb
 					var pos1 = url.lastIndexOf('/');
 					var videobbid = url.substr(pos1 + 1);
-					
-				} else if (url.indexOf('http://') > -1 && url.indexOf('videobb') == -1 && url.indexOf('megavideo') == -1) { // http direct
-				
+					var actionstring = "remoteurl=http://videobb.com/video/" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+				} else if (url.indexOf('http://') > -1 && url.indexOf('videobb.com') == -1 && url.indexOf('megavideo.com') == -1) { // http direct
+					/* TODO */
 				} else { // type inconnu
 					alert(langstrings[lang]['linknotrecognized']);
 				}
 			}
-
 		}
 			
-			
+		function choose() {
+			$.ajax({
+					url: "openfiledialogforupload",
+					success: function(path) {
+							$('#file').val(path);
+						}
+			});
+		}
+		
+		
+		function uploadcallback() {
+			alert("upload done successfully");
+			// TODO: mettre a jour la liste de mes uploads
+		}
+		includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
+		
+		
 		function updatefields() {
 			var newcontenttype = $('#contenttype').val();
 			if (newcontenttype == 'tvshow') {
@@ -555,7 +563,6 @@
 		
 		
 		
-
 		
 		/** 
 		  jquery controls initialization
@@ -573,9 +580,6 @@
 		function login() {
 			$('#login-form').dialog('open');
 		}
-		
-		
-		
 
 		function updateTips( t ) {
 			var tips = $( ".validateTips" );
@@ -701,10 +705,6 @@
 			} 
 			$(".authbox").show();
 		}
-		function uploadcallback() {
-			
-		}
-		includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
 		
 		
 		
