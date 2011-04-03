@@ -293,7 +293,7 @@ div.myuploads div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px;
 	margin-bottom: 10px; 
 }
 
-#addupload p label {
+.addupload p label {
 	display: block;
 	float: left;
 	width: 80px;

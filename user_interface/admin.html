@@ -70,7 +70,7 @@
 						<li><a href="#tabs-remote">Remote Upload</a></li>
 					</ul>
 					<div id="tabs-browse">
-						<div id="addupload">
+						<div class="addupload">
 							<p>
 								<label for="file" id="smallupload"></label>
 								<input name="file" id="file" size="40"></input>
@@ -79,14 +79,13 @@
 						</div>
 					</div>
 					<div id="tabs-remote">
-						<div id="remoteupload">
+						<div class="addupload">
 							<p>
 								<label for="file" id="smallremoteupload"></label>
 								<input name="url" id="url" size="50"></input>
 							</p>
-							<br>
 							<p>
-								<small>examples:<br>http://megavideo.com/?v=TUF78DFD<br>http://www.videobb.com/video/uGR5SO24apvI<br>http://someserver.com/myvideo.mp4</small>
+								<small>examples:<br>http://megavideo.com/?v=TUF78DFD<br>http://www.videobb.com/video/uGR5SO24apvI<br>http://myspace.someserver.com/myvideo.mp4</small>
 							</p>
 						</div>
 					</div>
@@ -502,7 +501,8 @@
 				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
 					var pos1 = url.indexOf('v=');
 					var megavideoid = url.substr(pos1 + 2);
-					
+					var actionstring = "remoteurl=http://megavideo.com/?v=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 				} else if (url.indexOf('videobb.com/video/') > -1) { // videobb
 					var pos1 = url.lastIndexOf('/');
 					var videobbid = url.substr(pos1 + 1);
@@ -701,8 +701,11 @@
 			} 
 			$(".authbox").show();
 		}
+		function uploadcallback() {
+			
+		}
+		includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
 		
-		includeScript('http://uploads.cacaoweb.org/isloggedin.php?', 'loginscript');
 		
 		
 		
