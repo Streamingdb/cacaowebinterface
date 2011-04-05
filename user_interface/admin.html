@@ -417,7 +417,7 @@
 				success: parseXMLdownloads
 			});
 		}		
-		function getuploads() {
+		function getcurrentuploads() {
 			$.ajax({
 				url: "uploads",
 				dataType: "xml",
@@ -464,7 +464,7 @@
 			});
 			// TODO: il faudrait ajouter un call pour errors
 			getdownloads();
-			getuploads();
+			getcurrentuploads();
 		}
 		
 		checkstatus();
@@ -494,12 +494,13 @@
 				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
 					var pos1 = url.indexOf('v=');
 					var megavideoid = url.substr(pos1 + 2);
-					var actionstring = "remoteurl=http://megavideo.com/?v=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 				} else if (url.indexOf('videobb.com/video/') > -1) { // videobb
 					var pos1 = url.lastIndexOf('/');
 					var videobbid = url.substr(pos1 + 1);
-					var actionstring = "remoteurl=http://videobb.com/video/" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 				} else if (url.indexOf('http://') > -1 && url.indexOf('videobb.com') == -1 && url.indexOf('megavideo.com') == -1) { // http direct
 					/* TODO */
 				} else { // type inconnu
@@ -517,12 +518,19 @@
 			});
 		}
 		
+		function getuploadscallback() {
 		
-		function uploadcallback() {
-			alert("upload done successfully");
-			// TODO: mettre a jour la liste de mes uploads
 		}
+		function getalluploads() {
+			includeScript('http://uploads.cacaoweb.org/getuploads.php', 'getuploadscript');
+		}
+		function uploadcallback() {
+			getalluploads();
+			alert("upload done successfully");
+		}
+		
 		includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
+		getalluploads();
 		
 		
 		function updatefields() {
