@@ -269,7 +269,7 @@ table.fourcolumns td.three {}
 table.fourcolumns td.four {width:28px;}
 table.fourcolumns td.five {width:28px;padding-left:7px;}
 
-
+.uploadrow { clear:left; }
 div.myuploads div.title { float: left; width: 300px; color: #8a8a8a; padding-left: 5px; }
 div.myuploads div.progress { float: left; width: 140px; color: #8a8a8a; padding-left: 5px; padding-top: 3px; }
 div.myuploads div.delete { float: left; padding-left: 3px; }
@@ -300,6 +300,9 @@ div.myuploads div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px;
 	margin: 0 10px 0 0;
 	padding: 0;
 	text-align: right;
+}
+#upload-tabs {
+	margin-bottom: 20px;
 }
 
 .filemeta {

@@ -120,7 +120,7 @@
 							</p>
 							<p id="tvshowstitle" style="display:none">
 								<label for="showtitle" id="smallshowtitle"></label>
-								<input type="text" name="showtitle" id="showtitle" tabindex="2" size="40" />
+								<input type="text" id="showtitle" tabindex="2" size="40" />
 
 							</p>
 							<div id="tvshowdetails" style="display:none">
@@ -264,7 +264,7 @@
 		function removePublishedFile(fileid) {
 			$.ajax({
 				url: "file/delete.caml?fileid=" + fileid,
-				success: getuploads()
+				success: function () { getcurrentuploads(); getalluploads(); }
 			});
 		}
 
@@ -354,6 +354,34 @@
 			}
 		}
 		
+		/** 
+		  this function adds an upload with its details to the myuploads list
+		*/
+		function addtomyuploads(rowid, fileid, title, progress) {
+			if ($("div[rowupid=" + rowid + "]").length > 0) {
+				$("div[rowupid=" + rowid + "]").find(".uploadprogressbar").progressBar(progress);
+			} else {
+				var rowtitle = '<div class="title">' + title + '</div>';
+				var rowprogress = '<div class="progress"><div class="uploadprogressbar"></div></div>';
+				var rowdelete = "<div class='delete'><a href='#' title='delete' onclick=\"removePublishedFile('" + fileid + "')\"><img src='b_drop.png' /></a></div>";
+				var rowshowlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\">show link</a></div>";
+				var rowlinks = "<div class='linkdisplay' style='display:none'><div>" + langstrings[lang]['smalllink'] + "</div><input name=\"link\" id=\"link\" size=\"80\"></input><div>" + langstrings[lang]['smallembed'] + "</div><textarea name=\"embed\" id=\"embed\" rows=\"4\" cols=\"60\"></textarea></div>";
+				var link = 'http://127.0.0.1:4001/?f=' + fileid;
+				var embed = '<object width="640" height="360"><param name="allowFullScreen" value="true" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="http://cacaoweb.org/player.swf" /><embed src="http://cacaoweb.org/player.swf" flashvars="file=' + link + '" width="640" height="360" allowFullScreen="true" /></object>';
+				var div = document.createElement("div");
+				div.className = "uploadrow";
+				div.setAttribute('rowupid', rowid);
+				div.setAttribute("colspan", "4");
+				div.innerHTML = rowtitle  + rowprogress + rowdelete + rowshowlink + rowlinks;
+				$("#myuploads").append(div);
+				if (fileid != '') {
+					$(div).find(".linkdisplay > input").val(link);
+					$(div).find(".linkdisplay > textarea").val(embed);
+				}
+				$(div).find(".uploadprogressbar").progressBar(progress, { showText: false, boxImage: 'progressbar.gif', barImage: { 0:	'progressbg_red.gif', 30: 'progressbg_orange.gif', 70: 'progressbg_green.gif' }});
+			}
+		
+		}
 		function toggleLink(e, o) {
 			var linksdiv = o.parentNode.nextSibling;
 			$(linksdiv).toggle('fast');
@@ -368,44 +396,26 @@
 							'title': $(this).find("title").text() };
 				uploads.push(item);
 			});
-			$('tr[id^="rowup"]').each(function() {
-				var id = $(this).attr('id').substring(5);
+			/* remove elements of the DOM that have been removed from the uploads list anymore (deleted) */
+			$('div[rowupid^=local]').each(function() {
+				var id = $(this).attr('rowupid').substring(5);
 				
 				var b = false;
 				$.each(uploads, function (i, fileitem) {
-					if (fileitem.fileid == id) {
-						b = true;
-					}
+					if (fileitem.fileid == id) { b = true; }
 				});
 				
-				if(!b) {
+				if (!b) {
 					$(this).remove();
 				}
 			});
 			$.each(uploads, function (i, item) {
-				if ($("#rowup" + item.fileid).length > 0) {
-					$("#uploadprogressbar" + item.fileid).progressBar(item.progress);
-				} else {
-					var rowtitle = '<div class="title">' + item.title + '</div>';
-					//var rowfileid = '<td class="two">' + fileid + '</td>';
-					var rowprogress = '<div class="progress"><div id="uploadprogressbar' + item.fileid + '"></div></div>';
-					var rowdelete = "<div class='delete'><a href='#' title='delete' onclick=\"removePublishedFile('" + item.fileid + "')\"></a><img src='b_drop.png' /></div>";
-					var rowshowlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\">show link</a></div>";
-					var rowlinks = "<div class='linkdisplay' style='display:none'><div>" + langstrings[lang]['smalllink'] + "</div><input name=\"link\" id=\"link\" size=\"80\"></input><div>" + langstrings[lang]['smallembed'] + "</div><textarea name=\"embed\" id=\"embed\" rows=\"4\" cols=\"60\"></textarea></div>";
-					var link = 'http://127.0.0.1:4001/?f=' + item.fileid;
-					var embed = '<object width="640" height="360"><param name="allowFullScreen" value="true" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="http://http://127.0.0.1:4001/player.swf" /><embed src="http://127.0.0.1:4001/player.swf" flashvars="file=' + link + '" width="640" height="360" allowFullScreen="true" /></object>';
-					var div = document.createElement("div");
-					div.id = "rowup" + item.fileid;
-					div.setAttribute("colspan", "4");
-					div.innerHTML = rowtitle  + rowprogress + rowdelete + rowshowlink + rowlinks;
-					$("#myuploads").append(div);
-					$(div).find(".linkdisplay > input").val(link);
-					$(div).find(".linkdisplay > textarea").val(embed);
-					$("#uploadprogressbar" + item.fileid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: { 0:	'progressbg_red.gif', 30: 'progressbg_orange.gif', 70: 'progressbg_green.gif' }});
-				}
+				addtomyuploads('local' + item.fileid, item.fileid, item.title, item.progress);
 			});
-			if (uploads.length == 0) {
+			if ($('#myuploads').children().length == 0) {
 				$("#uploads").hide();
+			} else {
+				$("#uploads").show();
 			}
 			
 		}
@@ -425,6 +435,164 @@
 			});
 		}
 		
+
+		
+		
+		
+		/** 
+		  upload management
+		*/
+		
+		function submit() {
+			var selectedtab = $( "#upload-tabs" ).tabs( "option", "selected" );
+			if (selectedtab == 0) { // Browse
+				if ($('#file').val() != '') {
+					$.ajax({
+						url: "upload?filepath=" + $('#file').val(),
+						success: function(fileid) {
+								if (fileid == "") {
+									alert("upload failed");
+								} else {
+									var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+									includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
+								}
+							}
+					});	
+				}
+			} else if (selectedtab == 1) { // Remote Upload
+				var url = $('#url').val();
+				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
+					var pos1 = url.indexOf('v=');
+					var megavideoid = url.substr(pos1 + 2);
+					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
+					$.ajax({
+						url: "remoteupload?provider=0&videoid=" + megavideoid,
+						success: function(data) {}
+					});	
+				} else if (url.indexOf('videobb.com/video/') > -1) { // videobb
+					var pos1 = url.lastIndexOf('/');
+					var videobbid = url.substr(pos1 + 1);
+					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
+					$.ajax({
+						url: "remoteupload?provider=1&videoid=" + videobbid,
+						success: function(data) {}
+					});	
+				} else if (url.indexOf('http://') > -1 && url.indexOf('videobb.com') == -1 && url.indexOf('megavideo.com') == -1) { // http direct
+					/* TODO */
+					
+				} else { // type inconnu
+					alert(langstrings[lang]['linknotrecognized']);
+				}
+			}
+		}
+			
+		function choose() {
+			$.ajax({
+					url: "openfiledialogforupload",
+					success: function(path) {
+							$('#file').val(path);
+						}
+			});
+		}
+		
+		/**
+		  after the function "getalluploads()" is called,
+		  the remote server answers with a script that first sets up a variable "remoteuploads" and then calls the function "getuploadscallback()"
+		  to parse the variable "remoteuploads" and shows the result to the user
+		 */
+		function getuploadscallback() {
+			$.each(remoteuploads, function (i, item) {
+				var realtitle = '';
+				if (item.title == '') {
+					var provider = '';
+					if (item.provider == 0) { provider = 'http://megavideo.com/?v='; } else { provider = 'http://videobb.com/video/'; }
+					realtitle = provider + item.videoid;
+				} else {
+					realtitle = item.title;
+				}
+				
+				var rowid = '';
+				if (item.fileid == '') { rowid = item.videoid; } else { rowid = item.fileid; }
+
+				var progress = 10;
+				if (item.fileid != '') { progress = 100; }
+				
+				addtomyuploads(rowid, item.fileid, realtitle, progress);
+			});
+		}
+		function getalluploads() {
+			includeScript('http://uploads.cacaoweb.org/getuploads.php', 'getuploadscript');
+		}
+		function uploadcallback() {
+			getalluploads();
+			alert("upload done successfully");
+		}
+		
+		$(function () {
+			includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
+			getalluploads();
+		});
+	
+		
+	
+					
+	
+		/** 
+		  dynamic features for video metadata upload, update the shows list when needed
+		*/
+		function getshowscallback() {
+			if (shows.length > 0) {
+				$('#showtitle').remove();
+				var select = $("<select></select>").attr('id','showtitle');
+				$.each(shows, function(id, show) {
+					select.append('<option value="' + show.showname + '">' + show.showname  + '</option>');
+				});
+				$('#tvshowstitle').append(select);
+			} else {
+				$('#showtitle').remove();
+				var input = $("<input></input>").attr('type', 'text').attr('id', 'showtitle').attr('size', '40');
+				$('#tvshowstitle').append(input);
+			}
+		}
+		function updatefields() {
+			var newcontenttype = $('#contenttype').val();
+			if (newcontenttype == 'tvshow') {
+				$('#tvshowdetails').show("fast");
+				
+				var lang = $('#language').val();
+				if (lang == 'fr' || lang == 'en') {
+					$('#tvshowstitle').show();
+					$('#normaltitle').hide();
+					includeScript('http://uploads.cacaoweb.org/getshows.php?lang=' + lang, 'getshows');
+				} else {
+					$('#tvshowstitle').hide();
+					$('#normaltitle').show();
+				}
+			} else {
+				$('#tvshowdetails').hide("fast");
+				$('#tvshowstitle').hide();
+				$('#normaltitle').show();
+			}
+		}
+		$('#contenttype').change(function() {
+			updatefields();
+		});
+		
+		$('#language').change(function() {
+			updatefields();
+		});
+			
+		updatefields();
+		
+		
+		
+		
+		
+		/**
+		  functions to update cacaoweb status and show errors
+		*/
 		
 		var dhtnetworkstatus;
 		var tcpnattype;
@@ -471,112 +639,14 @@
 		setInterval('checkstatus()', 2000);
 		
 		
-
 		
 		
 		
 		/** 
-		  upload management
-		*/
-		
-		function submit() {
-			var selectedtab = $( "#upload-tabs" ).tabs( "option", "selected" );
-			if (selectedtab == 0) { // Browse
-				$.ajax({
-					url: "upload?filepath=" + $('#file').val(),
-					success: function(fileid) {
-							var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
-							includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
-						}
-				});				
-			} else if (selectedtab == 1) { // Remote Upload
-				var url = $('#url').val();
-				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
-					var pos1 = url.indexOf('v=');
-					var megavideoid = url.substr(pos1 + 2);
-					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
-					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
-				} else if (url.indexOf('videobb.com/video/') > -1) { // videobb
-					var pos1 = url.lastIndexOf('/');
-					var videobbid = url.substr(pos1 + 1);
-					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
-					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
-				} else if (url.indexOf('http://') > -1 && url.indexOf('videobb.com') == -1 && url.indexOf('megavideo.com') == -1) { // http direct
-					/* TODO */
-				} else { // type inconnu
-					alert(langstrings[lang]['linknotrecognized']);
-				}
-			}
-		}
-			
-		function choose() {
-			$.ajax({
-					url: "openfiledialogforupload",
-					success: function(path) {
-							$('#file').val(path);
-						}
-			});
-		}
-		
-		function getuploadscallback() {
-		
-		}
-		function getalluploads() {
-			includeScript('http://uploads.cacaoweb.org/getuploads.php', 'getuploadscript');
-		}
-		function uploadcallback() {
-			getalluploads();
-			alert("upload done successfully");
-		}
-		
-		includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
-		getalluploads();
-		
-		
-		function updatefields() {
-			var newcontenttype = $('#contenttype').val();
-			if (newcontenttype == 'tvshow') {
-				$('#tvshowdetails').show("fast");
-				
-				var lang = $('#language').val();
-				if (lang == 'fr' || lang == 'en') {
-					$('#tvshowstitle').show();
-					$('#normaltitle').hide();
-					/*$.ajax({
-						url: 'getshows.php?lang=' + $('#language').val(),
-						success: function(data) {
-							var shows = JSON.parse(data);
-							populateshows(shows);
-						}
-					});*/
-				} else {
-					$('#tvshowstitle').hide();
-					$('#normaltitle').show();
-				}
-			} else {
-				$('#tvshowdetails').hide("fast");
-				$('#tvshowstitle').hide();
-				$('#normaltitle').show();
-			}
-		}
-		$('#contenttype').change(function() {
-			updatefields();
-		});
-		
-		$('#language').change(function() {
-			updatefields();
-		});
-			
-		updatefields();
-		
-		
-		
-		
-		/** 
-		  jquery controls initialization
+		  all types of jquery controls initialization
 		*/
 		$("button").button();
-		$( "#upload-tabs" ).tabs();
+		$("#upload-tabs" ).tabs();
 		
 		/** 
 		  authentication functions like login and register 
@@ -692,6 +762,7 @@
 		}
 		function logincallback(result) {
 			if (result == 1) {
+				getalluploads();
 				$(".auth-buttons").hide();
 				$(".auth-notification").text("Welcome " + username + " !");
 				$(".auth-notification").css('font-size', '12px');
