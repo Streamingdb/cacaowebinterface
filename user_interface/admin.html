@@ -31,32 +31,32 @@
 				</div>
 				
 				<div class="authbox" style="display:none">
-					<div class="auth-notification">Your are not logged in</div>
+					<div class="auth-notification"></div>
 					<div class="auth-buttons">
-						<button onclick="javascript:login()">Login</button>
-						<button onclick="javascript:register()">Create my account</button>
+						<button onclick="javascript:login()" id="loginbtn"></button>
+						<button onclick="javascript:register()" id="createbtn"></button>
 					</div>
 					<div id="login-form" title="Login">
-						<p id="validateTipsLogin">All form fields are required.</p>
+						<p id="validateTipsLogin"></p>
 						<form>
 						<fieldset>
-							<label for="name">Name</label>
+							<label for="name"></label>
 							<input type="text" name="name" id="loginname" class="text ui-widget-content ui-corner-all" />
-							<label for="password">Password</label>
+							<label for="password"></label>
 							<input type="password" id="loginpassword" value="" class="text ui-widget-content ui-corner-all" />
 						</fieldset>
 						</form>
 					</div>
-					<div id="createuser-form" title="Create new user">
-						<p class="validateTips">All form fields are required.</p>
+					<div id="createuser-form" title="">
+						<p class="validateTips"></p>
 
 						<form>
 						<fieldset>
-							<label for="name">Name</label>
+							<label for="name"></label>
 							<input type="text" name="name" id="registername" class="text ui-widget-content ui-corner-all" />
 							<label for="email">Email</label>
 							<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
-							<label for="password">Password</label>
+							<label for="password"></label>
 							<input type="password" name="password" id="registerpassword" value="" class="text ui-widget-content ui-corner-all" />
 						</fieldset>
 						</form>
@@ -66,8 +66,8 @@
 				<h2 id="h2newupload"></h2>
 				<div id="upload-tabs">
 					<ul>
-						<li><a href="#tabs-browse">Browse</a></li>
-						<li><a href="#tabs-remote">Remote Upload</a></li>
+						<li><a href="#tabs-browse" id="browse-tab"></a></li>
+						<li><a href="#tabs-remote" id="remote-upload-tab"></a></li>
 					</ul>
 					<div id="tabs-browse">
 						<div class="addupload">
@@ -85,7 +85,7 @@
 								<input name="url" id="url" size="50"></input>
 							</p>
 							<p>
-								<small>examples:<br>http://megavideo.com/?v=TUF78DFD<br>http://www.videobb.com/video/uGR5SO24apvI<br>http://myspace.someserver.com/myvideo.mp4</small>
+								<small><div id="examplesupload"></div><br>http://megavideo.com/?v=TUF78DFD<br>http://www.videobb.com/video/uGR5SO24apvI<br>http://myspace.someserver.com/myvideo.mp4</small>
 							</p>
 						</div>
 					</div>
@@ -96,10 +96,10 @@
 								<label for="contenttype"><small>Type</small></label>
 								<select id="contenttype">
 									<option value="" id="blank"></option>
-									<option value="movie" id="movie">Movie</option>
-									<option value="tvshow" id="tvshow">TV Show</option>
-									<option value="anime" id="anime">Anime</option>
-									<option value="documentary" id="documentary">Documentary</option>
+									<option value="movie" id="movie"></option>
+									<option value="tvshow" id="tvshow"></option>
+									<option value="anime" id="anime"></option>
+									<option value="documentary" id="documentary"></option>
 								</select>
 							</p>
 							<p>
@@ -180,9 +180,12 @@
 		document.getElementById('h2mydownloads').innerHTML = langstrings[lang]['mydownloads'];
 		document.getElementById('h2myuploads').innerHTML = langstrings[lang]['myuploads'];
 		//document.getElementById('h2newupload').innerHTML = langstrings[lang]['newupload'];
+		document.getElementById('examplesupload').innerHTML = langstrings[lang]['examples'];
 		document.getElementById('smallupload').innerHTML = langstrings[lang]['smallupload'];
 		document.getElementById('smallremoteupload').innerHTML = langstrings[lang]['smallremoteupload'];
 		document.getElementById('choose').innerHTML = langstrings[lang]['choose'];
+		document.getElementById('remote-upload-tab').innerHTML = langstrings[lang]['remoteupload'];
+		document.getElementById('browse-tab').innerHTML = langstrings[lang]['browse'];
 		document.getElementById('uploadmeta').innerHTML = langstrings[lang]['uploadmeta'];
 		document.getElementById('movie').innerHTML = langstrings[lang]['movie'];
 		document.getElementById('tvshow').innerHTML = langstrings[lang]['tvshow'];
@@ -199,8 +202,8 @@
 		document.getElementById('turnoff').innerHTML = langstrings[lang]['turnoff'];
 		document.getElementById('uninstall').innerHTML = langstrings[lang]['uninstall'];
 		document.getElementById('backmainpage').innerHTML = langstrings[lang]['backmainpage'];
-		
-			
+		document.getElementById('loginbtn').innerHTML = langstrings[lang]['login'];
+		document.getElementById('createbtn').innerHTML = langstrings[lang]['create'];
 			
 			
 	</script>
@@ -210,6 +213,8 @@
 	<script src="jquery.progressbar.min.js" type="text/javascript"></script>
 
 	<script>
+		$("label[for=name]").text(langstrings[lang]['name']);
+		$("label[for=password]").text(langstrings[lang]['password']);
 	
 		function includeScript(filename, scriptname) {
 			var htmlDoc = document.getElementsByTagName('body').item(0);
@@ -453,7 +458,7 @@
 								if (fileid == "") {
 									alert("upload failed");
 								} else {
-									var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+									var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 									includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 								}
 							}
@@ -692,13 +697,14 @@
 		var username;
 		var currentauthdialog;
 		var allFields = $( [] ).add( $("#registername") ).add( $("#email") ).add( $("#registerpassword") );
+		$("#createuser-form").attr("title", langstrings[lang]['create']);
 		$("#createuser-form").dialog({
 			autoOpen: false,
 			height: 350,
 			width: 350,
 			modal: true,
 			buttons: {
-				'Create an account': function() {
+				'Create new user': function() {
 					var bValid = true;
 					allFields.removeClass('ui-state-error');
 
@@ -716,7 +722,7 @@
 						currentauthdialog = $(this);
 					}
 				},
-				Cancel: function() {
+				'Cancel': function() {
 					$(this).dialog('close');
 				}
 			},
@@ -737,7 +743,7 @@
 					username = $("#loginname").val();
 					currentauthdialog = $(this);
 				},
-				Cancel: function() {
+				'Cancel': function() {
 					$(this).dialog('close');
 				}
 			},
@@ -749,7 +755,7 @@
 		function registercallback(result) {
 			if (result == 1) {
 				$(".auth-buttons").hide();
-				$(".auth-notification").text("Welcome " + username + " !");
+				$(".auth-notification").text(langstrings[lang]['welcome'] + username + " !");
 				$(".auth-notification").css('font-size', '12px');
 				currentauthdialog.dialog('close');
 			} else {
@@ -764,7 +770,7 @@
 			if (result == 1) {
 				getalluploads();
 				$(".auth-buttons").hide();
-				$(".auth-notification").text("Welcome " + username + " !");
+				$(".auth-notification").text(langstrings[lang]['welcome']  + username + " !");
 				$(".auth-notification").css('font-size', '12px');
 				currentauthdialog.dialog('close');
 			} else {
@@ -779,9 +785,12 @@
 			if (result == 1) {
 				username = user;
 				$(".auth-buttons").hide();
-				$(".auth-notification").text("Welcome " + user + " !");
+				$(".auth-notification").text(langstrings[lang]['welcome']  + user + " !");
 				$(".auth-notification").css('font-size', '12px');
-			} 
+			} else {
+				$(".auth-buttons").show();
+				$(".auth-notification").text(langstrings[lang]['notloggedin']);
+			}
 			$(".authbox").show();
 		}
 		

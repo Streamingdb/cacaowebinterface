@@ -22,10 +22,13 @@ langstrings['en']['cacaowebadmin'] = 'cacaoweb - Administration Interface';
 langstrings['en']['mydownloads'] = 'My Downloads';
 langstrings['en']['myuploads'] = 'My Uploads';
 langstrings['en']['newupload'] = 'New Upload';
+langstrings['en']['examples'] = 'examples :';
 langstrings['en']['smalllink'] = '<small>Link : </small>';
 langstrings['en']['smallembed'] = '<small>Embed : </small>';
 langstrings['en']['smallupload'] = '<small>Upload a file</small>';
 langstrings['en']['smallremoteupload'] = '<small>File URL:</small>';
+langstrings['en']['browse'] = 'Browse';
+langstrings['en']['remoteupload'] = 'Remote upload';
 langstrings['en']['choose'] = 'Choose a file';
 langstrings['en']['uploadmeta'] = 'Video information (optional)';
 langstrings['en']['smallfilelink'] = '<small>cacaoweb link</small>';
@@ -50,6 +53,13 @@ langstrings['en']['natnotp2pfriendly'] = "Your router is currently not supported
 langstrings['en']['workingfine'] = "cacaoweb is working fine";
 langstrings['en']['turnedoff'] = "cacaoweb has been turned off";
 langstrings['en']['uninstalled'] = "cacaoweb has been successfully uninstalled";
+langstrings['en']['notloggedin'] = "Your are not logged in";
+langstrings['en']['welcome'] = "Welcome ";
+langstrings['en']['name'] = "Name";
+langstrings['en']['password'] = "Password";
+langstrings['en']['login'] = "Login";
+langstrings['en']['create'] = "Create my account";
+
 
 
 
@@ -76,10 +86,13 @@ langstrings['fr']['cacaowebadmin'] = 'cacaoweb - Interface d\'administration';
 langstrings['fr']['mydownloads'] = 'Mes Téléchargements';
 langstrings['fr']['myuploads'] = 'Mes Téléversements';
 langstrings['fr']['newupload'] = 'Nouveau Téléversement';
+langstrings['fr']['examples'] = 'exemples :';
 langstrings['fr']['smalllink'] = '<small>Lien : </small>';
 langstrings['fr']['smallembed'] = '<small>Embed : </small>';
 langstrings['fr']['smallupload'] = '<small>Téléverser un fichier</small>';
 langstrings['fr']['smallremoteupload'] = '<small>URL du fichier:</small>';
+langstrings['fr']['browse'] = 'Parcourir';
+langstrings['fr']['remoteupload'] = 'Téléversement distant';
 langstrings['fr']['choose'] = 'Choisir un fichier';
 langstrings['fr']['uploadmeta'] = 'Informations sur la vidéo (optionnel)';
 langstrings['fr']['smallfilelink'] = '<small>lien cacaoweb</small>';
@@ -104,7 +117,12 @@ langstrings['fr']['natnotp2pfriendly'] = "Votre routeur n'est pas compatible ave
 langstrings['fr']['workingfine'] = "Tout marche parfaitement";
 langstrings['fr']['turnedoff'] = "cacaoweb est maintenant éteint";
 langstrings['fr']['uninstalled'] = "cacaoweb est maintenant désinstallé";
-
+langstrings['fr']['notloggedin'] = "Vous ne vous êtes pas identifié";
+langstrings['fr']['welcome'] = "Bienvenu ";
+langstrings['fr']['name'] = "Nom";
+langstrings['fr']['password'] = "Mot de passe";
+langstrings['fr']['login'] = "S'identifier";
+langstrings['fr']['create'] = "Créer mon compte";
 
 
 
@@ -130,10 +148,13 @@ langstrings['it']['cacaowebadmin'] = 'cacaoweb - Interfaccia di Amministrazione'
 langstrings['it']['mydownloads'] = 'Miei Download';
 langstrings['it']['myuploads'] = 'Miei Uploads';
 langstrings['it']['newupload'] = 'Novo Upload';
+langstrings['it']['examples'] = 'examples :';
 langstrings['it']['smalllink'] = '<small>Link : </small>';
 langstrings['it']['smallembed'] = '<small>Embed : </small>';
 langstrings['it']['smallupload'] = '<small>Carica un file</small>';
 langstrings['it']['smallremoteupload'] = '<small>URL di file:</small>';
+langstrings['it']['browse'] = 'Browse';
+langstrings['it']['remoteupload'] = 'Remote upload';
 langstrings['it']['choose'] = 'Scegli file';
 langstrings['it']['uploadmeta'] = 'Informazioni video (optionale)';
 langstrings['it']['smallfilelink'] = '<small>link cacaoweb</small>';
@@ -158,6 +179,12 @@ langstrings['it']['natnotp2pfriendly'] = "Il router non è attualemnete supporta
 langstrings['it']['workingfine'] = "cacaoweb sta funzionando bene";
 langstrings['it']['turnedoff'] = "cacaoweb è stato spento";
 langstrings['it']['uninstalled'] = "cacaoweb è stato disinstallato con successo";
+langstrings['it']['notloggedin'] = "Your are not logged in";
+langstrings['it']['welcome'] = "Welcome ";
+langstrings['it']['name'] = "Name";
+langstrings['it']['password'] = "Password";
+langstrings['it']['login'] = "Login";
+langstrings['it']['create'] = "Create my account";
 
 
 
