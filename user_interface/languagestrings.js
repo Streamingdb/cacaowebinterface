@@ -1,6 +1,11 @@
 
 var langstrings = new Array();
 
+
+/** 
+  English
+*/
+
 langstrings['en'] = new Array();
 langstrings['en']['management'] = 'Management';
 langstrings['en']['searchhints'] = '<small>Search for movies and TV shows or paste a link</small>';
@@ -62,8 +67,9 @@ langstrings['en']['create'] = "Create my account";
 
 
 
-
-
+/** 
+  French
+*/
 
 langstrings['fr'] = new Array();
 langstrings['fr']['management'] = 'Gestion';
@@ -125,7 +131,9 @@ langstrings['fr']['login'] = "S'identifier";
 langstrings['fr']['create'] = "Créer mon compte";
 
 
-
+/** 
+  Italian
+*/
 
 langstrings['it'] = new Array();
 langstrings['it']['management'] = 'Amministrazione';
@@ -186,6 +194,69 @@ langstrings['it']['password'] = "Password";
 langstrings['it']['login'] = "Login";
 langstrings['it']['create'] = "Create my account";
 
+
+/** 
+  Polish
+*/
+
+langstrings['pl'] = new Array();
+langstrings['pl']['management'] = 'Zarządzaj';
+langstrings['pl']['searchhints'] = '<small>Wyszukaj filmy, programy telewizyjne, albo wklej link</small>';
+langstrings['pl']['linknotrecognized'] = 'Typ linku nie jest obsługiwany przez cacaoweb';
+langstrings['pl']['typeoflinks'] = '<small>Przykłady :<br>http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI</small>';
+langstrings['pl']['needfacebook'] = "Musisz zezwolić cacaoweb na dostęp do facebook, aby kontynuować. Naciśnij <a href=\"javascript:facebookloginandplay('')\"><u>tutaj</u></a> aby się zalogować.";
+langstrings['pl']['outdated'] = 'Nowa wersja cacaoweb wydana, pobierz najnowszą wersję <a href="http://www.cacaoweb.org/?noredirect=yes">tutaj</a>';
+langstrings['pl']['nospaceleft'] = 'Brak miejsca na dysku. Cacaoweb może działać niepoprawnie.';
+langstrings['pl']['noconnectivity'] = 'Nie ma połączenia z internetem dla cacaoweb, program nie będzie działać';
+langstrings['pl']['permissionproblem'] = 'Cacaoweb jest aktualnie zablokowany przez system (brak zezwolenia)';
+langstrings['pl']['next'] = 'Następna >';
+langstrings['pl']['previous'] = '< Poprzednia';
+langstrings['pl']['noresults'] = 'Brak wyników';
+langstrings['pl']['showlink'] = 'pokaż link';
+langstrings['pl']['season'] = 'sezon';
+langstrings['pl']['episode'] = 'odcinek';
+langstrings['pl']['cacaowebtitle'] = 'cacaoweb - Oglądaj swobodnie swoje ulubione programy telewizyjne i filmy online';
+langstrings['pl']['cacaowebadmin'] = 'cacaoweb - Administracja Interfejsem';
+langstrings['pl']['mydownloads'] = 'Pobieranie';
+langstrings['pl']['myuploads'] = 'Wysyłanie';
+langstrings['pl']['newupload'] = 'New Upload';
+langstrings['pl']['examples'] = 'examples :';
+langstrings['pl']['smalllink'] = '<small>Link : </small>';
+langstrings['pl']['smallembed'] = '<small>Wstaw : </small>';
+langstrings['pl']['smallupload'] = '<small>Wyślij plik</small>';
+langstrings['pl']['smallremoteupload'] = '<small>File URL:</small>';
+langstrings['pl']['browse'] = 'Browse';
+langstrings['pl']['remoteupload'] = 'Remote upload';
+langstrings['pl']['choose'] = 'Wybierz Plik';
+langstrings['pl']['uploadmeta'] = 'Informacje o pliku';
+langstrings['pl']['smallfilelink'] = '<small>cacaoweb link</small>';
+langstrings['pl']['movie'] = 'Film';
+langstrings['pl']['tvshow'] = 'Program TV';
+langstrings['pl']['anime'] = 'Anime';
+langstrings['pl']['documentary'] = 'Dokumentalny';
+langstrings['pl']['smalllanguage'] = '<small>Język</small>';
+langstrings['pl']['smalltitle'] = '<small>Tytuł</small>';
+langstrings['pl']['smallshowtitle'] = '<small>Pokaż tytuł</small>';
+langstrings['pl']['smallseason'] = '<small>Sezon</small>';
+langstrings['pl']['smallepisode'] = '<small>Odcinek</small>';
+langstrings['pl']['submit'] = 'Wyślij';
+langstrings['pl']['h2cacaowebstatus'] = 'status cacaoweb';
+langstrings['pl']['cacaowebactions'] = 'akcje cacaoweb';
+langstrings['pl']['turnoff'] = 'Wyłącz';
+langstrings['pl']['uninstall'] = 'Odinstaluj';
+langstrings['pl']['backmainpage'] = 'Wróć do strony głównej';
+langstrings['pl']['natnotcone'] = "Twój router nie jest obecnie obsługiwany przez cacaoweb (nie jest to stożek)";
+langstrings['pl']['notconnected'] = "Cacaoweb nie jest podłączony do sieci";
+langstrings['pl']['natnotp2pfriendly'] = "Twój router nie jest obecnie obsługiwany przez cacaoweb (brak obsługi P2P)";
+langstrings['pl']['workingfine'] = "Cacaoweb działa dobrze";
+langstrings['pl']['turnedoff'] = "Cacaoweb został wyłączony";
+langstrings['pl']['uninstalled'] = "Cacaoweb został poprawnie odinstalowany";
+langstrings['pl']['notloggedin'] = "Your are not logged in";
+langstrings['pl']['welcome'] = "Welcome ";
+langstrings['pl']['name'] = "Name";
+langstrings['pl']['password'] = "Password";
+langstrings['pl']['login'] = "Login";
+langstrings['pl']['create'] = "Create my account";
 
 
 
