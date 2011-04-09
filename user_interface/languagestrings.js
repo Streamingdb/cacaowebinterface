@@ -1,4 +1,3 @@
-
 var langstrings = new Array();
 
 
@@ -251,12 +250,11 @@ langstrings['pl']['natnotp2pfriendly'] = "Twój router nie jest obecnie obsługi
 langstrings['pl']['workingfine'] = "Cacaoweb działa dobrze";
 langstrings['pl']['turnedoff'] = "Cacaoweb został wyłączony";
 langstrings['pl']['uninstalled'] = "Cacaoweb został poprawnie odinstalowany";
-langstrings['pl']['notloggedin'] = "Your are not logged in";
-langstrings['pl']['welcome'] = "Welcome ";
-langstrings['pl']['name'] = "Name";
-langstrings['pl']['password'] = "Password";
+langstrings['pl']['notloggedin'] = "Nie jesteś zalogowany";
+langstrings['pl']['welcome'] = "Witaj ";
+langstrings['pl']['name'] = "Imię";
+langstrings['pl']['password'] = "Hasło";
 langstrings['pl']['login'] = "Login";
-langstrings['pl']['create'] = "Create my account";
-
+langstrings['pl']['create'] = "Utwórz konto";
 
 
