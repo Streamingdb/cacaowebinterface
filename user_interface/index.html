@@ -89,6 +89,9 @@
 			<div id="searchhints"></div>
 		</div>
 		<div id="searchresultsarea">
+			<div id="didyoumean">
+				
+			</div>
 			<div id="searchresults">
 				<!-- <div class="searchentry">
 					<div class="searchheader" id="merde" ><a href="#" onclick="play('http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=fasdfs')">Cold Case Affaires classées S02E04.mp4</a></div>
@@ -301,10 +304,9 @@
 			clearsearch();
 			var searchresults = document.getElementById('searchresults');
 			
-			if (results == "" || results.showsresults.length == 0) {
+			if (results == "" || (results.showsresults.length == 0 && results.moviesresults.length == 0)) {
 				searchresults.innerHTML = langstrings[lang]['noresults'];
 				document.getElementById('searchresultsnext').style.display = 'none';
-				return;
 			}
 			
 			if (results.showsresults.length == 10) {
@@ -329,7 +331,25 @@
 				entry.innerHTML = '<div class="searchheader"><a href="javascript:play(\'' + show.link + '\')">' + show.showname + ' S' + show.season + 'E' + show.episode + '</a></div><div class="searchsummary">' + show.showname + ' ' + langstrings[lang]['season'] + ' ' + show.season + ' ' + langstrings[lang]['episode'] + ' ' + show.episode + '</div><div class="searchlink" style="display:none">' + show.link + '</div><div class="searchshowlink"><a href="#" onclick="showlink(event, this)">' + langstrings[lang]['showlink'] + '</a></div>';
 				searchresults.appendChild(entry);
 			} 
+			for (var i = 0; i < results.moviesresults.length; i++) { 
+				var movie = results.moviesresults[i];
+				var entry;
+				entry = document.createElement('div');
+				entry.setAttribute('class', "searchentry");
+				entry.innerHTML = '<div class="searchheader"><a href="javascript:play(\'' + movie.link + '\')">' + movie.moviename + '</a></div><div class="searchsummary">' + movie.moviename + '</div><div class="searchlink" style="display:none">' + movie.link + '</div><div class="searchshowlink"><a href="#" onclick="showlink(event, this)">' + langstrings[lang]['showlink'] + '</a></div>';
+				searchresults.appendChild(entry);
+			} 
+			for (var i = 0; i < results.didyoumeanresults.length; i++) { 
+				var search = results.didyoumeanresults[i];
+				document.getElementById('didyoumean').innerHTML = langstrings[lang]['didyoumean'] + '<a href="javascript:search(\'' + search + '\')">' + search + '</a>';
+			} 
 		
+		}
+		function search(searchterm) {
+			document.getElementById("search").value = searchterm;
+			document.getElementById('didyoumean').innerHTML = "";
+			document.getElementById('searchresults').innerHTML = "";
+			processUserEntry();
 		}
 		
 		function showlink(e, o) {
