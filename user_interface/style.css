@@ -220,6 +220,7 @@ h2 {
 }
 .warning {
 	position: absolute; 
+	font-size: 12px; 
 	left: 300px;
 	background-color: #ffcd9b;
 	border: 1px solid #ff8040; 

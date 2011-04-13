@@ -608,13 +608,13 @@
 		
 		function updatestatus() {
 			if (dhtnetworkstatus == 'NATNotCone') {
-				$("#cacaowebstatus").text(langstrings[lang]['natnotcone']);
+				$("#cacaowebstatus").html(langstrings[lang]['natnotcone']);
 			} else if (dhtnetworkstatus == 'DHTNotConnected') {
-				$("#cacaowebstatus").text(langstrings[lang]['notconnected']);
+				$("#cacaowebstatus").html(langstrings[lang]['notconnected']);
 			} else if (tcpnattype == 'Bad') {
-				$("#cacaowebstatus").text(langstrings[lang]['natnotp2pfriendly']);
+				$("#cacaowebstatus").html(langstrings[lang]['natnotp2pfriendly']);
 			} else {
-				$("#cacaowebstatus").text(langstrings[lang]['workingfine']);
+				$("#cacaowebstatus").html(langstrings[lang]['workingfine']);
 			}
 		}
 		
