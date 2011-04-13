@@ -59,6 +59,7 @@
 		}());
 		
 		lang = fb_lang.substring(0, 2);
+		var searchlang = lang;
 		switch (lang) {
 			case 'en':
 				break;
@@ -126,7 +127,7 @@
 		document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
 		
 		var currentsearchpos = 0;
-		var updateWarningsInterval = 30.0;
+		var updateWarningsInterval = 20.0;
 			
 		function includeScript(filename, scriptname) {
 			var htmlDoc = document.getElementsByTagName('body').item(0);
@@ -154,6 +155,9 @@
 				warnings.style.display = "";
 			} else if (result == 'nospaceleft') {
 				warnings.innerHTML = langstrings[lang]['nospaceleft'];
+				warnings.style.display = "";
+			} else if (result == 'badrouter') {
+				warnings.innerHTML = langstrings[lang]['natnotp2pfriendly'];
 				warnings.style.display = "";
 			} else {
 				warnings.style.display = "none";
@@ -228,7 +232,7 @@
 		function submitSearch(pos) {
 			var searchitem = document.getElementById("search").value.toLowerCase();
 			currentsearchpos = pos;
-			includeScript('http://search.cacaoweb.org/?searchterm=' + encodeURIComponent(searchitem) + '&lang=' + lang + '&pos=' + pos, 'searchscript');
+			includeScript('http://search.cacaoweb.org/?searchterm=' + encodeURIComponent(searchitem) + '&lang=' + searchlang + '&pos=' + pos, 'searchscript');
 		}
 		
 		function ismd5(s) {
