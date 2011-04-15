@@ -22,7 +22,7 @@
 			
 				<div id="downloads">
 					<h2 id="h2mydownloads"></h2>
-					<table id="mydownloads" class="fourcolumns"></table>
+					<div id="mydownloads"></div>
 				</div>
 			
 				<div id="uploads">
@@ -100,6 +100,8 @@
 									<option value="tvshow" id="tvshow"></option>
 									<option value="anime" id="anime"></option>
 									<option value="documentary" id="documentary"></option>
+									<option value="music" id="music"></option>
+									<option value="file" id="filecategory"></option>
 								</select>
 							</p>
 							<p>
@@ -195,6 +197,8 @@
 		document.getElementById('tvshow').innerHTML = langstrings[lang]['tvshow'];
 		document.getElementById('anime').innerHTML = langstrings[lang]['anime'];
 		document.getElementById('documentary').innerHTML = langstrings[lang]['documentary'];
+		document.getElementById('music').innerHTML = langstrings[lang]['music'];
+		document.getElementById('filecategory').innerHTML = langstrings[lang]['file'];
 		document.getElementById('smalllanguage').innerHTML = langstrings[lang]['smalllanguage'];
 		document.getElementById('smalltitle').innerHTML = langstrings[lang]['smalltitle'];
 		document.getElementById('smallshowtitle').innerHTML = langstrings[lang]['smallshowtitle'];
@@ -303,8 +307,8 @@
 			});	
 			
 			// on retire les lignes de l'interface dont l'élément correspondant a disparu
-			$('tr[id^="rowdown"]').each(function() {
-				var id = $(this).attr('id').substring(7);
+			$('div[rowdownid]').each(function() {
+				var id = $(this).attr('rowdownid');
 				
 				var b = false;
 				$.each(downloads, function (i, megavideoitem) {
@@ -324,37 +328,55 @@
 			
 			
 			$.each(filedownloads, function (i, item) {
-				if ($("#rowdown" + item.fileid).length > 0) {
-					$("#downloadprogressbar" + item.fileid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
+				if ($("div[rowdownid=" + item.fileid).length > 0) {
+					$("div[rowdownid=" + item.videoid + "]").find(".downloadprogressbar").progressBar(item.progress);
 				} else {
-					var rowtitle = '<td class="one">' + item.title + '</td>';
-					var rowprogress = '<td class="two"><div id="downloadprogressbar' + item.fileid + '"></div></td>';
-					var rowdelete = "<td><a class='deletebutton' href='#' title='delete' onclick=\"deleteFileDownload('" + item.fileid + "')\"><span>delete</span></a></td>";
+					var rowtitle = '<div class="title">' + item.title + '</div>';
+					var rowprogress = '<div class="progress"><div class="downloadprogressbar"></div></div>';
+					var rowdelete = "<div class='delete'><a class='deletebutton' href='#' title='delete' onclick=\"deleteFileDownload('" + item.fileid + "')\"><span>delete</span></a></div>";
 					var downloadurl = "file/download.caml?downloadid=" + item.fileid;
-					var rowdownload = "<td><a class='savebutton' title='download' href=\"" + downloadurl + "\"><span>save</span></a></td>";
+					var rowdownload = "<div class='save'><a class='savebutton' title='download' href=\"" + downloadurl + "\"><span>save</span></a></div>";
 					var vlcplayback = "";
 					if (isplayerinstalled) { 
-						vlcplayback = "<td><a class='playbutton' title='play' href='#' onclick=\"ajaxrequest('play.caml?playurl=http://" + window.location.host + "/?f=" + item.fileid + "')\"><span>play</span></a></td>";
+						vlcplayback = "<div class='play'><a class='playbutton' title='play' href='#' onclick=\"ajaxrequest('play.caml?playurl=http://" + window.location.host + "/?f=" + item.fileid + "')\"><span>play</span></a></div>";
 					} 
-					$("#mydownloads").append('<tr id="rowdown' + item.fileid + '" colspan="4">' + rowtitle  + rowprogress + rowdelete + vlcplayback + rowdownload + "</tr>\r\n");
-					$("#downloadprogressbar" + item.fileid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
+					var div = document.createElement("div"); // obligé de créer un objet dans le DOM pour que la progressbar fonctionne
+					div.className = "row";
+					div.setAttribute('rowdownid', item.fileid);
+					div.setAttribute("colspan", "4");
+					div.innerHTML = rowtitle + rowprogress + rowdelete + vlcplayback + rowdownload;
+					$("#mydownloads").append(div);
+					$(div).find(".downloadprogressbar").progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
 				}
 			});
 			$.each(downloads, function (i, item) {
-				if ($("#rowdown" + item.videoid).length > 0) {
-					$("#downloadprogressbar" + item.videoid).progressBar(item.progress);
+				if ($("div[rowdownid=" + item.videoid + "]").length > 0) {
+					$("div[rowdownid=" + item.videoid + "]").find(".downloadprogressbar").progressBar(item.progress);
 				} else {
-					var rowtitle = '<td class="one">' + item.title + '</td>';
-					var rowprogress = '<td class="two"><div id="downloadprogressbar' + item.videoid + '"></div></td>';
-					var rowdelete = "<td><a class='deletebutton' href='#' title='delete' onclick=\"deleteDownload('" + item.provider + "', '" + item.videoid + "')\"><span>delete</span></a></td>";
+					var rowtitle = '<div class="title">' + item.title + '</div>';
+					var rowprogress = '<div class="progress"><div class="downloadprogressbar"></div></div>';
+					var rowdelete = "<div class='delete'><a class='deletebutton' href='#' title='delete' onclick=\"deleteDownload('" + item.provider + "', '" + item.videoid + "')\"><span>delete</span></a></div>";
 					var downloadurl = item.provider + "/download.caml?downloadid=" + item.videoid;
-					var rowdownload = "<td><a class='savebutton' title='download' href=\"" + downloadurl + "\"><span>save</span></a></td>";
+					var rowdownload = "<div class='save'><a class='savebutton' title='download' href=\"" + downloadurl + "\"><span>save</span></a></div>";
 					var vlcplayback = "";
 					if (isplayerinstalled) { 
-						vlcplayback = "<td><a class='playbutton' title='play' href='#' onclick=\"ajaxrequest('play.caml?playurl=http://" + window.location.host + "/" + item.provider + "/" + item.provider + ".caml?videoid=" + item.videoid + "')\"><span>play</span></a></td>";
+						vlcplayback = "<div class='play'><a class='playbutton' title='play' href='#' onclick=\"ajaxrequest('play.caml?playurl=http://" + window.location.host + "/" + item.provider + "/" + item.provider + ".caml?videoid=" + item.videoid + "')\"><span>play</span></a></div>";
 					} 
-					$("#mydownloads").append('<tr id="rowdown' + item.videoid + '" colspan="4">' + rowtitle  + rowprogress + rowdelete + vlcplayback + rowdownload + "</tr>\r\n");
-					$("#downloadprogressbar" + item.videoid).progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
+					var link = "";
+					if (item.provider == "megavideo") {
+						link = "http://megavideo.com/?v=" + item.videoid;
+					} else if (item.provider == "videobb") {
+						link = "http://videobb.com/video/" + item.videoid;
+					}
+					var rowlinks = "<div class='linkdisplay' style='display:none'><input name=\"link\" id=\"link\" value=\"" + link + "\" size=\"80\"></input></div>";
+					var showlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\"><span>" + langstrings[lang]['showlink'] + "</span></a></div>";
+					var div = document.createElement("div"); // obligé de créer un objet dans le DOM pour que la progressbar fonctionne
+					div.className = "row";
+					div.setAttribute('rowdownid', item.videoid);
+					div.setAttribute("colspan", "4");
+					div.innerHTML = rowtitle + rowprogress + rowdelete + vlcplayback + rowdownload + showlink + rowlinks;
+					$("#mydownloads").append(div);
+					$(div).find(".downloadprogressbar").progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
 				}
 			});
 			
@@ -372,13 +394,13 @@
 			} else {
 				var rowtitle = '<div class="title">' + title + '</div>';
 				var rowprogress = '<div class="progress"><div class="uploadprogressbar"></div></div>';
-				var rowdelete = "<div class='delete'><a href='#' title='delete' onclick=\"removePublishedFile('" + fileid + "')\"><img src='b_drop.png' /></a></div>";
-				var rowshowlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\">show link</a></div>";
+				var rowdelete = "<div class='delete'><a class='deletebutton' href='#' title='delete' onclick=\"removePublishedFile('" + fileid + "')\"></a></div>";
+				var rowshowlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\">" + langstrings[lang]['showlink'] + "</a></div>";
 				var rowlinks = "<div class='linkdisplay' style='display:none'><div>" + langstrings[lang]['smalllink'] + "</div><input name=\"link\" id=\"link\" size=\"80\"></input><div>" + langstrings[lang]['smallembed'] + "</div><textarea name=\"embed\" id=\"embed\" rows=\"4\" cols=\"60\"></textarea></div>";
 				var link = 'http://127.0.0.1:4001/?f=' + fileid;
 				var embed = '<object width="640" height="360"><param name="allowFullScreen" value="true" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="http://cacaoweb.org/player.swf" /><embed src="http://cacaoweb.org/player.swf" flashvars="file=' + link + '" width="640" height="360" allowFullScreen="true" /></object>';
-				var div = document.createElement("div");
-				div.className = "uploadrow";
+				var div = document.createElement("div"); // obligé de créer un objet dans le DOM pour que la progressbar fonctionne
+				div.className = "row";
 				div.setAttribute('rowupid', rowid);
 				div.setAttribute("colspan", "4");
 				div.innerHTML = rowtitle  + rowprogress + rowdelete + rowshowlink + rowlinks;

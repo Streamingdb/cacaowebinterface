@@ -264,18 +264,15 @@ h2 {
 }
 
 
-table.fourcolumns td.one {width:300px;color:#8a8a8a;padding-left:5px;}
-table.fourcolumns td.two {width:140px;color:#8a8a8a;padding-left:5px;padding-top:3px;}
-table.fourcolumns td.three {}
-table.fourcolumns td.four {width:28px;}
-table.fourcolumns td.five {width:28px;padding-left:7px;}
+div.title { float: left; width: 300px; color: #8a8a8a; padding-left: 5px; }
+div.progress { float: left; width: 140px; color: #8a8a8a; padding-left: 5px; padding-top: 3px; }
+div.delete { float: left; padding-left: 3px; }
+div.showlink { float: left; padding-left: 5px; }
+div.play { float:left; padding-left: 3px; }
+div.save { float:left; padding-left: 3px; }
+div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 
-.uploadrow { clear:left; }
-div.myuploads div.title { float: left; width: 300px; color: #8a8a8a; padding-left: 5px; }
-div.myuploads div.progress { float: left; width: 140px; color: #8a8a8a; padding-left: 5px; padding-top: 3px; }
-div.myuploads div.delete { float: left; padding-left: 3px; }
-div.myuploads div.showlink { float: left; padding-left: 5px; }
-div.myuploads div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
+.row { clear:left; }
 
 .deletebutton { display: block; width:16px; height:16px; background-image:url('b_drop.png'); background-repeat: no-repeat; }
 .deletebutton  span { display: none; }
@@ -329,7 +326,7 @@ div.myuploads div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px;
 }
 #mainleftcolumn {
 	float: left;
-	width: 520px;
+	width: 540px;
 	margin-top: 30px;
 }
 #mainrightcolumn {
