@@ -253,6 +253,7 @@
 			
 		function processUserEntry() {
 			document.getElementById('playerarea').style.display = 'none';
+			document.getElementById('didyoumean').innerHTML = "";
 			var searchitem = document.getElementById("search").value;
 			var iscacaoid = ismd5(searchitem);
 			if (searchitem.indexOf('http://') == -1 && !iscacaoid) { // search
@@ -343,9 +344,10 @@
 				entry.innerHTML = '<div class="searchheader"><a href="javascript:play(\'' + movie.link + '\')">' + movie.moviename + '</a></div><div class="searchsummary">' + movie.moviename + '</div><div class="searchlink" style="display:none">' + movie.link + '</div><div class="searchshowlink"><a href="#" onclick="showlink(event, this)">' + langstrings[lang]['showlink'] + '</a></div>';
 				searchresults.appendChild(entry);
 			} 
+			if (results.didyoumeanresults.length > 0) { document.getElementById('didyoumean').innerHTML = '<p>' + langstrings[lang]['didyoumean'] + '</p>'; }
 			for (var i = 0; i < results.didyoumeanresults.length; i++) { 
 				var search = results.didyoumeanresults[i];
-				document.getElementById('didyoumean').innerHTML = langstrings[lang]['didyoumean'] + '<a href="javascript:search(\'' + search + '\')">' + search + '</a>';
+				document.getElementById('didyoumean').innerHTML = document.getElementById('didyoumean').innerHTML + '<p><a href="javascript:search(\'' + search + '\')">' + search + '</a></p>';
 			} 
 		
 		}
