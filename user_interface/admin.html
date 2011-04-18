@@ -71,10 +71,19 @@
 					</ul>
 					<div id="tabs-browse">
 						<div class="addupload">
+							<div id="upload_frame">
+							
+							</div>
 							<p>
 								<label for="file" id="smallupload"></label>
-								<input name="file" id="file" size="40"></input>
-								<button tabindex="1" value="Choose" onclick="javascript:choose()" id="choose"></button>
+								<div id="filewithpath">
+									<input name="file" id="file" size="40"></input>
+									<button tabindex="1" value="Choose" onclick="javascript:choose()" id="choose"></button>
+								</div>
+								<form method='POST' enctype='multipart/form-data' accept-charset="UTF-8" action='' id="formupload" style="display:none">
+									<input type="file" size="40" value="" />
+									<p><small>Files larger than 2GB need to be uploaded with Chrome or Safari</small></p>
+								</form>
 							</p>
 						</div>
 					</div>
@@ -110,20 +119,27 @@
 									<option value=""></option>
 									<option value="en">English</option>
 									<option value="fr">Français</option>
-									<option value="es">Espanol</option>
-									<option value="de">Deutsch</option>
+									<option value="es">Español</option>
 									<option value="it">Italiano</option>
-									<option value="pt">Portugues</option>
+									<option value="pt">Português</option>
+									<option value="ar">العربية</option>
+									<option value="cn">越南</option>
+									<option value="de">Deutsch</option>
+									<option value="hi">हिन्दी</option>
+									<option value="jp">日本</option>
+									<option value="hu">Magyar</option>
+									<option value="pl">Polska</option>
+									<option value="ru">Россию</option>
+									<option value="vn">Việt</option>
 								</select>
 							</p>
 							<p id="normaltitle">
 								<label for="title" id="smalltitle"></label>
-								<input type="text" name="title" id="title" tabindex="2" size="40" />
+								<input type="text" name="title" id="title" tabindex="2" size="50" />
 							</p>
 							<p id="tvshowstitle" style="display:none">
 								<label for="showtitle" id="smallshowtitle"></label>
-								<input type="text" id="showtitle" tabindex="2" size="40" />
-
+								<input type="text" id="showtitle" tabindex="2" size="50" />
 							</p>
 							<div id="tvshowdetails" style="display:none">
 								<p>
@@ -137,7 +153,7 @@
 							</div>
 							<p>
 								<label>&nbsp;</label>
-								<button name="submit" type="submit" id="submit" onclick="submit()"></button>
+								<button id="submit" onclick="submit()"></button>
 							</p>
 						</div>
 					</div>
@@ -387,6 +403,7 @@
 		
 		/** 
 		  this function adds an upload with its details to the myuploads list
+		  if the row is already here then just the progress bar is updated
 		*/
 		function addtomyuploads(rowid, fileid, title, progress) {
 			if ($("div[rowupid=" + rowid + "]").length > 0) {
@@ -468,8 +485,58 @@
 		
 
 		
+		/**
+		  after the function "getalluploads()" is called,
+		  the remote server answers with a script that first sets up variables "remoteuploads", "directuploads", "transcodeduploads" 
+		  and then calls the function "getuploadscallback()"
+		  to parse the variable "remoteuploads" and shows the result to the user
+		 */
+		function getuploadscallback() {
+			$.each(remoteuploads, function (i, item) {
+				var realtitle = '';
+				if (item.title == '') {
+					var provider = '';
+					if (item.provider == 0) { provider = 'http://megavideo.com/?v='; } else { provider = 'http://videobb.com/video/'; }
+					realtitle = provider + item.videoid;
+				} else {
+					realtitle = item.title;
+				}
+				
+				var rowid = '';
+				if (item.fileid == '') { rowid = item.videoid; } else { rowid = item.fileid; }
+
+				var progress = 10;
+				if (item.fileid != '') { progress = 100; }
+				
+				addtomyuploads(rowid, item.fileid, realtitle, progress);
+			});
+			$.each(directuploads, function (i, item) {
+				addtomyuploads(item.fileid, item.fileid, item.title, 100);
+			});
+			$.each(transcodeduploads, function (i, item) {
+				addtomyuploads(item.fileid, item.fileid, item.title, 100);
+			});
+		}
+		function getalluploads() {
+			includeScript('http://uploads.cacaoweb.org/getuploads.php', 'getuploadscript');
+		}
+		function uploadcallback() {
+			getalluploads();
+			alert("upload done successfully");
+		}
+		
+		$(function () {
+			includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
+			getalluploads();
+		});
+	
 		
 		
+		
+		
+		
+		
+	
 		/** 
 		  upload management
 		*/
@@ -477,7 +544,14 @@
 		function submit() {
 			var selectedtab = $( "#upload-tabs" ).tabs( "option", "selected" );
 			if (selectedtab == 0) { // Browse
-				if ($('#file').val() != '') {
+				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') {
+					var uploadid = Math.floor(Math.random() * 1000000000);
+					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					$("#formupload").attr('action', actionurl);					
+					$("#upload_frame").append('<iframe frameborder="0" border="0" src="http://h264stage.com/uploadprogressframe.php?uploadid=' + uploadid + '" scrolling="no" scrollbar="no"></iframe>'); 
+					alert(langstrings[lang]['filetobeuploaded']);
+					$("#formupload").submit();
+				} else if ($('#file').val() != '') {
 					$.ajax({
 						url: "upload?filepath=" + $('#file').val(),
 						success: function(fileid) {
@@ -488,7 +562,7 @@
 									includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 								}
 							}
-					});	
+						});	
 				}
 			} else if (selectedtab == 1) { // Remote Upload
 				var url = $('#url').val();
@@ -520,55 +594,17 @@
 		}
 			
 		function choose() {
-			$.ajax({
-					url: "openfiledialogforupload",
-					success: function(path) {
-							$('#file').val(path);
-						}
-			});
+			if ($('#contenttype').val() == '') {
+				alert("choose a category first");
+			} else {
+				$.ajax({
+						url: "openfiledialogforupload",
+						success: function(path) {
+								$('#file').val(path);
+							}
+				});
+			}
 		}
-		
-		/**
-		  after the function "getalluploads()" is called,
-		  the remote server answers with a script that first sets up a variable "remoteuploads" and then calls the function "getuploadscallback()"
-		  to parse the variable "remoteuploads" and shows the result to the user
-		 */
-		function getuploadscallback() {
-			$.each(remoteuploads, function (i, item) {
-				var realtitle = '';
-				if (item.title == '') {
-					var provider = '';
-					if (item.provider == 0) { provider = 'http://megavideo.com/?v='; } else { provider = 'http://videobb.com/video/'; }
-					realtitle = provider + item.videoid;
-				} else {
-					realtitle = item.title;
-				}
-				
-				var rowid = '';
-				if (item.fileid == '') { rowid = item.videoid; } else { rowid = item.fileid; }
-
-				var progress = 10;
-				if (item.fileid != '') { progress = 100; }
-				
-				addtomyuploads(rowid, item.fileid, realtitle, progress);
-			});
-		}
-		function getalluploads() {
-			includeScript('http://uploads.cacaoweb.org/getuploads.php', 'getuploadscript');
-		}
-		function uploadcallback() {
-			getalluploads();
-			alert("upload done successfully");
-		}
-		
-		$(function () {
-			includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
-			getalluploads();
-		});
-	
-		
-	
-					
 	
 		/** 
 		  dynamic features for video metadata upload, update the shows list when needed
@@ -616,6 +652,17 @@
 		});
 			
 		updatefields();
+		
+		/** change the type of upload because in case of videos the file needs to be sent to the transcoding service */
+		$('#contenttype').change(function() {
+			if (($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') && $("#upload-tabs").tabs("option", "selected") == 0) {
+				$("#filewithpath").hide();
+				$("#formupload").show();
+			} else {
+				$("#formupload").hide();
+				$("#filewithpath").show();
+			}
+		});
 		
 		
 		
@@ -673,11 +720,15 @@
 		
 		
 		
+		
 		/** 
 		  all types of jquery controls initialization
 		*/
 		$("button").button();
 		$("#upload-tabs" ).tabs();
+		
+		
+		
 		
 		/** 
 		  authentication functions like login and register 
@@ -820,13 +871,8 @@
 			$(".authbox").show();
 		}
 		
-		
-		
-		
 
     </script>
-
-
 
 	
 </body>
