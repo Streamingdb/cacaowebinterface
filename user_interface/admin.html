@@ -344,8 +344,8 @@
 			
 			
 			$.each(filedownloads, function (i, item) {
-				if ($("div[rowdownid=" + item.fileid).length > 0) {
-					$("div[rowdownid=" + item.videoid + "]").find(".downloadprogressbar").progressBar(item.progress);
+				if ($("div[rowdownid=" + item.fileid + "]").length > 0) {
+					$("div[rowdownid=" + item.fileid + "]").find(".downloadprogressbar").progressBar(item.progress);
 				} else {
 					var rowtitle = '<div class="title">' + item.title + '</div>';
 					var rowprogress = '<div class="progress"><div class="downloadprogressbar"></div></div>';
@@ -407,7 +407,7 @@
 		*/
 		function addtomyuploads(rowid, fileid, title, progress) {
 			if ($("div[rowupid=" + rowid + "]").length > 0) {
-				$("div[rowupid=" + rowid + "]").find(".uploadprogressbar").progressBar(progress);
+				if (progress > -1) { $("div[rowupid=" + rowid + "]").find(".uploadprogressbar").progressBar(progress); }
 			} else {
 				var rowtitle = '<div class="title">' + title + '</div>';
 				var rowprogress = '<div class="progress"><div class="uploadprogressbar"></div></div>';
@@ -426,6 +426,7 @@
 					$(div).find(".linkdisplay > input").val(link);
 					$(div).find(".linkdisplay > textarea").val(embed);
 				}
+				if (progress == -1) { progress = 100; }; // TODO: a enlever car ce doit etre calcule par moi meme 
 				$(div).find(".uploadprogressbar").progressBar(progress, { showText: false, boxImage: 'progressbar.gif', barImage: { 0:	'progressbg_red.gif', 30: 'progressbg_orange.gif', 70: 'progressbg_green.gif' }});
 			}
 		
@@ -445,8 +446,8 @@
 				uploads.push(item);
 			});
 			/* remove elements of the DOM that have been removed from the uploads list anymore (deleted) */
-			$('div[rowupid^=local]').each(function() {
-				var id = $(this).attr('rowupid').substring(5);
+			/*$('div[rowupid]').each(function() {
+				var id = $(this).attr('rowupid');
 				
 				var b = false;
 				$.each(uploads, function (i, fileitem) {
@@ -454,11 +455,11 @@
 				});
 				
 				if (!b) {
-					$(this).remove();
+					$(this).remove(); TODO
 				}
-			});
+			});*/
 			$.each(uploads, function (i, item) {
-				addtomyuploads('local' + item.fileid, item.fileid, item.title, item.progress);
+				addtomyuploads(item.fileid, item.fileid, item.title, item.progress);
 			});
 			if ($('#myuploads').children().length == 0) {
 				$("#uploads").hide();
@@ -511,7 +512,7 @@
 				addtomyuploads(rowid, item.fileid, realtitle, progress);
 			});
 			$.each(directuploads, function (i, item) {
-				addtomyuploads(item.fileid, item.fileid, item.title, 100);
+				addtomyuploads(item.fileid, item.fileid, item.title, -1);
 			});
 			$.each(transcodeduploads, function (i, item) {
 				addtomyuploads(item.fileid, item.fileid, item.title, 100);
