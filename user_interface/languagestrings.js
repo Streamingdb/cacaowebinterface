@@ -211,6 +211,7 @@ langstrings['it']['create'] = "Create my account";
 
 /** 
   Polish
+  Grzegorz Witczak   kavillock.at.gmail.dot.com
 */
 
 langstrings['pl'] = new Array();
@@ -225,7 +226,7 @@ langstrings['pl']['noconnectivity'] = 'Nie ma połączenia z internetem dla caca
 langstrings['pl']['permissionproblem'] = 'Cacaoweb jest aktualnie zablokowany przez system (brak zezwolenia)';
 langstrings['pl']['next'] = 'Następna >';
 langstrings['pl']['previous'] = '< Poprzednia';
-langstrings['pl']['didyoumean'] = 'Did you mean: ';
+langstrings['pl']['didyoumean'] = 'Czy chodziło ci o: ';
 langstrings['pl']['noresults'] = 'Brak wyników';
 langstrings['pl']['showlink'] = 'link';
 langstrings['pl']['season'] = 'sezon';
@@ -244,29 +245,29 @@ langstrings['pl']['browse'] = 'Przeglądaj';
 langstrings['pl']['remoteupload'] = 'Remote upload';
 langstrings['pl']['choose'] = 'Wybierz Plik';
 langstrings['pl']['uploadmeta'] = 'Informacje o pliku';
-langstrings['pl']['smallfilelink'] = '<small>cacaoweb link</small>';
+langstrings['pl']['smallfilelink'] = '<small>Link cacaoweb</small>';
 langstrings['pl']['movie'] = 'Film';
 langstrings['pl']['tvshow'] = 'Program TV';
 langstrings['pl']['anime'] = 'Anime';
 langstrings['pl']['documentary'] = 'Dokumentalny';
-langstrings['pl']['music'] = 'Music';
-langstrings['pl']['file'] = 'File';
+langstrings['pl']['music'] = 'Muzyka';
+langstrings['pl']['file'] = 'Plik';
 langstrings['pl']['smalllanguage'] = '<small>Język</small>';
-langstrings['pl']['smallsubtitles'] = '<small>Subtitles</small>';
+langstrings['pl']['smallsubtitles'] = '<small>Napisy</small>';
 langstrings['pl']['smalltitle'] = '<small>Tytuł</small>';
 langstrings['pl']['smallshowtitle'] = '<small>Pokaż tytuł</small>';
 langstrings['pl']['smallseason'] = '<small>Sezon</small>';
 langstrings['pl']['smallepisode'] = '<small>Odcinek</small>';
 langstrings['pl']['submit'] = 'Wyślij';
-langstrings['pl']['filetobeuploaded'] = 'The file is going to be uploaded';
-langstrings['pl']['h2cacaowebstatus'] = 'status cacaoweb';
-langstrings['pl']['cacaowebactions'] = 'akcje cacaoweb';
+langstrings['pl']['filetobeuploaded'] = 'Plik zostanie wysłany';
+langstrings['pl']['h2cacaowebstatus'] = 'Status cacaoweb';
+langstrings['pl']['cacaowebactions'] = 'Akcje cacaoweb';
 langstrings['pl']['turnoff'] = 'Wyłącz';
 langstrings['pl']['uninstall'] = 'Odinstaluj';
 langstrings['pl']['backmainpage'] = 'Wróć do strony głównej';
 langstrings['pl']['natnotcone'] = "Twój router nie jest obecnie obsługiwany przez cacaoweb (nie jest to stożek)";
 langstrings['pl']['notconnected'] = "Cacaoweb nie jest podłączony do sieci";
-langstrings['pl']['natnotp2pfriendly'] = "Twój router nie jest obecnie obsługiwany przez cacaoweb (<a href='http://forum.cacaoweb.org/index.php?topic=33.0'>forum</a>)";
+langstrings['pl']['natnotp2pfriendly'] = "Twój router nie jest obecnie obsługiwany przez cacaoweb, zobacz (<a href='http://forum.cacaoweb.org/index.php?topic=33.0'>forum</a>)";
 langstrings['pl']['workingfine'] = "Cacaoweb działa poprawnie";
 langstrings['pl']['turnedoff'] = "Cacaoweb został wyłączony";
 langstrings['pl']['uninstalled'] = "Cacaoweb został poprawnie odinstalowany";
@@ -274,7 +275,5 @@ langstrings['pl']['notloggedin'] = "Nie jesteś zalogowany";
 langstrings['pl']['welcome'] = "Witaj ";
 langstrings['pl']['name'] = "Imię";
 langstrings['pl']['password'] = "Hasło";
-langstrings['pl']['login'] = "Login";
+langstrings['pl']['login'] = "Zaloguj się";
 langstrings['pl']['create'] = "Utwórz konto";
-
-
