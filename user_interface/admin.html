@@ -133,6 +133,26 @@
 									<option value="vn">Việt</option>
 								</select>
 							</p>
+							<p>
+								<label for="subtitles" id="smallsubtitles"></label>
+								<select id="subtitles">
+									<option value=""></option>
+									<option value="en">English</option>
+									<option value="fr">Français</option>
+									<option value="es">Español</option>
+									<option value="it">Italiano</option>
+									<option value="pt">Português</option>
+									<option value="ar">العربية</option>
+									<option value="cn">越南</option>
+									<option value="de">Deutsch</option>
+									<option value="hi">हिन्दी</option>
+									<option value="jp">日本</option>
+									<option value="hu">Magyar</option>
+									<option value="pl">Polska</option>
+									<option value="ru">Россию</option>
+									<option value="vn">Việt</option>
+								</select>
+							</p>
 							<p id="normaltitle">
 								<label for="title" id="smalltitle"></label>
 								<input type="text" name="title" id="title" tabindex="2" size="50" />
@@ -216,6 +236,7 @@
 		document.getElementById('music').innerHTML = langstrings[lang]['music'];
 		document.getElementById('filecategory').innerHTML = langstrings[lang]['file'];
 		document.getElementById('smalllanguage').innerHTML = langstrings[lang]['smalllanguage'];
+		document.getElementById('smallsubtitles').innerHTML = langstrings[lang]['smallsubtitles'];
 		document.getElementById('smalltitle').innerHTML = langstrings[lang]['smalltitle'];
 		document.getElementById('smallshowtitle').innerHTML = langstrings[lang]['smallshowtitle'];
 		document.getElementById('smallseason').innerHTML = langstrings[lang]['smallseason'];
@@ -356,11 +377,14 @@
 					if (isplayerinstalled) { 
 						vlcplayback = "<div class='play'><a class='playbutton' title='play' href='#' onclick=\"ajaxrequest('play.caml?playurl=http://" + window.location.host + "/?f=" + item.fileid + "')\"><span>play</span></a></div>";
 					} 
+					var link = "http://127.0.0.1:4001/?f=" + item.fileid;
+					var rowlinks = "<div class='linkdisplay' style='display:none'><input name=\"link\" id=\"link\" value=\"" + link + "\" size=\"80\"></input></div>";
+					var showlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\"><span>" + langstrings[lang]['showlink'] + "</span></a></div>";
 					var div = document.createElement("div"); // obligé de créer un objet dans le DOM pour que la progressbar fonctionne
 					div.className = "row";
 					div.setAttribute('rowdownid', item.fileid);
 					div.setAttribute("colspan", "4");
-					div.innerHTML = rowtitle + rowprogress + rowdelete + vlcplayback + rowdownload;
+					div.innerHTML = rowtitle + rowprogress + rowdelete + vlcplayback + rowdownload + showlink + rowlinks;
 					$("#mydownloads").append(div);
 					$(div).find(".downloadprogressbar").progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
 				}
@@ -405,11 +429,15 @@
 		  this function adds an upload with its details to the myuploads list
 		  if the row is already here then just the progress bar is updated
 		*/
-		function addtomyuploads(rowid, fileid, title, progress) {
+		function addtomyuploads(rowid, fileid, title, season, episode, progress) {
 			if ($("div[rowupid=" + rowid + "]").length > 0) {
 				if (progress > -1) { $("div[rowupid=" + rowid + "]").find(".uploadprogressbar").progressBar(progress); }
 			} else {
-				var rowtitle = '<div class="title">' + title + '</div>';
+				var showdetails = '';
+				if (season > 0 && episode > 0) {
+					showdetails = ' S' + season + 'E' + episode;
+				}
+				var rowtitle = '<div class="title">' + title + showdetails + '</div>';
 				var rowprogress = '<div class="progress"><div class="uploadprogressbar"></div></div>';
 				var rowdelete = "<div class='delete'><a class='deletebutton' href='#' title='delete' onclick=\"removePublishedFile('" + fileid + "')\"></a></div>";
 				var rowshowlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\">" + langstrings[lang]['showlink'] + "</a></div>";
@@ -459,7 +487,7 @@
 				}
 			});*/
 			$.each(uploads, function (i, item) {
-				addtomyuploads(item.fileid, item.fileid, item.title, item.progress);
+				addtomyuploads(item.fileid, item.fileid, item.title, 0, 0, item.progress);
 			});
 			if ($('#myuploads').children().length == 0) {
 				$("#uploads").hide();
@@ -509,13 +537,13 @@
 				var progress = 10;
 				if (item.fileid != '') { progress = 100; }
 				
-				addtomyuploads(rowid, item.fileid, realtitle, progress);
+				addtomyuploads(rowid, item.fileid, realtitle, item.season, item.episode, progress);
 			});
 			$.each(directuploads, function (i, item) {
-				addtomyuploads(item.fileid, item.fileid, item.title, -1);
+				addtomyuploads(item.fileid, item.fileid, item.title, item.season, item.episode, -1);
 			});
 			$.each(transcodeduploads, function (i, item) {
-				addtomyuploads(item.fileid, item.fileid, item.title, 100);
+				addtomyuploads(item.fileid, item.fileid, item.title, item.season, item.episode, 100);
 			});
 		}
 		function getalluploads() {
@@ -545,21 +573,21 @@
 		function submit() {
 			var selectedtab = $( "#upload-tabs" ).tabs( "option", "selected" );
 			if (selectedtab == 0) { // Browse
-				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') {
+				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') { // si le fichier est une vidéo, on envoie au service de transcodage
 					var uploadid = Math.floor(Math.random() * 1000000000);
-					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 					$("#formupload").attr('action', actionurl);					
 					$("#upload_frame").append('<iframe frameborder="0" border="0" src="http://h264stage.com/uploadprogressframe.php?uploadid=' + uploadid + '" scrolling="no" scrollbar="no"></iframe>'); 
 					alert(langstrings[lang]['filetobeuploaded']);
 					$("#formupload").submit();
-				} else if ($('#file').val() != '') {
+				} else if ($('#file').val() != '') { // sinon upload direct
 					$.ajax({
 						url: "upload?filepath=" + $('#file').val(),
 						success: function(fileid) {
 								if (fileid == "") {
 									alert("upload failed");
 								} else {
-									var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+									var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 									includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 								}
 							}
@@ -570,7 +598,7 @@
 				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
 					var pos1 = url.indexOf('v=');
 					var megavideoid = url.substr(pos1 + 2);
-					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 					$.ajax({
 						url: "remoteupload?provider=0&videoid=" + megavideoid,
@@ -579,7 +607,7 @@
 				} else if (url.indexOf('videobb.com/video/') > -1) { // videobb
 					var pos1 = url.lastIndexOf('/');
 					var videobbid = url.substr(pos1 + 1);
-					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 					$.ajax({
 						url: "remoteupload?provider=1&videoid=" + videobbid,
