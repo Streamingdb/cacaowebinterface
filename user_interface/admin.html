@@ -82,7 +82,7 @@
 								</div>
 								<form method='POST' enctype='multipart/form-data' accept-charset="UTF-8" action='' id="formupload" style="display:none">
 									<input type="file" size="40" value="" />
-									<p><small>Files larger than 2GB need to be uploaded with Chrome or Safari</small></p>
+									<p id="smalllargefile"></p>
 								</form>
 							</p>
 						</div>
@@ -102,7 +102,7 @@
 						<h3 id="uploadmeta"></h3>
 						<div class="meta-fields">
 							<p>
-								<label for="contenttype"><small>Type</small></label>
+								<label for="contenttype" id='smallcontenttype'><small></small></label>
 								<select id="contenttype">
 									<option value="" id="blank"></option>
 									<option value="movie" id="movie"></option>
@@ -148,7 +148,7 @@
 									<option value="hi">हिन्दी</option>
 									<option value="jp">日本</option>
 									<option value="hu">Magyar</option>
-									<option value="pl">Polska</option>
+									<option value="pl">Polski</option>
 									<option value="ru">Россию</option>
 									<option value="vn">Việt</option>
 								</select>
@@ -226,6 +226,7 @@
 		document.getElementById('smallupload').innerHTML = langstrings[lang]['smallupload'];
 		document.getElementById('smallremoteupload').innerHTML = langstrings[lang]['smallremoteupload'];
 		document.getElementById('choose').innerHTML = langstrings[lang]['choose'];
+		document.getElementById('smalllargefile').innerHTML = langstrings[lang]['smalllargefile'];
 		document.getElementById('remote-upload-tab').innerHTML = langstrings[lang]['remoteupload'];
 		document.getElementById('browse-tab').innerHTML = langstrings[lang]['browse'];
 		document.getElementById('uploadmeta').innerHTML = langstrings[lang]['uploadmeta'];
@@ -235,6 +236,7 @@
 		document.getElementById('documentary').innerHTML = langstrings[lang]['documentary'];
 		document.getElementById('music').innerHTML = langstrings[lang]['music'];
 		document.getElementById('filecategory').innerHTML = langstrings[lang]['file'];
+		document.getElementById('smallcontenttype').innerHTML = langstrings[lang]['smallcontenttype'];
 		document.getElementById('smalllanguage').innerHTML = langstrings[lang]['smalllanguage'];
 		document.getElementById('smallsubtitles').innerHTML = langstrings[lang]['smallsubtitles'];
 		document.getElementById('smalltitle').innerHTML = langstrings[lang]['smalltitle'];
