@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Cacaoweb</title>
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="css/general.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/player.css" type="text/css" media="screen">
+		
+		<script type="text/javascript" >
+			
+			(function($, undefined){
+				$(document).ready(function(){
+					// for cleaner markup we this via JS
+					$('#top-toolbar a.icon').append('<span class="i">');
+				});
+			})(jQuery);
+			
+			
+		</script>
+</head>
+<body class='player_page'>
+	<div id="page_wrapper">
+		
+
+	<div id="head">
+		<div id="logo">
+			<a href="#"><img src="img/logo.png" alt="Cacaoweb"></a>
+		</div>
+		<div id="search">
+			<div id="input_wrapp">
+				<input type="text" name="search_bar" value="Search..." id="search_bar">
+				<a id="search_submit" href="#">
+					<img src="img/mag-glass.png" alt="Search">
+				</a>
+			</div>
+		</div>
+		<div id="top-toolbar">
+			<ul>
+				<li><a href="#" class="inset icon i-heart">Share</a></li>
+				<li><a href="#" class="inset icon i-config">Management</a></li>
+				<li><a href="#" class="outset icon i-dropdown">Tools</a></li>
+				
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<div id="video"></div>
+		<div id="sidebar">
+			<div id="sidebar_inner">
+			
+			</div>
+		</div>
+	</div>
+		<div id="footer_push"></div><!-- needed for sticky footer -->
+	</div> <!-- end wrapper -->
+	<div id="footer"></div>
+</body>
+</html>
