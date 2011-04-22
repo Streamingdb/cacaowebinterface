@@ -81,7 +81,7 @@
 									<button tabindex="1" value="Choose" onclick="javascript:choose()" id="choose"></button>
 								</div>
 								<form method='POST' enctype='multipart/form-data' accept-charset="UTF-8" action='' id="formupload" style="display:none">
-									<input type="file" size="40" value="" />
+									<input name="file" type="file" size="40" value="" />
 									<p id="smalllargefile"></p>
 								</form>
 							</p>
@@ -217,6 +217,9 @@
 				lang = 'en';
 		}
 		
+		/** 
+		  translation of the interface strings
+		*/
 		
 		//document.getElementsByTagName('title').item(0).innerHTML = langstrings[lang]['cacaowebadmin'];
 		document.getElementById('h2mydownloads').innerHTML = langstrings[lang]['mydownloads'];
@@ -578,10 +581,11 @@
 				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') { // si le fichier est une vidéo, on envoie au service de transcodage
 					var uploadid = Math.floor(Math.random() * 1000000000);
 					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
-					$("#formupload").attr('action', actionurl);					
-					$("#upload_frame").append('<iframe frameborder="0" border="0" src="http://h264stage.com/uploadprogressframe.php?uploadid=' + uploadid + '" scrolling="no" scrollbar="no"></iframe>'); 
-					alert(langstrings[lang]['filetobeuploaded']);
+					$("#upload_frame").append('<iframe name="myiframe' + uploadid + '" style="display:none"></iframe>');
+					$("#formupload").attr('target', 'myiframe' + uploadid);
+					$("#formupload").attr('action', actionurl);
 					$("#formupload").submit();
+					$("#upload_frame").append('<iframe height="30px" width="500px" frameborder="0" border="0" src="http://h264stage.com/uploadprogressframe.php?uploadid=' + uploadid + '" scrolling="no" scrollbar="no"></iframe>'); 
 				} else if ($('#file').val() != '') { // sinon upload direct
 					$.ajax({
 						url: "upload?filepath=" + $('#file').val(),
