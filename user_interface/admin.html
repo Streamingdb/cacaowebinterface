@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<title>cacaoweb</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset=utf-8 />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-darkness/jquery-ui.css" />
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-darkness/jquery-ui.css" />
 </head>
 <body>
 
@@ -194,8 +194,8 @@
 		
 
 	
-	<script src="languagestrings.js" type="text/javascript"></script>
-	<script type="text/javascript">	
+	<script src="languagestrings.js"></script>
+	<script>	
 		var lang;
 		var fb_lang;
 		if (navigator.userLanguage) { // Explorer
@@ -260,7 +260,7 @@
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-	<script src="jquery.progressbar.min.js" type="text/javascript"></script>
+	<script src="jquery.progressbar.min.js"></script>
 
 	<script>
 		$("label[for=name]").text(langstrings[lang]['name']);
@@ -585,7 +585,7 @@
 					$("#formupload").attr('target', 'myiframe' + uploadid);
 					$("#formupload").attr('action', actionurl);
 					$("#formupload").submit();
-					$("#upload_frame").append('<iframe height="30px" width="500px" frameborder="0" border="0" src="http://h264stage.com/uploadprogressframe.php?uploadid=' + uploadid + '" scrolling="no" scrollbar="no"></iframe>'); 
+					$("#upload_frame").append('<iframe height="30px" width="500px" frameborder="0" border="0" src="http://h264stage.com/uploadprogressframe.php?uploadid=' + uploadid + '" scrolling="no" scrollbar="no" allowtransparency="true"></iframe>'); 
 				} else if ($('#file').val() != '') { // sinon upload direct
 					$.ajax({
 						url: "upload?filepath=" + $('#file').val(),
