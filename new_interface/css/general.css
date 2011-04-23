@@ -69,7 +69,15 @@ body {
 	color: #efefef;
 	font: 12px Arial, Helvetica, Geneva, sans-serif;
 }
-
+.clearfix {
+	display: block;
+	height: 1px;
+	margin-top: -1px;
+	clear: both;
+}
+.hidden {
+	display: none;
+}
 #page_wrapper {
 	min-height: 100%;
 	height: auto !important;
@@ -90,5 +98,176 @@ body {
 /* needed double box-shadow in safari */
 	-webkit-box-shadow: inset 0 1px 0 #535353, 0 -1px 0 #272727;
 }
+/* @group Header */
 
+#head {
+	background: url(../img/head-bg.gif) top left repeat-x;
+	height: 79px;
+}
+
+#head #logo {
+	float: left;
+	height: 100%;
+}
+
+#head #logo a {
+	display: block;
+	margin-top: 15px;
+	margin-left: 20px;
+}
+
+#head #top-toolbar {
+	float: right;
+}
+
+#head #search {
+	float: left;
+	height: 100%;
+}
+
+#head #search #input_wrapp {
+	background: #252525;
+	margin: 23px 0 0 20px;
+	box-shadow: inset 0 2px 5px rgba(0,0,0, 0.45);
+	border-bottom: 1px solid #7d7d7d;
+	border-radius: 4px;
+}
+
+#head #search #search_bar {
+	background: transparent;
+	border: 0px;
+	color: #b3b3b3;
+	padding: 5px;
+	outline: none;
+	font: 14px Arial, Helvetica, Geneva, sans-serif;
+}
+
+#head #search #search_submit {
+	display: inline-block;
+}
+
+#head #search #search_submit img {
+	position: relative;
+	top: 4px;
+	right: 5px;
+}
+
+/* @group Toolbar */
+
+#top-toolbar {
+	position: relative;
+	top: 25px;
+	right: 23px;
+}
+
+#top-toolbar ul > li {
+	display: inline-block;
+}
+
+#top-toolbar li > a {
+	margin-right: 5px;
+	padding: 7px;
+	font-size: 14px;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+/* @group inset */
+
+#top-toolbar li > a.inset {
+	color: #b9b9b9;
+	background: #252525;
+	box-shadow: inset 0 2px 5px rgba(0,0,0, 0.45);
+	border-bottom: 1px solid #7d7d7d;
+}
+
+#top-toolbar li > a.inset:hover {
+	color: #fff;
+	background: #2a2a2a;
+}
+
+#top-toolbar li > a.inset:active {
+	background: #121212;
+}
+
+/* @end */
+
+/* @group outset */
+
+#top-toolbar li > a.outset {
+	color: #202020;
+	box-shadow: inset 0 1px 0px rgba(255, 255, 255, 0.3),
+				0 1px 2px rgba(0,0,0, 0.3);
+
+/* needed double box-shadow in safari */
+	-webkit-box-shadow: inset 0 1px 0px rgba(255, 255, 255, 0.3),
+				0 1px 2px rgba(0,0,0, 0.3);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.26, rgb(106,106,106)),
+	    color-stop(0.63, rgb(156,156,156))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(106,106,106) 26%,
+	    rgb(156,156,156) 63%
+	);
+}
+
+#top-toolbar li > a.outset:hover {
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.26, rgb(107,107,107)),
+	    color-stop(0.63, rgb(163,163,163))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(107,107,107) 26%,
+	    rgb(163,163,163) 63%
+	);
+}
+
+#top-toolbar li > a.outset:active {
+	background: #858585;
+}
+
+/* @end */
+
+/* @group icons */
+
+#top-toolbar li > a.icon {
+	
+}
+
+#top-toolbar li > a.icon .i {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top: 6px;
+	margin-left: 5px;
+}
+
+#top-toolbar li > a.icon.i-heart .i {
+	background: url(../img/icon-heart.png) no-repeat center center;
+}
+
+#top-toolbar li > a.icon.i-config .i {
+	background: url(../img/icon-config.png) no-repeat center center;
+}
+
+#top-toolbar li > a.icon.i-dropdown .i {
+	background: url(../img/icon-dropdown.png) no-repeat center center;
+}
+
+/* @end */
+
+/* @end */
+
+/* @end */
 /* @end */
