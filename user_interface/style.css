@@ -191,8 +191,7 @@ h2 {
 #searchresultsprevious a {
 	float: left;
 }
-#searchresultsnext a,
-#searchresultsprevious a{
+#searchresultsnext a, #searchresultsprevious a {
 	color: #fff;
 }
 
@@ -255,7 +254,6 @@ h2 {
   
 .authbox {
 	clear: left;
-	padding-top: 20px;
 }
 .auth-notification {
 	float: left;
@@ -322,17 +320,32 @@ div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 #maincontent {
 	padding-top: 20px;
 	width: 90%;
-	margin: 10px auto;
+	margin: 20px auto;
 }
 #mainleftcolumn {
 	float: left;
-	width: 540px;
+	width: 530px;
 	margin-top: 30px;
 }
 #mainrightcolumn {
 	float: right;
-	margin-right: 50px;
 	margin-top: 30px;
+}
+
+
+#uploadslistnavigation {
+	clear: left;
+}
+#uploadslistnext a {
+	float: right;
+	padding-right: 50px;
+}
+#uploadslistprevious a {
+	float: left;
+	padding-left: 10px;
+}
+#uploadslistnext a, #uploadslistprevious a {
+	color: #fff;
 }
 
 

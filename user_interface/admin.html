@@ -19,16 +19,6 @@
 		<div id="maincontent">
 			
 			<div id="mainleftcolumn">
-			
-				<div id="downloads">
-					<h2 id="h2mydownloads"></h2>
-					<div id="mydownloads"></div>
-				</div>
-			
-				<div id="uploads">
-					<h2 id="h2myuploads"></h2>
-					<div id="myuploads" class="myuploads"></div>
-				</div>
 				
 				<div class="authbox" style="display:none">
 					<div class="auth-notification"></div>
@@ -54,12 +44,27 @@
 						<fieldset>
 							<label for="name"></label>
 							<input type="text" name="name" id="registername" class="text ui-widget-content ui-corner-all" />
-							<label for="email">Email</label>
-							<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
 							<label for="password"></label>
 							<input type="password" name="password" id="registerpassword" value="" class="text ui-widget-content ui-corner-all" />
+							<label for="email">Email</label>
+							<input type="email" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" placeholder="optional email address"/>
 						</fieldset>
 						</form>
+					</div>
+				</div>
+				
+				<div id="downloads">
+					<h2 id="h2mydownloads"></h2>
+					<div id="mydownloads"></div>
+				</div>
+			
+				<div id="uploads">
+					<h2 id="h2myuploads"></h2>
+					<div id="myuploads" class="myuploads">
+					</div>
+					<div id="uploadslistnavigation">
+						<div id="uploadslistprevious" style="display:none"><a href="#">< Back</a></div>
+						<div id="uploadslistnext" style="display:none"><a href="#">Next ></a></div>
 					</div>
 				</div>
 				
@@ -164,11 +169,11 @@
 							<div id="tvshowdetails" style="display:none">
 								<p>
 									<label for="season" id="smallseason"></label>
-									<input id="season" type="text" maxlength="2" size="2" />
+									<input id="season" type="text" maxlength="2" size="2"  type="number" min="1" max="20"/>
 								</p>
 								<p>
 									<label for="episode" id="smallepisode"></label>
-									<input id="episode" type="text" maxlength="2" size="2" />
+									<input id="episode" type="text" maxlength="2" size="2" type="number" min="1" />
 								</p>
 							</div>
 							<p>
@@ -525,6 +530,7 @@
 		  and then calls the function "getuploadscallback()"
 		  to parse the variable "remoteuploads" and shows the result to the user
 		 */
+		var currentuploadposition = 0;
 		function getuploadscallback() {
 			$.each(remoteuploads, function (i, item) {
 				var realtitle = '';
@@ -550,18 +556,35 @@
 			$.each(transcodeduploads, function (i, item) {
 				addtomyuploads(item.fileid, item.fileid, item.title, item.season, item.episode, 100);
 			});
+			
+			/** shows the next and previous links to page the list of uploads */
+			if (remoteuploads.length + directuploads.length + transcodeduploads.length > 30) {
+				var newpos = currentuploadposition + 30;
+				$('#uploadslistnext').html('<a href="#" onclick="getalluploads(\'' + newpos + '\')">' + langstrings[lang]['next'] + '</a>');
+				$('#uploadslistnext').show();
+			} else {
+				$('#uploadslistnext').hide();
+			}
+			if (currentuploadposition > 0) {
+				var newpos = currentuploadposition - 30;
+				$('#uploadslistprevious').html('<a href="#" onclick="getalluploads(\'' + newpos + '\')">' + langstrings[lang]['previous'] + '</a>');
+				$('#uploadslistprevious').show();
+			} else {
+				$('#uploadslistprevious').hide();
+			}
 		}
-		function getalluploads() {
-			includeScript('http://uploads.cacaoweb.org/getuploads.php', 'getuploadscript');
+		function getalluploads(pos) {
+			currentuploadposition = pos;
+			includeScript('http://uploads.cacaoweb.org/getuploads.php?pos=' + pos, 'getuploadscript');
 		}
 		function uploadcallback() {
-			getalluploads();
+			getalluploads(currentuploadposition);
 			alert("upload done successfully");
 		}
 		
 		$(function () {
 			includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
-			getalluploads();
+			getalluploads(0);
 		});
 	
 		
