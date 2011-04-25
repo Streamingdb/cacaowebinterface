@@ -7,7 +7,7 @@
 		
 		public function LanguageStrings() {
 			languagestrings['en'] = new Dictionary();
-			languagestrings['en']['cacaowebnotrunning'] = "cacaoweb is not running!<br>Download it at <a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
+			languagestrings['en']['cacaowebnotrunning'] = "cacaoweb is not installed<br>Download it <a href='http://www.cacaoweb.org/download/cacaoweb.exe'>here</a>";
 			languagestrings['en']['errorreadingfile'] = "there was an error playing this file";
 			languagestrings['en']['watchedwithcacaoweb'] = "watched with cacaoweb<br> <a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
 			languagestrings['en']['errorStreamNotFound'] = "error StreamNotFound (report it on forum.cacaoweb.org)";
@@ -15,7 +15,7 @@
 			languagestrings['en']['filetimeout'] = "cacaoweb could not find this video.<br>Please try again later.";
 
 			languagestrings['fr'] = new Dictionary();
-			languagestrings['fr']['cacaowebnotrunning'] = "cacaoweb n'est pas lancé!<br>Téléchargez le sur <a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
+			languagestrings['fr']['cacaowebnotrunning'] = "cacaoweb n'est pas installé<br>Téléchargez le sur <a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
 			languagestrings['fr']['errorreadingfile'] = "une erreur s'est produite pendant la lecture de ce media";
 			languagestrings['fr']['watchedwithcacaoweb'] = "proposé par cacaoweb<br> <a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
 			languagestrings['fr']['errorStreamNotFound'] = "erreur StreamNotFound<br>(rapporter le problème sur forum.cacaoweb.org)";
