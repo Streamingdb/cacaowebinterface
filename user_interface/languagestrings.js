@@ -225,7 +225,7 @@ langstrings['it']['numberofcreditssmall'] = "<small>Credits required</small>";
 */
 
 langstrings['pl'] = new Array();
-langstrings['pl']['management'] = 'My cacaoweb';
+langstrings['pl']['management'] = 'Mój cacaoweb';
 langstrings['pl']['searchhints'] = '<small>Wyszukaj filmy, programy telewizyjne, albo wklej link</small>';
 langstrings['pl']['linknotrecognized'] = 'Typ linku nie jest obsługiwany przez cacaoweb';
 langstrings['pl']['typeoflinks'] = '<small>Przykłady :<br>http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI</small>';
@@ -287,6 +287,6 @@ langstrings['pl']['name'] = "Imię";
 langstrings['pl']['password'] = "Hasło";
 langstrings['pl']['login'] = "Zaloguj się";
 langstrings['pl']['create'] = "Utwórz konto";
-langstrings['pl']['paidcontentsmall'] = "<small>Paid content</small>";
-langstrings['pl']['previewsmall'] = "<small>Preview allowed</small>";
-langstrings['pl']['numberofcreditssmall'] = "<small>Credits required</small>";
+langstrings['pl']['paidcontentsmall'] = "<small>Płatna zawartość</small>";
+langstrings['pl']['previewsmall'] = "<small>Podgląd dostępny</small>";
+langstrings['pl']['numberofcreditssmall'] = "<small>Wymaga kredytów:</small>";
