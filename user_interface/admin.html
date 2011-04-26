@@ -22,6 +22,44 @@
 				
 				<div class="authbox" style="display:none">
 					<div class="auth-notification"></div>
+					<div class="buycredits hidden">
+						<form action="https://www.paypal.com/cgi-bin/webscr" id="depositform" method="post">
+							<div class="form-field clear">
+								<p id="numberofcreditstobuy"></p>
+							</div>
+							<div class="form-field clear">
+								<div class="form-radio-item">
+									<input name="form[radio]" id="radio1" class="radio" type="radio" value="20"><label for="radio1">20 credits = 2€</label>
+								</div>
+								<div class="form-radio-item">
+									<input name="form[radio]" id="radio1" class="radio" type="radio" value="50"><label for="radio1">50 credits = 5€</label>
+								</div>
+								<div class="form-radio-item">
+									<input name="form[radio]" id="radio2" class="radio" type="radio" value="150"><label for="radio2">150 credits = 10€</label>
+								</div>
+								<div class="form-radio-item">
+									<input name="form[radio]" id="radio3" class="radio" type="radio" value="400"><label for="radio3">400 credits = 20€</label>
+								</div>
+							</div>
+								
+							<div class="clear">
+								<input name="submit" type="submit" id="submitpaypal" value="Buy with Paypal" />
+							</div><!-- /.form-field -->			
+
+
+							<div id="paypalcart">
+								<input name="cmd" value="_cart" type="hidden">
+								<input name="upload" value="1" type="hidden">
+								<input name="business" value="contact@cacaoweb.org" type="hidden">
+								<input name="currency_code" value="EUR" type="hidden">
+								<input name="cpp_header_image" value="http://cacaoweb.org/images/logo.png" type="hidden">
+								<input name="item_name_1" value="50 Credits" type="hidden">
+								<input name="quantity_1" value="1" type="hidden">
+								<input name="amount_1" value="5" type="hidden">
+							</div>							
+						
+						</form>
+					</div>
 					<div class="auth-buttons">
 						<button onclick="javascript:login()" id="loginbtn"></button>
 						<button onclick="javascript:register()" id="createbtn"></button>
@@ -182,13 +220,9 @@
 									<option value="vn">Việt</option>
 								</select>
 							</p>
-							<p id="normaltitle">
+							<p id="titlefield">
 								<label for="title" id="smalltitle"></label>
 								<input type="text" name="title" id="title" tabindex="2" size="50" />
-							</p>
-							<p id="tvshowstitle" style="display:none">
-								<label for="showtitle" id="smallshowtitle"></label>
-								<input type="text" id="showtitle" tabindex="2" size="50" />
 							</p>
 							<div id="tvshowdetails" style="display:none">
 								<p>
@@ -272,7 +306,6 @@
 		document.getElementById('smalllanguage').innerHTML = langstrings[lang]['smalllanguage'];
 		document.getElementById('smallsubtitles').innerHTML = langstrings[lang]['smallsubtitles'];
 		document.getElementById('smalltitle').innerHTML = langstrings[lang]['smalltitle'];
-		document.getElementById('smallshowtitle').innerHTML = langstrings[lang]['smallshowtitle'];
 		document.getElementById('smallseason').innerHTML = langstrings[lang]['smallseason'];
 		document.getElementById('smallepisode').innerHTML = langstrings[lang]['smallepisode'];
 		document.getElementById('submit').innerHTML = langstrings[lang]['submit'];
@@ -286,6 +319,8 @@
 		document.getElementById('paidcontentsmall').innerHTML = langstrings[lang]['paidcontentsmall'];
 		document.getElementById('previewsmall').innerHTML = langstrings[lang]['previewsmall'];
 		document.getElementById('numberofcreditssmall').innerHTML = langstrings[lang]['numberofcreditssmall'];
+		document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
+		
 		
 			
 			
@@ -611,7 +646,8 @@
 		}
 		
 		$(function () {
-			includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript'); // TODO: ne marche pas forcement bien avec le cache de IE
+			/** callback is isloggedincallback(isloggedin, username, money) */
+			includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
 			getalluploads(0);
 		});
 	
@@ -631,9 +667,11 @@
 			if (selectedtab == 0) { // Browse
 				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') { // si le fichier est une vidéo, on envoie au service de transcodage
 					var uploadid = Math.floor(Math.random() * 1000000000);
-					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 					if ($('#paidcontent').is(':checked')) {
-						actionurl = actionurl + '&numberofcredits=' + $('#numberofcredits').val() + '&previewallowed=' + $('#preview').is(':checked');
+						var previewallowed = 0;
+						if ($('#preview').is(':checked')) { previewallowed = 1; }
+						actionurl = actionurl + '&numberofcredits=' + $('#numberofcredits').val() + '&previewallowed=' + previewallowed;
 					}
 					$("#upload_frame").append('<iframe name="myiframe' + uploadid + '" style="display:none"></iframe>');
 					$("#formupload").attr('target', 'myiframe' + uploadid);
@@ -647,7 +685,7 @@
 							if (fileid == "") {
 								alert("upload failed");
 							} else {
-								var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&numberofcredits=' + $('#numberofcredits').val();
+								var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&numberofcredits=' + $('#numberofcredits').val();
 								includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 							}
 						}
@@ -658,7 +696,7 @@
 				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
 					var pos1 = url.indexOf('v=');
 					var megavideoid = url.substr(pos1 + 2);
-					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 					$.ajax({
 						url: "remoteupload?provider=0&videoid=" + megavideoid,
@@ -667,7 +705,7 @@
 				} else if (url.indexOf('videobb.com/video/') > -1) { // videobb
 					var pos1 = url.lastIndexOf('/');
 					var videobbid = url.substr(pos1 + 1);
-					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 					$.ajax({
 						url: "remoteupload?provider=1&videoid=" + videobbid,
@@ -699,37 +737,32 @@
 		  dynamic features for video metadata upload, update the shows list when needed
 		*/
 		function getshowscallback() {
-			if (shows.length > 0) {
-				$('#showtitle').remove();
-				var select = $("<select></select>").attr('id','showtitle');
-				$.each(shows, function(id, show) {
-					select.append('<option value="' + show.showname + '">' + show.showname  + '</option>');
-				});
-				$('#tvshowstitle').append(select);
-			} else {
-				$('#showtitle').remove();
-				var input = $("<input></input>").attr('type', 'text').attr('id', 'showtitle').attr('size', '40');
-				$('#tvshowstitle').append(input);
-			}
+			$('#title').remove();
+			var select = $("<select></select>").attr('id','title');
+			$.each(shows, function(id, show) {
+				select.append('<option value="' + show.showname + '">' + show.showname  + '</option>');
+			});
+			$('#titlefield').append(select);
 		}
 		function updatefields() {
 			var newcontenttype = $('#contenttype').val();
 			if (newcontenttype == 'tvshow') {
+				document.getElementById('smalltitle').innerHTML = langstrings[lang]['smallshowtitle'];
 				$('#tvshowdetails').show("fast");
-				
-				var lang = $('#language').val();
-				if (lang == 'fr' || lang == 'en') {
-					$('#tvshowstitle').show();
-					$('#normaltitle').hide();
-					includeScript('http://uploads.cacaoweb.org/getshows.php?lang=' + lang, 'getshows');
+				var contentlang = $('#language').val();
+				if (contentlang == 'fr' || contentlang == 'en') {
+					includeScript('http://uploads.cacaoweb.org/getshows.php?lang=' + contentlang, 'getshows');
 				} else {
-					$('#tvshowstitle').hide();
-					$('#normaltitle').show();
+					$('#title').remove();
+					var input = $("<input></input>").attr('type', 'text').attr('id', 'title').attr('size', '40');
+					$('#titlefield').append(input);
 				}
 			} else {
+				document.getElementById('smalltitle').innerHTML = langstrings[lang]['smalltitle'];
+				$('#title').remove();
+				var input = $("<input></input>").attr('type', 'text').attr('id', 'title').attr('size', '40');
+				$('#titlefield').append(input);
 				$('#tvshowdetails').hide("fast");
-				$('#tvshowstitle').hide();
-				$('#normaltitle').show();
 			}
 		}
 		$('#contenttype').change(function() {
@@ -826,7 +859,7 @@
 		
 		
 		/** 
-		  authentication functions like login and register 
+		  authentication and account management functions like login and register 
 		*/
 		
 		function register() {
@@ -865,8 +898,34 @@
 				return true;
 			}
 		}
+		function showcreditsform() {
+			$(".buycredits").toggle();
+		}
+		$("#depositform").submit(function() {
+			var amount = $('input:radio[name=form[radio]]:checked').val();
+			var price;
+			switch (amount) {
+				case "20":
+					price = 2;
+					break;
+				case "50":
+					price = 5;
+					break;
+				case "150":
+					price = 10;
+					break;
+				case "400":
+					price = 20;
+					break;
+				default:
+					price = 5;
+			}
+			$('input:hidden[name=amount_1]').val(price);
+			$('input:hidden[name=item_name_1]').val(amount + ' Credits');
+		});
 		
 		var username;
+		var money;
 		var currentauthdialog;
 		var allFields = $( [] ).add( $("#registername") ).add( $("#email") ).add( $("#registerpassword") );
 		$("#createuser-form").attr("title", langstrings[lang]['create']);
@@ -953,11 +1012,12 @@
 				}, 500);
 			}
 		}
-		function isloggedincallback(result, user) {
+		function isloggedincallback(result, user, money) {
 			if (result == 1) {
 				username = user;
+				money = money;
 				$(".auth-buttons").hide();
-				$(".auth-notification").text(langstrings[lang]['welcome']  + user + " !");
+				$(".auth-notification").html(langstrings[lang]['welcome']  + user + " ! " + langstrings['en']['mymoney'].replace('{1}', money));
 				$(".auth-notification").css('font-size', '12px');
 			} else {
 				$(".auth-buttons").show();
