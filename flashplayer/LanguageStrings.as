@@ -54,6 +54,22 @@
 			languagestrings['it']['errorFileStructureInvalid'] = "error FileStructureInvalid (report it on http://forum.cacaoweb.org)";
 			languagestrings['it']['filetimeout'] = "cacaoweb non riesce a trovare il video.<br>Ricarica la pagina per riprovare!";
 
+			languagestrings['pl'] = new Dictionary();
+			languagestrings['pl']['cacaowebnotrunning'] = "cacaoweb nie jest zainstalowany";
+			languagestrings['pl']['cacaowebdownload'] = "Pobierz";
+			languagestrings['pl']['notloggedin'] = "Nie jesteś zalogowany";
+			languagestrings['pl']['myaccount'] = "Moje konto";
+			languagestrings['pl']['cost'] = "Ten plik kosztuje ";
+			languagestrings['pl']['credits'] = " kredytów";
+			languagestrings['pl']['buy'] = "Kup teraz";
+			languagestrings['pl']['notenoughcredits'] = "Nie masz wystarczająco dużo kredytów, idź do swojego konta, aby doładować kredyty";
+			languagestrings['pl']['watchpreview'] = "Albo możesz zobaczyć podgląd naciskając przycisk play";
+			languagestrings['pl']['errorreadingfile'] = "wystąpił błąd w pliku";
+			languagestrings['pl']['watchedwithcacaoweb'] = "Oglądałeś dzięki cacaoweb<br> <a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
+			languagestrings['pl']['errorStreamNotFound'] = "błąd StreamNotFound (zgłoś to na http://forum.cacaoweb.org)";
+			languagestrings['pl']['errorFileStructureInvalid'] = "błąd FileStructureInvalid (zgłoś to na http://forum.cacaoweb.org)";
+			languagestrings['pl']['filetimeout'] = "cacaoweb nie mógł znaleść pliku.<br>Proszę spróbuj ponownie później.";
+
 		}
 		public function getString(language:String, stringid:String):String {
 			return languagestrings[language][stringid];
