@@ -4,25 +4,26 @@
 	import flash.display.*;
 	import flash.geom.Matrix;
 	import flash.text.*;
+	import flash.events.MouseEvent;
 
 	public class Buttons {
 
 
-		public static function createButton() {
+		private static function createButton(txt:String, txtx:Number, txty:Number) {
 			var radius:Number = 24;
 			var btnW = 200;
 			var btnH = 70;
 			var web20Glow:GlowFilter = new GlowFilter(0xF7A95C, 100, 6, 6, 3, 3, true, false);
 			var web20Filters:Array = [web20Glow];
-			var myRssButton:MovieClip = new MovieClip();
+			var myButton:MovieClip = new MovieClip();
 			var fillType = GradientType.LINEAR;
 			var colors:Array = [0xF69C46, 0xEF5A2B];
 			var alphas:Array = [100, 100];
 			var ratios:Array = [0, 245];
 			var matrix:Matrix = new Matrix();
 			matrix.createGradientBox(btnW, btnH, 90/180*Math.PI, 0, 0);
-			var buttonBkg:MovieClip = new MovieClip();
-			myRssButton.addChild(buttonBkg);
+			var buttonBkg:Shape = new Shape();
+			myButton.addChild(buttonBkg);
 			with (buttonBkg.graphics) {
 				lineStyle(0, 0xE88A41, 100, true, "none", "square", "round");
 				beginGradientFill(fillType, colors, alphas, ratios, matrix);
@@ -46,8 +47,8 @@
 			var shineRatios:Array = [0, 255];
 			var shineMatrix:Matrix = new Matrix();
 			shineMatrix.createGradientBox(shineW, shineH, 90/180*Math.PI, 0, 0);
-			var shine:MovieClip = new MovieClip();
-			myRssButton.addChild(shine);
+			var shine:Shape = new Shape();
+			myButton.addChild(shine);
 			shine.x = 8;
 			shine.y = 3;
 			with (shine.graphics) {
@@ -64,33 +65,72 @@
 				curveTo(0, 0, shineRadius, 0);
 				endFill();
 			}
-			var myRssFormat:TextFormat = new TextFormat();
-			myRssFormat.align = "left";
-			myRssFormat.font = "Arial";
-			myRssFormat.size = 18;
-			myRssFormat.bold = false;
-			myRssFormat.color = 0xFFFFFF;
+			var myFormat:TextFormat = new TextFormat();
+			myFormat.align = "left";
+			myFormat.font = "Arial";
+			myFormat.size = 24;
+			myFormat.bold = false;
+			myFormat.color = 0xFFFFFF;
 						
 			var labelText:TextField = new TextField();
-			labelText.x = 70;
-			labelText.y = 26;
-			labelText.width = 120;
+			labelText.x = txtx;
+			labelText.y = txty;
+			labelText.width = 170;
 			labelText.height = 30;
-			labelText.text = "RSS Feeds";
+			labelText.htmlText = txt;
 			labelText.selectable = false;
 			labelText.antiAliasType = flash.text.AntiAliasType.ADVANCED;
-			labelText.setTextFormat(myRssFormat);
+			labelText.setTextFormat(myFormat);
 
-			var labelGlow:GlowFilter = new GlowFilter(0xFFFFFF, .90, 4, 4, 3, 3, false, true);
+			var labelGlow:GlowFilter = new GlowFilter(0xFFFFFF, .30, 4, 4, 3, 3);
 			var labelFilters:Array = [labelGlow];
 			labelText.filters = labelFilters;
 
-			myRssButton.addChild(labelText);
+			myButton.addChild(labelText);
 
 			buttonBkg.filters = web20Filters;
 
-			var ic:MovieClip = new MovieClip();
-			myRssButton.addChild(ic);
+			return myButton;
+		}
+		
+		
+		public static function createDownloadButton(txt:String) {
+			var btn:MovieClip = createButton(txt, 65, 23);
+			
+			var ic:Shape = new Shape();
+			btn.addChild(ic);
+			ic.x=30;
+			ic.y=23;
+			var triangleHeight = 10;
+			with (ic.graphics) {
+				lineStyle(1, 0xFFFFFF, 100, true, "normal", "none");
+				beginFill(0xFFFFFF);
+				drawRect(0, 0, 15, 20);
+				moveTo(-5, 20);
+				lineTo(20, 20);
+				lineTo(7, 30);
+				lineTo(-5, 20);
+				endFill();
+			}
+			
+			var icGlow:GlowFilter = new GlowFilter(0xFFFFFF, .90, 4, 4, 3, 3, false, true);
+			var icFilters:Array = [icGlow];
+			ic.filters = icFilters;
+			
+			return btn;
+		}
+		
+		public static function createBasicButton(txt:String) {
+			var btn:MovieClip = createButton(txt, 35, 23);
+					
+			return btn;
+		}
+		
+		public static function createRSSButton(txt:String) {
+			var btn:MovieClip = createButton(txt, 65, 23);
+			
+			var ic:Shape = new Shape();
+			btn.addChild(ic);
 			ic.x=30;
 			ic.y=23;
 			with (ic.graphics) {
@@ -102,12 +142,16 @@
 				lineStyle(7, 0xFFFFFF, 100, true, "normal", "round");
 				lineTo(4, 21);
 			}
+			
 			var icGlow:GlowFilter = new GlowFilter(0xFFFFFF, .30, 4, 4, 3, 3);
 			var icFilters:Array = [icGlow];
 			ic.filters = icFilters;
-
-			return myRssButton;
+			
+			return btn;
 		}
+		
+		
+		
 
 
 	}
