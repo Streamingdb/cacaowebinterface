@@ -6,11 +6,10 @@ var langstrings = new Array();
 */
 
 langstrings['en'] = new Array();
-langstrings['en']['management'] = 'Management';
+langstrings['en']['management'] = 'My cacaoweb';
 langstrings['en']['searchhints'] = '<small>Search for movies and TV shows or paste a link</small>';
 langstrings['en']['linknotrecognized'] = 'This type of link is not recognized by cacaoweb';
 langstrings['en']['typeoflinks'] = '<small>Examples :<br>http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI</small>';
-langstrings['en']['needfacebook'] = "You need to allow cacaoweb on facebook to continue. Click <a href=\"javascript:facebookloginandplay('')\"><u>here</u></a> to login.";
 langstrings['en']['outdated'] = 'Your version of cacaoweb is outdated, download the latest version <a href="http://www.cacaoweb.org/?noredirect=yes">here</a>';
 langstrings['en']['nospaceleft'] = 'There is no space left on your media storage. cacaoweb will not work properly.';
 langstrings['en']['noconnectivity'] = 'There is no internet connectivity for cacaoweb and it will not work';
@@ -69,6 +68,10 @@ langstrings['en']['name'] = "Name";
 langstrings['en']['password'] = "Password";
 langstrings['en']['login'] = "Login";
 langstrings['en']['create'] = "Create my account";
+langstrings['en']['paidcontentsmall'] = "<small>Paid content</small>";
+langstrings['en']['previewsmall'] = "<small>Preview allowed</small>";
+langstrings['en']['numberofcreditssmall'] = "<small>Credits required</small>";
+
 
 
 
@@ -77,11 +80,10 @@ langstrings['en']['create'] = "Create my account";
 */
 
 langstrings['fr'] = new Array();
-langstrings['fr']['management'] = 'Gestion';
+langstrings['fr']['management'] = 'Mon cacaoweb';
 langstrings['fr']['searchhints'] = '<small>Recherchez des séries et films ou collez un lien</small>';
 langstrings['fr']['linknotrecognized'] = 'Ce type de lien n\'est pas reconnu par cacaoweb';
 langstrings['fr']['typeoflinks'] = '<small>Exemples de liens reconnus:<br>http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI</small>';
-langstrings['fr']['needfacebook'] = "Vous devez accepter cacaoweb sur facebook pour continuer. Cliquez <a href=\"javascript:facebookloginandplay('')\"><u>ici</u></a> pour vous enregistrer.";
 langstrings['fr']['outdated'] = 'Votre version de cacaoweb n\'est pas à jour, téléchargez la dernière version <a href="http://www.cacaoweb.org/?noredirect=yes">ici</a>';
 langstrings['fr']['nospaceleft'] = 'Il n\'y a plus de place sur votre système de stockage, cacaoweb ne va plus fonctionner correctement.';
 langstrings['fr']['noconnectivity'] = 'cacaoweb n\'a pas de connectivité internet et donc ne fonctionne pas';
@@ -140,6 +142,9 @@ langstrings['fr']['name'] = "Nom";
 langstrings['fr']['password'] = "Mot de passe";
 langstrings['fr']['login'] = "S'identifier";
 langstrings['fr']['create'] = "Créer mon compte";
+langstrings['fr']['paidcontentsmall'] = "<small>Contenu payant</small>";
+langstrings['fr']['previewsmall'] = "<small>Aperçu autorisé</small>";
+langstrings['fr']['numberofcreditssmall'] = "<small>Crédits requis</small>";
 
 
 /** 
@@ -147,11 +152,10 @@ langstrings['fr']['create'] = "Créer mon compte";
 */
 
 langstrings['it'] = new Array();
-langstrings['it']['management'] = 'Amministrazione';
+langstrings['it']['management'] = 'Mi cacaoweb';
 langstrings['it']['searchhints'] = '<small>Ricerca Film, Serie TV o incolla un link</small>';
 langstrings['it']['linknotrecognized'] = 'Questo tipo di link non è ancora supportato da cacaoweb';
 langstrings['it']['typeoflinks'] = '<small>Esempio :<br>http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI</small>';
-langstrings['it']['needfacebook'] = "E' necessario consentire l'accesso a Cacaoweb su Facebook per continuare. Clicca <a href=\"javascript:facebookloginandplay('')\"><u>quì</u></a> per effettuare il Login.";
 langstrings['it']['outdated'] = 'La tua versione di cacaoweb è obsoleta, scarica l\'ultima versione <a href="http://www.cacaoweb.org/?noredirect=yes">qui</a>';
 langstrings['it']['nospaceleft'] = 'Non c\'è spazio sul tuo supporto di memorizzazione. Cacaoweb non funziona correttamente.';
 langstrings['it']['noconnectivity'] = 'Per funzionare cacaoweb necessità di una connessione a internet.';
@@ -210,6 +214,9 @@ langstrings['it']['name'] = "Nome";
 langstrings['it']['password'] = "Password";
 langstrings['it']['login'] = "Login";
 langstrings['it']['create'] = "Crea account";
+langstrings['it']['paidcontentsmall'] = "<small>Paid content</small>";
+langstrings['it']['previewsmall'] = "<small>Preview allowed</small>";
+langstrings['it']['numberofcreditssmall'] = "<small>Credits required</small>";
 
 
 /** 
@@ -218,11 +225,10 @@ langstrings['it']['create'] = "Crea account";
 */
 
 langstrings['pl'] = new Array();
-langstrings['pl']['management'] = 'Zarządzaj';
+langstrings['pl']['management'] = 'My cacaoweb';
 langstrings['pl']['searchhints'] = '<small>Wyszukaj filmy, programy telewizyjne, albo wklej link</small>';
 langstrings['pl']['linknotrecognized'] = 'Typ linku nie jest obsługiwany przez cacaoweb';
 langstrings['pl']['typeoflinks'] = '<small>Przykłady :<br>http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI</small>';
-langstrings['pl']['needfacebook'] = "Musisz zezwolić cacaoweb na dostęp do facebook, aby kontynuować. Naciśnij <a href=\"javascript:facebookloginandplay('')\"><u>tutaj</u></a> aby się zalogować.";
 langstrings['pl']['outdated'] = 'Nowa wersja cacaoweb wydana, pobierz najnowszą wersję <a href="http://www.cacaoweb.org/?noredirect=yes">tutaj</a>';
 langstrings['pl']['nospaceleft'] = 'Brak miejsca na dysku. Cacaoweb może działać niepoprawnie.';
 langstrings['pl']['noconnectivity'] = 'Nie ma połączenia z internetem dla cacaoweb, program nie będzie działać';
@@ -281,3 +287,6 @@ langstrings['pl']['name'] = "Imię";
 langstrings['pl']['password'] = "Hasło";
 langstrings['pl']['login'] = "Zaloguj się";
 langstrings['pl']['create'] = "Utwórz konto";
+langstrings['pl']['paidcontentsmall'] = "<small>Paid content</small>";
+langstrings['pl']['previewsmall'] = "<small>Preview allowed</small>";
+langstrings['pl']['numberofcreditssmall'] = "<small>Credits required</small>";

@@ -91,6 +91,30 @@
 								</form>
 							</p>
 						</div>
+						<div class="restrictedinfo">
+							<div class="meta-fields">
+								<p>
+								<label for="paidcontent" id="paidcontentsmall"></label>
+								<input name="paidcontent" id="paidcontent" type="checkbox" />
+								</p>
+								<div id="paidcontentdetails">
+									<p>
+									<label for="preview" id="previewsmall"></label>
+									<input name="preview" id="preview" type="checkbox" checked="true" />
+									</p>
+									<p>
+									<label for="numberofcredits" id="numberofcreditssmall"></label>
+									<select id="numberofcredits">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="5">5</option>
+										<option value="10">10</option>
+										<option value="20">20</option>
+									</select>
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div id="tabs-remote">
 						<div class="addupload">
@@ -127,14 +151,14 @@
 									<option value="es">Español</option>
 									<option value="it">Italiano</option>
 									<option value="pt">Português</option>
-									<option value="ar">العربية</option>
-									<option value="cn">越南</option>
 									<option value="de">Deutsch</option>
-									<option value="hi">हिन्दी</option>
-									<option value="jp">日本</option>
 									<option value="hu">Magyar</option>
 									<option value="pl">Polski</option>
 									<option value="ru">Россию</option>
+									<option value="ar">العربية</option>
+									<option value="cn">越南</option>
+									<option value="hi">हिन्दी</option>
+									<option value="jp">日本</option>
 									<option value="vn">Việt</option>
 								</select>
 							</p>
@@ -147,14 +171,14 @@
 									<option value="es">Español</option>
 									<option value="it">Italiano</option>
 									<option value="pt">Português</option>
-									<option value="ar">العربية</option>
-									<option value="cn">越南</option>
 									<option value="de">Deutsch</option>
-									<option value="hi">हिन्दी</option>
-									<option value="jp">日本</option>
 									<option value="hu">Magyar</option>
 									<option value="pl">Polski</option>
 									<option value="ru">Россию</option>
+									<option value="ar">العربية</option>
+									<option value="cn">越南</option>
+									<option value="hi">हिन्दी</option>
+									<option value="jp">日本</option>
 									<option value="vn">Việt</option>
 								</select>
 							</p>
@@ -259,6 +283,10 @@
 		document.getElementById('backmainpage').innerHTML = langstrings[lang]['backmainpage'];
 		document.getElementById('loginbtn').innerHTML = langstrings[lang]['login'];
 		document.getElementById('createbtn').innerHTML = langstrings[lang]['create'];
+		document.getElementById('paidcontentsmall').innerHTML = langstrings[lang]['paidcontentsmall'];
+		document.getElementById('previewsmall').innerHTML = langstrings[lang]['previewsmall'];
+		document.getElementById('numberofcreditssmall').innerHTML = langstrings[lang]['numberofcreditssmall'];
+		
 			
 			
 	</script>
@@ -604,6 +632,9 @@
 				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') { // si le fichier est une vidéo, on envoie au service de transcodage
 					var uploadid = Math.floor(Math.random() * 1000000000);
 					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&showtitle=' + $('#showtitle').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					if ($('#paidcontent').is(':checked')) {
+						actionurl = actionurl + '&numberofcredits=' + $('#numberofcredits').val() + '&previewallowed=' + $('#preview').is(':checked');
+					}
 					$("#upload_frame").append('<iframe name="myiframe' + uploadid + '" style="display:none"></iframe>');
 					$("#formupload").attr('target', 'myiframe' + uploadid);
 					$("#formupload").attr('action', actionurl);
@@ -611,16 +642,16 @@
 					$("#upload_frame").append('<iframe height="30px" width="500px" frameborder="0" border="0" src="http://h264stage.com/uploadprogressframe.php?uploadid=' + uploadid + '" scrolling="no" scrollbar="no" allowtransparency="true"></iframe>'); 
 				} else if ($('#file').val() != '') { // sinon upload direct
 					$.ajax({
-						url: "upload?filepath=" + $('#file').val(),
+						url: "upload?filepath=" + encodeURIComponent($('#file').val()) + '&restricted=' + $('#paidcontent').is(':checked') + '&previewallowed=' + $('#preview').is(':checked'),
 						success: function(fileid) {
-								if (fileid == "") {
-									alert("upload failed");
-								} else {
-									var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
-									includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
-								}
+							if (fileid == "") {
+								alert("upload failed");
+							} else {
+								var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&showtitle=' + encodeURIComponent($('#showtitle').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&numberofcredits=' + $('#numberofcredits').val();
+								includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 							}
-						});	
+						}
+					});	
 				}
 			} else if (selectedtab == 1) { // Remote Upload
 				var url = $('#url').val();
@@ -708,8 +739,14 @@
 		$('#language').change(function() {
 			updatefields();
 		});
-			
-		updatefields();
+		
+		$('#paidcontent').change(function() {
+			if ($('#paidcontent').is(':checked')) {
+				$('#paidcontentdetails').show();
+			} else {
+				$('#paidcontentdetails').hide();
+			}
+		});
 		
 		/** change the type of upload because in case of videos the file needs to be sent to the transcoding service */
 		$('#contenttype').change(function() {

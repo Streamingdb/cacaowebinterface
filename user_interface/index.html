@@ -100,7 +100,7 @@
 					<div class="searchshowlink" ><a href="#" onclick="showlink(event)">show video link</a></div>
 				</div> -->
 			</div>
-			<div id="searchresultsprevious" style="display:none"><a href="#">< Back</a></div>
+			<div id="searchresultsprevious" style="display:none"><a href="#"></a></div>
 			<div id="searchresultsnext" style="display:none"><a href="#"></a></div>
 		</div>
 		<div id="playerarea" style="display:none">
@@ -215,7 +215,6 @@
 				if (!fb_session) {
 					if (Math.floor(Math.random() * 5) == 0) { // only ask for facebook one out of 5 times
 						facebookloginandplay(link); // play est toujours appelee par un click donc le popup facebook marche
-						document.getElementById('searchhints').innerHTML = langstrings[lang]['needfacebook'];
 					} else {
 						realplay(link);
 					}

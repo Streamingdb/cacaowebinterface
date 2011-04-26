@@ -304,6 +304,11 @@ div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 .filemeta {
 	margin: 10px 0px 10px 10px;;
 }
+
+#paidcontentdetails {
+	display:none;
+}
+
 .meta-fields p { width: 100%; margin: 10px auto; padding: 0; overflow: hidden; }
 .meta-fields p label { display: block; float: left; width: 80px; margin: 0 10px 0 0; padding: 0; text-align: right; }
 
@@ -313,6 +318,7 @@ div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 	margin: 0px 90px;
 	line-height: 19px;
 }
+
 
 #isrunning {
 	text-align: center;
