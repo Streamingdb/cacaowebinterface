@@ -43,7 +43,7 @@
 							</div>
 								
 							<div class="clear">
-								<input name="submit" type="submit" id="submitpaypal" value="Buy with Paypal" />
+								<input name="submit" type="submit" id="submitpaypal" value="" />
 							</div><!-- /.form-field -->			
 
 
@@ -320,7 +320,7 @@
 		document.getElementById('previewsmall').innerHTML = langstrings[lang]['previewsmall'];
 		document.getElementById('numberofcreditssmall').innerHTML = langstrings[lang]['numberofcreditssmall'];
 		document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
-		
+		document.getElementById('submitpaypal').value = langstrings[lang]['buywithpaypal'];;
 		
 			
 			
@@ -1000,10 +1000,8 @@
 		function logincallback(result) {
 			if (result == 1) {
 				getalluploads();
-				$(".auth-buttons").hide();
-				$(".auth-notification").text(langstrings[lang]['welcome']  + username + " !");
-				$(".auth-notification").css('font-size', '12px');
 				currentauthdialog.dialog('close');
+				includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
 			} else {
 				$("#loginname").addClass('ui-state-error');
 				$("#validateTipsLogin").text('Username or password is wrong').addClass('ui-state-highlight');
@@ -1017,7 +1015,7 @@
 				username = user;
 				money = money;
 				$(".auth-buttons").hide();
-				$(".auth-notification").html(langstrings[lang]['welcome']  + user + " ! " + langstrings['en']['mymoney'].replace('{1}', money));
+				$(".auth-notification").html(langstrings[lang]['welcome']  + user + " ! " + langstrings[lang]['mymoney'].replace('{1}', money));
 				$(".auth-notification").css('font-size', '12px');
 			} else {
 				$(".auth-buttons").show();
