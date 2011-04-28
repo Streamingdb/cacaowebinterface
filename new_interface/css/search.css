@@ -1,9 +1,7 @@
-#head #search #search_bar {
-	width: 300px;
-}
 
 /* @group Content */
 
+/* the search category filter on the left */
 #search-filter {
 	width: 130px;
 	float: left;
@@ -18,6 +16,8 @@
 	padding: 3px 0;
 }
 
+
+/* the search results area */
 #search-main {
 	float: left;
 	margin-top: 20px;

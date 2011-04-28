@@ -78,54 +78,74 @@ body {
 .hidden {
 	display: none;
 }
-#page_wrapper {
+.center {
+	margin: 0 auto;
+	text-align: center;
+}
+.page_wrapper {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -30px;
 }
 
-#footer_push {
+.footer_push {
 	height: 32px;
 }
 
-#footer {
+.footer {
 	height: 30px;
 	background: #414141;
 	box-shadow: inset 0 1px 0 #535353, 0 -1px 0 #272727;
-
 
 /* needed double box-shadow in safari */
 	-webkit-box-shadow: inset 0 1px 0 #535353, 0 -1px 0 #272727;
 }
 /* @group Header */
 
+
+
 #head {
 	background: url(../img/head-bg.gif) top left repeat-x;
 	height: 79px;
 }
 
-#head #logo {
+.smalllogo {
 	float: left;
 	height: 100%;
 }
 
-#head #logo a {
+.smalllogo img {
+	width: 132px;
+	height: 38px;
+
+}
+
+.smalllogo a {
 	display: block;
 	margin-top: 15px;
 	margin-left: 20px;
 }
 
+
 #head #top-toolbar {
 	float: right;
 }
 
-#head #search {
-	float: left;
-	height: 100%;
+
+/* main logo */
+
+.logo {
+	padding-top: 5em;
+	padding-bottom: 0.3em;
 }
 
-#head #search #input_wrapp {
+
+/* Search bars, most of it is shared by the two search bars.
+   the code specific to the big search bar is prefixed with mainpagesearchbar  */
+
+
+.input_wrapp {
 	background: #252525;
 	margin: 23px 0 0 20px;
 	box-shadow: inset 0 2px 5px rgba(0,0,0, 0.45);
@@ -133,8 +153,9 @@ body {
 	border-radius: 4px;
 }
 
-#head #search #search_bar {
+.search_bar {
 	background: transparent;
+	width: 18em;
 	border: 0px;
 	color: #b3b3b3;
 	padding: 5px;
@@ -142,15 +163,32 @@ body {
 	font: 14px Arial, Helvetica, Geneva, sans-serif;
 }
 
-#head #search #search_submit {
+.search_submit {
 	display: inline-block;
 }
 
-#head #search #search_submit img {
+.search_submit img {
 	position: relative;
 	top: 4px;
 	right: 5px;
 }
+
+#head #search {
+	float: left;
+	height: 100%;
+}
+
+/* main search bar */
+
+.mainpagesearchbar .input_wrapp {
+	display: inline-block; /* i couldn't figure out how to remove this or understand how it works */
+}
+.mainpagesearchbar .search_bar { /* make the big box bigger */
+	width: 22em;
+	font-size: 24px;
+}
+
+
 
 /* @group Toolbar */
 
@@ -285,10 +323,9 @@ body {
 	color: #fff;
 
 	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
+	box-shadow: none;
 
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
+	border-radius: 0;
 
 }
 
@@ -304,12 +341,7 @@ body {
 	background: #000;
 	border: solid 1px #444;
 
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
 	border-radius: 10px;
-
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0, .3);
-	-moz-box-shadow: 0 1px 3px rgba(0,0,0, .3);
 	box-shadow: 0 1px 3px rgba(0,0,0, .3);
 }
 #top-toolbar ul li {
@@ -326,18 +358,12 @@ body {
 /* rounded corners of first and last link in the submenu, 
    so the hover matches the box shape */
 #top-toolbar ul li:first-child {
-	-webkit-border-top-left-radius: 9px;
-	-moz-border-radius-topleft: 9px;
-
-	-webkit-border-top-right-radius: 9px;
-	-moz-border-radius-topright: 9px;
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
 }
 #top-toolbar ul li:last-child {
-	-webkit-border-bottom-left-radius: 9px;
-	-moz-border-radius-bottomleft: 9px;
-
-	-webkit-border-bottom-right-radius: 9px;
-	-moz-border-radius-bottomright: 9px;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
 }
 
 /* clearfix */
@@ -357,3 +383,8 @@ body {
 
 /* @end */
 /* @end */
+
+
+
+
+

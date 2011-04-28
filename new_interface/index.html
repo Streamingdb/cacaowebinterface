@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>cacaoweb</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+	<link rel="stylesheet" href="css/general.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="css/search.css" type="text/css" media="screen">
+</head>
+<body>
+	<div class="page_wrapper">
+		<div id="head">
+			<div class="smalllogo">
+				<a href="http://www.cacaoweb.org/?noredirect=yes"><img src="img/logo.png" alt="cacaoweb"></a>
+			</div>
+			<div id="search">
+				<div class="input_wrapp">
+					<input class="search_bar" type="text" name="search_bar" placeholder="Search...">
+					<a class="search_submit" href="#">
+						<img src="img/mag-glass.png" alt="Search">
+					</a>
+				</div>
+			</div>
+			<ul id="top-toolbar">
+				<li><a href="#" class="inset icon i-heart">Share<span class="i"></span></a></li>
+				<li><a href="#" class="inset icon i-config">Management<span class="i"></span></a></li>
+				<li><a href="#" class="outset icon i-dropdown">More<span class="i"></span></a>
+					<ul>
+						<li><a href="#">Help</a></li>
+						<li><a href="#">Forum</a></li>
+						<li><a href="#">Developers</a></li>
+						<li><a href="#">Make money</a></li>
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+		<div id="content">
+			<div class="center">
+				<div class="logo">
+					<a href="#"><img src="img/logo.png" alt="cacaoweb"></a>
+				</div>
+				<div class="mainpagesearchbar">
+					<div class="input_wrapp">
+						<input class="search_bar" name="search" onkeypress="searchboxkeypress(event, this);" autocomplete="off" type="text" placeholder="Search..."/>
+						<div id="searchhints"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer_push"></div><!-- needed for sticky footer -->
+		
+		<img class='hidden' src="img/icon-close.png" > <!-- preload image -->
+		
+	</div> <!-- end wrapper -->
+	<div class="footer"></div>
+</body>
+</html>
