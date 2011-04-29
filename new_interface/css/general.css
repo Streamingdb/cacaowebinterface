@@ -198,11 +198,11 @@ body {
 	right: 23px;
 }
 
-#top-toolbar li {
-	display: inline-block;
+#top-toolbar > li {
+	display: inline;
 }
 
-#top-toolbar a {
+#top-toolbar > li > a {
 	margin-right: 5px;
 	padding: 7px;
 	font-size: 14px;
@@ -329,6 +329,7 @@ body {
 
 }
 
+/* the dropdown menu container */
 #top-toolbar ul {
 	display: none;
 
@@ -350,9 +351,13 @@ body {
 	width: 100%; /* i wanted to add clear:left so the <li> would go to the next line but it didn't work so i did this instead... */
 }
 
+/* the drop down menu links */
 #top-toolbar ul a {
 	font-weight: normal;
 	color: #ccc;
+	font-size: 12px;
+	padding-left: 5px;
+	text-decoration: none;
 }
 
 /* rounded corners of first and last link in the submenu, 
