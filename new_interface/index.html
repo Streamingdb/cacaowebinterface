@@ -5,7 +5,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
 	<link rel="stylesheet" href="css/general.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/search.css" type="text/css" media="screen">
 </head>
 <body>
 
@@ -14,52 +13,20 @@
 	<div id="fb-root"></div>
 	<script>
 	
-		/** facebook related code and language management 
+		/** language management 
 		*/
 		var lang;
-		var fb_lang;
 		var nav_lang;
-		
-		var fb_supportedlanguages = [ "ca_ES","cs_CZ","cy_GB","da_DK","de_DE","eu_ES","en_PI","en_UD","ck_US","en_US","es_LA","es_CL","es_CO","es_ES","es_MX","es_VE","fb_FI","fi_FI","fr_FR","gl_ES","hu_HU","it_IT","ja_JP","ko_KR","nb_NO","nn_NO","nl_NL","pl_PL","pt_BR","pt_PT","ro_RO","ru_RU","sk_SK","sl_SI","sv_SE","th_TH","tr_TR","ku_TR","zh_CN","zh_HK","zh_TW","fb_LT","af_ZA","sq_AL","hy_AM","az_AZ","be_BY","bn_IN","bs_BA","bg_BG","hr_HR","nl_BE","en_GB","eo_EO","et_EE","fo_FO","fr_CA","ka_GE","el_GR","gu_IN","hi_IN","is_IS","id_ID","ga_IE","jv_ID","kn_IN","kk_KZ","la_VA","lv_LV","li_NL","lt_LT","mk_MK","mg_MG","ms_MY","mt_MT","mr_IN","mn_MN","ne_NP","pa_IN","rm_CH","sa_IN","sr_RS","so_SO","sw_KE","tl_PH","ta_IN","tt_RU","te_IN","ml_IN","uk_UA","uz_UZ","vi_VN","xh_ZA","zu_ZA","km_KH","tg_TJ","ar_AR","he_IL","ur_PK","fa_IR","sy_SY","yi_DE","gn_PY","qu_PE","ay_BO","se_NO","ps_AF","tl_ST" ];
 		
 		if (navigator.userLanguage) { // Explorer
 			nav_lang = navigator.userLanguage;
 		} else if (navigator.language) { // FF
 			nav_lang = navigator.language;
-		}
-		fb_lang = nav_lang.replace("-", "_");
-		if (fb_lang.length == 2) {
-			fb_lang = fb_lang + "_" + fb_lang.toUpperCase();
 		} else {
-			var underpos = fb_lang.indexOf('_');
-			fb_lang = fb_lang.substr(0, underpos) + '_' + fb_lang.substr(underpos + 1).toUpperCase();
+			nav_lang = 'en';
 		}
-		var pos = -1;
-		for (var i = 0; i < fb_supportedlanguages.length; i++) {
-			if (fb_supportedlanguages[i] == fb_lang) {
-				pos = i;
-			}
-		}
-		if (pos == -1) {
-			fb_lang = 'en_US';
-		}
-		
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId  : '144014785633692', status : true, cookie : true, xfbml  : true
-			});
 
-			// initialization code can be added here
-
-		};
-		(function() {
-			var e = document.createElement('script');
-			e.src = 'http://connect.facebook.net/' + fb_lang + '/all.js';
-			e.async = true;
-			document.getElementById('fb-root').appendChild(e);
-		}());
-		
-		lang = fb_lang.substring(0, 2);
+		lang = nav_lang.substring(0, 2);
 		var searchlang = lang;
 		switch (lang) {
 			case 'en':
@@ -79,12 +46,12 @@
 	
 	<div class="page_wrapper">
 		<div id="head">
-			<div class="smalllogo hidden">
+			<div id="toplogo" class="smalllogo hidden">
 				<a href="http://www.cacaoweb.org/?noredirect=yes"><img src="img/logo.png" alt="cacaoweb"></a>
 			</div>
-			<div id="search" class="hidden">
+			<div id="topsearchbox" class="topsearch hidden">
 				<div class="input_wrapp">
-					<input class="search_bar" type="text" name="search_bar" placeholder="Search...">
+					<input class="search_bar" name="search_bar" onkeypress="searchboxkeypress(event, this);" type="text" placeholder="Search...">
 					<a class="search_submit" href="#">
 						<img src="img/mag-glass.png" alt="Search">
 					</a>
@@ -95,7 +62,7 @@
 				<li><a href="admin.html" class="inset icon i-heart hidden">Share<span class="i"></span></a></li>
 				<li><a id="mana" href="admin.html" class="inset icon i-config"><span class="i"></span></a></li>
 				<li><a href="javascript:keepDropdownMenu()" class="outset icon i-dropdown">More<span class="i"></span></a>
-					<ul>
+					<ul id="dropdownmenu">
 						<li><a href="http://forum.cacaoweb.org/">Help</a></li>
 						<li><a href="http://forum.cacaoweb.org/">Forum</a></li>
 						<li><a href="http://cacaoweb.org/#download">Download</a></li>
@@ -107,13 +74,14 @@
 			</ul>
 		</div>
 		<div id="content">
-			<div class="center">
+			<div id="warningarea" class="warning hidden"></div>
+			<div id="mainsearch" class="center">
 				<div class="logo">
 					<a href="#"><img src="img/logo.png" alt="cacaoweb"></a>
 				</div>
 				<div class="mainpagesearchbar">
 					<div class="input_wrapp">
-						<input class="search_bar" name="search" onkeypress="searchboxkeypress(event, this);" autocomplete="off" type="text" placeholder="Search..."/>
+						<input class="search_bar" onkeypress="searchboxkeypress(event, this);" autocomplete="off" type="text" placeholder="Search..."/>
 						<a class="search_submit" href="#">
 							<img src="img/mag-glass.png" alt="Search">
 						</a>
@@ -121,11 +89,32 @@
 					<div id="searchhints"></div>
 				</div>
 			</div>
+			<div id="searchresultsarea">
+				<div id="didyoumean">
+				</div>
+				<div id="searchresults">
+					<!-- <div class="searchentry">
+						<div class="searchheader" id="merde" ><a href="#" onclick="play('http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=fasdfs')">Cold Case Affaires classées S02E04.mp4</a></div>
+						<div class="searchsummary" id="merde" >Cold Case Affaires classéesEpisode 2 saison 2 langue fr sous titres</div>
+						<div class="searchlink"  id="merde" style="display:none">http://127.0.0.1:4001/?f=AB68768461</div>
+						<div class="searchshowlink" ><a href="#" onclick="showlink(event)">show video link</a></div>
+					</div> -->
+				</div>
+				<div id="searchresultsprevious" style="display:none"><a href="#"></a></div>
+				<div id="searchresultsnext" style="display:none"><a href="#"></a></div>
+			</div>
+			<div id="playerarea" class="hidden">
+				<div id="player">
+				</div>
+				<div id="sidebar">
+					<div id="sidebar_inner"></div>
+				</div>
+			</div>
 		</div>
 		<div class="footer_push"></div><!-- needed for sticky footer -->
 		
 	</div> <!-- end wrapper -->
-	<div class="footer"></div>
+	<div id="footer" class="footer"></div>
 	
 	
 	<script src="languagestrings.js" type="text/javascript"></script>
@@ -133,7 +122,7 @@
 	
 		document.getElementById('mana').innerHTML = langstrings[lang]['management'] + '<span class="i"></span>';
 		document.getElementById('searchhints').innerHTML = langstrings[lang]['searchhints'];
-		document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
+		//document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
 		
 		var currentsearchpos = 0;
 		var updateWarningsInterval = 20.0;
@@ -181,64 +170,42 @@
 		updateWarnings();
 		
 		function clearsearch() {
+		}
+		/** sets the page in play mode */
+		function playmode() {
+			document.getElementById('toplogo').style.display = "block";
+			document.getElementById('topsearchbox').style.display = "block";
+			document.getElementById('mainsearch').style.display = "none";
+			
 			document.getElementById('searchresults').innerHTML = "";
 			document.getElementById('searchresultsprevious').style.display = "none";
 			document.getElementById('searchresultsnext').style.display = "none";
 		}
+		/** sets the page in search results mode */
+		function searchmode() {
+			document.getElementById('toplogo').style.display = "block";
+			document.getElementById('topsearchbox').style.display = "block";
+			document.getElementById('mainsearch').style.display = "none";
+			document.getElementById('footer').style.display = "none";
+			
+			document.getElementById('searchresults').innerHTML = "";
+			document.getElementById('searchresultsprevious').style.display = "block";
+			document.getElementById('searchresultsnext').style.display = "block";
+		
+		}
 			
 		
-		function realplay(link) {
-			clearsearch();
+		function play(link) {
+			playmode();
 			
 			var playerobj = '<object width="640" height="360"><param name="allowFullScreen" value="true" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="player.swf" /><embed src="player.swf" flashvars="file=' + link + '" width="640" height="360" allowFullScreen="true" /></object>';
 
 			document.getElementById('player').innerHTML = playerobj;
-			document.getElementById('playerarea').style.display = '';
+			document.getElementById('playerarea').style.display = 'block';
 		}
 		
-		var fb_username;
-		var fb_usergender;
-		var fb_userbirthday;
-		
-		function savefbinfo() {
-			FB.api('/me', function(response) {
-				var fb_username = response.name;
-				var fb_usergender = response.gender;
-				var fb_userbirthday = response.birthday;
-				includeScript('http://127.0.0.1:4001/savefbinfo?name=' + encodeURIComponent(fb_username) + '&gender=' + fb_usergender + '&birthday=' + encodeURIComponent(fb_userbirthday), 'savefbinfo');
-			});
-		}
-		function facebookloginandplay(link) {
-			FB.login(function(response) {
-				if (response.session) {
-					realplay(link);
-					savefbinfo();
-				} else {
-					// user cancelled login
-					clearsearch();
-				}
-			}, { perms:'user_birthday,user_likes'});
-		}
-		function play(link) {
-			if (!(window.FB === undefined || window.location.hostname == "127.0.0.1")) {
-				var fb_session = FB.getSession();
-				if (!fb_session) {
-					if (Math.floor(Math.random() * 5) == 0) { // only ask for facebook one out of 5 times
-						facebookloginandplay(link); // play est toujours appelee par un click donc le popup facebook marche
-					} else {
-						realplay(link);
-					}
-				} else {
-					realplay(link);
-					savefbinfo();
-				}
-			} else {
-				realplay(link);
-			}
-		}
-		
-		function submitSearch(pos) {
-			var searchitem = document.getElementById("search").value.toLowerCase();
+		/* parsesearchresults is called as a callback */
+		function submitSearch(pos, searchitem) {
 			currentsearchpos = pos;
 			includeScript('http://search.cacaoweb.org/?searchterm=' + encodeURIComponent(searchitem) + '&lang=' + searchlang + '&pos=' + pos, 'searchscript');
 		}
@@ -259,22 +226,27 @@
 			}
 		}
 			
-		function processUserEntry() {
+		function processUserEntry(o) {
 			document.getElementById('playerarea').style.display = 'none';
 			document.getElementById('didyoumean').innerHTML = "";
-			var searchitem = document.getElementById("search").value;
+			var searchitem = o.value;
 			var iscacaoid = ismd5(searchitem);
 			if (searchitem.indexOf('http://') == -1 && !iscacaoid) { // search
 				if (searchitem != "") {
-					submitSearch(0);
+					submitSearch(0, searchitem);
 				}
-			} else if (searchitem.indexOf('f=') > -1 || iscacaoid) { // cacao
+			} else if (searchitem.indexOf('127.0.0.1') > -1 || iscacaoid) { // cacao
 				var cacaolink = searchitem;
 				var pos1 = searchitem.indexOf('f=');
 				if (pos1 > -1) {
-					cacaolink = cacaolink.substr(pos1 + 2);
+					cacaolink = searchitem.substr(pos1 + 2);
+				} else {
+					var pos2 = searchitem.lastIndexOf('/');
+					if (pos2 > -1) {
+						cacaolink = searchitem.substr(pos2 + 1);
+					}
 				}
-				play("http://127.0.0.1:4001/?f=" + cacaolink);
+				play("http://127.0.0.1:4001/" + cacaolink);
 			} else if (searchitem.indexOf('v=') > -1) { // megavideo
 				var pos1 = searchitem.indexOf('v=');
 				var megavideoid = searchitem.substr(pos1 + 2);
@@ -301,12 +273,12 @@
 			if (oEvent && oEvent.which) {
 				code = oEvent.which;
 			} else {
-				oEvent = event;
+				//oEvent = event;
 				code = oEvent.keyCode;
 			}
  
 			if (code == 13) {
-				processUserEntry();
+				processUserEntry(oInput);
 				true;
 			}
 			return false;
@@ -314,7 +286,7 @@
 		
 		function parsesearchresults(results) {
 			document.getElementById('searchhints').innerHTML = langstrings[lang]['searchhints'];;
-			clearsearch();
+			searchmode();
 			var searchresults = document.getElementById('searchresults');
 			
 			if (results == "" || (results.showsresults.length == 0 && results.moviesresults.length == 0)) {
@@ -363,12 +335,22 @@
 			document.getElementById("search").value = searchterm;
 			document.getElementById('didyoumean').innerHTML = "";
 			document.getElementById('searchresults').innerHTML = "";
-			processUserEntry();
+			processUserEntry(); // TODO: donner l'objet
 		}
 		
 		function showlink(e, o) {
 			o.parentNode.previousSibling.style.display = "";
 			o.parentNode.style.display = "none";
+		}
+		
+		/** toggles the drop down menu when the user clicks on the button */
+		function keepDropdownMenu() {
+			var menu = document.getElementById('dropdownmenu');
+			if (menu.style.display == 'block') {
+				menu.style.display = "none";
+			} else {
+				menu.style.display = "block";
+			}
 		}
 		
 		

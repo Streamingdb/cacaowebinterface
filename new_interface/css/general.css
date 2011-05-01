@@ -136,7 +136,7 @@ body {
 /* main logo */
 
 .logo {
-	padding-top: 5em;
+	padding-top: 3em;
 	padding-bottom: 0.3em;
 }
 
@@ -173,7 +173,7 @@ body {
 	right: 5px;
 }
 
-#head #search {
+#head .topsearch {
 	float: left;
 	height: 100%;
 }
@@ -188,6 +188,19 @@ body {
 	font-size: 24px;
 }
 
+#searchhints {
+	padding-top: 20px;
+	font-size: 18px;
+}
+.warning {
+	position: absolute; 
+	font-size: 14px; 
+	left: 300px;
+	background-color: #ffcd9b;
+	border: 1px solid #ff8040; 
+	padding: 7px; 
+	margin: 30px auto;
+}
 
 
 /* @group Toolbar */
@@ -388,6 +401,89 @@ body {
 
 /* @end */
 /* @end */
+
+
+
+/** player and side bar */
+
+
+#content {
+	margin-top: 20px;
+	width: 900px;
+	margin: 30px auto 0 auto;
+}
+
+#player {
+	width: 640px;
+	height: 360px;
+	float: left;
+	background: #000;
+}
+
+#sidebar {
+	width: 260px;
+	height: 360px;
+	float: left;
+}
+
+#sidebar_inner {
+	width: 240px;
+	height: 360px;
+	background: #1d1d1d;
+	float: right;
+}
+
+
+
+
+/* search results */
+
+#searchresultsarea { /* TODO: this absolute positioning is bad */
+	position: absolute;
+	left: 295px;
+	width: 500px;
+}
+.searchentry {
+	padding: 5px;
+}
+.searchentry:hover{
+	background: rgba(0,0,0, 0.1);
+	border-radius: 5px;
+}
+.searchentry  .searchheader a {
+	font-size: 14px;
+	color: #0098ff;
+	text-decoration: none;
+}
+.searchentry .searchlink {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	padding: 3px;
+	border-radius: 3px;
+
+}
+.searchentry  .searchshowlink a {
+	font-size: 10px;
+	color: DimGray;
+}
+.searchentry .searchsummary{
+	font-size: 10px;
+	color: #fff;
+}
+
+#searchresultsnext a {
+	float: right;
+	padding-right: 50px;
+}
+#searchresultsprevious a {
+	float: left;
+}
+#searchresultsnext a, #searchresultsprevious a {
+	color: #fff;
+}
+
+
 
 
 
