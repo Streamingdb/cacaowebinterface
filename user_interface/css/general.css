@@ -194,12 +194,11 @@ body {
 }
 .warning {
 	position: absolute; 
-	font-size: 14px; 
-	left: 300px;
-	background-color: #ffcd9b;
+    margin: auto;
+	font-size: 16px; 
+	background-color: red;
 	border: 1px solid #ff8040; 
 	padding: 7px; 
-	margin: 30px auto;
 }
 
 

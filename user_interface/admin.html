@@ -222,6 +222,7 @@
 							<input type="text" name="title" id="title" tabindex="2" size="50" />
 						</p>
 						<div id="tvshowdetails" style="display:none">
+							<small><span id="addashow"></span></small>
 							<p>
 								<label for="season" id="smallseason"></label>
 								<input id="season" type="text" maxlength="2" size="2"  type="number" min="1" max="20"/>
@@ -751,9 +752,12 @@
 				$('#tvshowdetails').show("fast");
 				var contentlang = $('#language').val();
 				if (contentlang == 'fr' || contentlang == 'en') {
+					$('#addashow').html(langstrings[lang]['addashow']);
+					$('#addashow').show();
 					includeScript('http://uploads.cacaoweb.org/getshows.php?lang=' + contentlang, 'getshows');
 				} else {
 					$('#title').remove();
+					$('#addashow').hide();
 					var input = $("<input></input>").attr('type', 'text').attr('id', 'title').attr('size', '40');
 					$('#titlefield').append(input);
 				}
