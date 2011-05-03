@@ -52,17 +52,33 @@
 			<div id="topsearchbox" class="topsearch hidden">
 				<div class="input_wrapp">
 					<input class="search_bar" name="search_bar" onkeypress="searchboxkeypress(event, this);" type="text" placeholder="Search...">
-					<a class="search_submit" href="#">
+					<a class="search_submit" href="#" onclick="searchbuttonclick(event, this);">
 						<img src="img/mag-glass.png" alt="Search">
 					</a>
 				</div>
 			</div>
 			<ul id="top-toolbar">
-				<li><a href="javascript:login()" class="outset">Login<span class="i"></span></a></li>
-				<li><a href="admin.html" class="inset icon i-heart hidden">Share<span class="i"></span></a></li>
+				<li id="auth-notification"></li>
+				<li id="loginbutton"><a onclick="keepDropdownMenu(event, this)" class="outset"><span>Login</span><span class="i"></span></a>
+					<ul>
+						<div class="loginarea">
+						<form onsubmit="submitlogin(event)">
+							<label for="login">username:</label>
+							<input class="loginfield" id="logininput" name="login" type="text" />
+							<label for="password">password:</label>
+							<input class="loginfield" id="passwordinput" name="password" type="password" />
+							<div class="loginbuttons">
+								<input type="submit" name="submit" value="login" />
+								<a href="javascript:register()">register</a>
+							</div>
+						</form>
+						</div>
+					</ul>
+				</li>
+				<li><a href="admin.html" class="inset icon i-heart hidden"><span>Share</span><span class="i"></span></a></li>
 				<li><a id="mana" href="admin.html" class="inset icon i-config"><span class="i"></span></a></li>
-				<li><a href="javascript:keepDropdownMenu()" class="outset icon i-dropdown">More<span class="i"></span></a>
-					<ul id="dropdownmenu">
+				<li><a onclick="keepDropdownMenu(event, this)" class="outset icon i-dropdown">More<span class="i"></span></a>
+					<ul>
 						<li><a href="http://forum.cacaoweb.org/">Help</a></li>
 						<li><a href="http://forum.cacaoweb.org/">Forum</a></li>
 						<li><a href="http://cacaoweb.org/#download">Download</a></li>
@@ -82,7 +98,7 @@
 				<div class="mainpagesearchbar">
 					<div class="input_wrapp">
 						<input class="search_bar" onkeypress="searchboxkeypress(event, this);" autocomplete="off" type="text" placeholder="Search..."/>
-						<a class="search_submit" href="#">
+						<a class="search_submit" href="#" onclick="searchbuttonclick(event, this);">
 							<img src="img/mag-glass.png" alt="Search">
 						</a>
 					</div>
@@ -125,6 +141,8 @@
 		//document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
 		
 		var currentsearchpos = 0;
+		var currentsearchterm = '';
+		var username = '';
 		var updateWarningsInterval = 20.0;
 			
 		function includeScript(filename, scriptname) {
@@ -205,9 +223,9 @@
 		}
 		
 		/* parsesearchresults is called as a callback */
-		function submitSearch(pos, searchitem) {
+		function submitSearch(pos) {
 			currentsearchpos = pos;
-			includeScript('http://search.cacaoweb.org/?searchterm=' + encodeURIComponent(searchitem) + '&lang=' + searchlang + '&pos=' + pos, 'searchscript');
+			includeScript('http://search.cacaoweb.org/?searchterm=' + encodeURIComponent(currentsearchterm) + '&lang=' + searchlang + '&pos=' + pos, 'searchscript');
 		}
 		
 		function ismd5(s) {
@@ -226,14 +244,14 @@
 			}
 		}
 			
-		function processUserEntry(o) {
+		function processUserEntry() {
 			document.getElementById('playerarea').style.display = 'none';
 			document.getElementById('didyoumean').innerHTML = "";
-			var searchitem = o.value;
+			var searchitem = currentsearchterm;
 			var iscacaoid = ismd5(searchitem);
 			if (searchitem.indexOf('http://') == -1 && !iscacaoid) { // search
 				if (searchitem != "") {
-					submitSearch(0, searchitem);
+					submitSearch(0);
 				}
 			} else if (searchitem.indexOf('127.0.0.1') > -1 || iscacaoid) { // cacao
 				var cacaolink = searchitem;
@@ -273,15 +291,19 @@
 			if (oEvent && oEvent.which) {
 				code = oEvent.which;
 			} else {
-				//oEvent = event;
 				code = oEvent.keyCode;
 			}
  
 			if (code == 13) {
-				processUserEntry(oInput);
+				currentsearchterm = oInput.value;
+				processUserEntry();
 				true;
 			}
 			return false;
+		}
+		function searchbuttonclick(e, o) {
+			currentsearchterm = o.previousSibling.previousSibling.value;
+			processUserEntry();
 		}
 		
 		function parsesearchresults(results) {
@@ -327,15 +349,14 @@
 			if (results.didyoumeanresults.length > 0) { document.getElementById('didyoumean').innerHTML = '<p>' + langstrings[lang]['didyoumean'] + '</p>'; }
 			for (var i = 0; i < results.didyoumeanresults.length; i++) { 
 				var search = results.didyoumeanresults[i];
-				document.getElementById('didyoumean').innerHTML = document.getElementById('didyoumean').innerHTML + '<p><a href="javascript:search(\'' + search + '\')">' + search + '</a></p>';
+				document.getElementById('didyoumean').innerHTML = document.getElementById('didyoumean').innerHTML + '<a href="javascript:search(\'' + search + '\')">' + search + '</a>, ';
 			} 
-		
 		}
 		function search(searchterm) {
-			document.getElementById("search").value = searchterm;
+			currentsearchterm = searchterm;
 			document.getElementById('didyoumean').innerHTML = "";
 			document.getElementById('searchresults').innerHTML = "";
-			processUserEntry(); // TODO: donner l'objet
+			processUserEntry();
 		}
 		
 		function showlink(e, o) {
@@ -344,15 +365,63 @@
 		}
 		
 		/** toggles the drop down menu when the user clicks on the button */
-		function keepDropdownMenu() {
-			var menu = document.getElementById('dropdownmenu');
+		function keepDropdownMenu(e, o) {
+			var menu = o.parentNode.childNodes[2];
 			if (menu.style.display == 'block') {
 				menu.style.display = "none";
 			} else {
 				menu.style.display = "block";
 			}
 		}
+				
+				
+				
+
 		
+		/** login and registration management */
+		
+				
+		function logincallback(result) {
+			if (result == 1) {
+				includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
+			} else {
+				alert("username or password is wrong");
+			}
+		}
+		function isloggedincallback(result, user, money) {
+			if (result == 1) {
+				username = user;
+				money = money;
+				document.getElementById('loginbutton').style.display = "none";
+				document.getElementById('auth-notification').innerHTML = langstrings[lang]['welcome']  + user;
+			} 
+		}
+		
+		
+		function stopEvent(e) {
+			if (e.stopPropagation) e.stopPropagation();
+			else e.cancelBubble = true;
+
+			if (e.preventDefault) e.preventDefault();
+			else e.returnValue = false;
+		}
+		function submitlogin(e) {
+			stopEvent(e);
+			var username = document.getElementById('logininput').value;
+			var password = document.getElementById('passwordinput').value;
+			includeScript('http://uploads.cacaoweb.org/login.php?username=' + encodeURIComponent(username) + "&password=" + encodeURIComponent(password), 'loginscript');
+			return false;
+		}
+		
+		function register() {
+		
+		}
+		
+		
+		
+		/** callback is isloggedincallback(isloggedin, username, money) */
+		includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
+
 		
 	</script>
 	

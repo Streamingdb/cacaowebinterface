@@ -692,7 +692,10 @@
 					});	
 				}
 			} else if (selectedtab == 1) { // Remote Upload
+				/* we send the video information to the central database,
+				   after that we do the remote upload through the local instance of cacaoweb */
 				var url = $('#url').val();
+				
 				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
 					var pos1 = url.indexOf('v=');
 					var megavideoid = url.substr(pos1 + 2);

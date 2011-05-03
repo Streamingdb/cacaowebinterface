@@ -137,7 +137,7 @@ body {
 
 .logo {
 	padding-top: 3em;
-	padding-bottom: 0.3em;
+	padding-bottom: 1em;
 }
 
 
@@ -147,7 +147,6 @@ body {
 
 .input_wrapp {
 	background: #252525;
-	margin: 23px 0 0 20px;
 	box-shadow: inset 0 2px 5px rgba(0,0,0, 0.45);
 	border-bottom: 1px solid #7d7d7d;
 	border-radius: 4px;
@@ -176,6 +175,7 @@ body {
 #head .topsearch {
 	float: left;
 	height: 100%;
+	margin: 23px 0 0 20px;
 }
 
 /* main search bar */
@@ -213,6 +213,8 @@ body {
 
 #top-toolbar > li {
 	display: inline;
+	position: relative;
+	padding-right: 5px;
 }
 
 #top-toolbar > li > a {
@@ -344,14 +346,14 @@ body {
 
 /* the dropdown menu container */
 #top-toolbar ul {
-	display: none;
+	display:none;
 
 	margin: 0;
 	padding: 0;
-	width: 115px;
+	width: 135px;
 	position: absolute;
-	top: 35px;
-	right: 0px;
+	top: 25px;
+	right: -1em;
 	background: #000;
 	border: solid 1px #444;
 
@@ -359,10 +361,11 @@ body {
 	box-shadow: 0 1px 3px rgba(0,0,0, .3);
 }
 #top-toolbar ul li {
+	float: none;
 	padding-top: 3px;
 	padding-bottom: 3px;
-	width: 100%; /* i wanted to add clear:left so the <li> would go to the next line but it didn't work so i did this instead... */
 }
+
 
 /* the drop down menu links */
 #top-toolbar ul a {
@@ -397,6 +400,36 @@ body {
 	display: inline-block;
 } 
 
+
+/* login area */
+
+.loginarea {
+	padding: 5px;
+
+	font: 11px Arial, Helvetica, Geneva, sans-serif;
+}
+.loginfield {
+	background: #111;
+	width: 110px;
+	border: 1px;
+	color: #b3b3b3;
+	padding: 2px;
+	font: 11px Arial, Helvetica, Geneva, sans-serif;
+}
+.loginbuttons {
+	clear: both;
+	font: 11px Arial, Helvetica, Geneva, sans-serif;
+	float: right;
+	padding: 5px;
+}
+.loginbuttons input, .loginbuttons a {  
+    width: auto;  
+    background: #555;  
+    border: 0;  
+    font-size: 11px;  
+    color: #FFFFFF;  
+} 
+
 /* @end */
 
 /* @end */
@@ -429,7 +462,7 @@ body {
 #sidebar_inner {
 	width: 240px;
 	height: 360px;
-	background: #1d1d1d;
+	/*background: #1d1d1d;*/
 	float: right;
 }
 
@@ -483,6 +516,9 @@ body {
 	color: #fff;
 }
 
+#didyoumean a {
+	color: #0098ff;
+}
 
 
 
