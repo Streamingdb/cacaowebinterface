@@ -1,0 +1,527 @@
+/* @group CSS Reset */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* @end */
+
+/* @group General */
+
+body {
+	background: #313131;
+	color: #efefef;
+	font: 12px Arial, Helvetica, Geneva, sans-serif;
+}
+.clearfix {
+	display: block;
+	height: 1px;
+	margin-top: -1px;
+	clear: both;
+}
+.hidden {
+	display: none;
+}
+.center {
+	margin: 0 auto;
+	text-align: center;
+}
+.page_wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -30px;
+}
+
+.footer_push {
+	height: 32px;
+}
+
+.footer {
+	height: 30px;
+	background: #414141;
+	box-shadow: inset 0 1px 0 #535353, 0 -1px 0 #272727;
+
+/* needed double box-shadow in safari */
+	-webkit-box-shadow: inset 0 1px 0 #535353, 0 -1px 0 #272727;
+}
+/* @group Header */
+
+
+
+#head {
+	background: url(../img/head-bg.gif) top left repeat-x;
+	height: 79px;
+}
+
+.smalllogo {
+	float: left;
+	height: 100%;
+}
+
+.smalllogo img {
+	width: 132px;
+	height: 38px;
+
+}
+
+.smalllogo a {
+	display: block;
+	margin-top: 15px;
+	margin-left: 20px;
+}
+
+
+#head #top-toolbar {
+	float: right;
+}
+
+
+/* main logo */
+
+.logo {
+	padding-top: 3em;
+	padding-bottom: 1em;
+}
+
+
+/* Search bars, most of it is shared by the two search bars.
+   the code specific to the big search bar is prefixed with mainpagesearchbar  */
+
+
+.input_wrapp {
+	background: #252525;
+	box-shadow: inset 0 2px 5px rgba(0,0,0, 0.45);
+	border-bottom: 1px solid #7d7d7d;
+	border-radius: 4px;
+}
+
+.search_bar {
+	background: transparent;
+	width: 18em;
+	border: 0px;
+	color: #b3b3b3;
+	padding: 5px;
+	outline: none;
+	font: 14px Arial, Helvetica, Geneva, sans-serif;
+}
+
+.search_submit {
+	display: inline-block;
+}
+
+.search_submit img {
+	position: relative;
+	top: 4px;
+	right: 5px;
+}
+
+#head .topsearch {
+	float: left;
+	height: 100%;
+	margin: 23px 0 0 20px;
+}
+
+/* main search bar */
+
+.mainpagesearchbar .input_wrapp {
+	display: inline-block; /* i couldn't figure out how to remove this or understand how it works */
+}
+.mainpagesearchbar .search_bar { /* make the big box bigger */
+	width: 22em;
+	font-size: 24px;
+}
+
+#searchhints {
+	padding-top: 20px;
+	font-size: 18px;
+}
+.warning {
+	position: absolute; 
+	font-size: 14px; 
+	left: 300px;
+	background-color: #ffcd9b;
+	border: 1px solid #ff8040; 
+	padding: 7px; 
+	margin: 30px auto;
+}
+
+
+/* @group Toolbar */
+
+#top-toolbar {
+	position: relative;
+	top: 25px;
+	right: 23px;
+}
+
+#top-toolbar > li {
+	display: inline;
+	position: relative;
+	padding-right: 5px;
+}
+
+#top-toolbar > li > a {
+	margin-right: 5px;
+	padding: 7px;
+	font-size: 14px;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+
+/* @group inset */
+
+#top-toolbar a.inset {
+	color: #b9b9b9;
+	background: #252525;
+	box-shadow: inset 0 2px 5px rgba(0,0,0, 0.45);
+	border-bottom: 1px solid #7d7d7d;
+}
+
+#top-toolbar a.inset:hover {
+	color: #fff;
+	background: #2a2a2a;
+}
+
+#top-toolbar a.inset:active {
+	background: #121212;
+}
+
+/* @end */
+
+/* @group outset */
+
+#top-toolbar a.outset {
+	color: #202020;
+	box-shadow: inset 0 1px 0px rgba(255, 255, 255, 0.3),
+				0 1px 2px rgba(0,0,0, 0.3);
+
+/* needed double box-shadow in safari */
+	-webkit-box-shadow: inset 0 1px 0px rgba(255, 255, 255, 0.3),
+				0 1px 2px rgba(0,0,0, 0.3);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.26, rgb(106,106,106)),
+	    color-stop(0.63, rgb(156,156,156))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(106,106,106) 26%,
+	    rgb(156,156,156) 63%
+	);
+}
+
+#top-toolbar a.outset:hover {
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.26, rgb(107,107,107)),
+	    color-stop(0.63, rgb(163,163,163))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(107,107,107) 26%,
+	    rgb(163,163,163) 63%
+	);
+}
+
+#top-toolbar a.outset:active {
+	background: #858585;
+}
+
+/* @end */
+
+/* @group icons */
+
+#top-toolbar a.icon {
+	
+}
+
+#top-toolbar a.icon .i {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top: 6px;
+	margin-left: 5px;
+}
+
+#top-toolbar a.icon.i-heart .i {
+	background: url(../img/icon-heart.png) no-repeat center center;
+}
+
+#top-toolbar a.icon.i-config .i {
+	background: url(../img/icon-config.png) no-repeat center center;
+}
+
+#top-toolbar a.icon.i-dropdown .i {
+	background: url(../img/icon-dropdown.png) no-repeat center center;
+}
+
+/* @end */
+
+
+/* @dropdown menu */
+
+
+/* dropdown */
+#top-toolbar li:hover > ul {
+	display: block;
+}
+
+/* level 2 list */
+
+/* link hover */
+#top-toolbar ul li:hover {
+	background: #444 0 -100px;
+	color: #fff;
+
+	-webkit-box-shadow: none;
+	box-shadow: none;
+
+	border-radius: 0;
+
+}
+
+/* the dropdown menu container */
+#top-toolbar ul {
+	display:none;
+
+	margin: 0;
+	padding: 0;
+	width: 135px;
+	position: absolute;
+	top: 25px;
+	right: -1em;
+	background: #000;
+	border: solid 1px #444;
+
+	border-radius: 10px;
+	box-shadow: 0 1px 3px rgba(0,0,0, .3);
+}
+#top-toolbar ul li {
+	float: none;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+
+/* the drop down menu links */
+#top-toolbar ul a {
+	font-weight: normal;
+	color: #ccc;
+	font-size: 12px;
+	padding-left: 5px;
+	text-decoration: none;
+}
+
+/* rounded corners of first and last link in the submenu, 
+   so the hover matches the box shape */
+#top-toolbar ul li:first-child {
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
+}
+#top-toolbar ul li:last-child {
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+}
+
+/* clearfix */
+#top-toolbar:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+#top-toolbar {
+	display: inline-block;
+} 
+
+
+/* login area */
+
+.loginarea {
+	padding: 5px;
+
+	font: 11px Arial, Helvetica, Geneva, sans-serif;
+}
+.loginfield {
+	background: #333;
+	width: 110px;
+	border: 1px;
+	color: #ccc;
+	padding: 2px;
+	font: 11px Arial, Helvetica, Geneva, sans-serif;
+}
+.loginbuttons {
+	clear: both;
+	font: 11px Arial, Helvetica, Geneva, sans-serif;
+	float: right;
+	padding: 5px;
+}
+.loginbuttons input, .loginbuttons a {  
+    width: auto;  
+    background: #555;  
+    border: 0;  
+    font-size: 11px;  
+    color: #FFFFFF;  
+} 
+
+/* @end */
+
+/* @end */
+/* @end */
+
+
+
+/** player and side bar */
+
+
+#content {
+	margin-top: 20px;
+	width: 900px;
+	margin: 30px auto 0 auto;
+}
+
+#player {
+	width: 640px;
+	height: 360px;
+	float: left;
+	background: #000;
+}
+
+#sidebar {
+	width: 260px;
+	height: 360px;
+	float: left;
+}
+
+#sidebar_inner {
+	width: 240px;
+	height: 360px;
+	/*background: #1d1d1d;*/
+	float: right;
+}
+
+
+
+
+/* search results */
+
+#searchresultsarea { /* TODO: this absolute positioning is bad */
+	position: absolute;
+	left: 295px;
+	width: 500px;
+}
+.searchentry {
+	padding: 5px;
+}
+.searchentry:hover{
+	background: rgba(0,0,0, 0.1);
+	border-radius: 5px;
+}
+.searchentry  .searchheader a {
+	font-size: 14px;
+	color: #0098ff;
+	text-decoration: none;
+}
+.searchentry .searchlink {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	padding: 3px;
+	border-radius: 3px;
+
+}
+.searchentry  .searchshowlink a {
+	font-size: 10px;
+	color: DimGray;
+}
+.searchentry .searchsummary{
+	font-size: 10px;
+	color: #fff;
+}
+
+#searchresultsnext a {
+	float: right;
+	padding-right: 50px;
+}
+#searchresultsprevious a {
+	float: left;
+}
+#searchresultsnext a, #searchresultsprevious a {
+	color: #fff;
+}
+
+#didyoumean a {
+	color: #0098ff;
+}
+
+
+
+
+
+

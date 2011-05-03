@@ -11,249 +11,246 @@
 
 
 	<noscript>This page will NOT work because Javascript is not enabled</noscript>
-	
-	
-	<div id="logo"><a href="http://www.cacaoweb.org/?noredirect=yes"><img src="logo.png" /></a></div>
-	
+		
 			
-		<div id="maincontent">
+	<div id="maincontent">
+		
+		<div id="mainleftcolumn">
 			
-			<div id="mainleftcolumn">
-				
-				<div class="authbox" style="display:none">
-					<div class="auth-notification"></div>
-					<div class="buycredits hidden">
-						<form action="https://www.paypal.com/cgi-bin/webscr" id="depositform" method="post">
-							<div class="form-field clear">
-								<p id="numberofcreditstobuy"></p>
+			<div class="authbox" style="display:none">
+				<div class="auth-notification"></div>
+				<div class="buycredits hidden">
+					<form action="https://www.paypal.com/cgi-bin/webscr" id="depositform" method="post">
+						<div class="form-field clear">
+							<p id="numberofcreditstobuy"></p>
+						</div>
+						<div class="form-field clear">
+							<div class="form-radio-item">
+								<input name="form[radio]" id="radio1" class="radio" type="radio" value="20"><label for="radio1">20 credits = 2€</label>
 							</div>
-							<div class="form-field clear">
-								<div class="form-radio-item">
-									<input name="form[radio]" id="radio1" class="radio" type="radio" value="20"><label for="radio1">20 credits = 2€</label>
-								</div>
-								<div class="form-radio-item">
-									<input name="form[radio]" id="radio1" class="radio" type="radio" value="50"><label for="radio1">50 credits = 5€</label>
-								</div>
-								<div class="form-radio-item">
-									<input name="form[radio]" id="radio2" class="radio" type="radio" value="150"><label for="radio2">150 credits = 10€</label>
-								</div>
-								<div class="form-radio-item">
-									<input name="form[radio]" id="radio3" class="radio" type="radio" value="400"><label for="radio3">400 credits = 20€</label>
-								</div>
+							<div class="form-radio-item">
+								<input name="form[radio]" id="radio1" class="radio" type="radio" value="50"><label for="radio1">50 credits = 5€</label>
 							</div>
-								
-							<div class="clear">
-								<input name="submit" type="submit" id="submitpaypal" value="" />
-							</div><!-- /.form-field -->			
-
-
-							<div id="paypalcart">
-								<input name="cmd" value="_cart" type="hidden">
-								<input name="upload" value="1" type="hidden">
-								<input name="business" value="contact@cacaoweb.org" type="hidden">
-								<input name="currency_code" value="EUR" type="hidden">
-								<input name="cpp_header_image" value="http://cacaoweb.org/images/logo.png" type="hidden">
-								<input name="item_name_1" value="50 Credits" type="hidden">
-								<input name="quantity_1" value="1" type="hidden">
-								<input name="amount_1" value="5" type="hidden">
-							</div>							
-						
-						</form>
-					</div>
-					<div class="auth-buttons">
-						<button onclick="javascript:login()" id="loginbtn"></button>
-						<button onclick="javascript:register()" id="createbtn"></button>
-					</div>
-					<div id="login-form" title="Login">
-						<p id="validateTipsLogin"></p>
-						<form>
-						<fieldset>
-							<label for="name"></label>
-							<input type="text" name="name" id="loginname" class="text ui-widget-content ui-corner-all" />
-							<label for="password"></label>
-							<input type="password" id="loginpassword" value="" class="text ui-widget-content ui-corner-all" />
-						</fieldset>
-						</form>
-					</div>
-					<div id="createuser-form" title="">
-						<p class="validateTips"></p>
-
-						<form>
-						<fieldset>
-							<label for="name"></label>
-							<input type="text" name="name" id="registername" class="text ui-widget-content ui-corner-all" />
-							<label for="password"></label>
-							<input type="password" name="password" id="registerpassword" value="" class="text ui-widget-content ui-corner-all" />
-							<label for="email">Email</label>
-							<input type="email" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" placeholder="optional email address"/>
-						</fieldset>
-						</form>
-					</div>
-				</div>
-				
-				<div id="downloads">
-					<h2 id="h2mydownloads"></h2>
-					<div id="mydownloads"></div>
-				</div>
-			
-				<div id="uploads">
-					<h2 id="h2myuploads"></h2>
-					<div id="myuploads" class="myuploads">
-					</div>
-					<div id="uploadslistnavigation">
-						<div id="uploadslistprevious" style="display:none"><a href="#">< Back</a></div>
-						<div id="uploadslistnext" style="display:none"><a href="#">Next ></a></div>
-					</div>
-				</div>
-				
-				<h2 id="h2newupload"></h2>
-				<div id="upload-tabs">
-					<ul>
-						<li><a href="#tabs-browse" id="browse-tab"></a></li>
-						<li><a href="#tabs-remote" id="remote-upload-tab"></a></li>
-					</ul>
-					<div id="tabs-browse">
-						<div class="addupload">
-							<div id="upload_frame">
+							<div class="form-radio-item">
+								<input name="form[radio]" id="radio2" class="radio" type="radio" value="150"><label for="radio2">150 credits = 10€</label>
+							</div>
+							<div class="form-radio-item">
+								<input name="form[radio]" id="radio3" class="radio" type="radio" value="400"><label for="radio3">400 credits = 20€</label>
+							</div>
+						</div>
 							
+						<div class="clear">
+							<input name="submit" type="submit" id="submitpaypal" value="" />
+						</div><!-- /.form-field -->			
+
+
+						<div id="paypalcart">
+							<input name="cmd" value="_cart" type="hidden">
+							<input name="upload" value="1" type="hidden">
+							<input name="business" value="contact@cacaoweb.org" type="hidden">
+							<input name="currency_code" value="EUR" type="hidden">
+							<input name="cpp_header_image" value="http://cacaoweb.org/images/logo.png" type="hidden">
+							<input name="item_name_1" value="50 Credits" type="hidden">
+							<input name="quantity_1" value="1" type="hidden">
+							<input name="amount_1" value="5" type="hidden">
+						</div>							
+					
+					</form>
+				</div>
+				<div class="auth-buttons">
+					<button onclick="javascript:login()" id="loginbtn"></button>
+					<button onclick="javascript:register()" id="createbtn"></button>
+				</div>
+				<div id="login-form" title="Login">
+					<p id="validateTipsLogin"></p>
+					<form>
+					<fieldset>
+						<label for="name"></label>
+						<input type="text" name="name" id="loginname" class="text ui-widget-content ui-corner-all" />
+						<label for="password"></label>
+						<input type="password" id="loginpassword" value="" class="text ui-widget-content ui-corner-all" />
+					</fieldset>
+					</form>
+				</div>
+				<div id="createuser-form" title="">
+					<p class="validateTips"></p>
+
+					<form>
+					<fieldset>
+						<label for="name"></label>
+						<input type="text" name="name" id="registername" class="text ui-widget-content ui-corner-all" />
+						<label for="password"></label>
+						<input type="password" name="password" id="registerpassword" value="" class="text ui-widget-content ui-corner-all" />
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" placeholder="optional email address"/>
+					</fieldset>
+					</form>
+				</div>
+			</div>
+			
+			<div id="downloads">
+				<h2 id="h2mydownloads"></h2>
+				<div id="mydownloads"></div>
+			</div>
+		
+			<div id="uploads">
+				<h2 id="h2myuploads"></h2>
+				<div id="myuploads" class="myuploads">
+				</div>
+				<div id="uploadslistnavigation">
+					<div id="uploadslistprevious" style="display:none"><a href="#">< Back</a></div>
+					<div id="uploadslistnext" style="display:none"><a href="#">Next ></a></div>
+				</div>
+			</div>
+			
+			<h2 id="h2newupload"></h2>
+			<div id="upload-tabs">
+				<ul>
+					<li><a href="#tabs-browse" id="browse-tab"></a></li>
+					<li><a href="#tabs-remote" id="remote-upload-tab"></a></li>
+				</ul>
+				<div id="tabs-browse">
+					<div class="addupload">
+						<div id="upload_frame">
+						
+						</div>
+						<p>
+							<label for="file" id="smallupload"></label>
+							<div id="filewithpath">
+								<input name="file" id="file" size="40"></input>
+								<button tabindex="1" value="Choose" onclick="javascript:choose()" id="choose"></button>
 							</div>
-							<p>
-								<label for="file" id="smallupload"></label>
-								<div id="filewithpath">
-									<input name="file" id="file" size="40"></input>
-									<button tabindex="1" value="Choose" onclick="javascript:choose()" id="choose"></button>
-								</div>
-								<form method='POST' enctype='multipart/form-data' accept-charset="UTF-8" action='' id="formupload" style="display:none">
-									<input name="file" type="file" size="40" value="" />
-									<p id="smalllargefile"></p>
-								</form>
-							</p>
-						</div>
-						<div class="restrictedinfo">
-							<div class="meta-fields">
-								<p>
-								<label for="paidcontent" id="paidcontentsmall"></label>
-								<input name="paidcontent" id="paidcontent" type="checkbox" />
-								</p>
-								<div id="paidcontentdetails">
-									<p>
-									<label for="preview" id="previewsmall"></label>
-									<input name="preview" id="preview" type="checkbox" checked="true" />
-									</p>
-									<p>
-									<label for="numberofcredits" id="numberofcreditssmall"></label>
-									<select id="numberofcredits">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="5">5</option>
-										<option value="10">10</option>
-										<option value="20">20</option>
-									</select>
-									</p>
-								</div>
-							</div>
-						</div>
+							<form method='POST' enctype='multipart/form-data' accept-charset="UTF-8" action='' id="formupload" style="display:none">
+								<input name="file" type="file" size="40" value="" />
+								<p id="smalllargefile"></p>
+							</form>
+						</p>
 					</div>
-					<div id="tabs-remote">
-						<div class="addupload">
-							<p>
-								<label for="file" id="smallremoteupload"></label>
-								<input name="url" id="url" size="50"></input>
-							</p>
-							<p>
-								<small><div id="examplesupload"></div><br>http://megavideo.com/?v=TUF78DFD<br>http://www.videobb.com/video/uGR5SO24apvI<br>http://myspace.someserver.com/myvideo.mp4</small>
-							</p>
-						</div>
-					</div>
-					<div class="filemeta">
-						<h3 id="uploadmeta"></h3>
+					<div class="restrictedinfo">
 						<div class="meta-fields">
 							<p>
-								<label for="contenttype" id='smallcontenttype'><small></small></label>
-								<select id="contenttype">
-									<option value="" id="blank"></option>
-									<option value="movie" id="movie"></option>
-									<option value="tvshow" id="tvshow"></option>
-									<option value="anime" id="anime"></option>
-									<option value="documentary" id="documentary"></option>
-									<option value="music" id="music"></option>
-									<option value="file" id="filecategory"></option>
-								</select>
+							<label for="paidcontent" id="paidcontentsmall"></label>
+							<input name="paidcontent" id="paidcontent" type="checkbox" />
 							</p>
-							<p>
-								<label for="language" id="smalllanguage"></label>
-								<select id="language">
-									<option value=""></option>
-									<option value="en">English</option>
-									<option value="fr">Français</option>
-									<option value="es">Español</option>
-									<option value="it">Italiano</option>
-									<option value="pt">Português</option>
-									<option value="de">Deutsch</option>
-									<option value="hu">Magyar</option>
-									<option value="pl">Polski</option>
-									<option value="ru">Россию</option>
-									<option value="ar">العربية</option>
-									<option value="cn">越南</option>
-									<option value="hi">हिन्दी</option>
-									<option value="jp">日本</option>
-									<option value="vn">Việt</option>
-								</select>
-							</p>
-							<p>
-								<label for="subtitles" id="smallsubtitles"></label>
-								<select id="subtitles">
-									<option value=""></option>
-									<option value="en">English</option>
-									<option value="fr">Français</option>
-									<option value="es">Español</option>
-									<option value="it">Italiano</option>
-									<option value="pt">Português</option>
-									<option value="de">Deutsch</option>
-									<option value="hu">Magyar</option>
-									<option value="pl">Polski</option>
-									<option value="ru">Россию</option>
-									<option value="ar">العربية</option>
-									<option value="cn">越南</option>
-									<option value="hi">हिन्दी</option>
-									<option value="jp">日本</option>
-									<option value="vn">Việt</option>
-								</select>
-							</p>
-							<p id="titlefield">
-								<label for="title" id="smalltitle"></label>
-								<input type="text" name="title" id="title" tabindex="2" size="50" />
-							</p>
-							<div id="tvshowdetails" style="display:none">
+							<div id="paidcontentdetails">
 								<p>
-									<label for="season" id="smallseason"></label>
-									<input id="season" type="text" maxlength="2" size="2"  type="number" min="1" max="20"/>
+								<label for="preview" id="previewsmall"></label>
+								<input name="preview" id="preview" type="checkbox" checked="true" />
 								</p>
 								<p>
-									<label for="episode" id="smallepisode"></label>
-									<input id="episode" type="text" maxlength="2" size="2" type="number" min="1" />
+								<label for="numberofcredits" id="numberofcreditssmall"></label>
+								<select id="numberofcredits">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="20">20</option>
+								</select>
 								</p>
 							</div>
-							<p>
-								<label>&nbsp;</label>
-								<button id="submit" onclick="submit()"></button>
-							</p>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div id="mainrightcolumn">
-				<h2 id="h2cacaowebstatus"></h2>
-				<div id="cacaowebstatus"></div>
-				
-				<h2 id="cacaowebactions"></h2>
-				<p><a href="javascript:quit()" id="turnoff"></a></p>
-				<p><a href="javascript:uninstall()" id="uninstall"></a></p>
-			
-				<h2><a href="index.html" id="backmainpage"></a></h2>
-				
+				<div id="tabs-remote">
+					<div class="addupload">
+						<p>
+							<label for="file" id="smallremoteupload"></label>
+							<input name="url" id="url" size="50"></input>
+						</p>
+						<p>
+							<small><div id="examplesupload"></div><br>http://megavideo.com/?v=TUF78DFD<br>http://www.videobb.com/video/uGR5SO24apvI<br>http://myspace.someserver.com/myvideo.mp4</small>
+						</p>
+					</div>
+				</div>
+				<div class="filemeta">
+					<h3 id="uploadmeta"></h3>
+					<div class="meta-fields">
+						<p>
+							<label for="contenttype" id='smallcontenttype'><small></small></label>
+							<select id="contenttype">
+								<option value="" id="blank"></option>
+								<option value="movie" id="movie"></option>
+								<option value="tvshow" id="tvshow"></option>
+								<option value="anime" id="anime"></option>
+								<option value="documentary" id="documentary"></option>
+								<option value="music" id="music"></option>
+								<option value="file" id="filecategory"></option>
+							</select>
+						</p>
+						<p>
+							<label for="language" id="smalllanguage"></label>
+							<select id="language">
+								<option value=""></option>
+								<option value="en">English</option>
+								<option value="fr">Français</option>
+								<option value="es">Español</option>
+								<option value="it">Italiano</option>
+								<option value="pt">Português</option>
+								<option value="de">Deutsch</option>
+								<option value="hu">Magyar</option>
+								<option value="pl">Polski</option>
+								<option value="ru">Россию</option>
+								<option value="ar">العربية</option>
+								<option value="cn">越南</option>
+								<option value="hi">हिन्दी</option>
+								<option value="jp">日本</option>
+								<option value="vn">Việt</option>
+							</select>
+						</p>
+						<p>
+							<label for="subtitles" id="smallsubtitles"></label>
+							<select id="subtitles">
+								<option value=""></option>
+								<option value="en">English</option>
+								<option value="fr">Français</option>
+								<option value="es">Español</option>
+								<option value="it">Italiano</option>
+								<option value="pt">Português</option>
+								<option value="de">Deutsch</option>
+								<option value="hu">Magyar</option>
+								<option value="pl">Polski</option>
+								<option value="ru">Россию</option>
+								<option value="ar">العربية</option>
+								<option value="cn">越南</option>
+								<option value="hi">हिन्दी</option>
+								<option value="jp">日本</option>
+								<option value="vn">Việt</option>
+							</select>
+						</p>
+						<p id="titlefield">
+							<label for="title" id="smalltitle"></label>
+							<input type="text" name="title" id="title" tabindex="2" size="50" />
+						</p>
+						<div id="tvshowdetails" style="display:none">
+							<p>
+								<label for="season" id="smallseason"></label>
+								<input id="season" type="text" maxlength="2" size="2"  type="number" min="1" max="20"/>
+							</p>
+							<p>
+								<label for="episode" id="smallepisode"></label>
+								<input id="episode" type="text" maxlength="2" size="2" type="number" min="1" />
+							</p>
+						</div>
+						<p>
+							<label>&nbsp;</label>
+							<button id="submit" onclick="submit()"></button>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
+		<div id="mainrightcolumn">
+			<h2 id="h2cacaowebstatus"></h2>
+			<div id="cacaowebstatus"></div>
+			
+			<h2 id="cacaowebactions"></h2>
+			<p><a href="javascript:quit()" id="turnoff"></a></p>
+			<p><a href="javascript:uninstall()" id="uninstall"></a></p>
+		
+			<h2><a href="index.html" id="backmainpage"></a></h2>
+			
+		</div>
+	</div>
 		
 
 	
@@ -1026,6 +1023,14 @@
 			}
 			$(".authbox").show();
 		}
+		
+		
+		$(function () {
+			var url = window.location.href;
+			if (url.indexOf("register") > -1) {
+				register();
+			}
+		});
 		
 
     </script>
