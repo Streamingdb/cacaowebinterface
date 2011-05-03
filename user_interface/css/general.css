@@ -349,7 +349,7 @@ body {
 	display:none;
 
 	margin: 0;
-	padding: 0;
+	padding-right: 0;
 	width: 135px;
 	position: absolute;
 	top: 25px;
@@ -364,6 +364,7 @@ body {
 	float: none;
 	padding-top: 3px;
 	padding-bottom: 3px;
+	padding-right: 5px;
 }
 
 
@@ -405,29 +406,27 @@ body {
 
 .loginarea {
 	padding: 5px;
-
-	font: 11px Arial, Helvetica, Geneva, sans-serif;
+	font-size: 11px;
 }
 .loginfield {
 	background: #333;
-	width: 110px;
+	width: 120px;
 	border: 1px;
 	color: #ccc;
 	padding: 2px;
-	font: 11px Arial, Helvetica, Geneva, sans-serif;
 }
 .loginbuttons {
 	clear: both;
-	font: 11px Arial, Helvetica, Geneva, sans-serif;
 	float: right;
 	padding: 5px;
 }
 .loginbuttons input, .loginbuttons a {  
-    width: auto;  
     background: #555;  
     border: 0;  
     font-size: 11px;  
     color: #FFFFFF;  
+    margin-bottom: 3px;   
+    padding-right: 3px;  
 } 
 
 /* @end */

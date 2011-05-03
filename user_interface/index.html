@@ -3,7 +3,7 @@
 <head>
 	<title>cacaoweb</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<link rel="stylesheet" href="css/general.css" type="text/css" media="screen">
 </head>
 <body>
@@ -51,7 +51,7 @@
 			</div>
 			<div id="topsearchbox" class="topsearch hidden">
 				<div class="input_wrapp">
-					<input class="search_bar" name="search_bar" onkeypress="searchboxkeypress(event, this);" type="text" placeholder="Search...">
+					<input id="smallsearchbar" class="search_bar" name="search_bar" onkeypress="searchboxkeypress(event, this);" type="text" />
 					<a class="search_submit" href="#" onclick="searchbuttonclick(event, this);">
 						<img src="img/mag-glass.png" alt="Search">
 					</a>
@@ -59,31 +59,31 @@
 			</div>
 			<ul id="top-toolbar">
 				<li id="auth-notification"></li>
-				<li id="loginbutton"><a onclick="keepDropdownMenu(event, this)" class="outset"><span>Login</span><span class="i"></span></a>
+				<li id="loginbutton"><a onclick="keepDropdownMenu(event, this)" class="outset"><span id="logintext"></span><span class="i"></span></a>
 					<ul>
 						<div class="loginarea">
 						<form onsubmit="submitlogin(event)">
-							<label for="login">username:</label>
+							<label for="login" id="loginlabel"></label>
 							<input class="loginfield" id="logininput" name="login" type="text" />
-							<label for="password">password:</label>
+							<label for="password" id="passwordlabel"></label>
 							<input class="loginfield" id="passwordinput" name="password" type="password" />
 							<div class="loginbuttons">
-								<input type="submit" name="submit" value="login" />
-								<a href="javascript:register()">register</a>
+								<input type="submit" name="submit" id="loginbtn" />
+								<a id="registerbtn" href="javascript:register()"></a>
 							</div>
 						</form>
 						</div>
 					</ul>
 				</li>
-				<li><a href="admin.html" class="inset icon i-heart hidden"><span>Share</span><span class="i"></span></a></li>
+				<li><a href="admin.html" class="inset icon i-heart hidden"><span id="share"></span><span class="i"></span></a></li>
 				<li><a id="mana" href="admin.html" class="inset icon i-config"><span class="i"></span></a></li>
-				<li><a onclick="keepDropdownMenu(event, this)" class="outset icon i-dropdown">More<span class="i"></span></a>
+				<li><a onclick="keepDropdownMenu(event, this)" class="outset icon i-dropdown"><span id="more"></span><span class="i"></span></a>
 					<ul>
-						<li><a href="http://forum.cacaoweb.org/">Help</a></li>
-						<li><a href="http://forum.cacaoweb.org/">Forum</a></li>
-						<li><a href="http://cacaoweb.org/#download">Download</a></li>
-						<li><a href="http://cacaoweb.org/#developers">Developers</a></li>
-						<li><a href="http://cacaoweb.org/#makemoney">Make money</a></li>
+						<li><a href="http://forum.cacaoweb.org/" target="_newtab" id="helpmenu"></a></li>
+						<li><a href="http://forum.cacaoweb.org/" target="_newtab" id="forummenu"></a></li>
+						<li><a href="http://cacaoweb.org/?noredirect#download" target="_newtab" id="downloadmenu"></a></li>
+						<li><a href="http://cacaoweb.org/?noredirect#dev" target="_newtab" id="devmenu"></a></li>
+						<li><a href="http://cacaoweb.org/?noredirect#money" target="_newtab" id="moneymenu"></a></li>
 					</ul>
 				</li>
 				
@@ -97,7 +97,7 @@
 				</div>
 				<div class="mainpagesearchbar">
 					<div class="input_wrapp">
-						<input class="search_bar" onkeypress="searchboxkeypress(event, this);" autocomplete="off" type="text" placeholder="Search..."/>
+						<input id="bigsearchbar" class="search_bar" onkeypress="searchboxkeypress(event, this);" autocomplete="off" type="text" />
 						<a class="search_submit" href="#" onclick="searchbuttonclick(event, this);">
 							<img src="img/mag-glass.png" alt="Search">
 						</a>
@@ -139,6 +139,21 @@
 		document.getElementById('mana').innerHTML = langstrings[lang]['management'] + '<span class="i"></span>';
 		document.getElementById('searchhints').innerHTML = langstrings[lang]['searchhints'];
 		//document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
+		document.getElementById('smallsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
+		document.getElementById('bigsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
+		document.getElementById('logintext').innerHTML = langstrings[lang]['login'];
+		document.getElementById('loginlabel').innerHTML = langstrings[lang]['name'] + ':';
+		document.getElementById('passwordlabel').innerHTML = langstrings[lang]['password'] + ':';
+		document.getElementById('loginbtn').value = langstrings[lang]['login'].toLowerCase();
+		document.getElementById('registerbtn').innerHTML = langstrings[lang]['register'];
+		document.getElementById('share').innerHTML = langstrings[lang]['share'];
+		document.getElementById('more').innerHTML = langstrings[lang]['more'];
+		document.getElementById('helpmenu').innerHTML = langstrings[lang]['help'];
+		document.getElementById('forummenu').innerHTML = langstrings[lang]['forum'];
+		document.getElementById('downloadmenu').innerHTML = langstrings[lang]['download'];
+		document.getElementById('devmenu').innerHTML = langstrings[lang]['developers'];
+		document.getElementById('moneymenu').innerHTML = langstrings[lang]['makemoney'];
+		
 		
 		var currentsearchpos = 0;
 		var currentsearchterm = '';
@@ -366,7 +381,7 @@
 		
 		/** toggles the drop down menu when the user clicks on the button */
 		function keepDropdownMenu(e, o) {
-			var menu = o.parentNode.childNodes[2];
+			var menu = o.parentNode.getElementsByTagName('ul')[0];
 			if (menu.style.display == 'block') {
 				menu.style.display = "none";
 			} else {

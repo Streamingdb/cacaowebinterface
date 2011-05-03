@@ -7,6 +7,7 @@ var langstrings = new Array();
 
 langstrings['en'] = new Array();
 langstrings['en']['management'] = 'My cacaoweb';
+langstrings['en']['searchplaceholder'] = 'Search...';
 langstrings['en']['searchhints'] = '<small>Search for Movies, TV shows, Anime or paste a link</small>';
 langstrings['en']['linknotrecognized'] = 'This type of link is not recognized by cacaoweb';
 langstrings['en']['typeoflinks'] = '<small>Examples :<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI<br>http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f</small>';
@@ -71,9 +72,17 @@ langstrings['en']['name'] = "Name";
 langstrings['en']['password'] = "Password";
 langstrings['en']['login'] = "Login";
 langstrings['en']['create'] = "Create my account";
+langstrings['en']['register'] = "register";
 langstrings['en']['paidcontentsmall'] = "<small>Paid content</small>";
 langstrings['en']['previewsmall'] = "<small>Preview allowed</small>";
 langstrings['en']['numberofcreditssmall'] = "<small>Credits required</small>";
+langstrings['en']['share'] = "Share";
+langstrings['en']['more'] = "More";
+langstrings['en']['help'] = "Help";
+langstrings['en']['forum'] = "Forum";
+langstrings['en']['download'] = "Download";
+langstrings['en']['developers'] = "Developers";
+langstrings['en']['makemoney'] = "Make money";
 
 
 
@@ -84,6 +93,7 @@ langstrings['en']['numberofcreditssmall'] = "<small>Credits required</small>";
 
 langstrings['fr'] = new Array();
 langstrings['fr']['management'] = 'Mon cacaoweb';
+langstrings['fr']['searchplaceholder'] = 'Recherchez...';
 langstrings['fr']['searchhints'] = '<small>Recherchez des séries, films, mangas ou collez un lien</small>';
 langstrings['fr']['linknotrecognized'] = 'Ce type de lien n\'est pas reconnu par cacaoweb';
 langstrings['fr']['typeoflinks'] = '<small>Exemples de liens reconnus:<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI<br>http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f</small>';
@@ -148,9 +158,17 @@ langstrings['fr']['name'] = "Nom";
 langstrings['fr']['password'] = "Mot de passe";
 langstrings['fr']['login'] = "S'identifier";
 langstrings['fr']['create'] = "Créer mon compte";
+langstrings['fr']['register'] = "s'enregistrer";
 langstrings['fr']['paidcontentsmall'] = "<small>Contenu payant</small>";
 langstrings['fr']['previewsmall'] = "<small>Aperçu autorisé</small>";
 langstrings['fr']['numberofcreditssmall'] = "<small>Crédits requis</small>";
+langstrings['fr']['share'] = "Partager";
+langstrings['fr']['more'] = "Plus";
+langstrings['fr']['help'] = "Aide";
+langstrings['fr']['forum'] = "Forum";
+langstrings['fr']['download'] = "Télécharger";
+langstrings['fr']['developers'] = "Développeurs";
+langstrings['fr']['makemoney'] = "Gagner de l'argent";
 
 
 /** 
@@ -159,6 +177,7 @@ langstrings['fr']['numberofcreditssmall'] = "<small>Crédits requis</small>";
 
 langstrings['it'] = new Array();
 langstrings['it']['management'] = 'Mio Cacaoweb';
+langstrings['it']['searchplaceholder'] = 'Search...';
 langstrings['it']['searchhints'] = '<small>Ricerca Film, Serie TV o incolla un link</small>';
 langstrings['it']['linknotrecognized'] = 'Questo tipo di link non è ancora supportato da cacaoweb';
 langstrings['it']['typeoflinks'] = '<small>Esempio :<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI<br>http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f</small>';
@@ -223,9 +242,17 @@ langstrings['it']['name'] = "Nome";
 langstrings['it']['password'] = "Password";
 langstrings['it']['login'] = "Login";
 langstrings['it']['create'] = "Crea account";
+langstrings['it']['register'] = "register";
 langstrings['it']['paidcontentsmall'] = "<small>Contenuto a pagamento</small>";
 langstrings['it']['previewsmall'] = "<small>Permesso di anteprima</small>";
 langstrings['it']['numberofcreditssmall'] = "<small>Crediti richiesti</small>";
+langstrings['it']['share'] = "Share";
+langstrings['it']['more'] = "More";
+langstrings['it']['help'] = "Help";
+langstrings['it']['forum'] = "Forum";
+langstrings['it']['download'] = "Download";
+langstrings['it']['developers'] = "Developers";
+langstrings['it']['makemoney'] = "Make money";
 
 
 /** 
@@ -235,6 +262,7 @@ langstrings['it']['numberofcreditssmall'] = "<small>Crediti richiesti</small>";
 
 langstrings['pl'] = new Array();
 langstrings['pl']['management'] = 'Mój cacaoweb';
+langstrings['pl']['searchplaceholder'] = 'Search...';
 langstrings['pl']['searchhints'] = '<small>Wyszukaj filmy, programy telewizyjne, albo wklej link</small>';
 langstrings['pl']['linknotrecognized'] = 'Typ linku nie jest obsługiwany przez cacaoweb';
 langstrings['pl']['typeoflinks'] = '<small>Przykłady :<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI<br>http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f</small>';
@@ -299,6 +327,14 @@ langstrings['pl']['name'] = "Imię";
 langstrings['pl']['password'] = "Hasło";
 langstrings['pl']['login'] = "Zaloguj się";
 langstrings['pl']['create'] = "Utwórz konto";
+langstrings['pl']['register'] = "register";
 langstrings['pl']['paidcontentsmall'] = "<small>Płatna zawartość</small>";
 langstrings['pl']['previewsmall'] = "<small>Podgląd dostępny</small>";
 langstrings['pl']['numberofcreditssmall'] = "<small>Wymaga kredytów:</small>";
+langstrings['pl']['share'] = "Share";
+langstrings['pl']['more'] = "More";
+langstrings['pl']['help'] = "Help";
+langstrings['pl']['forum'] = "Forum";
+langstrings['pl']['download'] = "Download";
+langstrings['pl']['developers'] = "Developers";
+langstrings['pl']['makemoney'] = "Make money";
