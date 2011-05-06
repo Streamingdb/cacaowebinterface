@@ -840,6 +840,19 @@
 					});
 				}
 			});
+			$.ajax({
+				url: "replicationactivated",
+				dataType: "xml",
+				success: function(data) {
+					$(xml).find("results").each(function() {
+						if ($(this).text() == "true") {
+							$('#upload-tabs').show();
+						} else {
+							$('#upload-tabs').hide();
+						}
+					});
+				}
+			});
 			// TODO: il faudrait ajouter un call pour errors
 			getdownloads();
 			getcurrentuploads();
@@ -861,10 +874,18 @@
 		
 		
 		
+		/** 
+		  credits management 
+		  */
+		
+		function buycredits() {
+			// TODO: afficher une fenetre pour acheter des credits
+		
+		}
 		
 		/** 
 		  authentication and account management functions like login and register 
-		*/
+		  */
 		
 		function register() {
 			$('#createuser-form').dialog('open');
@@ -1033,6 +1054,9 @@
 			var url = window.location.href;
 			if (url.indexOf("register") > -1) {
 				register();
+			}
+			if (url.indexOf("buycredits") > -1) {
+				buycredits();
 			}
 		});
 		
