@@ -1,0 +1,29 @@
+/* @group Content */
+
+#content {
+	margin-top: 50px;
+	width: 900px;
+	margin: 30px auto 0 auto;
+}
+
+#video {
+	width: 640px;
+	height: 360px;
+	float: left;
+	background: #000;
+}
+
+#sidebar {
+	width: 260px;
+	height: 360px;
+	float: left;
+}
+
+#sidebar_inner {
+	width: 240px;
+	height: 360px;
+	background: #1d1d1d;
+	float: right;
+}
+
+/* @end */
