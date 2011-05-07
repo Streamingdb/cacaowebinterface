@@ -843,7 +843,7 @@
 			$.ajax({
 				url: "replicationactivated",
 				dataType: "xml",
-				success: function(data) {
+				success: function(xml) {
 					$(xml).find("results").each(function() {
 						if ($(this).text() == "true") {
 							$('#upload-tabs').show();
