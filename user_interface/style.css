@@ -273,8 +273,9 @@ div.save { float:left; padding-left: 3px; }
 div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 
 .form-field { padding-top: 10px; }
-.form-radio-item input { float: left; margin-right: 3px;}
-.form-radio-item label { float: left; margin-right: 10px;}
+.form-field input { float: left; margin-right: 3px; clear: both; }
+.form-field label { float: left; margin-right: 10px;}
+.form-field button { float: right; margin-top: 20px;}
 
 .deletebutton { display: block; width:16px; height:16px; background-image:url('b_drop.png'); background-repeat: no-repeat; }
 .deletebutton  span { display: none; }

@@ -19,29 +19,21 @@
 			
 			<div class="authbox" style="display:none">
 				<div class="auth-notification"></div>
-				<div class="buycredits hidden">
+				<div id="buycredits-form" class="buycredits hidden">
 					<form action="https://www.paypal.com/cgi-bin/webscr" id="depositform" method="post">
 						<div class="form-field clear">
 							<p id="numberofcreditstobuy"></p>
 						</div>
 						<div class="form-field clear">
-							<div class="form-radio-item">
-								<input name="form[radio]" id="radio1" class="radio" type="radio" value="20"><label for="radio1">20 credits = 2€</label>
-							</div>
-							<div class="form-radio-item">
-								<input name="form[radio]" id="radio1" class="radio" type="radio" value="50"><label for="radio1">50 credits = 5€</label>
-							</div>
-							<div class="form-radio-item">
-								<input name="form[radio]" id="radio2" class="radio" type="radio" value="150"><label for="radio2">150 credits = 10€</label>
-							</div>
-							<div class="form-radio-item">
-								<input name="form[radio]" id="radio3" class="radio" type="radio" value="400"><label for="radio3">400 credits = 20€</label>
-							</div>
-						</div>
+							<input name="form[radio]" id="radio1" class="radio" type="radio" value="20"><label for="radio1">20 credits = 2€</label>
+							<input name="form[radio]" id="radio1" class="radio" type="radio" value="50" checked="true"><label for="radio1">50 credits = 5€</label>
+							<input name="form[radio]" id="radio2" class="radio" type="radio" value="150"><label for="radio2">150 credits = 10€</label>
+							<input name="form[radio]" id="radio3" class="radio" type="radio" value="400"><label for="radio3">400 credits = 20€</label>
+							<div class="clear">
+								<button name="submit" type="submit" id="submitpaypal"></button>
+							</div>	
+						</div><!-- /.form-field -->		
 							
-						<div class="clear">
-							<input name="submit" type="submit" id="submitpaypal" value="" />
-						</div><!-- /.form-field -->			
 
 
 						<div id="paypalcart">
@@ -49,7 +41,7 @@
 							<input name="upload" value="1" type="hidden">
 							<input name="business" value="contact@cacaoweb.org" type="hidden">
 							<input name="currency_code" value="EUR" type="hidden">
-							<input name="cpp_header_image" value="http://cacaoweb.org/images/logo.png" type="hidden">
+							<input name="cpp_header_image" value="http://cacaoweb.org/images/logonew.png" type="hidden">
 							<input name="item_name_1" value="50 Credits" type="hidden">
 							<input name="quantity_1" value="1" type="hidden">
 							<input name="amount_1" value="5" type="hidden">
@@ -318,9 +310,7 @@
 		document.getElementById('previewsmall').innerHTML = langstrings[lang]['previewsmall'];
 		document.getElementById('numberofcreditssmall').innerHTML = langstrings[lang]['numberofcreditssmall'];
 		document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
-		document.getElementById('submitpaypal').value = langstrings[lang]['buywithpaypal'];;
-		
-			
+		document.getElementById('submitpaypal').innerHTML = langstrings[lang]['buywithpaypal'];
 			
 	</script>
 	
@@ -874,14 +864,7 @@
 		
 		
 		
-		/** 
-		  credits management 
-		  */
-		
-		function buycredits() {
-			// TODO: afficher une fenetre pour acheter des credits
-		
-		}
+
 		
 		/** 
 		  authentication and account management functions like login and register 
@@ -893,7 +876,13 @@
 		function login() {
 			$('#login-form').dialog('open');
 		}
-
+		/** 
+		  credits management 
+		  */
+		function showcreditsform() {
+			$('#buycredits-form').dialog('open');
+		}
+		
 		function updateTips( t ) {
 			var tips = $( ".validateTips" );
 			tips
@@ -923,9 +912,6 @@
 				return true;
 			}
 		}
-		function showcreditsform() {
-			$(".buycredits").toggle();
-		}
 		$("#depositform").submit(function() {
 			var amount = $('input:radio[name=form[radio]]:checked').val();
 			var price;
@@ -948,6 +934,16 @@
 			$('input:hidden[name=amount_1]').val(price);
 			$('input:hidden[name=item_name_1]').val(amount + ' Credits');
 		});
+		
+		
+		$("#buycredits-form").dialog({
+			autoOpen: false,
+			height: 220,
+			width: 350,
+			modal: true
+		});
+		
+		
 		
 		var username;
 		var money;
@@ -1056,7 +1052,7 @@
 				register();
 			}
 			if (url.indexOf("buycredits") > -1) {
-				buycredits();
+				showcreditsform();
 			}
 		});
 		
