@@ -193,12 +193,13 @@ body {
 	font-size: 18px;
 }
 .warning {
-	position: absolute; 
-    margin: auto;
+    margin: 0 auto;
 	font-size: 16px; 
-	background-color: red;
+	font-weight: bold;
+	background-color: firebrick;
 	border: 1px solid #ff8040; 
 	padding: 7px; 
+	display: inline;
 }
 
 

@@ -177,21 +177,21 @@
 			var warnings = document.getElementById('warningarea');
 			if (result == 'outdated') {
 				warnings.innerHTML = langstrings[lang]['outdated'];
-				warnings.style.display = "";
+				warnings.className = "warning";
 			} else if (result == 'noudp') {
 				warnings.innerHTML = langstrings[lang]['noconnectivity'];
-				warnings.style.display = "";
+				warnings.className = "warning";
 			} else if (result == 'permissionproblem') {
 				warnings.innerHTML = langstrings[lang]['permissionproblem'];
-				warnings.style.display = "";
+				warnings.className = "warning";
 			} else if (result == 'nospaceleft') {
 				warnings.innerHTML = langstrings[lang]['nospaceleft'];
-				warnings.style.display = "";
+				warnings.className = "warning";
 			} else if (result == 'badrouter') {
 				warnings.innerHTML = langstrings[lang]['natnotp2pfriendly'];
-				warnings.style.display = "";
+				warnings.className = "warning";
 			} else {
-				warnings.style.display = "none";
+				warnings.className = "hidden";
 			}
 		}
 		function updateWarnings() {
