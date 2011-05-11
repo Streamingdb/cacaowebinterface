@@ -654,6 +654,7 @@
 			var selectedtab = $( "#upload-tabs" ).tabs( "option", "selected" );
 			if (selectedtab == 0) { // Browse
 				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') { // si le fichier est une vidéo, on envoie au service de transcodage
+					/* uploadid: some unique number for the user to track the progress of the upload */
 					var uploadid = Math.floor(Math.random() * 1000000000);
 					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
 					if ($('#paidcontent').is(':checked')) {
@@ -661,18 +662,24 @@
 						if ($('#preview').is(':checked')) { previewallowed = 1; }
 						actionurl = actionurl + '&numberofcredits=' + $('#numberofcredits').val() + '&previewallowed=' + previewallowed;
 					}
+					/* we submit the form, which uploads the file to the server */
 					$("#upload_frame").append('<iframe name="myiframe' + uploadid + '" style="display:none"></iframe>');
 					$("#formupload").attr('target', 'myiframe' + uploadid);
 					$("#formupload").attr('action', actionurl);
 					$("#formupload").submit();
+					/* we insert an iframe to show a progress bar so the user can track the upload progress */
 					$("#upload_frame").append('<iframe height="30px" width="500px" frameborder="0" border="0" src="http://h264stage.com/uploadprogressframe.php?uploadid=' + uploadid + '" scrolling="no" scrollbar="no" allowtransparency="true"></iframe>'); 
 				} else if ($('#file').val() != '') { // sinon upload direct
+					/* if the file is not a multimedia file (video or audio), the file can be uploaded without transcoding it first */
 					$.ajax({
+						/* a request to the local cacaoweb instance to upload the file to the network in p2p fashion */
 						url: "upload?filepath=" + encodeURIComponent($('#file').val()) + '&restricted=' + $('#paidcontent').is(':checked') + '&previewallowed=' + $('#preview').is(':checked'),
-						success: function(fileid) {
+						/* requesting http://127.0.0.1:4001/upload?filepath=... from the local cacaoweb instance makes cacaoweb calculate the md5 of the file and return it */
+						success: function(fileid) { /* fileid is the md5 (used as a unique identifier in the cacaoweb network) of the file */
 							if (fileid == "") {
 								alert("upload failed");
 							} else {
+								/* we upload the metadata of the file to the central server so these metadata can be incorporated in cacaoweb search engine */
 								var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&numberofcredits=' + $('#numberofcredits').val();
 								includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 							}
