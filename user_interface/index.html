@@ -261,7 +261,7 @@
 		/* parsesearchresults is called as a callback */
 		function submitSearch(pos) {
 			currentsearchpos = pos;
-			includeScript('http://search.cacaoweb.org/?searchterm=' + encodeURIComponent(currentsearchterm) + '&lang=' + searchlang + '&pos=' + pos, 'searchscript');
+			includeScript('http://search.cacaoweb.org/?searchterm=' + encodeURIComponent(currentsearchterm.toLowerCase()) + '&lang=' + searchlang + '&pos=' + pos, 'searchscript');
 		}
 		
 		function ismd5(s) {
