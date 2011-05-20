@@ -20,6 +20,21 @@
 			languagestrings['en']['errorStreamNotFound'] = "error StreamNotFound (report it on http://forum.cacaoweb.org)";
 			languagestrings['en']['errorFileStructureInvalid'] = "error FileStructureInvalid (report it on http://forum.cacaoweb.org)";
 			languagestrings['en']['filetimeout'] = "cacaoweb could not find this video.<br>Please try again later.";
+			
+			languagestrings['es'] = new Dictionary();
+			languagestrings['es']['cacaowebnotrunning'] = "cacaoweb no está instalado";
+			languagestrings['es']['cacaowebdownload'] = "Descargar";
+			languagestrings['es']['notloggedin'] = "No has iniciado sesión";
+			languagestrings['es']['myaccount'] = "Mi cuenta";
+			languagestrings['es']['cost'] = "Este archivo cuesta ";
+			languagestrings['es']['credits'] = " créditos";
+			languagestrings['es']['buy'] = "Compra ahora";
+			languagestrings['es']['notenoughcredits'] = "No tienes suficientes créditos, ve a tu cuenta para añadir más.";
+			languagestrings['es']['watchpreview'] = "O puedes ver un adelanto pulsando el botón de reproducir";
+			languagestrings['es']['errorreadingfile'] = "hubo un error reproduciendo este archivo";
+			languagestrings['es']['errorStreamNotFound'] = "error StreamNotFound (informa de esto en http://forum.cacaoweb.org)";
+			languagestrings['es']['errorFileStructureInvalid'] = "error FileStructureInvalid (informa de esto en http://forum.cacaoweb.org)";
+			languagestrings['es']['filetimeout'] = "cacaoweb no pudo encontrar este vídeo.<br>Por favor, prueba más tarde.";
 
 			languagestrings['fr'] = new Dictionary();
 			languagestrings['fr']['cacaowebnotrunning'] = "cacaoweb n'est pas installé";
