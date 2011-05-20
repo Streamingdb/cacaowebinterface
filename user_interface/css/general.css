@@ -102,7 +102,7 @@ body {
 	-webkit-box-shadow: inset 0 1px 0 #535353, 0 -1px 0 #272727;
 }
 .footercontent {
-	margin-top: -140px;
+	margin-top: -150px;
 	width: 800px;
 }
 .footercontent li {
@@ -125,7 +125,7 @@ body {
 	border-radius: 5px;
 	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
 	opacity: 0.8; 
-	filter:alpha(opacity=80);
+	filter: alpha(opacity=80);
 }
 .footercontent li img:hover {
 	opacity: 1; 
