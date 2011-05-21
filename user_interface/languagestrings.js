@@ -404,6 +404,7 @@ langstrings['pl']['vn'] = "wietnamski";
 
 /** 
 Spanish
+Carlos Precioso    kalprestito@yahoo.es
 */
 
 langstrings['es'] = new Array();
