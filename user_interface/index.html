@@ -37,6 +37,8 @@
 				break;
 			case 'pl':
 				break;
+			case 'es':
+				break;
 			default:
 				lang = 'en';
 		}
@@ -432,14 +434,14 @@
 				var show = data.showsresults[i];
 				var entry;
 				entry = document.createElement('li');
-				entry.innerHTML = '<a href="javascript:play("' + show.link + '")"><img src="' + show.imagelink + '" /><div>' + show.showtitle + ' S' + show.season + 'E' + show.episode + '</div></a>';
+				entry.innerHTML = '<a href="javascript:play(\'' + show.link + '\')"><img src="' + show.imagelink + '" /><div>' + show.showtitle + ' S' + show.season + 'E' + show.episode + '</div></a>';
 				document.getElementById('footercontent').appendChild(entry);
 			} 
 			for (var i = 0; i < data.moviesresults.length; i++) { 
 				var movie = data.moviesresults[i];
 				var entry;
 				entry = document.createElement('li');
-				entry.innerHTML = '<a href="javascript:play("' + movie.link + '")"><img src="' + movie.imagelink + '" /></a><div>' + movie.movietitle + '</div>';
+				entry.innerHTML = '<a href="javascript:play(\'' + movie.link + '\')"><img src="' + movie.imagelink + '" /></a><div>' + movie.movietitle + '</div>';
 				document.getElementById('footercontent').appendChild(entry);
 			} 
 		}
