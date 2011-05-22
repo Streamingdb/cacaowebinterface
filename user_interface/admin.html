@@ -213,12 +213,22 @@
 							<label for="title" id="smalltitle"></label>
 							<input type="text" name="title" id="title" tabindex="2" size="50" />
 						</p>
+						<div id="yeardetails" style="display:none">
+							<p>
+								<label for="year" id="smallyear"></label>
+								<input id="year" type="text" maxlength="4" size="4"  type="number" min="1900" max="2100"/>
+							</p>
+						</div>
 						<div id="tvshowdetails" style="display:none">
 							<small><span id="addashow"></span></small>
+						</div>
+						<div id="seasondetails" style="display:none">
 							<p>
 								<label for="season" id="smallseason"></label>
 								<input id="season" type="text" maxlength="2" size="2"  type="number" min="1" max="20"/>
 							</p>
+						</div>
+						<div id="episodedetails" style="display:none">
 							<p>
 								<label for="episode" id="smallepisode"></label>
 								<input id="episode" type="text" maxlength="2" size="2" type="number" min="1" />
@@ -266,6 +276,8 @@
 				break;
 			case 'pl':
 				break;
+			case 'es':
+				break;
 			default:
 				lang = 'en';
 		}
@@ -298,6 +310,7 @@
 		document.getElementById('smalltitle').innerHTML = langstrings[lang]['smalltitle'];
 		document.getElementById('smallseason').innerHTML = langstrings[lang]['smallseason'];
 		document.getElementById('smallepisode').innerHTML = langstrings[lang]['smallepisode'];
+		document.getElementById('smallyear').innerHTML = langstrings[lang]['smallyear'];
 		document.getElementById('submit').innerHTML = langstrings[lang]['submit'];
 		document.getElementById('h2cacaowebstatus').innerHTML = langstrings[lang]['h2cacaowebstatus'];
 		document.getElementById('cacaowebactions').innerHTML = langstrings[lang]['cacaowebactions'];
@@ -656,7 +669,7 @@
 				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') { // si le fichier est une vidéo, on envoie au service de transcodage
 					/* uploadid: some unique number for the user to track the progress of the upload */
 					var uploadid = Math.floor(Math.random() * 1000000000);
-					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&year=' + $('#year').val();
 					if ($('#paidcontent').is(':checked')) {
 						var previewallowed = 0;
 						if ($('#preview').is(':checked')) { previewallowed = 1; }
@@ -680,7 +693,7 @@
 								alert("upload failed");
 							} else {
 								/* we upload the metadata of the file to the central server so these metadata can be incorporated in cacaoweb search engine */
-								var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&numberofcredits=' + $('#numberofcredits').val();
+								var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&year=' + $('#year').val() + '&numberofcredits=' + $('#numberofcredits').val();
 								includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 							}
 						}
@@ -694,7 +707,7 @@
 				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
 					var pos1 = url.indexOf('v=');
 					var megavideoid = url.substr(pos1 + 2);
-					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&year=' + $('#year').val();
 					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 					$.ajax({
 						url: "remoteupload?provider=0&videoid=" + megavideoid,
@@ -703,7 +716,7 @@
 				} else if (url.indexOf('videobb.com/video/') > -1) { // videobb
 					var pos1 = url.lastIndexOf('/');
 					var videobbid = url.substr(pos1 + 1);
-					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
+					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&year=' + $('#year').val();
 					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 					$.ajax({
 						url: "remoteupload?provider=1&videoid=" + videobbid,
@@ -747,10 +760,14 @@
 			if (newcontenttype == 'tvshow') {
 				document.getElementById('smalltitle').innerHTML = langstrings[lang]['smallshowtitle'];
 				$('#tvshowdetails').show("fast");
+				$('#seasondetails').show("fast");
+				$('#episodedetails').show("fast");
+				$('#yeardetails').hide("fast");
 				var contentlang = $('#language').val();
 				if (contentlang == 'fr' || contentlang == 'en') {
 					$('#addashow').html(langstrings[lang]['addashow']);
 					$('#addashow').show();
+					/* calls back getshowscallback() */
 					includeScript('http://uploads.cacaoweb.org/getshows.php?lang=' + contentlang, 'getshows');
 				} else {
 					$('#title').remove();
@@ -763,7 +780,22 @@
 				$('#title').remove();
 				var input = $("<input></input>").attr('type', 'text').attr('id', 'title').attr('size', '40');
 				$('#titlefield').append(input);
-				$('#tvshowdetails').hide("fast");
+				if (newcontenttype == 'anime') {
+					$('#tvshowdetails').hide("fast");
+					$('#seasondetails').hide("fast");
+					$('#episodedetails').show("fast");
+					$('#yeardetails').hide("fast");
+				} else if (newcontenttype == 'movie') {
+					$('#tvshowdetails').hide("fast");
+					$('#seasondetails').hide("fast");
+					$('#episodedetails').hide("fast");
+					$('#yeardetails').show("fast");
+				} else {
+					$('#tvshowdetails').hide("fast");
+					$('#seasondetails').hide("fast");
+					$('#episodedetails').hide("fast");
+					$('#yeardetails').hide("fast");
+				}
 			}
 		}
 		$('#contenttype').change(function() {
