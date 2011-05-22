@@ -78,6 +78,7 @@ langstrings['en']['numberofcreditssmall'] = "<small>Credits required</small>";
 
 /** 
 Spanish
+Carlos Precioso    kalprestito@yahoo.es
 */
 
 langstrings['es'] = new Array();
