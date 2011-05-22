@@ -458,7 +458,7 @@ langstrings['es']['smalltitle'] = '<small>Título</small>';
 langstrings['es']['smallshowtitle'] = '<small>Mostrar título</small>';
 langstrings['es']['smallseason'] = '<small>Temporada</small>';
 langstrings['es']['smallepisode'] = '<small>Episodio</small>';
-langstrings['es']['smallyear'] = '<small>Year</small>';
+langstrings['es']['smallyear'] = '<small>Año</small>';
 langstrings['es']['addashow'] = '¿Tu programa no está en la lista? Añádelo <a href="http://forum.cacaoweb.org/index.php?topic=678.0"><u>aquí</u></a>';
 langstrings['es']['submit'] = 'Subir';
 langstrings['es']['h2cacaowebstatus'] = 'estado de cacaoweb';
