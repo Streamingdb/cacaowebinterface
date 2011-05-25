@@ -110,19 +110,20 @@
             dispatcher.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
         }
         private function completeHandler(event:Event):void {
+			trace("subtitles download completed");
             var loader:URLLoader = URLLoader(event.target);
 			var paramsloader:Array = loaders[loader];
 			var language:String = paramsloader[0];
 			var offset:Number = paramsloader[1];
 			delete loaders[loader];
 			subtitles[language] = parseSubtitlesData(loader.data, offset);
-			
+			trace("subtitles length = " + subtitles[language].length);
         }
         private function openHandler(event:Event):void {
             trace("openHandler: " + event);
         }
         private function progressHandler(event:ProgressEvent):void {
-            trace("progressHandler loaded:" + event.bytesLoaded + " total: " + event.bytesTotal);
+            //trace("progressHandler loaded:" + event.bytesLoaded + " total: " + event.bytesTotal);
         }
         private function securityErrorHandler(event:SecurityErrorEvent):void {
             trace("securityErrorHandler: " + event);
