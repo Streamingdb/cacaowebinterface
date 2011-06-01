@@ -40,18 +40,18 @@
 
 			languagestrings['it'] = new Dictionary();
 			languagestrings['it']['cacaowebnotrunning'] = "cacaoweb non è in esecuzione";
-			languagestrings['it']['cacaowebdownload'] = "Scaricarlo";
-			languagestrings['it']['notloggedin'] = "You are not logged in";
-			languagestrings['it']['myaccount'] = "My account";
-			languagestrings['it']['cost'] = "This file costs ";
-			languagestrings['it']['credits'] = " credits";
-			languagestrings['it']['buy'] = "Buy now";
-			languagestrings['it']['notenoughcredits'] = "You don't have enough credits, go to your account to add credits";
-			languagestrings['it']['watchpreview'] = "Or you can watch a preview by hitting the play button";
-			languagestrings['it']['errorreadingfile'] = "c'è stato un errore guardare questo flusso";
-			languagestrings['it']['watchedwithcacaoweb'] = "guardato con cacaoweb<br><a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
-			languagestrings['it']['errorStreamNotFound'] = "error StreamNotFound (report it on http://forum.cacaoweb.org)";
-			languagestrings['it']['errorFileStructureInvalid'] = "error FileStructureInvalid (report it on http://forum.cacaoweb.org)";
+			languagestrings['it']['cacaowebdownload'] = "Lancialo o Scaricalo da";
+			languagestrings['it']['notloggedin'] = "Non sei loggato";
+			languagestrings['it']['myaccount'] = "Mio Account";
+			languagestrings['it']['cost'] = "Questo File Costa ";
+			languagestrings['it']['credits'] = " crediti";
+			languagestrings['it']['buy'] = "Compralo Adesso";
+			languagestrings['it']['notenoughcredits'] = "Non hai abbastanza crediti, vai al tuo account per acquistarli";
+			languagestrings['it']['watchpreview'] = "O puoi vedere un anteprima cliccando il tasto Play";
+			languagestrings['it']['errorreadingfile'] = "C'è stato un errore guardare guardando questo video";
+			languagestrings['it']['watchedwithcacaoweb'] = "Guardato con cacaoweb<br><a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
+			languagestrings['it']['errorStreamNotFound'] = "errore StreamNotFound (segnalalo su http://forum.cacaoweb.org)";
+			languagestrings['it']['errorFileStructureInvalid'] = "errore FileStructureInvalid (segnalalo su http://forum.cacaoweb.org)";
 			languagestrings['it']['filetimeout'] = "cacaoweb non riesce a trovare il video.<br>Ricarica la pagina per riprovare!";
 
 			languagestrings['pl'] = new Dictionary();
