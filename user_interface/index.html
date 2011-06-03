@@ -129,6 +129,7 @@
 					</div>
 				</div>
 			</div>
+			<div id="adzone" class="center"></div>
 		</div>
 		<div class="footer_push"></div><!-- needed for sticky footer -->
 		
@@ -176,6 +177,9 @@
 		document.getElementById('devmenu').innerHTML = langstrings[lang]['developers'];
 		document.getElementById('moneymenu').innerHTML = langstrings[lang]['makemoney'];
 		
+		if (lang == 'it') {
+			document.getElementById('adzone').innerHTML = 'Per La Miglior Fonte Gratuita di Video Cacaoweb in Italia, Vai a <a href="http://streamingdb.net/">Streamingdb.net</a>';
+		}
 		
 		var currentsearchpos = 0;
 		var currentsearchterm = '';
