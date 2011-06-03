@@ -114,11 +114,11 @@ body {
 	clear: left;
 	padding-top: 10px;
 }
-.footercontent li a {
+.footercontent li a, #sidebar_inner li a {
 	color: #ccc;
 	text-decoration: none;
 }
-.footercontent li img {
+.footercontent li img, #sidebar_inner li img {
 	width: 140px;
 	height: 100px;
 	margin-bottom: 3px;
@@ -127,7 +127,11 @@ body {
 	opacity: 0.8; 
 	filter: alpha(opacity=80);
 }
-.footercontent li img:hover {
+#sidebar_inner li img {
+	width: 100px;
+	height: 70px;
+}
+.footercontent li img:hover, #sidebar_inner li img:hover {
 	opacity: 1; 
 	filter:alpha(opacity=100);
 }

@@ -101,7 +101,7 @@ div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 .linkdisplay div {
 	float: left;
 	clear: left;
-	margin: 10px;
+	margin: 5px;
 }
 .linkdisplay textarea, input {
 	font-size: 11px;
@@ -144,14 +144,12 @@ div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 	text-align: center;
 }
 #maincontent {
-	padding-top: 20px;
 	width: 90%;
 	margin: 20px auto;
 }
 #mainleftcolumn {
 	float: left;
 	width: 530px;
-	margin-top: 30px;
 }
 #mainrightcolumn {
 	float: right;
@@ -174,6 +172,9 @@ div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 	color: #fff;
 }
 
+#uploadviewsstatistics {
+	margin-bottom: 10px;
+}
 
 label { display:block; }
 input.text { margin-bottom:12px; width:95%; padding: .4em; }
