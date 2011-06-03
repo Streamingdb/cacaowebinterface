@@ -5,6 +5,7 @@
 	<meta charset=utf-8 />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="css/buttons.css" />
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-darkness/jquery-ui.css" />
 </head>
 <body>
@@ -16,6 +17,8 @@
 	<div id="maincontent">
 		
 		<div id="mainleftcolumn">
+		
+			<h2><a href='index.html' data-icon='&#9756' class='button blue round glass' id="backmainpage">Back</a></h2>
 			
 			<div class="authbox" style="display:none">
 				<div class="auth-notification"></div>
@@ -66,7 +69,6 @@
 				</div>
 				<div id="createuser-form" title="">
 					<p class="validateTips"></p>
-
 					<form>
 					<fieldset>
 						<label for="name"></label>
@@ -87,6 +89,8 @@
 		
 			<div id="uploads">
 				<h2 id="h2myuploads"></h2>
+				<div id="uploadviewsstatistics">
+				</div>
 				<div id="myuploads" class="myuploads">
 				</div>
 				<div id="uploadslistnavigation">
@@ -249,8 +253,9 @@
 			<h2 id="cacaowebactions"></h2>
 			<p><a href="javascript:quit()" id="turnoff"></a></p>
 			<p><a href="javascript:uninstall()" id="uninstall"></a></p>
-		
-			<h2><a href="index.html" id="backmainpage"></a></h2>
+			
+			
+			<h2><a href='http://cacaoweb.org/makemoney.html' data-icon='€€€' class='button pink round glass' id="howtomakemoney">How to make money?</a></h2>
 			
 		</div>
 	</div>
@@ -324,6 +329,7 @@
 		document.getElementById('numberofcreditssmall').innerHTML = langstrings[lang]['numberofcreditssmall'];
 		document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
 		document.getElementById('submitpaypal').innerHTML = langstrings[lang]['buywithpaypal'];
+		document.getElementById('howtomakemoney').innerHTML = langstrings[lang]['howtomakemoney'];
 			
 	</script>
 	
@@ -515,8 +521,9 @@
 				var rowprogress = '<div class="progress"><div class="uploadprogressbar"></div></div>';
 				var rowdelete = "<div class='delete'><a class='deletebutton' href='#' title='delete' onclick=\"removePublishedFile('" + fileid + "')\"></a></div>";
 				var rowshowlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\">" + langstrings[lang]['showlink'] + "</a></div>";
-				var rowlinks = "<div class='linkdisplay' style='display:none'><div>" + langstrings[lang]['smalllink'] + "</div><input name=\"link\" id=\"link\" size=\"80\"></input><div>" + langstrings[lang]['smallembed'] + "</div><textarea name=\"embed\" id=\"embed\" rows=\"4\" cols=\"60\"></textarea></div>";
+				var rowlinks = "<div class='linkdisplay' style='display:none'><div>" + langstrings[lang]['smalllink'] + "</div><input name=\"link\" id=\"link\" size=\"80\"></input><div><small>" + langstrings[lang]['smallembed'] + "</small></div><textarea name=\"embed\" id=\"embed\" rows=\"4\" cols=\"60\"></textarea><div><small>Web</small> " + langstrings[lang]['smalllink'] + "</div><input name=\"externallink\" id=\"externallink\" size=\"80\"></input></div>";
 				var link = 'http://127.0.0.1:4001/?f=' + fileid;
+				var externallink = 'http://watch.cacaoweb.org/?play=1&videoid=' + fileid;
 				var embed = '<object width="640" height="360"><param name="allowFullScreen" value="true" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="http://cacaoweb.org/player.swf" /><embed src="http://cacaoweb.org/player.swf" flashvars="file=' + link + '" width="640" height="360" allowFullScreen="true" /></object>';
 				var div = document.createElement("div"); // obligé de créer un objet dans le DOM pour que la progressbar fonctionne
 				div.className = "row";
@@ -525,10 +532,11 @@
 				div.innerHTML = rowtitle  + rowprogress + rowdelete + rowshowlink + rowlinks;
 				$("#myuploads").append(div);
 				if (fileid != '') {
-					$(div).find(".linkdisplay > input").val(link);
+					$(div).find(".linkdisplay > #link").val(link);
+					$(div).find(".linkdisplay > #externallink").val(externallink);
 					$(div).find(".linkdisplay > textarea").val(embed);
 				}
-				if (progress == -1) { progress = 100; }; // TODO: a enlever car ce doit etre calcule par moi meme 
+				if (progress == -1) { progress = 100; }; // TODO: a enlever car ça doit être calculé par moi même 
 				$(div).find(".uploadprogressbar").progressBar(progress, { showText: false, boxImage: 'progressbar.gif', barImage: { 0:	'progressbg_red.gif', 30: 'progressbg_orange.gif', 70: 'progressbg_green.gif' }});
 			}
 		
@@ -837,12 +845,13 @@
 		var tcpnattype;
 		
 		function updatestatus() {
+			var erroricon = "<a href='index.html' data-icon='&#9888' class='button pink back glass icon'>Warning</a>";
 			if (dhtnetworkstatus == 'NATNotCone') {
-				$("#cacaowebstatus").html(langstrings[lang]['natnotcone']);
+				$("#cacaowebstatus").html(erroricon + langstrings[lang]['natnotcone']);
 			} else if (dhtnetworkstatus == 'DHTNotConnected') {
-				$("#cacaowebstatus").html(langstrings[lang]['notconnected']);
+				$("#cacaowebstatus").html(erroricon + langstrings[lang]['notconnected']);
 			} else if (tcpnattype == 'Bad') {
-				$("#cacaowebstatus").html(langstrings[lang]['natnotp2pfriendly']);
+				$("#cacaowebstatus").html(erroricon + langstrings[lang]['natnotp2pfriendly']);
 			} else {
 				$("#cacaowebstatus").html(langstrings[lang]['workingfine']);
 			}
@@ -1071,13 +1080,14 @@
 				}, 500);
 			}
 		}
-		function isloggedincallback(result, user, money) {
+		function isloggedincallback(result, user, money, freevidshits, freevidscreditsearned, paidvidscreditsearned) {
 			if (result == 1) {
 				username = user;
 				money = money;
 				$(".auth-buttons").hide();
 				$(".auth-notification").html(langstrings[lang]['welcome']  + user + " ! " + langstrings[lang]['mymoney'].replace('{1}', money));
 				$(".auth-notification").css('font-size', '12px');
+				$("#uploadviewsstatistics").html('<p>' + langstrings[lang]['statistics'] + ' :</p><p><i>' + langstrings[lang]['freeviewsearnings'] + ' : ' + freevidscreditsearned + ' credits (' + freevidshits + ' ' + langstrings[lang]['views'] + ')</i></p><p><i>' + langstrings[lang]['paidviewsearnings'] + ' : ' + paidvidscreditsearned + ' credits</i></p>');
 			} else {
 				$(".auth-buttons").show();
 				$(".auth-notification").text(langstrings[lang]['notloggedin']);
