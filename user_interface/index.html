@@ -10,7 +10,6 @@
 
 	<noscript><div class="warning">This page will NOT work because Javascript is not enabled</div></noscript>
 	
-	<div id="fb-root"></div>
 	<script>
 	
 		/** language management 
@@ -61,6 +60,7 @@
 			</div>
 			<ul id="top-toolbar">
 				<li id="auth-notification"></li>
+				<li><a href="admin.html?buycredits" class="inset icon i-heart"><span id="donate"></span><span class="i"></span></a></li>
 				<li id="loginbutton"><a onclick="keepDropdownMenu(event, this)" class="outset"><span id="logintext"></span><span class="i"></span></a>
 					<ul>
 						<div class="loginarea">
@@ -170,6 +170,7 @@
 		document.getElementById('loginbtn').value = langstrings[lang]['login'].toLowerCase();
 		document.getElementById('registerbtn').innerHTML = langstrings[lang]['register'];
 		document.getElementById('share').innerHTML = langstrings[lang]['share'];
+		document.getElementById('donate').innerHTML = langstrings[lang]['donate'];
 		document.getElementById('more').innerHTML = langstrings[lang]['more'];
 		document.getElementById('helpmenu').innerHTML = langstrings[lang]['help'];
 		document.getElementById('forummenu').innerHTML = langstrings[lang]['forum'];
