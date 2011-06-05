@@ -500,6 +500,7 @@
 		
 		/** initialisation, check the url to know whether some video has to be played */
 		function init() {
+			includeScript('http://search.cacaoweb.org/featured?lang=' + lang, 'featuredscript');
 			var url = window.location.href;
 			if (url.indexOf("play=") > -1) {
 				/* we need to play a video straight away */
@@ -517,8 +518,6 @@
 				} else if (url.indexOf("provider=cacao") > -1) {
 					play("http://127.0.0.1:4001/" + videoid);
 				}
-			} else {
-				includeScript('http://search.cacaoweb.org/featured?lang=' + lang, 'featuredscript');
 			}
 		}
 		

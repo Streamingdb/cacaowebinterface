@@ -68,6 +68,7 @@ body {
 	background: #313131;
 	color: #efefef;
 	font: 12px Arial, Helvetica, Geneva, sans-serif;
+	list-style-type: none;
 }
 .clearfix {
 	display: block;
