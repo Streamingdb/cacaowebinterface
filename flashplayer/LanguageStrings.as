@@ -7,6 +7,7 @@
 		
 		public function LanguageStrings() {
 			languagestrings['en'] = new Dictionary();
+			languagestrings['en']['pleasewait'] = "Please wait...";
 			languagestrings['en']['cacaowebnotrunning'] = "cacaoweb is not installed";
 			languagestrings['en']['cacaowebdownload'] = "Download";
 			languagestrings['en']['notloggedin'] = "You are not logged in";
@@ -22,6 +23,7 @@
 			languagestrings['en']['filetimeout'] = "cacaoweb could not find this video.<br>Please try again later.";
 			
 			languagestrings['es'] = new Dictionary();
+			languagestrings['es']['pleasewait'] = "Please wait...";
 			languagestrings['es']['cacaowebnotrunning'] = "cacaoweb no está instalado";
 			languagestrings['es']['cacaowebdownload'] = "Descargar";
 			languagestrings['es']['notloggedin'] = "No has iniciado sesión";
@@ -37,6 +39,7 @@
 			languagestrings['es']['filetimeout'] = "cacaoweb no pudo encontrar este vídeo.<br>Por favor, prueba más tarde.";
 
 			languagestrings['fr'] = new Dictionary();
+			languagestrings['fr']['pleasewait'] = "Merci de patienter...";
 			languagestrings['fr']['cacaowebnotrunning'] = "cacaoweb n'est pas installé";
 			languagestrings['fr']['cacaowebdownload'] = "Télécharger";
 			languagestrings['fr']['notloggedin'] = "Vous ne vous êtes pas identifié";
@@ -52,6 +55,7 @@
 			languagestrings['fr']['filetimeout'] = "cacaoweb n'a pas pu trouver cette vidéo.<br>Vous pouvez réessayer ultérieurement.";
 
 			languagestrings['it'] = new Dictionary();
+			languagestrings['it']['pleasewait'] = "Please wait...";
 			languagestrings['it']['cacaowebnotrunning'] = "cacaoweb non è in esecuzione";
 			languagestrings['it']['cacaowebdownload'] = "Lancialo o Scaricalo da";
 			languagestrings['it']['notloggedin'] = "Non sei loggato";
@@ -68,6 +72,7 @@
 			languagestrings['it']['filetimeout'] = "cacaoweb non riesce a trovare il video.<br>Ricarica la pagina per riprovare!";
 
 			languagestrings['pl'] = new Dictionary();
+			languagestrings['pl']['pleasewait'] = "Please wait...";
 			languagestrings['pl']['cacaowebnotrunning'] = "cacaoweb nie jest zainstalowany";
 			languagestrings['pl']['cacaowebdownload'] = "Pobierz";
 			languagestrings['pl']['notloggedin'] = "Nie jesteś zalogowany";
