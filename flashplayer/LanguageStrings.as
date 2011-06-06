@@ -23,7 +23,7 @@
 			languagestrings['en']['filetimeout'] = "cacaoweb could not find this video.<br>Please try again later.";
 			
 			languagestrings['es'] = new Dictionary();
-			languagestrings['es']['pleasewait'] = "Please wait...";
+			languagestrings['es']['pleasewait'] = "Espera, por favor...";
 			languagestrings['es']['cacaowebnotrunning'] = "cacaoweb no está instalado";
 			languagestrings['es']['cacaowebdownload'] = "Descargar";
 			languagestrings['es']['notloggedin'] = "No has iniciado sesión";
