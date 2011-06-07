@@ -374,7 +374,7 @@ langstrings['pl']['smalltitle'] = '<small>Tytuł</small>';
 langstrings['pl']['smallshowtitle'] = '<small>Pokaż tytuł</small>';
 langstrings['pl']['smallseason'] = '<small>Sezon</small>';
 langstrings['pl']['smallepisode'] = '<small>Odcinek</small>';
-langstrings['pl']['smallyear'] = '<small>Year</small>';
+langstrings['pl']['smallyear'] = '<small>Rok</small>';
 langstrings['pl']['submit'] = 'Wyślij';
 langstrings['pl']['h2cacaowebstatus'] = 'Status cacaoweb';
 langstrings['pl']['cacaowebactions'] = 'Akcje cacaoweb';
@@ -400,19 +400,19 @@ langstrings['pl']['register'] = "Zarejestruj się";
 langstrings['pl']['paidcontentsmall'] = "<small>Płatna zawartość</small>";
 langstrings['pl']['previewsmall'] = "<small>Podgląd dostępny</small>";
 langstrings['pl']['numberofcreditssmall'] = "<small>Wymaga kredytów:</small>";
-langstrings['pl']['freeviewsearnings'] = "Free views earnings";
-langstrings['pl']['paidviewsearnings'] = "Paid views earnings";
-langstrings['pl']['views'] = "views";
-langstrings['pl']['statistics'] = "Statistics";
+langstrings['pl']['freeviewsearnings'] = "Zarobki zawartości darmowej";
+langstrings['pl']['paidviewsearnings'] = "Zarobki zawartości płatnej";
+langstrings['pl']['views'] = "odsłon";
+langstrings['pl']['statistics'] = "Statystyki";
 langstrings['pl']['share'] = "Poleć";
-langstrings['pl']['donate'] = "Donate";
+langstrings['pl']['donate'] = "Dotuj";
 langstrings['pl']['more'] = "Więcej";
 langstrings['pl']['help'] = "Pomoc";
 langstrings['pl']['forum'] = "Forum";
 langstrings['pl']['download'] = "Pobierz";
 langstrings['pl']['developers'] = "Deweloperzy";
 langstrings['pl']['makemoney'] = "Zarób pieniądze";
-langstrings['pl']['howtomakemoney'] = "How to make money?";
+langstrings['pl']['howtomakemoney'] = "Jak zarobić pieniądze?";
 langstrings['pl']['en'] = "angielski";
 langstrings['pl']['fr'] = "francuski";
 langstrings['pl']['it'] = "włoski";
@@ -427,7 +427,6 @@ langstrings['pl']['cn'] = "chiński";
 langstrings['pl']['hi'] = "hindi";
 langstrings['pl']['jp'] = "japoński";
 langstrings['pl']['vn'] = "wietnamski";
-
 
 
 /** 
