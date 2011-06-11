@@ -40,14 +40,14 @@
 
 			languagestrings['it'] = new Dictionary();
 			languagestrings['it']['cacaowebnotrunning'] = "cacaoweb non è in esecuzione";
-			languagestrings['it']['cacaowebdownload'] = "Lancialo o Scaricalo da";
+			languagestrings['it']['cacaowebdownload'] = "Avvialo o Scaricalo da";
 			languagestrings['it']['notloggedin'] = "Non sei loggato";
 			languagestrings['it']['myaccount'] = "Mio Account";
-			languagestrings['it']['cost'] = "Questo File Costa ";
+			languagestrings['it']['cost'] = "Questo Video Costa ";
 			languagestrings['it']['credits'] = " crediti";
 			languagestrings['it']['buy'] = "Compralo Adesso";
-			languagestrings['it']['notenoughcredits'] = "Non hai abbastanza crediti, vai al tuo account per acquistarli";
-			languagestrings['it']['watchpreview'] = "O puoi vedere un anteprima cliccando il tasto Play";
+			languagestrings['it']['notenoughcredits'] = "Non hai abbastanza crediti, clicca su Mio Account per acquistarli";
+			languagestrings['it']['watchpreview'] = "In alternativa puoi visualizzare un anteprima cliccando il tasto Play";
 			languagestrings['it']['errorreadingfile'] = "C'è stato un errore guardare guardando questo video";
 			languagestrings['it']['watchedwithcacaoweb'] = "Guardato con cacaoweb<br><a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
 			languagestrings['it']['errorStreamNotFound'] = "errore StreamNotFound (segnalalo su http://forum.cacaoweb.org)";
