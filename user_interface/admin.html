@@ -104,6 +104,7 @@
 				<ul>
 					<li><a href="#tabs-browse" id="browse-tab"></a></li>
 					<li><a href="#tabs-remote" id="remote-upload-tab"></a></li>
+					<li><a href="#tabs-ftp" id="ftp-upload-tab"></a></li>
 				</ul>
 				<div id="tabs-browse">
 					<div class="addupload">
@@ -156,6 +157,11 @@
 						<p>
 							<small><div id="examplesupload"></div><br>http://megavideo.com/?v=TUF78DFD<br>http://www.videobb.com/video/uGR5SO24apvI<br>http://myspace.someserver.com/myvideo.mp4</small>
 						</p>
+					</div>
+				</div>
+				<div id="tabs-ftp">
+					<div class="addupload">
+						
 					</div>
 				</div>
 				<div class="filemeta">
@@ -302,6 +308,7 @@
 		document.getElementById('smalllargefile').innerHTML = langstrings[lang]['smalllargefile'];
 		document.getElementById('remote-upload-tab').innerHTML = langstrings[lang]['remoteupload'];
 		document.getElementById('browse-tab').innerHTML = langstrings[lang]['browse'];
+		document.getElementById('ftp-upload-tab').innerHTML = 'FTP';
 		document.getElementById('uploadmeta').innerHTML = langstrings[lang]['uploadmeta'];
 		document.getElementById('movie').innerHTML = langstrings[lang]['movie'];
 		document.getElementById('tvshow').innerHTML = langstrings[lang]['tvshow'];
@@ -677,7 +684,7 @@
 				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') { // si le fichier est une vidéo, on envoie au service de transcodage
 					/* uploadid: some unique number for the user to track the progress of the upload */
 					var uploadid = Math.floor(Math.random() * 1000000000);
-					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&year=' + $('#year').val();
+					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&year=' + $('#year').val();
 					if ($('#paidcontent').is(':checked')) {
 						var previewallowed = 0;
 						if ($('#preview').is(':checked')) { previewallowed = 1; }
