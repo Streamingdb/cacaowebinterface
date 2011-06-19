@@ -161,8 +161,23 @@
 				</div>
 				<div id="tabs-ftp">
 					<div class="addupload">
-						<small><p>You can upload your files through FTP on ftp://ftpupload.cacaoweb.org/ by using your cacaoweb username and password.</p>
-						<p>The files will be extracted and transcoded automatically</p></small>
+						<p>
+							<small id="ftpuploaddescr"></small>
+						</p>
+						<p>
+							<label for="filelink" id="smallfilelink"></label>
+							<input name="filelink" id="filelink" size="50"></input>
+						</p>
+						<p>
+							<label for="numberofcredits" id="numberofcreditssmallftp"></label>
+							<select id="numberofcreditsftp">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="5">5</option>
+								<option value="10">10</option>
+								<option value="20">20</option>
+							</select>
+						</p>
 					</div>
 				</div>
 				<div class="filemeta">
@@ -335,9 +350,13 @@
 		document.getElementById('paidcontentsmall').innerHTML = langstrings[lang]['paidcontentsmall'];
 		document.getElementById('previewsmall').innerHTML = langstrings[lang]['previewsmall'];
 		document.getElementById('numberofcreditssmall').innerHTML = langstrings[lang]['numberofcreditssmall'];
+		document.getElementById('numberofcreditssmallftp').innerHTML = langstrings[lang]['numberofcreditssmall'];
 		document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
 		document.getElementById('submitpaypal').innerHTML = langstrings[lang]['buywithpaypal'];
 		document.getElementById('howtomakemoney').innerHTML = langstrings[lang]['howtomakemoney'];
+		document.getElementById('smallfilelink').innerHTML = langstrings[lang]['smallfilelink'];
+		document.getElementById('ftpuploaddescr').innerHTML = langstrings[lang]['ftpuploaddescr'];
+		
 			
 	</script>
 	
@@ -744,6 +763,10 @@
 				} else { // type inconnu
 					alert(langstrings[lang]['linknotrecognized']);
 				}
+			} else if (selectedtab == 2) { // Metadata upload for previously uploaded files through ftp
+				// TODO
+				
+				
 			}
 		}
 			
