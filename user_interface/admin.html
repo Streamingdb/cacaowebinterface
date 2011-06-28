@@ -28,7 +28,6 @@
 							<p id="numberofcreditstobuy"></p>
 						</div>
 						<div class="form-field clear">
-							<input name="form[radio]" id="radio1" class="radio" type="radio" value="20"><label for="radio1">20 credits = 2€</label>
 							<input name="form[radio]" id="radio1" class="radio" type="radio" value="50" checked="true"><label for="radio1">50 credits = 5€</label>
 							<input name="form[radio]" id="radio2" class="radio" type="radio" value="150"><label for="radio2">150 credits = 10€</label>
 							<input name="form[radio]" id="radio3" class="radio" type="radio" value="400"><label for="radio3">400 credits = 20€</label>
@@ -764,9 +763,9 @@
 					alert(langstrings[lang]['linknotrecognized']);
 				}
 			} else if (selectedtab == 2) { // Metadata upload for previously uploaded files through ftp
-				// TODO
-				
-				
+				/* we upload the metadata of the file to the central server so these metadata can be incorporated in cacaoweb search engine */
+				var actionstring = "filelink=" + $('#filelink').val() + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&year=' + $('#year').val() + '&numberofcredits=' + $('#numberofcreditsftp').val();
+				includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
 			}
 		}
 			
