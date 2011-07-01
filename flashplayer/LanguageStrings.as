@@ -55,17 +55,17 @@
 			languagestrings['fr']['filetimeout'] = "cacaoweb n'a pas pu trouver cette vidéo.<br>Vous pouvez réessayer ultérieurement.";
 
 			languagestrings['it'] = new Dictionary();
-			languagestrings['it']['pleasewait'] = "Please wait...";
+			languagestrings['it']['pleasewait'] = "Attendere prego...";
 			languagestrings['it']['cacaowebnotrunning'] = "cacaoweb non è in esecuzione";
-			languagestrings['it']['cacaowebdownload'] = "Lancialo o Scaricalo da";
-			languagestrings['it']['pleaselogin'] = "Please register or log in to continue";
+			languagestrings['it']['cacaowebdownload'] = "Scaricalo da";
+			languagestrings['it']['pleaselogin'] = "Registrati o fai il Login per continuare";
 			languagestrings['it']['myaccount'] = "Mio Account";
 			languagestrings['it']['cost'] = "Questo File Costa ";
 			languagestrings['it']['credits'] = " crediti";
 			languagestrings['it']['buy'] = "Compralo Adesso";
-			languagestrings['it']['notenoughcredits'] = "Non hai abbastanza crediti, vai al tuo account per acquistarli";
+			languagestrings['it']['notenoughcredits'] = "Non hai abbastanza crediti, vai sul tuo account per acquistarli";
 			languagestrings['it']['watchpreview'] = "O puoi vedere un anteprima cliccando il tasto Play";
-			languagestrings['it']['errorreadingfile'] = "C'è stato un errore guardare guardando questo video";
+			languagestrings['it']['errorreadingfile'] = "C'è stato un errore guardando questo video";
 			languagestrings['it']['watchedwithcacaoweb'] = "Guardato con cacaoweb<br><a href='http://www.cacaoweb.org/'>www.cacaoweb.org</a>";
 			languagestrings['it']['errorStreamNotFound'] = "errore StreamNotFound (segnalalo su http://forum.cacaoweb.org)";
 			languagestrings['it']['errorFileStructureInvalid'] = "errore FileStructureInvalid (segnalalo su http://forum.cacaoweb.org)";
