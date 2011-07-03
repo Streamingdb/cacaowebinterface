@@ -70,6 +70,10 @@ body {
 	font: 12px Arial, Helvetica, Geneva, sans-serif;
 	list-style-type: none;
 }
+a {
+	color: #0098ff;
+	text-decoration: none;
+}
 .clearfix {
 	display: block;
 	height: 1px;
