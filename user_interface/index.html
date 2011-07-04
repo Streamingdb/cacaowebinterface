@@ -103,7 +103,7 @@
 							<img src="img/mag-glass.png" alt="Search">
 						</a>
 					</div>
-					<div id="searchhints"></div>
+					<div id="searchhints" class="message"></div>
 				</div>
 			</div>
 			<div id="searchresultsarea">
@@ -128,6 +128,7 @@
 					</div>
 				</div>
 			</div>
+			<div id="messagezoneplaymode" class="message center"></div>
 			<div id="adzone" class="center"></div>
 		</div>
 		<div class="footer_push"></div><!-- needed for sticky footer -->
@@ -145,7 +146,7 @@
 	<script type="text/javascript">	
 	
 		document.getElementById('mana').innerHTML = langstrings[lang]['management'] + '<span class="i"></span>';
-		document.getElementById('searchhints').innerHTML = langstrings[lang]['searchhints'];
+		document.getElementById('messagezoneplaymode').innerHTML = langstrings[lang]['searchhints'];
 		//document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
 		document.getElementById('smallsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
 		document.getElementById('bigsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
@@ -217,6 +218,8 @@
 		}
 		/** sets the page in play mode */
 		function playmode() {
+			document.getElementById('messagezoneplaymode').style.display = "block";
+		
 			document.getElementById('toplogo').style.display = "block";
 			document.getElementById('topsearchbox').style.display = "block";
 			document.getElementById('mainsearch').style.display = "none";
@@ -228,6 +231,8 @@
 		}
 		/** sets the page in search results mode */
 		function searchmode() {
+			document.getElementById('messagezoneplaymode').style.display = "none";
+		
 			document.getElementById('toplogo').style.display = "block";
 			document.getElementById('topsearchbox').style.display = "block";
 			document.getElementById('mainsearch').style.display = "none";
