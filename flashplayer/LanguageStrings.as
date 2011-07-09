@@ -29,11 +29,11 @@
 			languagestrings['es']['pleasewait'] = "Espera, por favor...";
 			languagestrings['es']['cacaowebnotrunning'] = "cacaoweb no está instalado";
 			languagestrings['es']['cacaowebdownload'] = "Descargar";
-			languagestrings['es']['pleaselogin'] = "Please register or log in to continue";
+			languagestrings['es']['pleaselogin'] = "Regístrate o inicia sesión para continuar";
 			languagestrings['es']['myaccount'] = "Mi cuenta";
-			languagestrings['es']['premium'] = "Watch videos on cacaoweb with no limits, become premium now from only 5€!";
-			languagestrings['es']['premiumbuy'] = "Buy";
-			languagestrings['es']['nopremiumbuy'] = "No, thanks";
+			languagestrings['es']['premium'] = "Ve vídeos en cacaoweb sin límites, hazte premium por sólo 5€.";
+			languagestrings['es']['premiumbuy'] = "Comprar";
+			languagestrings['es']['nopremiumbuy'] = "No por ahora";
 			languagestrings['es']['cost'] = "Este archivo cuesta ";
 			languagestrings['es']['credits'] = " créditos";
 			languagestrings['es']['buy'] = "Compra ahora";
