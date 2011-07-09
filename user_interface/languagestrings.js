@@ -441,7 +441,7 @@ Carlos Precioso    kalprestito@yahoo.es
 langstrings['es'] = new Array();
 langstrings['es']['management'] = 'Mi cacaoweb';
 langstrings['es']['searchplaceholder'] = 'Buscar...';
-langstrings['es']['searchhints'] = '<small>Busca Películas, Programas de TV, Anime o pega un enlace</small>';
+langstrings['es']['searchhints'] = '<small>Busca Películas, Programas de TV, Anime o pega un enlace<br />... o <a href="http://cacaoweb.org/makemoney.html">haz dinero</a>!</small>';
 langstrings['es']['linknotrecognized'] = 'cacaoweb no reconoce este tipo de enlaces';
 langstrings['es']['typeoflinks'] = '<small>Ejemplos:<br>http://megavideo.com/?v=TUF78DFD <br>http://www.videobb.com/video/uGR5SO24apvI<br>http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f</small>';
 langstrings['es']['outdated'] = 'Hay una nueva versión de cacaoweb. Descárgala <a href="http://www.cacaoweb.org/?noredirect=yes">aquí</a>';
