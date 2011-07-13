@@ -69,9 +69,9 @@
 			languagestrings['it']['cacaowebdownload'] = "Scaricalo da";
 			languagestrings['it']['pleaselogin'] = "Registrati o fai il Login per continuare";
 			languagestrings['it']['myaccount'] = "Mio Account";
-			languagestrings['it']['premium'] = "Watch videos on cacaoweb with no limits, become premium now from only 5€!";
-			languagestrings['it']['premiumbuy'] = "Buy";
-			languagestrings['it']['nopremiumbuy'] = "No, thanks";
+			languagestrings['it']['premium'] = "Guarda i video su cacaoweb senza limiti, diventa utente premium ora a partire da soli 5€!";
+			languagestrings['it']['premiumbuy'] = "Acquista";
+			languagestrings['it']['nopremiumbuy'] = "No, grazie";
 			languagestrings['it']['cost'] = "Questo File Costa ";
 			languagestrings['it']['credits'] = " crediti";
 			languagestrings['it']['buy'] = "Compralo Adesso";
