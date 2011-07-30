@@ -888,7 +888,9 @@
 			}
 		}
 		
-		function checkstatus() {
+		
+		/* chain of ajax calls to update anything (i'm trying as a chain because it doesn't work properly) */
+		function checkNetwork() {
 			$.ajax({
 				url: "getdhtnetworkstatus",
 				dataType: "xml",
@@ -897,18 +899,26 @@
 						dhtnetworkstatus = $(this).text();
 						updatestatus();
 					});
-				}
+					getdownloads();
+					getcurrentuploads();
+				},error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("local error in ajax request");
+				} 
 			});
+		}
+		function checkNAT() {
 			$.ajax({
 				url: "gettcpnattype",
 				dataType: "xml",
 				success: function(xml) {
 					$(xml).find("results").each(function() {
 						tcpnattype = $(this).text();
-						updatestatus();
 					});
+					checkNetwork()
 				}
 			});
+		}
+		function checkCacaoReplication() {
 			$.ajax({
 				url: "replicationactivated",
 				dataType: "xml",
@@ -921,17 +931,19 @@
 							$('#h2newupload').html("The upload service is currently offline for maintenance. It will be back soon.");
 						}
 					});
+					checkNAT()
 				}
 			});
+			
 			// TODO: il faudrait ajouter un call pour errors
-			getdownloads();
-			getcurrentuploads();
+
 		}
 		
-		checkstatus();
-		setInterval('checkstatus()', 2000);
 		
-		
+		getdownloads();
+		getcurrentuploads();
+		checkCacaoReplication();
+		setInterval('checkCacaoReplication()', 2000);
 		
 		
 		
