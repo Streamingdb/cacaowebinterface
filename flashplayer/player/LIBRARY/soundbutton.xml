@@ -1,0 +1,200 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="soundbutton" itemID="4b04b536-0000067a" sourceLibraryItemHRef="Symbol 1" sourceLastModified="4294963696" lastModified="1303578887">
+  <timeline>
+    <DOMTimeline name="soundbutton" currentFrame="14">
+      <layers>
+        <DOMLayer name="Layer 5" color="#4FFFFF">
+          <frames>
+            <DOMFrame index="0" duration="14" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="14" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="2">
+                        <fill>
+                          <SolidColor color="#666666"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge strokeStyle="1" edges="!500 -45/199 248"/>
+                    <Edge cubics="!500 -45(;500,-45 199,248 199,248q500 -45 199 248);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 4" color="#FF4FFF">
+          <frames>
+            <DOMFrame index="0" duration="4" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="1.5">
+                        <fill>
+                          <SolidColor color="#666666"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge strokeStyle="1" edges="!729 -9[765 28 764 90!764 90[762 153 724 190"/>
+                    <Edge cubics="!729 -9(;777,40 775,140 724,190q729 -9Q765 28q764 90Q762 153q724 190);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="4" duration="11" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 3" color="#FF800A">
+          <frames>
+            <DOMFrame index="0" duration="9" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="1.5">
+                        <fill>
+                          <SolidColor color="#666666"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge strokeStyle="1" edges="!635 -24[688 26 685 87!685 87[682 150 621 196"/>
+                    <Edge cubics="!635 -24(;705,41 704,134 621,196q635 -24Q688 26q685 87Q682 150q621 196);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="9" duration="6" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 10" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" duration="14" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="1.5">
+                        <fill>
+                          <SolidColor color="#666666"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge strokeStyle="1" edges="!543 -34[603 17 600 87!600 87[596 158 527 203"/>
+                    <Edge cubics="!543 -34(;622,33 620,142 527,203q543 -34Q603 17q600 87Q596 158q527 203);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="14" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" duration="15" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="2">
+                        <fill>
+                          <SolidColor color="#666666"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge strokeStyle="1" edges="!185 140/400 251!400 251/400 -70!400 -70/185 25"/>
+                    <Edge cubics="!185 140(;185,140 400,251 400,251q185 140 400 251);"/>
+                    <Edge cubics="!400 -70(;400,-70 400,251 400,251q400 -70 400 251);"/>
+                    <Edge cubics="!185 25(;185,25 400,-70 400,-70q185 25 400 -70);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 1" color="#4FFF4F">
+          <frames>
+            <DOMFrame index="0" duration="15" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#666666"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle0="1" edges="!176 3|101 3!101 3[78 3 78 32!78 32|78 133!78 133[78 163 101 163!101 163|176 163!176 163[198 163 198 133!198 133|198 32!198 32[198 3 176 3"/>
+                    <Edge cubics="!176 3(;176,3 160,3 160,3q176 3 160 3);"/>
+                    <Edge cubics="!160 3(160,3;160,3 101,3 101,3q160 3 101 3)101,3;"/>
+                    <Edge cubics="!101 163(101,163;101,163 160,163 160,163q101 163 160 163)160,163;"/>
+                    <Edge cubics="!160 163(160,163;160,163 176,163 176,163q160 163 176 163)176,163;"/>
+                    <Edge cubics="!176 163(;191,163 198,152 198,133q176 163Q198 163q198 133);"/>
+                    <Edge cubics="!198 133(;198,133 198,32 198,32q198 133 198 32);"/>
+                    <Edge cubics="!78 32(;78,32 78,133 78,133q78 32 78 133);"/>
+                    <Edge cubics="!78 133(;78,152 86,163 101,163q78 133Q78 163q101 163);"/>
+                    <Edge cubics="!198 32(;198,13 191,3 176,3q198 32Q198 3q176 3);"/>
+                    <Edge cubics="!101 3(;86,3 78,13 78,32q101 3Q78 3q78 32);"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 9" color="#4FFF4F" locked="true" visible="false">
+          <frames>
+            <DOMFrame index="0" duration="15" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#FF6633" alpha="0"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle0="1" edges="!865 -190S1|-5 -190!-5 -190[-40 -190 -40 -155!-40 -155|-40 360!-40 360[-40 395 -5 395!-5 395|865 395!865 395[900 395 900 360!900 360|900 -155!900 -155[900 -190 865 -190"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="actions" color="#808080" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" duration="14" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[stop();
+]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="14" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[stop();]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>
