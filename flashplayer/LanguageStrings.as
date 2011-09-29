@@ -87,10 +87,10 @@
 			languagestrings['pl']['pleasewait'] = "Proszę czekaj...";
 			languagestrings['pl']['cacaowebnotrunning'] = "Cacaoweb nie jest zainstalowany";
 			languagestrings['pl']['cacaowebdownload'] = "Pobierz";
-			languagestrings['pl']['pleaselogin'] = "Please register or log in to continue";
-			languagestrings['pl']['premium'] = "Watch videos on cacaoweb with no limits, become premium now from only 5€!";
-			languagestrings['pl']['premiumbuy'] = "Buy";
-			languagestrings['pl']['nopremiumbuy'] = "No, thanks";
+			languagestrings['pl']['pleaselogin'] = "Zarejestuj się albo zaloguj aby kontynułować";
+			languagestrings['pl']['premium'] = "Zobacz filmy bez limitów, zostań premium za jedyne 5€!";
+			languagestrings['pl']['premiumbuy'] = "Kup";
+			languagestrings['pl']['nopremiumbuy'] = "Nie, dziękuję";
 			languagestrings['pl']['myaccount'] = "Moje konto";
 			languagestrings['pl']['cost'] = "Ten plik kosztuje ";
 			languagestrings['pl']['credits'] = " kredytów";
