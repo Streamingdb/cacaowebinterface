@@ -5,7 +5,7 @@
 	<meta charset=utf-8 />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<link rel="stylesheet" href="style.css" />
-	<link rel="stylesheet" href="buttons.css" />
+	<link rel="stylesheet" href="css/buttons.css" />
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-darkness/jquery-ui.css" />
 </head>
 <body>
@@ -381,6 +381,13 @@
 			script.type = 'text/javascript';
 			htmlDoc.appendChild(script);
 		}
+		function escapestring(str) {
+			if (str) {
+				return str.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g,'\\$1')
+			} else {
+				return str;
+			}
+		}
 		function ajaxrequest(link) {
 			$.ajax({
 				url: link,
@@ -537,8 +544,8 @@
 		  if the row is already here then just the progress bar is updated
 		*/
 		function addtomyuploads(rowid, fileid, title, season, episode, progress) {
-			if ($("div[rowupid=" + rowid + "]").length > 0) {
-				if (progress > -1) { $("div[rowupid=" + rowid + "]").find(".uploadprogressbar").progressBar(progress); }
+			if ($("div[rowupid=" + escapestring(rowid) + "]").length > 0) {
+				if (progress > -1) { $("div[rowupid=" + escapestring(rowid) + "]").find(".uploadprogressbar").progressBar(progress); }
 			} else {
 				var showdetails = '';
 				if (season > 0 && episode > 0) {
@@ -626,8 +633,7 @@
 		/**
 		  after the function "getalluploads()" is called,
 		  the remote server answers with a script that first sets up variables "remoteuploads", "directuploads", "transcodeduploads" 
-		  and then calls the function "getuploadscallback()"
-		  to parse the variable "remoteuploads" and shows the result to the user
+		  and then calls the function "getuploadscallback()" to parse the variable "remoteuploads" and show the result to the user
 		 */
 		var currentuploadposition = 0;
 		function getuploadscallback() {
