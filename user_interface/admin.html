@@ -5,7 +5,7 @@
 	<meta charset=utf-8 />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<link rel="stylesheet" href="style.css" />
-	<link rel="stylesheet" href="css/buttons.css" />
+	<link rel="stylesheet" href="buttons.css" />
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-darkness/jquery-ui.css" />
 </head>
 <body>
@@ -504,8 +504,8 @@
 				}
 			});
 			$.each(downloads, function (i, item) {
-				if ($("div[rowdownid=" + item.videoid + "]").length > 0) {
-					$("div[rowdownid=" + item.videoid + "]").find(".downloadprogressbar").progressBar(item.progress);
+				if ($("div[rowdownid=" + escapestring(item.videoid) + "]").length > 0) {
+					$("div[rowdownid=" + escapestring(item.videoid) + "]").find(".downloadprogressbar").progressBar(item.progress);
 				} else {
 					var rowtitle = '<div class="title">' + item.title + '</div>';
 					var rowprogress = '<div class="progress"><div class="downloadprogressbar"></div></div>';
