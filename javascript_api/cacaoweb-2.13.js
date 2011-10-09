@@ -1,4 +1,12 @@
 ﻿var Cacaoweb = {
+	/** 
+	  the parameters for the player and the javascript API
+	  they can be overwritten by calling the function setup() of this API
+	  */
+	  
+	/**
+	  javascript parameters
+	  */
 	version: "2.13",
 	timerTasksInterval: 0.5,
 	lasttimeclientrunning: 0,
@@ -8,10 +16,15 @@
 	timeStart: (new Date()).getTime(),
 	status: 'Unknown',
 	myFuncs: [],
+	missingpluginimage: 'http://www.cacaoweb.org/images/plugin.png', 
+	
+	/**
+	  player parameters
+	  */
 	videowidth: 640,
 	videoheight: 360,
 	autoplay: true,
-	missingpluginimage: 'http://www.cacaoweb.org/images/plugin.png', 
+	playerurl: "http://127.0.0.1:4001/player.swf",
 	
 	
 	/**
@@ -150,8 +163,8 @@
 		var player = '<object width="' + width + '" height="' + height + '">';
 		player += '<param name="allowFullScreen" value="true" />';
 		player += '<param name="flashvars" value="file=' + link + '" />';
-		player += '<param name="movie" value="http://127.0.0.1:4001/player.swf" />';
-		player += '<embed src="http://127.0.0.1:4001/player.swf" ';
+		player += '<param name="movie" value="' + playerurl + '" />';
+		player += '<embed src="' + playerurl + '" ';
 		player += 'flashvars="file=' + link + '" ';
 		player += 'width="' + width + '" height="' + height + '" allowFullScreen="true" />';
 		player += '</object>';
@@ -196,7 +209,7 @@
 	}
 
 	setup: function(setupoptions) {
-		// TODO: do the setup
+		// TODO: do the setup by overwriting the parameters
 	
 	}
 
