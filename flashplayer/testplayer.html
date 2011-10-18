@@ -1,8 +1,68 @@
 <html>
-<body>
+<head>
 
 
 
+</head>
+<body onload=pageInit() >
+
+
+
+
+<object width="640" height="360">
+	<param name="allowFullScreen" value="true" />
+	<param name="flashvars" value="file=http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UWKL" />
+	<param name="movie" value="player.swf" />
+	<embed src="player.swf" 
+        flashvars="file=http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UWKL" 
+        width="640" height="360" allowFullScreen="true" />
+</object>
+
+
+
+
+<script language="JavaScript"> 
+<!-- 
+// ------- Private vars ------- 
+var jsReady = false; 
+var sfwReady = false;
+
+
+function getSWF(movieName) 
+{ 
+    if (navigator.appName.indexOf("Microsoft") != -1) 
+    { 
+        return window[movieName]; 
+    } 
+    else 
+    { 
+        return document[movieName]; 
+    } 
+} 
+
+
+// ------- functions called by ActionScript ------- 
+// called to check if the page has initialized and JavaScript is available 
+function isReady() 
+{ 
+    return jsReady; 
+} 
+function setSWFIsReady() {
+    swfReady = true;
+    alert("swf is ready");
+}
+
+
+ 
+// called by the onload event of the <body> tag 
+function pageInit() 
+{ 
+    // Record that JavaScript is ready to go. 
+    jsReady = true; 
+} 
+
+//--> 
+</script>
 
 
 
