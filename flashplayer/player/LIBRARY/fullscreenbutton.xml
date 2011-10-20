@@ -2,25 +2,22 @@
   <timeline>
     <DOMTimeline name="fullscreenbutton">
       <layers>
-        <DOMLayer name="button" color="#9933CC" current="true" isSelected="true" autoNamed="false">
+        <DOMLayer name="button" color="#9933CC" autoNamed="false">
           <frames>
             <DOMFrame index="0" duration="9" keyMode="9728">
               <elements>
-                <DOMShape selected="true" isFloating="true">
-                  <matrix>
-                    <Matrix a="0.880020141601562" d="0.800018310546875" tx="-1.4" ty="-1.15"/>
-                  </matrix>
+                <DOMShape>
                   <fills>
                     <FillStyle index="1">
                       <SolidColor color="#00FFFF" alpha="0"/>
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle1="1" edges="!-192 -225S2/308 -225!308 -225/308 275!308 275/-192 275!-192 275/-192 -225"/>
-                    <Edge cubics="!-192 -225(;-192,-225 308,-225 308,-225q-192 -225 308 -225);"/>
-                    <Edge cubics="!308 275(;308,275 -192,275 -192,275q308 275 -192 275);"/>
-                    <Edge cubics="!308 -225(;308,-225 308,275 308,275q308 -225 308 275);"/>
-                    <Edge cubics="!-192 275(;-192,275 -192,-225 -192,-225q-192 275 -192 -225);"/>
+                    <Edge fillStyle1="1" edges="!243 -203/243 197!243 197/-197 197!-197 197/-197 -203!-197 -203/243 -203"/>
+                    <Edge cubics="!-197 -203(;-197,-203 243,-203 243,-203q-197 -203 243 -203);"/>
+                    <Edge cubics="!243 197(;243,197 -197,197 -197,197q243 197 -197 197);"/>
+                    <Edge cubics="!243 -203(;243,-203 243,197 243,197q243 -203 243 197);"/>
+                    <Edge cubics="!-197 197(;-197,197 -197,-203 -197,-203q-197 197 -197 -203);"/>
                   </edges>
                 </DOMShape>
               </elements>
@@ -34,14 +31,14 @@
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle1="1" edges="!248 215|-192 215!-192 215|-192 -225!-192 -225|248 -225!248 -225|248 215"/>
+                    <Edge fillStyle1="1" edges="!248 -225|248 215!248 215|-192 215!-192 215|-192 -225!-192 -225|248 -225"/>
                   </edges>
                 </DOMShape>
               </elements>
             </DOMFrame>
           </frames>
         </DOMLayer>
-        <DOMLayer name="fullscreen" color="#4FFF4F" locked="true" autoNamed="false">
+        <DOMLayer name="fullscreen" color="#4FFF4F" locked="true" current="true" isSelected="true" autoNamed="false">
           <frames>
             <DOMFrame index="0" duration="9" keyMode="9728">
               <Actionscript>
@@ -59,7 +56,7 @@
                     </StrokeStyle>
                   </strokes>
                   <edges>
-                    <Edge strokeStyle="1" edges="!219 -59S4/219 -86!219 -86/219 -177!219 -177/132 -86!132 -86/90 -42!93 -177/99 -177!99 -177/219 -177!6 -111/-165 -111!-165 -111/-165 153!-165 153/180 153!180 153/180 26"/>
+                    <Edge strokeStyle="1" edges="!93 -177S4/99 -177!99 -177/219 -177!219 -177/219 -86!219 -86/219 -59!219 -177/132 -86!132 -86/90 -42!6 -111/-165 -111!-165 -111/-165 153!-165 153/180 153!180 153/180 26"/>
                     <Edge cubics="!-165 -111(;-165,-111 -165,153 -165,153q-165 -111 -165 153);"/>
                     <Edge cubics="!-165 153(;-165,153 180,153 180,153q-165 153 180 153);"/>
                     <Edge cubics="!180 153(;180,153 180,26 180,26q180 153 180 26);"/>
@@ -87,7 +84,7 @@
                     </StrokeStyle>
                   </strokes>
                   <edges>
-                    <Edge strokeStyle="1" edges="!93 -177/99 -177!99 -177/219 -177!219 -177/132 -86!132 -86/90 -42!219 -177/219 -86!219 -86/219 -59!6 -111/-165 -111!-165 -111/-165 153!-165 153/180 153!180 153/180 26"/>
+                    <Edge strokeStyle="1" edges="!93 -177/99 -177!99 -177/219 -177!219 -177/219 -86!219 -86/219 -59!219 -177/132 -86!132 -86/90 -42!6 -111/-165 -111!-165 -111/-165 153!-165 153/180 153!180 153/180 26"/>
                     <Edge cubics="!-165 -111(;-165,-111 -165,153 -165,153q-165 -111 -165 153);"/>
                     <Edge cubics="!-165 153(;-165,153 180,153 180,153q-165 153 180 153);"/>
                     <Edge cubics="!180 153(;180,153 180,26 180,26q180 153 180 26);"/>

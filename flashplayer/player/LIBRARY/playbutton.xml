@@ -1,8 +1,8 @@
 <DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="playbutton" itemID="4afbad49-0000025d" sourceLibraryItemHRef="Symbol 1" sourceLastModified="4294963696" lastModified="1282829859" lastUniqueIdentifier="3">
   <timeline>
-    <DOMTimeline name="playbutton">
+    <DOMTimeline name="playbutton" currentFrame="9">
       <layers>
-        <DOMLayer name="buttonlayer" color="#4FFFFF" locked="true" current="true" isSelected="true" autoNamed="false">
+        <DOMLayer name="buttonlayer" color="#4FFFFF" locked="true" autoNamed="false">
           <frames>
             <DOMFrame index="0" duration="10" keyMode="9728">
               <elements>
@@ -13,14 +13,14 @@
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle1="1" edges="!370 280|-213 280!-213 280|-213 -268!-213 -268|370 -268!370 -268|370 280"/>
+                    <Edge fillStyle1="1" edges="!370 -268|370 280!370 280|-213 280!-213 280|-213 -268!-213 -268|370 -268"/>
                   </edges>
                 </DOMShape>
               </elements>
             </DOMFrame>
           </frames>
         </DOMLayer>
-        <DOMLayer name="playlayer" color="#4FFF4F" autoNamed="false">
+        <DOMLayer name="playlayer" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
           <frames>
             <DOMFrame index="0" duration="4" name="off" labelType="name" keyMode="9728">
               <Actionscript>
