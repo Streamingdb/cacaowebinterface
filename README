@@ -2,14 +2,13 @@
   
   The files present in this project are all part of the cacaoweb project.
 
-  You need Firefox to view and test the files index.html and admin.html properly. Other browser will not work for testing purposes. 
   
   
   
   Directories :
   
     user_interface : 
-	all the files used in the web user interface. The user interface can mostly be tested independently of the cacaoweb program, this is valid for the file index.html which is the main page of the user interface. The admin.html page, which is the management area, is yet testable independently without some minor annoyances.
+	all the files used in the web user interface. The user interface can mostly be tested independently of the cacaoweb program, this is valid for the file index.html which is the main page of the user interface. The admin.html page, which is the management area, is yet testable independently without some minor annoyances. You need Firefox to view and test the files index.html and admin.html properly. Other browser will not work for testing purposes.
 	
     flashplayer :
 	the flash player. It would be good to have the player.fla file under some kind of textual format. Upgrading the project to Flash CS5 should fix this, currently this project is authored with Flash CS4.
