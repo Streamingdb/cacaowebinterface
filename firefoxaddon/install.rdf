@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>cacaoweb@cacaoweb.org</em:id>
+		<em:name>cacaoweb</em:name>
+		<em:version>1.0.18</em:version>
+		<em:description>Watch Megavideo and Videobb without time limit</em:description>
+		<em:creator>http://www.cacaoweb.org/</em:creator>
+		<em:iconURL>chrome://cacaoweb/skin/tv-64.png</em:iconURL>
+		<em:homepageURL>http://www.cacaoweb.org/addon/</em:homepageURL>
+	
+	
+		<em:localized>
+			<Description>
+				<em:locale>fr-FR</em:locale>
+				<em:name>cacaoweb</em:name>
+				<em:description>
+					Supprimez la limite de temps de Megavideo
+				</em:description>
+			</Description>
+		</em:localized>
+		<em:localized>
+			<Description>
+				<em:locale>de-DE</em:locale>
+				<em:name>cacaoweb</em:name>
+				<em:description>
+					Megavideo Sperre umgehen
+				</em:description>
+			</Description>
+		</em:localized>
+
+	    <!-- Firefox -->
+	   <em:targetApplication>
+	      <Description>
+	        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+	        <em:minVersion>0.8</em:minVersion>
+	        <em:maxVersion>10.0.*</em:maxVersion>
+	      </Description>
+	    </em:targetApplication>
+	    <!-- Flock -->
+	    <em:targetApplication>
+	      <Description>
+	        <em:id>{a463f10c-3994-11da-9945-000d60ca027b}</em:id>
+	        <em:minVersion>0.5.9</em:minVersion>
+	        <em:maxVersion>0.7.*</em:maxVersion>
+	      </Description>
+	    </em:targetApplication>
+	    <!-- Seamonkey -->
+	    <em:targetApplication>
+	      <Description>
+	        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+	        <em:minVersion>1.0</em:minVersion>
+	        <em:maxVersion>2.0.*</em:maxVersion>
+	      </Description>
+	    </em:targetApplication>
+
+	</Description>
+</RDF>
