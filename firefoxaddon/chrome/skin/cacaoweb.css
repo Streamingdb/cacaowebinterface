@@ -1,0 +1,16 @@
+statusbarpanel#cacao_mgttext[status="no_items"] {
+	list-style-image: url("chrome://cacaoweb/skin/icon.png");
+	opacity:0.5;
+}
+statusbarpanel#cacao_mgttext[status="has_items"] {
+	list-style-image: url("chrome://cacaoweb/skin/icon.png");
+	opacity:1;
+}
+#aboutImg {
+  	list-style-image: url("chrome://cacaoweb/skin/iconMain.png");
+}
+
+#cacao_mgttext{
+	font-weight:bold;
+	color:#274817;
+}

@@ -1,0 +1,9 @@
+content	cacaoweb	chrome/content/
+skin	cacaoweb	classic/1.0	chrome/skin/
+
+overlay	chrome://browser/content/browser.xul	chrome://cacaoweb/content/cacaoweb.xul
+
+locale	cacaoweb	en-US	chrome/locale/en-US/
+locale	cacaoweb	fr-FR	chrome/locale/fr-FR/
+locale	cacaoweb	de-DE	chrome/locale/de-DE/
+locale	cacaoweb	es-ES	chrome/locale/es-ES/

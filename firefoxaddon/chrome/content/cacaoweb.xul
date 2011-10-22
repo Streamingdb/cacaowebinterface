@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://cacaoweb/skin/cacaoweb.css" type="text/css"?>
+
+<overlay id="cacaoweb_overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">	
+	
+	<script src="cacaoweb.js"/>
+	
+	<statusbar id="status-bar">
+		<statusbarpanel id="cacao_mgttext" class="statusbarpanel-menu-iconic" type="menu" status="no_items" 
+			onclick="cacao_statusiconClickHandler()">
+		</statusbarpanel>
+	</statusbar>
+	
+	<menupopup id="menu_ToolsPopup">
+	  	<menuitem id="cacaoweb-tools"
+		  		label="cacaoweb" 
+		  		class="menuitem-iconic"
+		  		image="chrome://cacaoweb/skin/icon.png"
+				onclick="cacao_statusiconClickHandler()">
+			</menuitem>
+	</menupopup>
+	
+	<stringbundleset id="stringbundleset">
+        <stringbundle id="cacaoweb-string-bundle" src="chrome://cacaoweb/locale/cacaoweb.properties"/>
+    </stringbundleset>
+		
+</overlay>
+
