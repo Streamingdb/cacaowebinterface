@@ -1,26 +1,22 @@
 <html>
 <head>
-
-
-
 </head>
 <body onload=pageInit() >
 
-
-
-
-<object id="mymovie" width="640" height="360">
+<!--<object id="cacaomovie" width="640" height="360">
 	<param name="allowFullScreen" value="true" />
-	<param name="flashvars" value="file=http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UWL" />
+	<param name="flashvars" value="" />
 	<param name="movie" value="player.swf" />
 	<embed src="player.swf" 
-        flashvars="file=http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UWL" 
-        width="640" height="360" allowFullScreen="true" name="mymovie" />
-</object>
+        flashvars="" 
+        width="640" height="360" allowFullScreen="true" name="cacaomovie" />
+</object> -->
 
 
+<div cacaolink="http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UW"></div>
 
 
+<script src="cacaoweb-2.13.js"></script>
 <script> 
 <!-- 
 // ------- Private vars ------- 
@@ -28,14 +24,15 @@ var jsReady = false;
 var sfwReady = false;
 
 
-function getSWF(movieName) { 
-    if (navigator.appName.indexOf("Microsoft") != -1) { 
-        return window[movieName]; 
-    } else { 
-        return document[movieName]; 
-    } 
-} 
 
+
+function getFlashPlayer(movieName) { 
+    		if (navigator.appName.indexOf("Microsoft") != -1) { 
+        		return window[movieName]; 
+   		} else { 
+        		return document[movieName]; 
+    		}
+	}
 
 // ------- functions called by ActionScript ------- 
 // called to check if the page has initialized and JavaScript is available 
@@ -43,8 +40,9 @@ function isReady() {
     return jsReady;
 } 
 function setSWFIsReady() {
-    swfReady = true;
-    getSWF("mymovie").errorMessage("error from javascript");
+    swfReady = true;   
+    Cacaoweb.error("merde");
+    //Cacaoweb.play("http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UWL");
 }
 function testSuccess() {
     alert("success");
@@ -59,6 +57,9 @@ function pageInit() {
 } 
 
 //--> 
+
+Cacaoweb.checkandplay();
+
 </script>
 
 

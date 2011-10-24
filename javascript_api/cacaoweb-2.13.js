@@ -24,7 +24,8 @@
 	videowidth: 640,
 	videoheight: 360,
 	autoplay: true,
-	playerurl: "http://127.0.0.1:4001/player.swf",
+	//playerurl: "http://127.0.0.1:4001/player.swf",
+	playerurl: "player.swf",
 	
 	
 	/**
@@ -160,13 +161,13 @@
 	
 	playvideo: function(o, width, height) {
 		var link = o.getAttribute("cacaolink");
-		var player = '<object width="' + width + '" height="' + height + '">';
+		var player = '<object id="cacaomovie" width="' + width + '" height="' + height + '">';
 		player += '<param name="allowFullScreen" value="true" />';
 		player += '<param name="flashvars" value="file=' + link + '" />';
-		player += '<param name="movie" value="' + playerurl + '" />';
-		player += '<embed src="' + playerurl + '" ';
+		player += '<param name="movie" value="' + this.playerurl + '" />';
+		player += '<embed src="' + this.playerurl + '" ';
 		player += 'flashvars="file=' + link + '" ';
-		player += 'width="' + width + '" height="' + height + '" allowFullScreen="true" />';
+		player += 'width="' + width + '" height="' + height + '" allowFullScreen="true" name="cacaowebmovie" />';
 		player += '</object>';
 		o.innerHTML = player;
 	},
@@ -188,7 +189,22 @@
 			}
 		}
 	},
-	
+
+	getFlashPlayer: function(movieName) { 
+    		if (navigator.appName.indexOf("Microsoft") != -1) { 
+        		return window[movieName]; 
+   		} else { 
+        		return document[movieName]; 
+    		}
+	},
+
+
+
+
+	/**
+          functions exposed by the API
+	 */
+
 	/**
 	 * On joue les vidéos de la page en attendant 2s pour voir si cacaoweb est en route, sinon on affiche une image de téléchargement
 	 */
@@ -206,11 +222,19 @@
 								};
 			this.subscribeStatusChange(f);
 		}
-	}
+	},
 
 	setup: function(setupoptions) {
 		// TODO: do the setup by overwriting the parameters
 	
+	},
+
+	play: function(mediaurl) {
+		getFlashPlayer("cacaomovie").play(mediaurl);
+	},
+	
+	error: function(errormessage) {
+		getFlashPlayer("cacaomovie").errorMessage(errormessage);
 	}
 
 }
