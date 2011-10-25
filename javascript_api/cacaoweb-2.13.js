@@ -161,13 +161,14 @@
 	
 	playvideo: function(o, width, height) {
 		var link = o.getAttribute("cacaolink");
-		var player = '<object id="cacaomovie" width="' + width + '" height="' + height + '">';
+		var id = o.id;
+		var player = '<object id="' + id + '" width="' + width + '" height="' + height + '">';
 		player += '<param name="allowFullScreen" value="true" />';
 		player += '<param name="flashvars" value="file=' + link + '" />';
 		player += '<param name="movie" value="' + this.playerurl + '" />';
 		player += '<embed src="' + this.playerurl + '" ';
 		player += 'flashvars="file=' + link + '" ';
-		player += 'width="' + width + '" height="' + height + '" allowFullScreen="true" name="cacaowebmovie" />';
+		player += 'width="' + width + '" height="' + height + '" allowFullScreen="true" name="' + id + '" />';
 		player += '</object>';
 		o.innerHTML = player;
 	},
@@ -190,12 +191,16 @@
 		}
 	},
 
-	getFlashPlayer: function(movieName) { 
-    		if (navigator.appName.indexOf("Microsoft") != -1) { 
-        		return window[movieName]; 
-   		} else { 
-        		return document[movieName]; 
-    		}
+	cacaoplayer: function(movieName) { 
+		if (moviename) {
+			if (navigator.appName.indexOf("Microsoft") != -1) { 
+				return window[movieName]; 
+			} else { 
+				return document[movieName]; 
+			}
+		} else {
+			// TODO: return any instance
+		}
 	},
 
 
@@ -208,7 +213,7 @@
 	/**
 	 * On joue les vidéos de la page en attendant 2s pour voir si cacaoweb est en route, sinon on affiche une image de téléchargement
 	 */
-	checkandplay: function() {
+	findAndPlay: function() {
 		if (this.status == 'On') {
 			this.insertAllVideos();
 		} else {
@@ -230,11 +235,11 @@
 	},
 
 	play: function(mediaurl) {
-		getFlashPlayer("cacaomovie").play(mediaurl);
+		.play(mediaurl);
 	},
 	
 	error: function(errormessage) {
-		getFlashPlayer("cacaomovie").errorMessage(errormessage);
+		.errorMessage(errormessage);
 	}
 
 }
