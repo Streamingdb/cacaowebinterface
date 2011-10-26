@@ -19,7 +19,7 @@
 	missingpluginimage: 'http://www.cacaoweb.org/images/plugin.png', 
 	
 	/**
-	  player parameters
+	  player default parameters
 	  */
 	videowidth: 640,
 	videoheight: 360,
@@ -191,17 +191,6 @@
 		}
 	},
 
-	cacaoplayer: function(movieName) { 
-		if (moviename) {
-			if (navigator.appName.indexOf("Microsoft") != -1) { 
-				return window[movieName]; 
-			} else { 
-				return document[movieName]; 
-			}
-		} else {
-			// TODO: return any instance
-		}
-	},
 
 
 
@@ -227,21 +216,7 @@
 								};
 			this.subscribeStatusChange(f);
 		}
-	},
-
-	setup: function(setupoptions) {
-		// TODO: do the setup by overwriting the parameters
-	
-	},
-
-	play: function(mediaurl) {
-		.play(mediaurl);
-	},
-	
-	error: function(errormessage) {
-		.errorMessage(errormessage);
 	}
-
 }
 
 setInterval(function() { Cacaoweb.checkStatus(); }, Cacaoweb.timerTasksInterval * 1000);
@@ -251,29 +226,128 @@ Cacaoweb.checkStatus();
 /**
  * we define a global object cacaoplayer to access player instances - it is also a function
  */
-if (typeof cacaoplayer == "undefined") {
+if (typeof cacaoplayer == "undefined") { // in case the API is included twice
 
 	var cacaoplayer = function(id) {
-		if (cacaoplayer.api){
-			return cacaoplayer.api.selectPlayer(id);
+		if (cacaoplayer.getPlayer){ // TODO: remove it?
+			return cacaoplayer.getPlayer(id);
 		}
 	};
 
 
-	/**
-	 * we declare
-	 */
-	(function(cacaoplayer) {
+	(function(cacaoplayer) { // we don't pollute the global scope
 
-
+		// the list of registered player objects
 		var _players = [];
 		
-		cacaoplayer.api = function(container) {
+		// the constructor to build our player object
+		cacaoplayer.builder = function(container) {
 			this.container = container;
 			this.id = container.id;
-		
-			var _player = undefined;
+			this.playerurl = Cacaoweb.playerurl;
+			this.width = Cacaoweb.videowidth;
+			this.height = Cacaoweb.videoheight;
 
+			this.insertFlash = function() {
+				var link = this.container.getAttribute("cacaolink");
+				var id = this.container.id;
+				var player = '<object id="' + id + 'flash" width="' + this.width + '" height="' + this.height + '">';
+				player += '<param name="allowFullScreen" value="true" />';
+				player += '<param name="flashvars" value="file=' + link + '" />';
+				player += '<param name="movie" value="' + this.playerurl + '" />';
+				player += '<embed src="' + this.playerurl + '" ';
+				player += 'flashvars="file=' + link + '" ';
+				player += 'width="' + this.width + '" height="' + this.height + '" allowFullScreen="true" name="' + id + 'flash" />';
+				player += '</object>';
+				this.container.innerHTML = player;
+			}
+
+
+			this.getFlashPlayer = function(movieName) { 
+				if (movieName) {
+					if (navigator.appName.indexOf("Microsoft") != -1) { 
+						return window[movieName]; 
+					} else { 
+						return document[movieName]; 
+					}
+				} else {
+					// TODO: return any instance
+				}
+			}
+
+
+			this.play = function (link) {
+				// TODO
+				var flashplayer = this.getFlashPlayer(this.id + "flash");
+				if (flashplayer) {
+
+				} else { // first create the flash object
+					this.insertFlash();
+				}
+				
+				return this;
+			}
+
+			this.error = function (errormsg) {
+				var flashplayer = this.getFlashPlayer(this.id + "flash");
+				flashplayer.error(errormsg);
+				return this;
+			}
+
+			this.setup = function (setupoptions) {
+				// TODO
+				return this;
+			}
+
+			this.test = function () {
+				alert("test");
+			}
+
+		};
+
+
+
+		/** 
+		 * functions to manipulate the list of registered player objects
+		 */
+
+
+		cacaoplayer.getRegisteredPlayerById = function(id) {
+			for (var i = 0; i < _players.length; i++) {
+				if (_players[i].id == id) {
+					return _players[i];
+				}
+			}
+			return null;
+		};
+	
+		cacaoplayer.registerPlayer = function(player) {
+			// first check if the player is already registered
+			for (var i = 0; i < _players.length; i++) {
+				if (_players[i] == player) {
+					return player;
+				}
+			}
+		
+			_players.push(player);
+			return player;
+		};
+
+
+
+		cacaoplayer.getPlayer = function(id) {
+			// TODO: do the case where id is undefined and we have to return all the players of the document
+			var _container = document.getElementById(id);
+
+			if (_container) {
+				var registeredplayer = cacaoplayer.getRegisteredPlayerById(id);
+				if (registeredplayer) {
+					return registeredplayer;
+				} else {
+					return cacaoplayer.registerPlayer(new cacaoplayer.builder(_container));
+				}
+			}
+			return null;
 		};
 
 			

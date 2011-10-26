@@ -13,7 +13,7 @@
 </object> -->
 
 
-<div cacaolink="http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UW"></div>
+<div id="mymovie" cacaolink="http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UW"></div>
 
 
 <script src="cacaoweb-2.13.js"></script>
@@ -32,7 +32,9 @@ function isReady() {
 } 
 function setSWFIsReady() {
     swfReady = true;   
-    Cacaoweb.error("merde");
+    cacaoplayer("mymovie").error("merde");
+
+    //Cacaoweb.error("merde");
     //Cacaoweb.play("http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UWL");
 }
 function testSuccess() {
@@ -45,11 +47,10 @@ function testSuccess() {
 function pageInit() { 
     // Record that JavaScript is ready to go. 
     jsReady = true; 
-} 
+    
+    cacaoplayer("mymovie").play();} 
 
 //--> 
-
-Cacaoweb.checkandplay();
 
 </script>
 
