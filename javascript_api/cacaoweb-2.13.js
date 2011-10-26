@@ -246,3 +246,41 @@
 
 setInterval(function() { Cacaoweb.checkStatus(); }, Cacaoweb.timerTasksInterval * 1000);
 Cacaoweb.checkStatus(); 
+
+
+/**
+ * we define a global object cacaoplayer to access player instances - it is also a function
+ */
+if (typeof cacaoplayer == "undefined") {
+
+	var cacaoplayer = function(id) {
+		if (cacaoplayer.api){
+			return cacaoplayer.api.selectPlayer(id);
+		}
+	};
+
+
+	/**
+	 * we declare
+	 */
+	(function(cacaoplayer) {
+
+
+		var _players = [];
+		
+		cacaoplayer.api = function(container) {
+			this.container = container;
+			this.id = container.id;
+		
+			var _player = undefined;
+
+		};
+
+			
+		
+	})(cacaoplayer);
+
+}
+
+
+
