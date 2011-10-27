@@ -224,9 +224,9 @@ Cacaoweb.checkStatus();
 
 
 /**
- * we define a global object cacaoplayer to access player instances - it is also a function
+ * we define a global function object cacaoplayer to access player instances
  */
-if (typeof cacaoplayer == "undefined") { // in case the API is included twice
+if (typeof cacaoplayer == "undefined") { // to prevent the API from being included more than once
 
 	var cacaoplayer = function(id) {
 		if (cacaoplayer.getPlayer){ // TODO: remove it?
@@ -235,12 +235,12 @@ if (typeof cacaoplayer == "undefined") { // in case the API is included twice
 	};
 
 
-	(function(cacaoplayer) { // we don't pollute the global scope
+	(function(cacaoplayer) { // we don't pollute the global scope with our private variables
 
 		// the list of registered player objects
 		var _players = [];
 		
-		// the constructor to build our player object
+		// used as the constructor to build our player objects
 		cacaoplayer.builder = function(container) {
 			this.container = container;
 			this.id = container.id;
@@ -248,7 +248,7 @@ if (typeof cacaoplayer == "undefined") { // in case the API is included twice
 			this.width = Cacaoweb.videowidth;
 			this.height = Cacaoweb.videoheight;
 
-			this.insertFlash = function() {
+			this.insertFlash = function() {// TODO: if we remove the this, can we still make it work
 				var link = this.container.getAttribute("cacaolink");
 				var id = this.container.id;
 				var player = '<object id="' + id + 'flash" width="' + this.width + '" height="' + this.height + '">';
@@ -263,7 +263,7 @@ if (typeof cacaoplayer == "undefined") { // in case the API is included twice
 			}
 
 
-			this.getFlashPlayer = function(movieName) { 
+			this.getFlashPlayer = function(movieName) { // TODO: if we remove the this, can we still make it work
 				if (movieName) {
 					if (navigator.appName.indexOf("Microsoft") != -1) { 
 						return window[movieName]; 
@@ -290,7 +290,7 @@ if (typeof cacaoplayer == "undefined") { // in case the API is included twice
 
 			this.error = function (errormsg) {
 				var flashplayer = this.getFlashPlayer(this.id + "flash");
-				flashplayer.error(errormsg);
+				flashplayer.error(errormsg); // TODO: explore the object to see if has Flash methods added to it
 				return this;
 			}
 
