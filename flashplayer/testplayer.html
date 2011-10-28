@@ -1,56 +1,16 @@
 <html>
 <head>
 </head>
-<body onload=pageInit() >
-
-<!--<object id="cacaomovie" width="640" height="360">
-	<param name="allowFullScreen" value="true" />
-	<param name="flashvars" value="" />
-	<param name="movie" value="player.swf" />
-	<embed src="player.swf" 
-        flashvars="" 
-        width="640" height="360" allowFullScreen="true" name="cacaomovie" />
-</object> -->
+<body>
 
 
-<div id="mymovie" cacaolink="http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UW"></div>
+<div id="mymovie" cacaolink="http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UWz"></div>
 
 
 <script src="cacaoweb-2.13.js"></script>
-<script> 
-<!-- 
-// ------- Private vars ------- 
-var jsReady = false; 
-var sfwReady = false;
-
-
-
-// ------- functions called by ActionScript ------- 
-// called to check if the page has initialized and JavaScript is available 
-function isReady() { 
-    return jsReady;
-} 
-function setSWFIsReady() {
-    swfReady = true;   
-    cacaoplayer("mymovie").error("merde");
-
-    //Cacaoweb.error("merde");
-    //Cacaoweb.play("http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UWL");
-}
-function testSuccess() {
-    alert("success");
-}
-
-
- 
-// called by the onload event of the <body> tag 
-function pageInit() { 
-    // Record that JavaScript is ready to go. 
-    jsReady = true; 
-    
-    cacaoplayer("mymovie").play();} 
-
-//--> 
+<script>
+	cacaoplayer("mymovie").setup({ playerurl = "player.swf, width: 200, height: 200 });
+    cacaoplayer("mymovie").play();
 
 </script>
 

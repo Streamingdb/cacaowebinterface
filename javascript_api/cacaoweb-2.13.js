@@ -1,12 +1,7 @@
-﻿var Cacaoweb = {
-	/** 
-	  the parameters for the player and the javascript API
-	  they can be overwritten by calling the function setup() of this API
-	  */
-	  
+﻿var Cacaoweb = {	  
 	/**
-	  javascript parameters
-	  */
+	 * javascript parameters
+	 */
 	version: "2.13",
 	timerTasksInterval: 0.5,
 	lasttimeclientrunning: 0,
@@ -16,16 +11,20 @@
 	timeStart: (new Date()).getTime(),
 	status: 'Unknown',
 	myFuncs: [],
-	missingpluginimage: 'http://www.cacaoweb.org/images/plugin.png', 
+	missingpluginimageurl: 'http://www.cacaoweb.org/images/plugin.png', 
 	
 	/**
-	  player default parameters
-	  */
+	 * player default parameters
+	 */
 	videowidth: 640,
 	videoheight: 360,
 	autoplay: true,
-	//playerurl: "http://127.0.0.1:4001/player.swf",
-	playerurl: "player.swf",
+	playerurl: "http://127.0.0.1:4001/player.swf",
+	
+	/**
+	 * private variables
+	 */
+	_swfready: false,
 	
 	
 	/**
@@ -97,7 +96,6 @@
 	/**
 	 * Permet de spécifier une fonction qui sera appelée régulièrement ou lorsque le status de cacaoweb change (On, Off ou Unknown)
 	 * La fonction doit prendre un argument (qui sera le statut de cacaoweb)
-	 * ATTENTION: ne marche qu'avec une fonction maximum
 	 */
 	subscribeStatusChange: function(myFunc) {
 		this.myFuncs.push(myFunc);
@@ -158,65 +156,32 @@
 		this.updateActions();
 	},
 	
-	
-	playvideo: function(o, width, height) {
-		var link = o.getAttribute("cacaolink");
-		var id = o.id;
-		var player = '<object id="' + id + '" width="' + width + '" height="' + height + '">';
-		player += '<param name="allowFullScreen" value="true" />';
-		player += '<param name="flashvars" value="file=' + link + '" />';
-		player += '<param name="movie" value="' + this.playerurl + '" />';
-		player += '<embed src="' + this.playerurl + '" ';
-		player += 'flashvars="file=' + link + '" ';
-		player += 'width="' + width + '" height="' + height + '" allowFullScreen="true" name="' + id + '" />';
-		player += '</object>';
-		o.innerHTML = player;
-	},
-	
-	insertAllVideos: function() {
-		var all = document.getElementsByTagName("div");
-		for (var i = 0; i < all.length; i++) {
-			if (all[i].getAttribute("cacaolink")) {
-				this.playvideo(all[i], this.videowidth, this.videoheight);
-			}
-		}
-	},
-	
 	insertDownloadPlugin: function() {
 		var all = document.getElementsByTagName("div");
 		for (var i = 0; i < all.length; i++) {
 			if (all[i].getAttribute("cacaolink")) {
-				all[i].innerHTML = '<a href="javascript:Cacaoweb.download()"><img src="' + this.missingpluginimage + '" /></a>';
+				all[i].innerHTML = '<a href="javascript:Cacaoweb.download()"><img src="' + this.missingpluginimageurl + '" /></a>';
 			}
 		}
 	},
-
-
-
-
-
+	
 	/**
-          functions exposed by the API
+	 * this can be called by the flash player object through ExternalInterface
+	 * to check whether cacaoweb javascript API has been loaded in the document
 	 */
-
-	/**
-	 * On joue les vidéos de la page en attendant 2s pour voir si cacaoweb est en route, sinon on affiche une image de téléchargement
+	isReady: function() {
+		return true;
+	},
+	
+	/** 
+	 * this is called by the flash player object to tell Javascript that it has finished
+	 * the registration of its callbacks, at this point they are defined
+	 * HOWEVER this obviously doesn't work well if we have multiple players on the page
 	 */
-	findAndPlay: function() {
-		if (this.status == 'On') {
-			this.insertAllVideos();
-		} else {
-			var timeout = setTimeout("Cacaoweb.insertDownloadPlugin()", this.timeoutClientAlive);
-			var f = null;
-			f = function (status) { if (status == "On") {
-										clearTimeout(timeout);
-										Cacaoweb.unsubscribeStatusChange(f);
-										Cacaoweb.insertAllVideos();
-									}
-								};
-			this.subscribeStatusChange(f);
-		}
+	setSWFIsReady: function() {
+		this._swfReady = true;
 	}
+
 }
 
 setInterval(function() { Cacaoweb.checkStatus(); }, Cacaoweb.timerTasksInterval * 1000);
@@ -224,7 +189,7 @@ Cacaoweb.checkStatus();
 
 
 /**
- * we define a global function object cacaoplayer to access player instances
+ * here we define a global function object cacaoplayer to access player instances
  */
 if (typeof cacaoplayer == "undefined") { // to prevent the API from being included more than once
 
@@ -240,62 +205,132 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 		// the list of registered player objects
 		var _players = [];
 		
+		function getFlashPlayer(movieName) {
+			if (movieName) {
+				if (navigator.appName.indexOf("Microsoft") != -1) { 
+					return window[movieName]; 
+				} else { 
+					return document[movieName]; 
+				}
+			}
+		}
+		
 		// used as the constructor to build our player objects
 		cacaoplayer.builder = function(container) {
 			this.container = container;
 			this.id = container.id;
+			this.link = container.getAttribute("cacaolink");
+			
+			/* the default parameters - they can be changed later with a call to the .setup() function */
 			this.playerurl = Cacaoweb.playerurl;
 			this.width = Cacaoweb.videowidth;
 			this.height = Cacaoweb.videoheight;
+			this.missingpluginimageurl = Cacaoweb.missingpluginimageurl;
+			
 
-			this.insertFlash = function() {// TODO: if we remove the this, can we still make it work
-				var link = this.container.getAttribute("cacaolink");
-				var id = this.container.id;
-				var player = '<object id="' + id + 'flash" width="' + this.width + '" height="' + this.height + '">';
+			this.insertFlash = function() {
+				var player = '<object id="' + this.id + 'flash" width="' + this.width + '" height="' + this.height + '">';
 				player += '<param name="allowFullScreen" value="true" />';
-				player += '<param name="flashvars" value="file=' + link + '" />';
+				player += '<param name="flashvars" value="file=' + this.link + '" />';
 				player += '<param name="movie" value="' + this.playerurl + '" />';
 				player += '<embed src="' + this.playerurl + '" ';
-				player += 'flashvars="file=' + link + '" ';
-				player += 'width="' + this.width + '" height="' + this.height + '" allowFullScreen="true" name="' + id + 'flash" />';
+				player += 'flashvars="file=' + this.link + '" ';
+				player += 'width="' + this.width + '" height="' + this.height + '" allowFullScreen="true" name="' + this.id + 'flash" />';
 				player += '</object>';
 				this.container.innerHTML = player;
 			}
 
-
-			this.getFlashPlayer = function(movieName) { // TODO: if we remove the this, can we still make it work
-				if (movieName) {
-					if (navigator.appName.indexOf("Microsoft") != -1) { 
-						return window[movieName]; 
-					} else { 
-						return document[movieName]; 
+			
+			this.insertAllVideos = function() {
+				var all = document.getElementsByTagName("div");
+				for (var i = 0; i < all.length; i++) {
+					if (all[i].getAttribute("cacaolink")) {
+						this.playvideo(all[i], this.videowidth, this.videoheight);
 					}
-				} else {
-					// TODO: return any instance
 				}
 			}
-
-
-			this.play = function (link) {
-				// TODO
-				var flashplayer = this.getFlashPlayer(this.id + "flash");
+			
+			/**
+			 * find the player object and play the link
+			 */
+			this.realplay = function (link) {
+				this.link = link;
+				var flashplayer = getFlashPlayer(this.id + "flash");
 				if (flashplayer) {
-
+					if (typeof link == "undefined") {
+						flashplayer.play(this.videourl);
+					} else {
+						flashplayer.play(link);
+					}
 				} else { // first create the flash object
 					this.insertFlash();
 				}
-				
 				return this;
 			}
 
-			this.error = function (errormsg) {
-				var flashplayer = this.getFlashPlayer(this.id + "flash");
-				flashplayer.error(errormsg); // TODO: explore the object to see if has Flash methods added to it
-				return this;
+			/**
+			 * check if cacaoweb is running on the host computer
+			 * if yes calls realplay, if no show the missing plugin image
+			 */
+			this.play = function (link) {
+				if (Cacaoweb.status == 'On') {
+					return realplay(link);
+				} else {
+					var timeout = setTimeout("Cacaoweb.insertDownloadPlugin()", Cacaoweb.timeoutClientAlive);
+					var f = function (status) { if (status == "On") {
+												clearTimeout(timeout);
+												Cacaoweb.unsubscribeStatusChange(f);
+												this.realplay(link);
+											}
+										};
+					Cacaoweb.subscribeStatusChange(f);
+				}
 			}
 
-			this.setup = function (setupoptions) {
+			/**
+			 * show a message on the player screen
+			 */
+			this.showmessage = function (msg) {
+				var flashplayer = getFlashPlayer(this.id + "flash");
+				flashplayer.showMessage(msg);
+				return this;
+			}
+			
+			/**
+			 * mute the player
+			 */
+			this.mute = function () {
 				// TODO
+				return this;
+			}
+			
+			this.pause = function() {
+				// TODO
+				return this;
+			}
+
+			/**
+			 * set up the player instance options
+			 */
+			this.setup = function (setupoptions) {
+				for (var option in setupoptions) {
+					switch (option) {
+						case "width":
+							this.width = setupoptions[option];
+							break;
+						case "height":
+							this.height = setupoptions[option];
+							break;
+						case "missingpluginimageurl":
+							this.missingpluginimageurl = setupoptions[option];
+							break;
+						case "playerurl":
+							this.playerurl = setupoptions[option];
+							break;
+						default:
+							break;
+					}
+				}
 				return this;
 			}
 
@@ -312,42 +347,40 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 		 */
 
 
-		cacaoplayer.getRegisteredPlayerById = function(id) {
+		function getRegisteredPlayerById(id) {
 			for (var i = 0; i < _players.length; i++) {
 				if (_players[i].id == id) {
 					return _players[i];
 				}
 			}
-			return null;
 		};
 	
-		cacaoplayer.registerPlayer = function(player) {
+		function registerPlayer(player) {
 			// first check if the player is already registered
 			for (var i = 0; i < _players.length; i++) {
 				if (_players[i] == player) {
 					return player;
 				}
 			}
-		
 			_players.push(player);
 			return player;
 		};
 
 
-
+		/**
+		 * a fonction exposed by the object cacaoplayer (which is also a function)
+		 * it's basically an alias to the fonction cacaoplayer()
+		 */
 		cacaoplayer.getPlayer = function(id) {
-			// TODO: do the case where id is undefined and we have to return all the players of the document
 			var _container = document.getElementById(id);
-
 			if (_container) {
-				var registeredplayer = cacaoplayer.getRegisteredPlayerById(id);
+				var registeredplayer = getRegisteredPlayerById(id);
 				if (registeredplayer) {
 					return registeredplayer;
 				} else {
-					return cacaoplayer.registerPlayer(new cacaoplayer.builder(_container));
+					return registerPlayer(new cacaoplayer.builder(_container));
 				}
 			}
-			return null;
 		};
 
 			
