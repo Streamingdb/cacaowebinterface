@@ -240,30 +240,19 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 				this.container.innerHTML = player;
 			}
 
-			
-			this.insertAllVideos = function() {
-				var all = document.getElementsByTagName("div");
-				for (var i = 0; i < all.length; i++) {
-					if (all[i].getAttribute("cacaolink")) {
-						this.playvideo(all[i], this.videowidth, this.videoheight);
-					}
-				}
-			}
-			
+						
 			/**
 			 * find the player object and play the link
 			 */
 			this.realplay = function (link) {
-				this.link = link;
+				if (typeof link != "undefined") {
+					this.link = link;
+				}
 				var flashplayer = getFlashPlayer(this.id + "flash");
 				if (flashplayer) {
-					if (typeof link == "undefined") {
-						flashplayer.play(this.videourl);
-					} else {
-						flashplayer.play(link);
-					}
+					flashplayer.play(this.link);
 				} else { // first create the flash object
-					this.insertFlash();
+					this.insertFlash.call(this);
 				}
 				return this;
 			}
@@ -274,13 +263,14 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 			 */
 			this.play = function (link) {
 				if (Cacaoweb.status == 'On') {
-					return realplay(link);
+					return this.realplay(link);
 				} else {
 					var timeout = setTimeout("Cacaoweb.insertDownloadPlugin()", Cacaoweb.timeoutClientAlive);
+					var that = this;
 					var f = function (status) { if (status == "On") {
 												clearTimeout(timeout);
 												Cacaoweb.unsubscribeStatusChange(f);
-												this.realplay(link);
+												that.realplay(link);
 											}
 										};
 					Cacaoweb.subscribeStatusChange(f);
