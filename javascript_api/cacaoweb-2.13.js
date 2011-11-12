@@ -227,15 +227,17 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 			this.height = Cacaoweb.videoheight;
 			this.missingpluginimageurl = Cacaoweb.missingpluginimageurl;
 			
+			
 
 			this.insertFlash = function() {
 				var player = '<object id="' + this.id + 'flash" width="' + this.width + '" height="' + this.height + '">';
 				player += '<param name="allowFullScreen" value="true" />';
 				player += '<param name="flashvars" value="file=' + this.link + '" />';
 				player += '<param name="movie" value="' + this.playerurl + '" />';
+				player += '<param name="AllowScriptAccess" value="always">';
 				player += '<embed src="' + this.playerurl + '" ';
 				player += 'flashvars="file=' + this.link + '" ';
-				player += 'width="' + this.width + '" height="' + this.height + '" allowFullScreen="true" name="' + this.id + 'flash" />';
+				player += 'width="' + this.width + '" height="' + this.height + '" allowFullScreen="true" name="' + this.id + 'flash" AllowScriptAccess="always" />';
 				player += '</object>';
 				this.container.innerHTML = player;
 			}
@@ -281,9 +283,44 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 			 * show a message on the player screen
 			 */
 			this.showmessage = function (msg) {
-				var flashplayer = getFlashPlayer(this.id + "flash");
-				flashplayer.showMessage(msg);
+				getFlashPlayer(this.id + "flash").showMessage(msg);
 				return this;
+			}
+			
+			/**
+			 * seeks in the video
+			 * parameter newtime has to be given in seconds
+			 * current limitation: must be to some area that is already downloaded (will be improved later)
+			 */
+			this.seek = function (newtime) {
+				getFlashPlayer(this.id + "flash").seek(newtime);
+				return this;
+			}
+			
+			/**
+			 * return the current position of the playback in seconds
+			 */
+			this.position = function () {
+				return getFlashPlayer(this.id + "flash").position();
+			}
+			
+			/**
+			 * return the duration of the video in seconds
+			 */
+			this.duration = function () {
+				return getFlashPlayer(this.id + "flash").duration();
+			}
+			
+			/**
+			 * return the status of the player as a string
+			 * 4 possible values:
+			 * - Buffering
+			 * - Pausing
+			 * - Playing
+			 * - Stopped
+			 */
+			this.playbackStatus = function () {
+				return getFlashPlayer(this.id + "flash").playbackStatus();
 			}
 			
 			/**
@@ -295,6 +332,11 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 			}
 			
 			this.pause = function() {
+				// TODO
+				return this;
+			}
+			
+			this.subtitles = function(subsoptions) {
 				// TODO
 				return this;
 			}
