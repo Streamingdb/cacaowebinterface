@@ -24,7 +24,7 @@
               <elements>
                 <DOMSymbolInstance libraryItemName="loadbar" name="myloadbar" selected="true" centerPoint3DX="-116.65" centerPoint3DY="-6.55">
                   <matrix>
-                    <Matrix a="0.375076293945312" d="0.800003051757812" tx="-175.95" ty="-11.85"/>
+                    <Matrix a="0.37506103515625" d="0.79998779296875" tx="-175.95" ty="-11.85"/>
                   </matrix>
                   <transformationPoint>
                     <Point x="159.95" y="10"/>

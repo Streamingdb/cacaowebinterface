@@ -35,7 +35,7 @@
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMVideoInstance libraryItemName="myVideo" name="myVideo" frameRight="3200" frameBottom="2400">
+                                        <DOMVideoInstance libraryItemName="myVideo" name="myVideo" selected="true" frameRight="3200" frameBottom="2400">
                                              <matrix>
                                                   <Matrix a="4" d="3.0001220703125"/>
                                              </matrix>
