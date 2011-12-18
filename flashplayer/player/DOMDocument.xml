@@ -1,4 +1,7 @@
 <DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#000000" width="640" height="360" frameRate="25" currentTimeline="1" xflVersion="2.0" creatorInfo="Adobe Flash Professional CS5" platform="Macintosh" versionInfo="Saved by Adobe Flash Macintosh 11.0 build 485" majorVersion="11" buildNumber="485" gridSnapTo="true" guidesSnapTo="false" gridVisible="true" rulerVisible="true" objectsSnapTo="false" timelineLabelWidth="202" adjustViewAngle3D="false" viewAngle3D="62.4108334222142" vanishingPoint3DX="320" vanishingPoint3DY="198" nextSceneIdentifier="5" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false">
+     <fonts>
+          <DOMFontItem name="Font 1" itemID="4eee283e-00000572" font="ArialMT" size="0" id="1" sourceLastImported="1324230718" embedRanges="1|2|3|4"/>
+     </fonts>
      <media>
           <DOMVideoItem name="myVideo" itemID="4bb2d196-00000258" sourceExternalFilepath="./LIBRARY/myVideo" sourceLastImported="1303578955" videoDataHRef="M 19 1270010262.dat" channels="0" isSpecial="true"/>
      </media>
@@ -20,63 +23,23 @@
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMShape>
-                                             <fills>
-                                                  <FillStyle index="1">
-                                                       <SolidColor color="#0099FF" alpha="0.8"/>
-                                                  </FillStyle>
-                                             </fills>
-                                             <strokes>
-                                                  <StrokeStyle index="1">
-                                                       <SolidStroke scaleMode="normal">
-                                                            <fill>
-                                                                 <SolidColor color="#FFFFFF"/>
-                                                            </fill>
-                                                       </SolidStroke>
-                                                  </StrokeStyle>
-                                             </strokes>
-                                             <edges>
-                                                  <Edge fillStyle1="1" strokeStyle="1" edges="!5600 1000|6400 1000!6400 1000|6400 1400!6400 1400|5600 1400!5600 1400|5600 1000"/>
-                                                  <Edge cubics="!11861 1600(;11898,1600 11932,1597 11963,1591q11861 1600 11963 1591);"/>
-                                                  <Edge cubics="!11963 1591(;11977,1588 11990,1585 12003,1581q11963 1591 12003 1581)12003,1581;"/>
-                                                  <Edge cubics="!12003 1581(;12065,1561 12111,1528 12143,1482q12003 1581Q12094 1553q12143 1482);"/>
-                                                  <Edge cubics="!12143 1482(12143,1482;12181,1426 12200,1353 12200,1261q12143 1482Q12200 1400q12200 1261)12200,1261;"/>
-                                                  <Edge cubics="!12200 1261(;12200,1261 12200,739 12200,739q12200 1261 12200 739)12200,739;"/>
-                                                  <Edge cubics="!12200 739(;12200,649 12182,577 12143,518q12200 739Q12200 600q12143 518)12143,518;"/>
-                                                  <Edge cubics="!12143 518(12143,518;12126,493 12105,472 12072,450q12143 518Q12114 477q12072 450)12072,450;"/>
-                                                  <Edge cubics="!12072 450(;12025,419 11952,400 11861,400q12072 450Q11991 400q11861 400);"/>
-                                                  <Edge cubics="!10600 1261(;10600,1485 10711,1598 10932,1600q10600 1261Q10600 1596q10932 1600)10932,1600;"/>
-                                                  <Edge cubics="!10932 1600(;10935,1600 10937,1600 10939,1600q10932 1600 10939 1600)10939,1600;"/>
-                                                  <Edge cubics="!10939 1600(;10939,1600 11861,1600 11861,1600q10939 1600 11861 1600);"/>
-                                                  <Edge cubics="!12000 800(;12000,616 11919,523 11756,517q12000 800Q12000 523q11756 517)11756,517;"/>
-                                                  <Edge cubics="!12000 1235(;12000,1235 12000,800 12000,800q12000 1235 12000 800);"/>
-                                                  <Edge cubics="!11746 1517(;11915,1517 12000,1423 12000,1235q11746 1517Q12000 1517q12000 1235);"/>
-                                                  <Edge cubics="!11054 517(;10885,517 10800,611 10800,800q11054 517Q10800 517q10800 800);"/>
-                                                  <Edge cubics="!10800 1253(;10806,1431 10892,1517 11054,1517q10800 1253Q10808 1517q11054 1517);"/>
-                                                  <Edge cubics="!11054 1517(;11054,1517 11746,1517 11746,1517q11054 1517 11746 1517);"/>
-                                                  <Edge cubics="!10800 800(10800,800;10800,800 10800,1253 10800,1253q10800 800 10800 1253);"/>
-                                                  <Edge cubics="!10600 739(10600,739;10600,739 10600,1261 10600,1261q10600 739 10600 1261);"/>
-                                                  <Edge cubics="!11054 517(;11054,517 11756,517 11756,517q11054 517 11756 517)11756,517;"/>
-                                                  <Edge cubics="!11861 400(;11861,400 10939,400 10939,400q11861 400 10939 400);"/>
-                                             </edges>
-                                        </DOMShape>
-                                        <DOMSymbolInstance libraryItemName="linksbtn" name="" selected="true" centerPoint3DX="441.95" centerPoint3DY="86">
+                                        <DOMSymbolInstance libraryItemName="linksbtn" name="linksbutton" selected="true" centerPoint3DX="590" centerPoint3DY="50">
                                              <matrix>
-                                                  <Matrix tx="411.95" ty="61"/>
+                                                  <Matrix tx="560" ty="24"/>
                                              </matrix>
                                              <transformationPoint>
-                                                  <Point x="30" y="25"/>
+                                                  <Point x="30" y="26"/>
                                              </transformationPoint>
                                         </DOMSymbolInstance>
                                    </elements>
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="controls" color="#9933CC" locked="true" autoNamed="false">
+                    <DOMLayer name="controls" color="#9933CC" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMSymbolInstance libraryItemName="controls" name="controls" selected="true" centerPoint3DX="320" centerPoint3DY="340">
+                                        <DOMSymbolInstance libraryItemName="controls" name="controls" centerPoint3DX="320" centerPoint3DY="340">
                                              <matrix>
                                                   <Matrix tx="320" ty="320"/>
                                              </matrix>
@@ -408,25 +371,25 @@
      </extendedSwatchLists>
      <PrinterSettings platform="macintosh"/>
      <publishHistory>
-          <PublishItem publishSize="23116" publishTime="1323216043"/>
-          <PublishItem publishSize="23064" publishTime="1323216017"/>
-          <PublishItem publishSize="75347" publishTime="1323216010"/>
-          <PublishItem publishSize="75363" publishTime="1323215969"/>
-          <PublishItem publishSize="75340" publishTime="1323215803"/>
-          <PublishItem publishSize="3948" publishTime="1323130569"/>
-          <PublishItem publishSize="3948" publishTime="1323130466"/>
-          <PublishItem publishSize="75551" publishTime="1323130173"/>
-          <PublishItem publishSize="75618" publishTime="1323129981"/>
-          <PublishItem publishSize="75544" publishTime="1323129937"/>
-          <PublishItem publishSize="75526" publishTime="1323129811"/>
-          <PublishItem publishSize="75421" publishTime="1323129779"/>
-          <PublishItem publishSize="75374" publishTime="1323129765"/>
-          <PublishItem publishSize="75420" publishTime="1323129742"/>
-          <PublishItem publishSize="75377" publishTime="1323129494"/>
-          <PublishItem publishSize="75403" publishTime="1323129480"/>
-          <PublishItem publishSize="75376" publishTime="1323129419"/>
-          <PublishItem publishSize="75395" publishTime="1323129400"/>
-          <PublishItem publishSize="75377" publishTime="1323129366"/>
-          <PublishItem publishSize="75376" publishTime="1323129230"/>
+          <PublishItem publishSize="34520" publishTime="1324231560"/>
+          <PublishItem publishSize="34501" publishTime="1324231513"/>
+          <PublishItem publishSize="34520" publishTime="1324231490"/>
+          <PublishItem publishSize="34346" publishTime="1324231422"/>
+          <PublishItem publishSize="34271" publishTime="1324231276"/>
+          <PublishItem publishSize="34262" publishTime="1324231197"/>
+          <PublishItem publishSize="34486" publishTime="1324231168"/>
+          <PublishItem publishSize="34416" publishTime="1324230986"/>
+          <PublishItem publishSize="34425" publishTime="1324230793"/>
+          <PublishItem publishSize="34504" publishTime="1324230763"/>
+          <PublishItem publishSize="24244" publishTime="1324230723"/>
+          <PublishItem publishSize="24251" publishTime="1324230515"/>
+          <PublishItem publishSize="24247" publishTime="1324230481"/>
+          <PublishItem publishSize="24245" publishTime="1324230460"/>
+          <PublishItem publishSize="24358" publishTime="1324230379"/>
+          <PublishItem publishSize="24368" publishTime="1324230355"/>
+          <PublishItem publishSize="24355" publishTime="1324230253"/>
+          <PublishItem publishSize="24360" publishTime="1324230171"/>
+          <PublishItem publishSize="24364" publishTime="1324230096"/>
+          <PublishItem publishSize="24359" publishTime="1324230055"/>
      </publishHistory>
 </DOMDocument>
