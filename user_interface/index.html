@@ -249,7 +249,7 @@
 		function play(link) {
 			playmode();
 			
-			var playerobj = '<object width="640" height="360"><param name="allowFullScreen" value="true" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="player.swf" /><embed src="player.swf" flashvars="file=' + link + '" width="640" height="360" allowFullScreen="true" /></object>';
+			var playerobj = '<object width="640" height="360"><param name="allowFullScreen" value="true" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="player.swf" /><embed src="player.swf" flashvars="file=' + link + '" width="640" height="360" allowFullScreen="true" type="application/x-shockwave-flash" /></object>';
 
 			document.getElementById('player').innerHTML = playerobj;
 			document.getElementById('playerarea').style.display = 'block';
