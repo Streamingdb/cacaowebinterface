@@ -7,8 +7,12 @@
      </media>
      <symbols>
           <Include href="controls.xml" loadImmediate="false"/>
+          <Include href="copybtn.xml" loadImmediate="false"/>
           <Include href="fullscreenbutton.xml" loadImmediate="false"/>
-          <Include href="linksbtn.xml" loadImmediate="false"/>
+          <Include href="infobox.xml" loadImmediate="false"/>
+          <Include href="infobutton.xml" loadImmediate="false"/>
+          <Include href="linksbox.xml" loadImmediate="false"/>
+          <Include href="linksbutton.xml" loadImmediate="false"/>
           <Include href="loadbar.xml" loadImmediate="false"/>
           <Include href="loadbarfull.xml" loadImmediate="false"/>
           <Include href="playbutton.xml" loadImmediate="false"/>
@@ -19,27 +23,67 @@
      <timelines>
           <DOMTimeline name="Scene 1">
                <layers>
-                    <DOMLayer name="buttons" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
+                    <DOMLayer name="infobox" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMSymbolInstance libraryItemName="linksbtn" name="linksbutton" selected="true" centerPoint3DX="590" centerPoint3DY="50">
+                                        <DOMSymbolInstance libraryItemName="infobox" name="myinfobox" selected="true" centerPoint3DX="330" centerPoint3DY="165">
                                              <matrix>
-                                                  <Matrix tx="560" ty="24"/>
+                                                  <Matrix tx="170" ty="100"/>
                                              </matrix>
                                              <transformationPoint>
-                                                  <Point x="30" y="26"/>
+                                                  <Point x="160" y="65"/>
                                              </transformationPoint>
                                         </DOMSymbolInstance>
                                    </elements>
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="controls" color="#9933CC" autoNamed="false">
+                    <DOMLayer name="linksbox" color="#4FFF4F" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMSymbolInstance libraryItemName="controls" name="controls" centerPoint3DX="320" centerPoint3DY="340">
+                                        <DOMSymbolInstance libraryItemName="linksbox" name="mylinksbox" selected="true" centerPoint3DX="335" centerPoint3DY="160">
+                                             <matrix>
+                                                  <Matrix tx="190" ty="70"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="145" y="90"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="buttons" color="#4FFF4F" locked="true" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="linksbutton" name="linksbutton" centerPoint3DX="601.25" centerPoint3DY="97">
+                                             <matrix>
+                                                  <Matrix tx="571.25" ty="71"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="30" y="26"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMSymbolInstance libraryItemName="infobutton" name="infobutton" selected="true" centerPoint3DX="594.75" centerPoint3DY="39.5">
+                                             <matrix>
+                                                  <Matrix tx="571.5" ty="18.45"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="23.25" y="21.05"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="controls" color="#9933CC" locked="true" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="controls" name="controls" selected="true" centerPoint3DX="320" centerPoint3DY="340">
                                              <matrix>
                                                   <Matrix tx="320" ty="320"/>
                                              </matrix>
@@ -371,25 +415,25 @@
      </extendedSwatchLists>
      <PrinterSettings platform="macintosh"/>
      <publishHistory>
-          <PublishItem publishSize="34520" publishTime="1324231560"/>
-          <PublishItem publishSize="34501" publishTime="1324231513"/>
-          <PublishItem publishSize="34520" publishTime="1324231490"/>
-          <PublishItem publishSize="34346" publishTime="1324231422"/>
-          <PublishItem publishSize="34271" publishTime="1324231276"/>
-          <PublishItem publishSize="34262" publishTime="1324231197"/>
-          <PublishItem publishSize="34486" publishTime="1324231168"/>
-          <PublishItem publishSize="34416" publishTime="1324230986"/>
-          <PublishItem publishSize="34425" publishTime="1324230793"/>
-          <PublishItem publishSize="34504" publishTime="1324230763"/>
-          <PublishItem publishSize="24244" publishTime="1324230723"/>
-          <PublishItem publishSize="24251" publishTime="1324230515"/>
-          <PublishItem publishSize="24247" publishTime="1324230481"/>
-          <PublishItem publishSize="24245" publishTime="1324230460"/>
-          <PublishItem publishSize="24358" publishTime="1324230379"/>
-          <PublishItem publishSize="24368" publishTime="1324230355"/>
-          <PublishItem publishSize="24355" publishTime="1324230253"/>
-          <PublishItem publishSize="24360" publishTime="1324230171"/>
-          <PublishItem publishSize="24364" publishTime="1324230096"/>
-          <PublishItem publishSize="24359" publishTime="1324230055"/>
+          <PublishItem publishSize="36215" publishTime="1325200482"/>
+          <PublishItem publishSize="36074" publishTime="1325200262"/>
+          <PublishItem publishSize="35992" publishTime="1325200172"/>
+          <PublishItem publishSize="35975" publishTime="1325199404"/>
+          <PublishItem publishSize="35966" publishTime="1325199383"/>
+          <PublishItem publishSize="35945" publishTime="1325199372"/>
+          <PublishItem publishSize="35960" publishTime="1325199355"/>
+          <PublishItem publishSize="35947" publishTime="1325199333"/>
+          <PublishItem publishSize="35947" publishTime="1325199251"/>
+          <PublishItem publishSize="35949" publishTime="1325197938"/>
+          <PublishItem publishSize="35949" publishTime="1325197317"/>
+          <PublishItem publishSize="35930" publishTime="1325196922"/>
+          <PublishItem publishSize="35394" publishTime="1325196035"/>
+          <PublishItem publishSize="35402" publishTime="1325196023"/>
+          <PublishItem publishSize="35413" publishTime="1325195941"/>
+          <PublishItem publishSize="35574" publishTime="1325187282"/>
+          <PublishItem publishSize="42019" publishTime="1325187245" publishDebug="true"/>
+          <PublishItem publishSize="35570" publishTime="1325187192"/>
+          <PublishItem publishSize="35559" publishTime="1325187039"/>
+          <PublishItem publishSize="35555" publishTime="1325186821"/>
      </publishHistory>
 </DOMDocument>
