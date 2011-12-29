@@ -32,7 +32,7 @@
                     <Edge cubics="!175 1951(;175,1951 701,1951 701,1951q175 1951 701 1951)701,1951;"/>
                   </edges>
                 </DOMShape>
-                <DOMDynamicText name="linkstext" width="42.5" height="20" isSelectable="false">
+                <DOMDynamicText name="linkstext" selected="true" width="42.5" height="20" isSelectable="false">
                   <matrix>
                     <Matrix tx="2" ty="15.35"/>
                   </matrix>

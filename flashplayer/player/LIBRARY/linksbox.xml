@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="linksbox" itemID="4eee8386-00000638" sourceLibraryItemHRef="Symbol 1" lastModified="1325182707" lastUniqueIdentifier="14">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="linksbox" itemID="4eee8386-00000638" sourceLibraryItemHRef="Symbol 1" lastModified="1325201734" lastUniqueIdentifier="14">
   <timeline>
     <DOMTimeline name="linksbox">
       <layers>
@@ -73,7 +73,7 @@
                     <Edge cubics="!4455 1905(;4455,1905 5465,1905 5465,1905q4455 1905 5465 1905);"/>
                   </edges>
                 </DOMShape>
-                <DOMDynamicText width="235.25" height="18" isSelectable="false">
+                <DOMDynamicText name="downloadlabel" width="235.25" height="18" isSelectable="false">
                   <matrix>
                     <Matrix tx="5.25" ty="11"/>
                   </matrix>
@@ -86,7 +86,7 @@
                     </DOMTextRun>
                   </textRuns>
                 </DOMDynamicText>
-                <DOMDynamicText name="mylinktext" selected="true" width="270.75" height="15.55" lineType="multiline no wrap">
+                <DOMDynamicText name="mylinktext" width="270.75" height="15.55" lineType="multiline no wrap">
                   <matrix>
                     <Matrix tx="4.25" ty="34.75"/>
                   </matrix>
@@ -99,7 +99,7 @@
                     </DOMTextRun>
                   </textRuns>
                 </DOMDynamicText>
-                <DOMDynamicText width="248.25" height="16" isSelectable="false">
+                <DOMDynamicText name="embedlabel" selected="true" width="248.25" height="16" isSelectable="false">
                   <matrix>
                     <Matrix tx="5.25" ty="71"/>
                   </matrix>
