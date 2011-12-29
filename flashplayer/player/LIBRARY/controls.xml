@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="controls" itemID="4d46d886-000000b3" sourceLibraryItemHRef="Symbol 1" sourceLastModified="4294963696" lastModified="1296527169" lastUniqueIdentifier="4">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="controls" itemID="4d46d886-000000b3" sourceLibraryItemHRef="Symbol 1" sourceLastModified="4294963696" lastModified="1324933573" lastUniqueIdentifier="4">
   <timeline>
     <DOMTimeline name="controls">
       <layers>
@@ -16,7 +16,7 @@
                     <Edge fillStyle1="1" edges="!6400 800|-6400 800!-6400 800|-6400 0!-6400 0|6400 0!6400 0|6400 800"/>
                   </edges>
                 </DOMShape>
-                <DOMSymbolInstance libraryItemName="playbutton" name="playbutton">
+                <DOMSymbolInstance libraryItemName="playbutton" name="playbutton" centerPoint3DX="-302.45" centerPoint3DY="24.3">
                   <matrix>
                     <Matrix tx="-306.35" ty="24"/>
                   </matrix>
@@ -32,7 +32,7 @@
                     <Point x="-0.25" y="-0.7"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="fullscreenbutton" name="myfullscreenbutton" selected="true" centerPoint3DX="299.65" centerPoint3DY="20.4">
+                <DOMSymbolInstance libraryItemName="fullscreenbutton" name="myfullscreenbutton" centerPoint3DX="299.65" centerPoint3DY="20.4">
                   <matrix>
                     <Matrix tx="298.25" ty="20.65"/>
                   </matrix>
@@ -48,7 +48,7 @@
                     <Point x="7.25" y="7.25"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMDynamicText name="mydurationtext" width="50.35" height="11.15" isSelectable="false">
+                <DOMDynamicText name="mydurationtext" width="55.35" height="11" isSelectable="false">
                   <matrix>
                     <Matrix tx="152.65" ty="16.3"/>
                   </matrix>
@@ -61,9 +61,9 @@
                     </DOMTextRun>
                   </textRuns>
                 </DOMDynamicText>
-                <DOMDynamicText name="mytimetext" width="32" height="11.15" isSelectable="false">
+                <DOMDynamicText name="mytimetext" width="42.65" height="11" isSelectable="false">
                   <matrix>
-                    <Matrix tx="116.65" ty="16.3"/>
+                    <Matrix tx="106" ty="16.3"/>
                   </matrix>
                   <textRuns>
                     <DOMTextRun>
@@ -74,15 +74,15 @@
                     </DOMTextRun>
                   </textRuns>
                 </DOMDynamicText>
-                <DOMDynamicText name="mytimelinetext" width="38.5" height="11.15" isSelectable="false" border="true" lineType="multiline">
+                <DOMDynamicText name="mytimelinetext" width="35.3" height="11.15" isSelectable="false" lineType="multiline">
                   <matrix>
-                    <Matrix tx="-87.2" ty="6.7"/>
+                    <Matrix tx="-84" ty="6.7"/>
                   </matrix>
                   <textRuns>
                     <DOMTextRun>
                       <characters></characters>
                       <textAttrs>
-                        <DOMTextAttrs alignment="right" aliasText="false" size="10" bitmapSize="200" face="ArialMT" fillColor="#999999"/>
+                        <DOMTextAttrs alignment="right" aliasText="false" size="10" bitmapSize="200" face="ArialMT" fillColor="#FFFFFF"/>
                       </textAttrs>
                     </DOMTextRun>
                   </textRuns>

@@ -1,0 +1,47 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="infobutton" itemID="4efcb3f0-000002c5" sourceLibraryItemHRef="Symbol 1" lastModified="1325184084">
+  <timeline>
+    <DOMTimeline name="infobutton">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#0099FF"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle0="1" edges="!900 268[900 47 717 42!717 42|191 42!191 42[0 42 0 268!0 268|0 631!0 631[6 842 191 842!191 842|710 842!710 842[900 842 900 617!900 617|900 268"/>
+                    <Edge cubics="!900 268(;900,121 839,47 717,42q900 268Q900 47q717 42)717,42;"/>
+                    <Edge cubics="!900 617(;900,617 900,268 900,268q900 617 900 268);"/>
+                    <Edge cubics="!710 842(;836,842 900,767 900,617q710 842Q900 842q900 617);"/>
+                    <Edge cubics="!191 42(;64,42 0,117 0,268q191 42Q0 42q0 268);"/>
+                    <Edge cubics="!0 631(;5,773 69,842 191,842q0 631Q6 842q191 842);"/>
+                    <Edge cubics="!191 842(;191,842 710,842 710,842q191 842 710 842);"/>
+                    <Edge cubics="!0 268(0,268;0,268 0,631 0,631q0 268 0 631);"/>
+                    <Edge cubics="!191 42(;191,42 717,42 717,42q191 42 717 42)717,42;"/>
+                  </edges>
+                </DOMShape>
+                <DOMDynamicText name="linkstext" width="38.25" height="27" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="3" ty="11.5"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>i</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" aliasText="false" rotation="true" lineSpacing="2.4" size="24" bitmapSize="480" face="ArialMT" fillColor="#FFFFFF"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMDynamicText>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

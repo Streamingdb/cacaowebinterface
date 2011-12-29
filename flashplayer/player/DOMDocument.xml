@@ -1,10 +1,18 @@
 <DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#000000" width="640" height="360" frameRate="25" currentTimeline="1" xflVersion="2.0" creatorInfo="Adobe Flash Professional CS5" platform="Macintosh" versionInfo="Saved by Adobe Flash Macintosh 11.0 build 485" majorVersion="11" buildNumber="485" gridSnapTo="true" guidesSnapTo="false" gridVisible="true" rulerVisible="true" objectsSnapTo="false" timelineLabelWidth="202" adjustViewAngle3D="false" viewAngle3D="62.4108334222142" vanishingPoint3DX="320" vanishingPoint3DY="198" nextSceneIdentifier="5" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false">
+     <fonts>
+          <DOMFontItem name="Font 1" itemID="4eee283e-00000572" font="ArialMT" size="0" id="1" sourceLastImported="1324230718" embedRanges="1|2|3|4"/>
+     </fonts>
      <media>
           <DOMVideoItem name="myVideo" itemID="4bb2d196-00000258" sourceExternalFilepath="./LIBRARY/myVideo" sourceLastImported="1303578955" videoDataHRef="M 19 1270010262.dat" channels="0" isSpecial="true"/>
      </media>
      <symbols>
           <Include href="controls.xml" loadImmediate="false"/>
+          <Include href="copybtn.xml" loadImmediate="false"/>
           <Include href="fullscreenbutton.xml" loadImmediate="false"/>
+          <Include href="infobox.xml" loadImmediate="false"/>
+          <Include href="infobutton.xml" loadImmediate="false"/>
+          <Include href="linksbox.xml" loadImmediate="false"/>
+          <Include href="linksbutton.xml" loadImmediate="false"/>
           <Include href="loadbar.xml" loadImmediate="false"/>
           <Include href="loadbarfull.xml" loadImmediate="false"/>
           <Include href="playbutton.xml" loadImmediate="false"/>
@@ -15,11 +23,67 @@
      <timelines>
           <DOMTimeline name="Scene 1">
                <layers>
-                    <DOMLayer name="controls" color="#9933CC" autoNamed="false">
+                    <DOMLayer name="infobox" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMSymbolInstance libraryItemName="controls" name="controls" centerPoint3DX="320" centerPoint3DY="340">
+                                        <DOMSymbolInstance libraryItemName="infobox" name="myinfobox" selected="true" centerPoint3DX="330" centerPoint3DY="165">
+                                             <matrix>
+                                                  <Matrix tx="170" ty="100"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="160" y="65"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="linksbox" color="#4FFF4F" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="linksbox" name="mylinksbox" selected="true" centerPoint3DX="335" centerPoint3DY="160">
+                                             <matrix>
+                                                  <Matrix tx="190" ty="70"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="145" y="90"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="buttons" color="#4FFF4F" locked="true" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="linksbutton" name="linksbutton" centerPoint3DX="601.25" centerPoint3DY="97">
+                                             <matrix>
+                                                  <Matrix tx="571.25" ty="71"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="30" y="26"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMSymbolInstance libraryItemName="infobutton" name="infobutton" selected="true" centerPoint3DX="594.75" centerPoint3DY="39.5">
+                                             <matrix>
+                                                  <Matrix tx="571.5" ty="18.45"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="23.25" y="21.05"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="controls" color="#9933CC" locked="true" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="controls" name="controls" selected="true" centerPoint3DX="320" centerPoint3DY="340">
                                              <matrix>
                                                   <Matrix tx="320" ty="320"/>
                                              </matrix>
@@ -31,7 +95,7 @@
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="video" color="#FF800A" current="true" isSelected="true" autoNamed="false">
+                    <DOMLayer name="video" color="#FF800A" locked="true" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
@@ -41,13 +105,6 @@
                                              </matrix>
                                         </DOMVideoInstance>
                                    </elements>
-                              </DOMFrame>
-                         </frames>
-                    </DOMLayer>
-                    <DOMLayer name="actions" color="#FF4FFF" autoNamed="false">
-                         <frames>
-                              <DOMFrame index="0" keyMode="9728">
-                                   <elements/>
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
@@ -358,24 +415,25 @@
      </extendedSwatchLists>
      <PrinterSettings platform="macintosh"/>
      <publishHistory>
-          <PublishItem publishSize="1770" publishTime="1319147935"/>
-          <PublishItem publishSize="2274" publishTime="1319147398"/>
-          <PublishItem publishSize="2274" publishTime="1319147387"/>
-          <PublishItem publishSize="2274" publishTime="1319147129"/>
-          <PublishItem publishSize="2198" publishTime="1319147045"/>
-          <PublishItem publishSize="2194" publishTime="1319147033"/>
-          <PublishItem publishSize="2202" publishTime="1319066689"/>
-          <PublishItem publishSize="1775" publishTime="1319065986"/>
-          <PublishItem publishSize="23143" publishTime="1319064376"/>
-          <PublishItem publishSize="23144" publishTime="1319064355"/>
-          <PublishItem publishSize="23131" publishTime="1319063927"/>
-          <PublishItem publishSize="1767" publishTime="1319063907"/>
-          <PublishItem publishSize="23109" publishTime="1318979250"/>
-          <PublishItem publishSize="23128" publishTime="1318979209"/>
-          <PublishItem publishSize="1765" publishTime="1318979172"/>
-          <PublishItem publishSize="1767" publishTime="1318979127"/>
-          <PublishItem publishSize="1766" publishTime="1318979014"/>
-          <PublishItem publishSize="1767" publishTime="1318978967"/>
-          <PublishItem publishSize="1767" publishTime="1318978938"/>
+          <PublishItem publishSize="36215" publishTime="1325200482"/>
+          <PublishItem publishSize="36074" publishTime="1325200262"/>
+          <PublishItem publishSize="35992" publishTime="1325200172"/>
+          <PublishItem publishSize="35975" publishTime="1325199404"/>
+          <PublishItem publishSize="35966" publishTime="1325199383"/>
+          <PublishItem publishSize="35945" publishTime="1325199372"/>
+          <PublishItem publishSize="35960" publishTime="1325199355"/>
+          <PublishItem publishSize="35947" publishTime="1325199333"/>
+          <PublishItem publishSize="35947" publishTime="1325199251"/>
+          <PublishItem publishSize="35949" publishTime="1325197938"/>
+          <PublishItem publishSize="35949" publishTime="1325197317"/>
+          <PublishItem publishSize="35930" publishTime="1325196922"/>
+          <PublishItem publishSize="35394" publishTime="1325196035"/>
+          <PublishItem publishSize="35402" publishTime="1325196023"/>
+          <PublishItem publishSize="35413" publishTime="1325195941"/>
+          <PublishItem publishSize="35574" publishTime="1325187282"/>
+          <PublishItem publishSize="42019" publishTime="1325187245" publishDebug="true"/>
+          <PublishItem publishSize="35570" publishTime="1325187192"/>
+          <PublishItem publishSize="35559" publishTime="1325187039"/>
+          <PublishItem publishSize="35555" publishTime="1325186821"/>
      </publishHistory>
 </DOMDocument>
