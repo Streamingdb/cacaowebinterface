@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>cacaoweb</title>
+	<title>cacaoweb Manager</title>
 	<meta charset=utf-8 />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<link rel="stylesheet" href="style.css" />
@@ -521,6 +521,10 @@
 						link = "http://megavideo.com/?v=" + item.videoid;
 					} else if (item.provider == "videobb") {
 						link = "http://videobb.com/video/" + item.videoid;
+					} else if (item.provider == "videozer") {
+						link = "http://videozer.com/video/" + item.videoid;
+					} else if (item.provider == "mixture") {
+						link = "http://mixturecloud.com/video=" + item.videoid;
 					}
 					var rowlinks = "<div class='linkdisplay' style='display:none'><input name=\"link\" id=\"link\" value=\"" + link + "\" size=\"80\"></input></div>";
 					var showlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\"><span>" + langstrings[lang]['showlink'] + "</span></a></div>";
@@ -641,7 +645,17 @@
 				var realtitle = '';
 				if (item.title == '') {
 					var provider = '';
-					if (item.provider == 0) { provider = 'http://megavideo.com/?v='; } else { provider = 'http://videobb.com/video/'; }
+					if (item.provider == 0) { 
+						provider = 'http://megavideo.com/?v='; 
+					} else if (item.provider == 1) { 
+						provider = 'http://videobb.com/video/';
+					} else if (item.provider == 2) { 
+						provider = 'http://videozer.com/video/';
+					} else if (item.provider == 3) { 
+						provider = 'http://mixturecloud.com/video=';
+					} else {
+						alert("unknown provider");
+					}
 					realtitle = provider + item.videoid;
 				} else {
 					realtitle = item.title;
@@ -772,9 +786,18 @@
 						url: "remoteupload?provider=2&videoid=" + videozerid,
 						success: function(data) {}
 					});	
-				} else if (url.indexOf('http://') > -1 && url.indexOf('videobb.com') == -1 && url.indexOf('megavideo.com') == -1 && url.indexOf('videozer.com') == -1) { // http direct
+				} else if (url.indexOf('mixturecloud.com/video') > -1) { // mixture
+					var pos1 = url.lastIndexOf('=');
+					var videozerid = url.substr(pos1 + 1);
+					var actionstring = "providertype=3&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&year=' + $('#year').val();
+					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
+					$.ajax({
+						url: "remoteupload?provider=3&videoid=" + videozerid,
+						success: function(data) {}
+					});	
+				} else if (url.indexOf('http://') > -1 && url.indexOf('videobb.com') == -1 && url.indexOf('megavideo.com') == -1 && url.indexOf('videozer.com') == -1 && url.indexOf('mixturecloud.com') == -1) { // http direct
 					/* TODO */
-					
+					alert("this link format is not supported at the moment");
 				} else { // type inconnu
 					alert(langstrings[lang]['linknotrecognized']);
 				}
