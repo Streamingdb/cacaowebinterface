@@ -25,6 +25,7 @@ langstrings['en']['episode'] = 'episode';
 langstrings['en']['subtitles'] = 'subtitles';
 langstrings['en']['cacaowebtitle'] = 'cacaoweb - watch your favorite TV shows and movies online freely';
 langstrings['en']['supportedplatforms'] = 'Supported platforms';
+langstrings['en']['download'] = 'download';
 
 /** admin page */
 langstrings['en']['cacaowebadmin'] = 'cacaoweb - Administration Interface';
@@ -137,6 +138,7 @@ langstrings['fr']['episode'] = 'épisode';
 langstrings['fr']['subtitles'] = 'sous-titres';
 langstrings['fr']['cacaowebtitle'] = 'cacaoweb - regardez vos séries et films favoris en ligne librement';
 langstrings['fr']['supportedplatforms'] = 'Plateformes supportées';
+langstrings['fr']['download'] = 'télécharger';
 
 /** admin page */
 langstrings['fr']['cacaowebadmin'] = 'cacaoweb - Interface d\'administration';
@@ -248,6 +250,7 @@ langstrings['it']['episode'] = 'Episodio';
 langstrings['it']['subtitles'] = 'sottotitoli';
 langstrings['it']['cacaowebtitle'] = 'Cacaoweb - Guarda Film o Serie TV Online in Streaming';
 langstrings['it']['supportedplatforms'] = 'Supported platforms';
+langstrings['it']['download'] = 'download';
 
 /** admin page */
 langstrings['it']['cacaowebadmin'] = 'Cacaoweb - Interfaccia di Amministrazione';
@@ -359,6 +362,7 @@ langstrings['pl']['episode'] = 'odcinek';
 langstrings['pl']['subtitles'] = 'Napisy';
 langstrings['pl']['cacaowebtitle'] = 'cacaoweb - Oglądaj swobodnie swoje ulubione programy telewizyjne i filmy online';
 langstrings['pl']['supportedplatforms'] = 'Supported platforms';
+langstrings['pl']['download'] = 'download';
 
 /** admin page */
 langstrings['pl']['cacaowebadmin'] = 'cacaoweb - Administracja Interfejsem';
@@ -470,6 +474,7 @@ langstrings['es']['episode'] = 'episodio';
 langstrings['es']['subtitles'] = 'subtítulos';
 langstrings['es']['cacaowebtitle'] = 'cacaoweb - mira tus programas de TV y películas en línea gratis';
 langstrings['es']['supportedplatforms'] = 'Supported platforms';
+langstrings['es']['download'] = 'download';
 
 /** admin page */
 langstrings['es']['cacaowebadmin'] = 'cacaoweb - Interfaz de Administración';

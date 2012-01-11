@@ -566,6 +566,14 @@ a {
 }
 
 
+/* link area */
+
+#linkarea {
+	width: 900px;
+	margin: 80px auto 0 auto;
+	font-size: 200%;
+}
+
 
 /* icons for supported platforms */
 .supportedplatforms { font-size: 80%; float:right; padding-right: 5px; }

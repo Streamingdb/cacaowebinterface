@@ -130,6 +130,8 @@
 				<div id="searchresultsprevious" style="display:none"><a href="#"></a></div>
 				<div id="searchresultsnext" style="display:none"><a href="#"></a></div>
 			</div>
+			<div id="linkarea" class="center" style="display:none">
+			</div>
 			<div id="playerarea" style="display:none">
 				<div id="player">
 				</div>
@@ -240,6 +242,8 @@
 			document.getElementById('searchresults').innerHTML = "";
 			document.getElementById('searchresultsprevious').style.display = "none";
 			document.getElementById('searchresultsnext').style.display = "none";
+			
+			document.getElementById('linkarea').style.display = "none";
 		}
 		/** sets the page in search results mode */
 		function searchmode() {
@@ -254,7 +258,23 @@
 			document.getElementById('searchresults').innerHTML = "";
 			document.getElementById('searchresultsprevious').style.display = "block";
 			document.getElementById('searchresultsnext').style.display = "block";
+			
+			document.getElementById('linkarea').style.display = "none";
+		}
+		function linkmode() {
+			document.getElementById('messagezoneplaymode').style.display = "none";
 		
+			document.getElementById('toplogo').style.display = "block";
+			document.getElementById('topsearchbox').style.display = "block";
+			document.getElementById('mainsearch').style.display = "none";
+			document.getElementById('footer').style.display = "none";
+			document.getElementById('footercontent').style.display = "none";
+			
+			document.getElementById('searchresults').innerHTML = "";
+			document.getElementById('searchresultsprevious').style.display = "none";
+			document.getElementById('searchresultsnext').style.display = "none";
+		
+			document.getElementById('linkarea').style.display = "block";
 		}
 			
 		
@@ -288,11 +308,8 @@
 				return false;
 			}
 		}
-			
-		function processUserEntry() {
-			document.getElementById('playerarea').style.display = 'none';
-			document.getElementById('didyoumean').innerHTML = "";
-			var searchitem = currentsearchterm;
+		
+		function generateCacaoLink(searchitem) {
 			var iscacaoid = ismd5(searchitem);
 			if (searchitem.indexOf('http://') == -1 && !iscacaoid) { // search
 				if (searchitem != "") {
@@ -309,30 +326,60 @@
 						cacaolink = searchitem.substr(pos2 + 1);
 					}
 				}
-				play("http://127.0.0.1:4001/" + cacaolink);
+				return ("http://127.0.0.1:4001/" + cacaolink);
 			} else if (searchitem.indexOf('megavideo.com/?v=') > -1) { // megavideo
 				var pos1 = searchitem.indexOf('v=');
 				var megavideoid = searchitem.substr(pos1 + 2);
-				play("http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=" + megavideoid);
+				return ("http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=" + megavideoid);
 			} else if (searchitem.indexOf('videobb.com/video/') > -1) { // videobb
 				var pos1 = searchitem.lastIndexOf('/');
 				var videobbid = searchitem.substr(pos1 + 1);
-				play("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videobbid);
+				return ("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videobbid);
 			} else if (searchitem.indexOf('videobb.com/watch_video') > -1) { // videobb
 				var pos1 = searchitem.lastIndexOf('=');
 				var videobbid = searchitem.substr(pos1 + 1);
-				play("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videobbid);
+				return ("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videobbid);
 			} else if (searchitem.indexOf('videozer.com/video/') > -1) { // videozer
 				var pos1 = searchitem.lastIndexOf('/');
 				var videozerid = searchitem.substr(pos1 + 1);
-				play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videozerid);
+				return ("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videozerid);
 			} else if (searchitem.indexOf('mixturecloud.com/video') > -1) { // mixture
 				var pos1 = searchitem.lastIndexOf('=');
 				var mixtureid = searchitem.substr(pos1 + 1);
-				play("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + mixtureid);
-			} else if (searchitem.indexOf('d=') > -1) { // megaupload
-				alert("cacaoweb doesn't handle megaupload links");
+				return ("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + mixtureid);
+			} else if (searchitem.indexOf('megaupload.com/?d=') > -1) { // megaupload
+				var pos1 = searchitem.indexOf('d=');
+				var megauploadid = searchitem.substr(pos1 + 2);
+				return ("http://127.0.0.1:4001/megaupload/download.caml?downloadid=" + megauploadid);
 			} else { // type inconnu
+				return "";
+			}
+		}
+		
+		function linkMetainfoCallback(issuccess, errormsgortitle, downloadlink) {
+			if (issuccess == 1) {
+				document.getElementById('linkarea').innerHTML = '<a href="' + downloadlink + '">' + langstrings[lang]['download'] + ' ' + errormsgortitle + '</a>';
+				linkmode();
+			} else {
+				document.getElementById('linkarea').innerHTML = errormsgortitle;
+				linkmode();
+			}
+		}
+			
+		function processUserEntry() {
+			document.getElementById('playerarea').style.display = 'none';
+			document.getElementById('didyoumean').innerHTML = "";
+			var searchitem = currentsearchterm;
+			var cacaolink = generateCacaoLink(searchitem);
+			if (cacaolink != "") {
+				if (cacaolink.indexOf("megaupload") > -1) {
+					var pos1 = searchitem.indexOf('d=');
+					var megauploadid = searchitem.substr(pos1 + 2);
+					includeScript('http://127.0.0.1:4001/meta/meta.caml?contentid=' + megauploadid + '&provider=megaupload', 'metainfolink');
+				} else {
+					play(cacaolink);
+				}
+			} else {
 				alert(langstrings[lang]['linknotrecognized']);
 				clearsearch();
 				document.getElementById('searchhints').innerHTML = langstrings[lang]['typeoflinks'];
