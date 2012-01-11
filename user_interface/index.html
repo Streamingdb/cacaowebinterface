@@ -91,7 +91,7 @@
 			</ul>
 		</div>
 		<div class="supportedplatforms">
-			<small>Supported platforms</small> 
+			<small id="supportedplatforms">Supported platforms</small> 
 			<ul>
 				<li class="megavideoico" title="megavideo"></li>
 				<li class="megauploadico" title="megaupload"></li>
@@ -172,6 +172,8 @@
 		document.getElementById('downloadmenu').innerHTML = langstrings[lang]['download'];
 		document.getElementById('devmenu').innerHTML = langstrings[lang]['developers'];
 		document.getElementById('moneymenu').innerHTML = langstrings[lang]['makemoney'];
+		document.getElementById('supportedplatforms').innerHTML = langstrings[lang]['supportedplatforms'];
+		
 		
 		if (lang == 'it') {
 			document.getElementById('adzone').innerHTML = 'Per La Miglior Fonte Gratuita di Video Cacaoweb in Italia, Vai su <a href="http://streamingdb.net/">Streamingdb.net</a>';

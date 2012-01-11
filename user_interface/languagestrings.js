@@ -24,6 +24,9 @@ langstrings['en']['season'] = 'season';
 langstrings['en']['episode'] = 'episode';
 langstrings['en']['subtitles'] = 'subtitles';
 langstrings['en']['cacaowebtitle'] = 'cacaoweb - watch your favorite TV shows and movies online freely';
+langstrings['en']['supportedplatforms'] = 'Supported platforms';
+
+/** admin page */
 langstrings['en']['cacaowebadmin'] = 'cacaoweb - Administration Interface';
 langstrings['en']['mydownloads'] = 'My Downloads';
 langstrings['en']['myuploads'] = 'My Uploads';
@@ -133,6 +136,9 @@ langstrings['fr']['season'] = 'saison';
 langstrings['fr']['episode'] = 'épisode';
 langstrings['fr']['subtitles'] = 'sous-titres';
 langstrings['fr']['cacaowebtitle'] = 'cacaoweb - regardez vos séries et films favoris en ligne librement';
+langstrings['fr']['supportedplatforms'] = 'Plateformes supportées';
+
+/** admin page */
 langstrings['fr']['cacaowebadmin'] = 'cacaoweb - Interface d\'administration';
 langstrings['fr']['mydownloads'] = 'Mes Téléchargements';
 langstrings['fr']['myuploads'] = 'Mes Téléversements';
@@ -241,6 +247,9 @@ langstrings['it']['season'] = 'Stagione';
 langstrings['it']['episode'] = 'Episodio';
 langstrings['it']['subtitles'] = 'sottotitoli';
 langstrings['it']['cacaowebtitle'] = 'Cacaoweb - Guarda Film o Serie TV Online in Streaming';
+langstrings['it']['supportedplatforms'] = 'Supported platforms';
+
+/** admin page */
 langstrings['it']['cacaowebadmin'] = 'Cacaoweb - Interfaccia di Amministrazione';
 langstrings['it']['mydownloads'] = 'Miei Download';
 langstrings['it']['myuploads'] = 'Miei Uploads';
@@ -349,6 +358,9 @@ langstrings['pl']['season'] = 'sezon';
 langstrings['pl']['episode'] = 'odcinek';
 langstrings['pl']['subtitles'] = 'Napisy';
 langstrings['pl']['cacaowebtitle'] = 'cacaoweb - Oglądaj swobodnie swoje ulubione programy telewizyjne i filmy online';
+langstrings['pl']['supportedplatforms'] = 'Supported platforms';
+
+/** admin page */
 langstrings['pl']['cacaowebadmin'] = 'cacaoweb - Administracja Interfejsem';
 langstrings['pl']['mydownloads'] = 'Pobieranie';
 langstrings['pl']['myuploads'] = 'Wysyłane';
@@ -457,6 +469,9 @@ langstrings['es']['season'] = 'temporada';
 langstrings['es']['episode'] = 'episodio';
 langstrings['es']['subtitles'] = 'subtítulos';
 langstrings['es']['cacaowebtitle'] = 'cacaoweb - mira tus programas de TV y películas en línea gratis';
+langstrings['es']['supportedplatforms'] = 'Supported platforms';
+
+/** admin page */
 langstrings['es']['cacaowebadmin'] = 'cacaoweb - Interfaz de Administración';
 langstrings['es']['mydownloads'] = 'Mis Descargas';
 langstrings['es']['myuploads'] = 'Mis Subidas';
