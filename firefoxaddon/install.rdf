@@ -3,7 +3,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cacaoweb@cacaoweb.org</em:id>
 		<em:name>cacaoweb</em:name>
-		<em:version>1.0.20</em:version>
+		<em:version>1.0.21</em:version>
 		<em:description>Watch Megavideo and Videobb without time limit</em:description>
 		<em:creator>http://www.cacaoweb.org/</em:creator>
 		<em:iconURL>chrome://cacaoweb/skin/tv-64.png</em:iconURL>
