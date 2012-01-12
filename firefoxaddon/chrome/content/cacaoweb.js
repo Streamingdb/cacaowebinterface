@@ -53,7 +53,7 @@ function cacao_replaceVids(docs, replace) {
     for (var j = 0; j < docs.length; j++) {
         var embeds = docs[j].getElementsByTagName("embed");
         for (var i = 0; i < embeds.length; i++) {
-            if (embeds[i].src != "" && (embeds[i].src.indexOf("megavideo.com", 0) > -1 || embeds[i].src.indexOf("videobb.com/", 0) > -1)) {
+            if (embeds[i].src != "" && (embeds[i].src.indexOf("megavideo.com", 0) > -1 || embeds[i].src.indexOf("videobb.com/", 0) > -1 || embeds[i].src.indexOf("videozer.com/", 0) > -1)) {
 				if (replace) {
 					var provider = "";
 					var videoid = "";
@@ -69,12 +69,51 @@ function cacao_replaceVids(docs, replace) {
 						provider = "videobb";
 						ff = embeds[i].src.split("video/");
 						if (!ff[1]) {
-							ff = embeds[i].src.split("v=");
+							ff = embeds[i].src.split("?v=");
 						}
 						if (!ff[1]) {
 							ff = embeds[i].src.split("/e/");
 						}
-						videoid = ff[1].substring(0, 12);
+						if (!ff[1]) {
+							var flashvars = embeds[i].getAttribute('flashvars');
+							ff = flashvars.split("setting=");
+							if (!ff[1]) {
+								//alert("no videoid in videobb");
+							} else {
+								ff = atob(ff[1]).split("?v=");
+								if (!ff[1]) {
+									//alert("no videoid in videobb");
+								} else {
+									videoid = ff[1].substring(0, 12);
+								}
+							}
+						} else {
+							videoid = ff[1].substring(0, 12);
+						}
+					} else if (embeds[i].src.indexOf("videozer.com", 0) > -1) {
+						provider = "videozer";
+						ff = embeds[i].src.split("video/");
+						if (!ff[1]) {
+							ff = embeds[i].src.split("?v=");
+						}
+						if (!ff[1]) {
+							ff = embeds[i].src.split("/e/");
+						}
+						if (!ff[1]) {
+							var flashvars = embeds[i].getAttribute('flashvars');
+							ff = flashvars.split("setting=");
+							if (!ff[1]) {
+							
+							} else {
+								ff = atob(ff[1]).split("?v=");
+								if (!ff[1]) {
+								} else {
+									videoid = ff[1];
+								}
+							}
+						} else {
+							videoid = ff[1];
+						}
 					}
 					var playornot = "";
 					if (replacedvideoscount > 0) {
@@ -95,6 +134,9 @@ function cacao_replaceVids(docs, replace) {
 						embeds[i].src = 'http://127.0.0.1:4001/player.swf';
 					} else if (provider == "videobb") {
 						embeds[i].setAttribute("flashvars", "file=http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videoid + playornot);
+						embeds[i].src = 'http://127.0.0.1:4001/player.swf';
+					} else if (provider == "videozer") {
+						embeds[i].setAttribute("flashvars", "file=http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid + playornot);
 						embeds[i].src = 'http://127.0.0.1:4001/player.swf';
 					}
 					
