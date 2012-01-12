@@ -60,7 +60,8 @@ var cacaoweb = {
 	},
 	
 	isVideobblink : function(link) {
-		return (link.indexOf("videobb.com/") > -1 && (link.indexOf("video/") > -1 || link.indexOf("v=") > -1 || link.indexOf("/e/") > -1 || link.indexOf("/v/") > -1));
+		return (link.indexOf("videobb.com/") > -1 && (link.indexOf("video/") > -1 || link.indexOf("v=") > -1 || 
+				link.indexOf("/e/") > -1 || link.indexOf("/v/") > -1 || link.indexOf("/embed/") > -1));
 	},
 	getVideobbID : function(link) {
 		var videoid = "";
@@ -69,6 +70,9 @@ var cacaoweb = {
 			ff = link.split("?v=");
 			if (!ff[1]) {
 				ff = link.split("/e/");
+				if (!ff[1]) {
+					ff = link.split("/embed/");
+				}
 			}
 		}
 		if (!ff[1]) {
@@ -92,7 +96,8 @@ var cacaoweb = {
 	},
 	
 	isVideozerlink : function(link) {
-		return (link.indexOf("videozer.com/") > -1 && (link.indexOf("video/") > -1 || link.indexOf("v=") > -1 || link.indexOf("/e/") > -1 || link.indexOf("/v/") > -1));
+		return (link.indexOf("videozer.com/") > -1 && (link.indexOf("video/") > -1 || link.indexOf("v=") > -1 || 
+				link.indexOf("/e/") > -1 || link.indexOf("/v/") > -1 || link.indexOf("/embed/") > -1));
 	},
 	getVideozerID : function(link) {
 		var videoid = "";
@@ -101,6 +106,9 @@ var cacaoweb = {
 			ff = link.split("?v=");
 			if (!ff[1]) {
 				ff = link.split("/e/");
+				if (!ff[1]) {
+					ff = link.split("/embed/");
+				}
 			}
 		}
 		if (!ff[1]) {
@@ -137,17 +145,18 @@ function cacao_replaceVids(docs) {
             if (embeds[i].src != "" && 
 				(cacaoweb.isMegavideolink(embeds[i].src) || cacaoweb.isVideobblink(embeds[i].src) || 
 					cacaoweb.isVideozerlink(embeds[i].src))) {
+					
 				
 				var provider = "";
 				var videoid = "";
 				if (cacaoweb.isMegavideolink(embeds[i].src)) {
-					provider = "megavideo";
+					provider = "mv";
 					videoid = cacaoweb.getMegavideoID(embeds[i].src);
 				} else if (cacaoweb.isVideobblink(embeds[i].src)) {
-					provider = "videobb";
+					provider = "bb";
 					videoid = cacaoweb.getVideobbID(embeds[i].src);
 				} else if (cacaoweb.isVideozerlink(embeds[i].src)) {
-					provider = "videozer";
+					provider = "vz";
 					videoid = cacaoweb.getVideozerID(embeds[i].src);
 				}
 				var playornot = "";
@@ -160,15 +169,7 @@ function cacao_replaceVids(docs) {
 						cacaoweb.cacao_addedvideostabs.push(videoid);
 						var newurl = "http://content.cacaoweb.org/play.php?videoid=" + videoid;
 						if (cacaoweb.cacaowebisrunning == 1) {
-							var prov = "";
-							if (provider == "megavideo") {
-								prov = "mv";
-							} else if (provider == "videobb") {
-								prov = "bb";
-							} else if (provider == "videozer") {
-								prov = "vz";
-							}
-							newurl = "http://127.0.0.1:4001/?play=1&provider=" + prov + "&videoid=" + videoid;
+							newurl = "http://127.0.0.1:4001/?play=1&provider=" + provider + "&videoid=" + videoid;
 						}
 						cacao_openNewTab(newurl);
 					}
