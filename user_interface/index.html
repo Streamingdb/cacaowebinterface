@@ -349,7 +349,7 @@
 				return ("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + mixtureid);
 			} else if (searchitem.indexOf('megaupload.com/?d=') > -1) { // megaupload
 				var pos1 = searchitem.indexOf('d=');
-				var megauploadid = searchitem.substr(pos1 + 2);
+				var megauploadid = searchitem.substr(pos1 + 2, 8);
 				return ("http://127.0.0.1:4001/megaupload/download.caml?downloadid=" + megauploadid);
 			} else { // type inconnu
 				return "";
@@ -374,7 +374,7 @@
 			if (cacaolink != "") {
 				if (cacaolink.indexOf("megaupload") > -1) {
 					var pos1 = searchitem.indexOf('d=');
-					var megauploadid = searchitem.substr(pos1 + 2);
+					var megauploadid = searchitem.substr(pos1 + 2, 8);
 					includeScript('http://127.0.0.1:4001/meta/meta.caml?contentid=' + megauploadid + '&provider=megaupload', 'metainfolink');
 				} else {
 					play(cacaolink);
