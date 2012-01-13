@@ -46,14 +46,14 @@ var cacaoweb = {
 	},
 	
 	isMegavideolink : function(link) {
-		return (link.indexOf("megavideo.com/") > -1 && (link.indexOf("v/") > -1 || link.indexOf("v=") > -1));
+		return (link.indexOf("megavideo.com/") > -1 && (link.indexOf("/v/") > -1 || link.indexOf("v=") > -1));
 	},
 	getMegavideoID : function(link) {
 		var ff = link.split("v=");
 		if (!ff[1]) {
-			ff = embeds[i].src.split("/e/");
+			ff = link.split("/e/");
 			if (!ff[1]) {
-				ff = embeds[i].src.split("/v/");
+				ff = link.split("/v/");
 			}
 		}
 		return ff[1].substring(0, 8);
