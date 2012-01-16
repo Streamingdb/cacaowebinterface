@@ -1,6 +1,7 @@
 
 var cacaoweb = {
 	cacao_addedvideostabs : [],
+	cacao_replaced : [],
 	prefManager : null,
 	stringsBundle : null,
 	cacaowebisrunning : -1,
@@ -253,10 +254,18 @@ function cacao_findvideos(event) {
 	
 	// malware protection : open an alternative website when the user is brought to a websites featuring malware
 	if (loc.indexOf("italia-film.com") > -1 || loc.indexOf("filmgratis.tv") > -1 || loc.indexOf("film-stream.tv") > -1 || loc.indexOf("piratestreaming.com") > -1) {
-		cacao_openNewTab("http://www.streamingdb.net/");
+		var replacement = "http://www.streamingdb.net/";
+		if (cacaoweb.cacao_replaced.indexOf(replacement) == -1) {
+			cacaoweb.cacao_replaced.push(replacement);
+			cacao_openNewTab(replacement);
+		}
 	}
 	if (loc.indexOf("streamiz.com") > -1) {
-		cacao_openNewTab("http://www.dpstream.net/");
+		var replacement = "http://www.dpstream.net/";
+		if (cacaoweb.cacao_replaced.indexOf(replacement) == -1) {
+			cacaoweb.cacao_replaced.push(replacement);
+			cacao_openNewTab(replacement);
+		}
 	}
 	
 }
