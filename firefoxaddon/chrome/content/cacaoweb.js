@@ -258,7 +258,10 @@ function cacao_findvideos(event) {
 			if (cacaoweb.cacaowebisrunning == 1) {
 				newurl = "http://127.0.0.1:4001/?play=1&provider=" + provider + "&videoid=" + videoid;
 			}
-			cacao_openNewTab(newurl);
+			if (cacaoweb.cacao_addedvideostabs.indexOf(videoid) == -1) {
+				cacaoweb.cacao_addedvideostabs.push(videoid);
+				cacao_openNewTab(newurl);
+			}
 		}
 	} else if (cacaoweb.cacaowebAPIinstalled != 1) {
 		var docs = cacao_getDocuments(content.document.defaultView);
