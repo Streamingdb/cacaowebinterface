@@ -309,6 +309,82 @@
 			}
 		}
 		
+		var parselinks = {
+			isMegavideolink : function(link) {
+				return (link.indexOf("megavideo.com/") > -1 && (link.indexOf("/v/") > -1 || link.indexOf("v=") > -1));
+			},
+			getMegavideoID : function(link) {
+				var ff = link.split("v=");
+				if (!ff[1]) {
+					ff = link.split("/e/");
+					if (!ff[1]) {
+						ff = link.split("/v/");
+					}
+				}
+				return ff[1].substring(0, 8);
+			},
+			
+			isVideobblink : function(link) {
+				return (link.indexOf("videobb.com/") > -1 && (link.indexOf("video/") > -1 || link.indexOf("v=") > -1 || 
+						link.indexOf("/e/") > -1 || link.indexOf("/v/") > -1 || link.indexOf("/embed/") > -1));
+			},
+			getVideobbID : function(link) {
+				var videoid = "";
+				var ff = link.split("video/");
+				if (!ff[1]) {
+					ff = link.split("?v=");
+					if (!ff[1]) {
+						ff = link.split("/e/");
+						if (!ff[1]) {
+							ff = link.split("/embed/");
+						}
+					}
+				}
+				if (!ff[1]) {
+				} else {
+					videoid = ff[1].substring(0, 12);
+				}
+			
+				return videoid;
+			},
+			
+			isVideozerlink : function(link) {
+				return (link.indexOf("videozer.com/") > -1 && (link.indexOf("video/") > -1 || link.indexOf("v=") > -1 || 
+						link.indexOf("/e/") > -1 || link.indexOf("/v/") > -1 || link.indexOf("/embed/") > -1));
+			},
+			getVideozerID : function(link) {
+				var videoid = "";
+				var ff = link.split("video/");
+				if (!ff[1]) {
+					ff = link.split("?v=");
+					if (!ff[1]) {
+						ff = link.split("/e/");
+						if (!ff[1]) {
+							ff = link.split("/embed/");
+						}
+					}
+				}
+				if (!ff[1]) {
+				} else {
+					videoid = ff[1].substring(0, 12);
+				}
+			
+				return videoid;
+			},
+			
+			isMixturelink : function(link) {
+				return (link.indexOf("mixturecloud.com/") > -1 && (link.indexOf("video=") > -1 || link.indexOf("/video/") > -1));
+			},
+			getMixtureID : function(link) {
+				var ff = link.split("video=");
+				if (!ff[1]) {
+					ff = link.split("/video/");
+				}
+				return ff[1].substring(0, 6);;
+			},
+		
+		};
+		
 		function generateCacaoLink(searchitem) {
 			var iscacaoid = ismd5(searchitem);
 			if (searchitem.indexOf('http://') == -1 && !iscacaoid) { // search
@@ -327,25 +403,17 @@
 					}
 				}
 				return ("http://127.0.0.1:4001/" + cacaolink);
-			} else if (searchitem.indexOf('megavideo.com/?v=') > -1) { // megavideo
-				var pos1 = searchitem.indexOf('v=');
-				var megavideoid = searchitem.substr(pos1 + 2);
+			} else if (parselinks.isMegavideolink(searchitem)) {
+				var megavideoid = parselinks.getMegavideoID(searchitem);
 				return ("http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=" + megavideoid);
-			} else if (searchitem.indexOf('videobb.com/video/') > -1) { // videobb
-				var pos1 = searchitem.lastIndexOf('/');
-				var videobbid = searchitem.substr(pos1 + 1);
+			} else if (parselinks.isVideobblink(searchitem)) { 
+				var videobbid = parselinks.getVideobbID(searchitem);
 				return ("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videobbid);
-			} else if (searchitem.indexOf('videobb.com/watch_video') > -1) { // videobb
-				var pos1 = searchitem.lastIndexOf('=');
-				var videobbid = searchitem.substr(pos1 + 1);
-				return ("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videobbid);
-			} else if (searchitem.indexOf('videozer.com/video/') > -1) { // videozer
-				var pos1 = searchitem.lastIndexOf('/');
-				var videozerid = searchitem.substr(pos1 + 1);
+			} else if (parselinks.isVideozerlink(searchitem)) { 
+				var videozerid = parselinks.getVideozerID(searchitem);
 				return ("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videozerid);
-			} else if (searchitem.indexOf('mixturecloud.com/video') > -1) { // mixture
-				var pos1 = searchitem.lastIndexOf('=');
-				var mixtureid = searchitem.substr(pos1 + 1);
+			} else if (parselinks.isMixturelink(searchitem)) { 
+				var mixtureid = parselinks.getMixtureID(searchitem);
 				return ("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + mixtureid);
 			} else if (searchitem.indexOf('megaupload.com/?d=') > -1) { // megaupload
 				var pos1 = searchitem.indexOf('d=');
@@ -577,6 +645,8 @@
 					play("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=vz") > -1) {
 					play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
+				} else if (url.indexOf("provider=mi") > -1) {
+					play("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=mu") > -1) {
 					//play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
 					
