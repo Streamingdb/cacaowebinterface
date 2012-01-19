@@ -156,13 +156,9 @@
 		this.updateActions();
 	},
 	
-	insertDownloadPlugin: function() {
-		var all = document.getElementsByTagName("div");
-		for (var i = 0; i < all.length; i++) {
-			if (all[i].getAttribute("cacaolink")) {
-				all[i].innerHTML = '<a href="javascript:Cacaoweb.download()"><img src="' + this.missingpluginimageurl + '" /></a>';
-			}
-		}
+	insertDownloadPlugin: function(id) {
+		var cacaodiv = document.getElementById(id); 
+		cacaodiv.innerHTML = '<a href="javascript:Cacaoweb.download()"><img src="' + this.missingpluginimageurl + '" /></a>';
 	},
 	
 	/**
@@ -200,7 +196,7 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 	};
 
 
-	(function(cacaoplayer) { // we don't pollute the global scope with our private variables
+	(function(cacaoplayer) { // to create a new nested scope
 
 		// the list of registered player objects
 		var _players = [];
@@ -267,7 +263,7 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 				if (Cacaoweb.status == 'On') {
 					return this.realplay(link);
 				} else {
-					var timeout = setTimeout("Cacaoweb.insertDownloadPlugin()", Cacaoweb.timeoutClientAlive);
+					var timeout = setTimeout("Cacaoweb.insertDownloadPlugin('" + this.id + "')", Cacaoweb.timeoutClientAlive);
 					var that = this;
 					var f = function (status) { if (status == "On") {
 												clearTimeout(timeout);
