@@ -1,6 +1,6 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="playbutton" itemID="4afbad49-0000025d" sourceLibraryItemHRef="Symbol 1" sourceLastModified="4294963696" lastModified="1282829859" lastUniqueIdentifier="3">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="playbutton" itemID="4afbad49-0000025d" sourceLibraryItemHRef="Symbol 1" sourceLastModified="4294963696" lastModified="1326749225" lastUniqueIdentifier="3">
   <timeline>
-    <DOMTimeline name="playbutton" currentFrame="9">
+    <DOMTimeline name="playbutton">
       <layers>
         <DOMLayer name="buttonlayer" color="#4FFFFF" locked="true" autoNamed="false">
           <frames>
@@ -13,7 +13,7 @@
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle1="1" edges="!370 280|-213 280!-213 280|-213 -268!-213 -268|370 -268!370 -268|370 280"/>
+                    <Edge fillStyle1="1" edges="!370 -268|370 280!370 280|-213 280!-213 280|-213 -268!-213 -268|370 -268"/>
                   </edges>
                 </DOMShape>
               </elements>
@@ -43,7 +43,7 @@
                     </StrokeStyle>
                   </strokes>
                   <edges>
-                    <Edge fillStyle1="1" strokeStyle="1" edges="!-107 203/-107 -197!-107 -197/293 3!293 3/-107 203"/>
+                    <Edge fillStyle1="1" strokeStyle="1" edges="!-107 203S6/-107 -197!-107 -197/293 3!293 3/-107 203"/>
                     <Edge cubics="!293 3(;293,3 -107,203 -107,203q293 3 -107 203);"/>
                     <Edge cubics="!-107 203(;-107,203 -107,-197 -107,-197q-107 203 -107 -197);"/>
                     <Edge cubics="!-107 -197(;-107,-197 293,3 293,3q-107 -197 293 3);"/>
