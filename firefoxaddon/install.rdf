@@ -3,11 +3,12 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cacaoweb@cacaoweb.org</em:id>
 		<em:name>cacaoweb</em:name>
-		<em:version>1.0.24</em:version>
-		<em:description>Watch Megavideo and Videobb without time limit</em:description>
+		<em:version>1.0.26</em:version>
+		<em:type>2</em:type>
+		<em:description>Watch videos without limit</em:description>
 		<em:creator>http://www.cacaoweb.org/</em:creator>
 		<em:iconURL>chrome://cacaoweb/skin/tv-64.png</em:iconURL>
-		<em:homepageURL>http://www.cacaoweb.org/addon/</em:homepageURL>
+		<em:homepageURL>http://www.cacaoweb.org/</em:homepageURL>
 	
 	
 		<em:localized>
@@ -15,16 +16,7 @@
 				<em:locale>fr-FR</em:locale>
 				<em:name>cacaoweb</em:name>
 				<em:description>
-					Supprimez la limite de temps de Megavideo
-				</em:description>
-			</Description>
-		</em:localized>
-		<em:localized>
-			<Description>
-				<em:locale>de-DE</em:locale>
-				<em:name>cacaoweb</em:name>
-				<em:description>
-					Megavideo Sperre umgehen
+					Supprimez les limites de temps des hébergeurs de fichiers et vidéos
 				</em:description>
 			</Description>
 		</em:localized>

@@ -279,7 +279,7 @@ function cacao_findvideos(event) {
 			cacao_openNewTab(replacement);
 		}
 	}
-	if (loc.indexOf("streamiz.com") > -1 || loc.indexOf("gigastreaming.com") > -1 || loc.indexOf("king-stream.com") > -1) {
+	if (loc.indexOf("gigastreaming.com") > -1 || loc.indexOf("king-stream.com") > -1) {
 		var replacement = "http://www.dpstream.net/";
 		if (cacaoweb.cacao_replaced.indexOf(replacement) == -1) {
 			cacaoweb.cacao_replaced.push(replacement);
@@ -300,7 +300,7 @@ function cacao_statusiconClickHandler() {
 
 window.addEventListener("DOMContentLoaded", function () {
 	cacaoweb.init ();
-	setInterval(cacao_findvideos, 2000);
+	setTimeout(cacao_findvideos, 2000);
     /*if (typeof gBrowser != "undefined") {
         if (typeof gBrowser.tabContainer != "undefined") {
             gBrowser.tabContainer.addEventListener("load", cacao_findvideos, true);
