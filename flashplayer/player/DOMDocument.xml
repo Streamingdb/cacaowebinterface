@@ -39,7 +39,7 @@
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="linksbox" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
+                    <DOMLayer name="linksbox" color="#4FFF4F" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
@@ -95,11 +95,11 @@
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="video" color="#FF800A" locked="true" autoNamed="false">
+                    <DOMLayer name="video" color="#FF800A" current="true" isSelected="true" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMVideoInstance libraryItemName="myVideo" name="myVideo" selected="true" frameRight="3200" frameBottom="2400">
+                                        <DOMVideoInstance libraryItemName="myVideo" name="myClassicVideo" selected="true" frameRight="3200" frameBottom="2400">
                                              <matrix>
                                                   <Matrix a="4" d="3.0001220703125"/>
                                              </matrix>
@@ -415,25 +415,25 @@
      </extendedSwatchLists>
      <PrinterSettings platform="macintosh"/>
      <publishHistory>
-          <PublishItem publishSize="37644" publishTime="1326756256"/>
-          <PublishItem publishSize="37610" publishTime="1326756076"/>
-          <PublishItem publishSize="37604" publishTime="1326755940"/>
-          <PublishItem publishSize="37620" publishTime="1326755822"/>
-          <PublishItem publishSize="37631" publishTime="1326755554"/>
-          <PublishItem publishSize="37657" publishTime="1326754602"/>
-          <PublishItem publishSize="37663" publishTime="1326754309"/>
-          <PublishItem publishSize="37675" publishTime="1326753880"/>
-          <PublishItem publishSize="37730" publishTime="1326751082"/>
-          <PublishItem publishSize="37715" publishTime="1326750523"/>
-          <PublishItem publishSize="37682" publishTime="1326750170"/>
-          <PublishItem publishSize="13981" publishTime="1326749153"/>
-          <PublishItem publishSize="13981" publishTime="1326749120"/>
-          <PublishItem publishSize="13981" publishTime="1326748946"/>
-          <PublishItem publishSize="36284" publishTime="1325201799"/>
-          <PublishItem publishSize="13975" publishTime="1325201756"/>
-          <PublishItem publishSize="36251" publishTime="1325201671"/>
-          <PublishItem publishSize="36261" publishTime="1325201639"/>
-          <PublishItem publishSize="36210" publishTime="1325200743"/>
-          <PublishItem publishSize="36215" publishTime="1325200482"/>
+          <PublishItem publishSize="37361" publishTime="1327606484"/>
+          <PublishItem publishSize="13985" publishTime="1327606469"/>
+          <PublishItem publishSize="37431" publishTime="1327605889"/>
+          <PublishItem publishSize="37425" publishTime="1327605871"/>
+          <PublishItem publishSize="37445" publishTime="1327605853"/>
+          <PublishItem publishSize="37423" publishTime="1327605847"/>
+          <PublishItem publishSize="37443" publishTime="1327605835"/>
+          <PublishItem publishSize="37465" publishTime="1327603535"/>
+          <PublishItem publishSize="37478" publishTime="1327603517"/>
+          <PublishItem publishSize="37476" publishTime="1327603460"/>
+          <PublishItem publishSize="37467" publishTime="1327603316"/>
+          <PublishItem publishSize="37368" publishTime="1327603246"/>
+          <PublishItem publishSize="37459" publishTime="1327603061"/>
+          <PublishItem publishSize="37460" publishTime="1327602909"/>
+          <PublishItem publishSize="37478" publishTime="1327602867"/>
+          <PublishItem publishSize="37476" publishTime="1327602795"/>
+          <PublishItem publishSize="37484" publishTime="1327537815"/>
+          <PublishItem publishSize="37461" publishTime="1327537748"/>
+          <PublishItem publishSize="37545" publishTime="1327537214"/>
+          <PublishItem publishSize="37543" publishTime="1327537198"/>
      </publishHistory>
 </DOMDocument>
