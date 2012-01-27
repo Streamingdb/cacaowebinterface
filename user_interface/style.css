@@ -116,9 +116,6 @@ div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 	padding: 0;
 	text-align: right;
 }
-#upload-tabs {
-	margin-bottom: 20px;
-}
 
 .filemeta {
 	margin: 10px 0px 10px 10px;;
@@ -149,11 +146,13 @@ div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 }
 #mainleftcolumn {
 	float: left;
-	width: 530px;
+	width: 600px;
 }
 #mainrightcolumn {
 	float: right;
 	margin-top: 30px;
+	margin-right: 50px;
+	width: 280px;
 }
 
 
@@ -181,6 +180,14 @@ input.text { margin-bottom:12px; width:95%; padding: .4em; }
 fieldset { padding:0; border:0; margin-top:25px; }
 .ui-dialog .ui-state-error { padding: .3em; }
 .validateTips { border: 1px solid transparent; padding: 0.3em; }
+
+
+#natdetailsudp { padding-top: 5px; padding-bottom: 5px; }
+#natdetailstcp { padding-top: 5px; padding-bottom: 5px; }
+.detailslabel { width: 110px; float: left; }
+.detailsvalue { width: 230px; }
+
+#menubuttons div { padding: 10px; float: left; }
 		
 /**
   end page Admin 

@@ -18,7 +18,11 @@
 		
 		<div id="mainleftcolumn">
 		
-			<h2><a href='index.html' data-icon='&#9756' class='button blue round glass' id="backmainpage">Back</a></h2>
+			<div id="menubuttons">
+				<div><h2><a href='index.html' data-icon='&#9756' class='button blue round glass' id="backmainpage">Back</a></h2></div>
+				<div><h2><a href='http://user.cacaoweb.org/' class='button orange round glass' id="uploadyourfiles"></a></h2></div>
+				<div><h2><a href='http://cacaoweb.org/makemoney.html' class='button pink round glass' id="makemoney"></a></h2></div>
+			</div>
 			
 			<div class="authbox" style="display:none">
 				<div class="auth-notification"></div>
@@ -101,6 +105,12 @@
 		</div>
 		<div id="mainrightcolumn">
 			<h2 id="h2cacaowebstatus"></h2>
+			<div id="cacaowebnatdetails">
+				<p>UDP</p>
+				<div id="natdetailsudp"></div>
+				<p>TCP</p>
+				<div id="natdetailstcp"></div>
+			</div>
 			<div id="cacaowebstatus"></div>
 			
 			<h2 id="cacaowebactions"></h2>
@@ -155,6 +165,9 @@
 		document.getElementById('createbtn').innerHTML = langstrings[lang]['create'];
 		document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
 		document.getElementById('submitpaypal').innerHTML = langstrings[lang]['buywithpaypal'];
+		document.getElementById('uploadyourfiles').innerHTML = langstrings[lang]['uploadyourfiles'];
+		document.getElementById('makemoney').innerHTML = langstrings[lang]['makemoney'];
+		
 		
 			
 	</script>
@@ -455,6 +468,30 @@
 		}
 		
 		
+		function processNatDetails() {
+			function getYesOrNo(v) {
+				if (v)
+					return "yes";
+				else
+					return "no";
+			}
+			function addNewBoolDiv(param, value) {
+				var div = '<div class="detailslabel">' + param + ':</div><div class="detailsvalue">' + getYesOrNo(value) + '</div>';
+				$("#natdetailsudp").append(div);
+			}
+			addNewBoolDiv("cone", natdetails.udp.cone);
+			addNewBoolDiv("connected", natdetails.udp.connected);
+			addNewBoolDiv("upnp activated", natdetails.udp.upnpactivated);
+			
+			var div1 = '<div class="detailslabel">port preserving:</div><div class="detailsvalue">' + getYesOrNo(natdetails.tcp.portpreserving) + '</div>';
+			$("#natdetailstcp").append(div1);
+			var div2 = '<div class="detailslabel">NAT type:</div><div class="detailsvalue">' + natdetails.tcp.nattype + '</div>';
+			$("#natdetailstcp").append(div2);
+			var div3 = '<div class="detailslabel">upnp activated:</div><div class="detailsvalue">' + getYesOrNo(natdetails.tcp.upnpactivated) + '</div>';
+			$("#natdetailstcp").append(div3);
+		
+		}
+		
 		/* chain of ajax calls to update anything (i'm trying as a chain because it doesn't work properly) */
 		function checkNetwork() {
 			$.ajax({
@@ -510,7 +547,7 @@
 		getcurrentuploads();
 		checkCacaoReplication();
 		setInterval('checkCacaoReplication()', 2000);
-		
+		includeScript('http://127.0.0.1:4001/natstatus', 'natstatus');
 		
 		
 		
