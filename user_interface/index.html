@@ -391,6 +391,7 @@
 				if (searchitem != "") {
 					submitSearch(0);
 				}
+				return "";
 			} else if (searchitem.indexOf('127.0.0.1') > -1 || searchitem.indexOf('localhost') > -1 || iscacaoid) { // cacao
 				var cacaolink = searchitem;
 				var pos1 = searchitem.indexOf('f=');
@@ -403,9 +404,6 @@
 					}
 				}
 				return ("http://127.0.0.1:4001/" + cacaolink);
-			} else if (parselinks.isMegavideolink(searchitem)) {
-				var megavideoid = parselinks.getMegavideoID(searchitem);
-				return ("http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=" + megavideoid);
 			} else if (parselinks.isVideobblink(searchitem)) { 
 				var videobbid = parselinks.getVideobbID(searchitem);
 				return ("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videobbid);
@@ -420,7 +418,7 @@
 				var megauploadid = searchitem.substr(pos1 + 2, 8);
 				return ("http://127.0.0.1:4001/megaupload/download.caml?downloadid=" + megauploadid);
 			} else { // type inconnu
-				return "";
+				return "unknown";
 			}
 		}
 		
@@ -439,13 +437,15 @@
 			document.getElementById('didyoumean').innerHTML = "";
 			var searchitem = currentsearchterm;
 			var cacaolink = generateCacaoLink(searchitem);
-			if (cacaolink != "") {
-				if (cacaolink.indexOf("megaupload") > -1) {
-					var pos1 = searchitem.indexOf('d=');
-					var megauploadid = searchitem.substr(pos1 + 2, 8);
-					includeScript('http://127.0.0.1:4001/meta/meta.caml?contentid=' + megauploadid + '&provider=megaupload', 'metainfolink');
-				} else {
-					play(cacaolink);
+			if (cacaolink != "unknown") {
+				if (cacaolink != "") {
+					/*if (cacaolink.indexOf("megaupload") > -1) {
+						var pos1 = searchitem.indexOf('d=');
+						var megauploadid = searchitem.substr(pos1 + 2, 8);
+						includeScript('http://127.0.0.1:4001/meta/meta.caml?contentid=' + megauploadid + '&provider=megaupload', 'metainfolink');
+					} else {*/
+						play(cacaolink);
+					//}
 				}
 			} else {
 				alert(langstrings[lang]['linknotrecognized']);
