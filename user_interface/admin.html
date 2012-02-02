@@ -481,13 +481,13 @@
 			}
 			addNewBoolDiv("cone", natdetails.udp.cone);
 			addNewBoolDiv("connected", natdetails.udp.connected);
-			addNewBoolDiv("upnp activated", natdetails.udp.upnpactivated);
+			addNewBoolDiv("using upnp", natdetails.udp.upnpactivated);
 			
 			var div1 = '<div class="detailslabel">port preserving:</div><div class="detailsvalue">' + getYesOrNo(natdetails.tcp.portpreserving) + '</div>';
 			$("#natdetailstcp").append(div1);
 			var div2 = '<div class="detailslabel">NAT type:</div><div class="detailsvalue">' + natdetails.tcp.nattype + '</div>';
 			$("#natdetailstcp").append(div2);
-			var div3 = '<div class="detailslabel">upnp activated:</div><div class="detailsvalue">' + getYesOrNo(natdetails.tcp.upnpactivated) + '</div>';
+			var div3 = '<div class="detailslabel">using upnp:</div><div class="detailsvalue">' + getYesOrNo(natdetails.tcp.upnpactivated) + '</div>';
 			$("#natdetailstcp").append(div3);
 		
 		}
@@ -711,7 +711,6 @@
 		}
 		function logincallback(result) {
 			if (result == 1) {
-				getalluploads();
 				currentauthdialog.dialog('close');
 				includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
 			} else {
@@ -747,6 +746,9 @@
 				showcreditsform();
 			}
 		});
+		
+		
+		includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
 		
 
     </script>

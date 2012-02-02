@@ -595,10 +595,9 @@
 				alert("username or password is wrong");
 			}
 		}
-		function isloggedincallback(result, user, money) {
-			if (result == 1) {
+		function isloggedincallback(result, user) {
+			if (result) {
 				username = user;
-				money = money;
 				document.getElementById('loginbutton').style.display = "none";
 				document.getElementById('auth-notification').innerHTML = langstrings[lang]['welcome']  + user;
 			} 
@@ -616,7 +615,7 @@
 			stopEvent(e);
 			var username = document.getElementById('logininput').value;
 			var password = document.getElementById('passwordinput').value;
-			includeScript('http://uploads.cacaoweb.org/login.php?username=' + encodeURIComponent(username) + "&password=" + encodeURIComponent(password), 'loginscript');
+			includeScript('http://127.0.0.1:4001/login?username=' + encodeURIComponent(username) + "&password=" + encodeURIComponent(password), 'loginscript');
 			return false;
 		}
 		
@@ -650,7 +649,7 @@
 				} else if (url.indexOf("provider=mu") > -1) {
 					//play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
 					
-				} else if (url.indexOf("provider=cacao") > -1) {
+				} else if (url.indexOf("provider=cacao") > -1 || ismd5(videoid)) {
 					play("http://127.0.0.1:4001/" + videoid);
 				}
 			}
@@ -660,8 +659,8 @@
 		
 		/* initialization */
 		init();
-		/** callback is isloggedincallback(isloggedin, username, credits) */
-		includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
+		/** callback is isloggedincallback(isloggedin, username) */
+		includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinscript');
 
 		
 	</script>
