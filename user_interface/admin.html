@@ -25,7 +25,8 @@
 			</div>
 			
 			<div class="authbox" style="display:none">
-				<div class="auth-notification"></div>
+				<div class="auth-notification clear"></div>
+				<div class="clear" id="premiuminfo"></div>
 				<div id="buycredits-form" class="buycredits hidden">
 					<form action="https://www.paypal.com/cgi-bin/webscr" id="depositform" method="post">
 						<div class="form-field clear">
@@ -39,8 +40,6 @@
 								<button name="submit" type="submit" id="submitpaypal"></button>
 							</div>	
 						</div><!-- /.form-field -->		
-							
-
 
 						<div id="paypalcart">
 							<input name="cmd" value="_cart" type="hidden">
@@ -51,8 +50,8 @@
 							<input name="item_name_1" value="50 Credits" type="hidden">
 							<input name="quantity_1" value="1" type="hidden">
 							<input name="amount_1" value="5" type="hidden">
-						</div>							
-					
+							<input name="custom" value="empty" type="hidden">
+						</div>
 					</form>
 				</div>
 				<div class="auth-buttons">
@@ -729,6 +728,7 @@
 				$(".auth-notification").html(langstrings[lang]['welcome']  + user + " ! " + langstrings[lang]['mymoney'].replace('{1}', money));
 				$(".auth-notification").css('font-size', '12px');
 				$("#uploadviewsstatistics").html('<p>' + langstrings[lang]['statistics'] + ' :</p><p><i>' + langstrings[lang]['freeviewsearnings'] + ' : ' + freevidscreditsearned + ' credits (' + freevidshits + ' ' + langstrings[lang]['views'] + ')</i></p><p><i>' + langstrings[lang]['paidviewsearnings'] + ' : ' + paidvidscreditsearned + ' credits</i></p>');
+				$("input[name=custom]").val(user);
 			} else {
 				$(".auth-buttons").show();
 				$(".auth-notification").text(langstrings[lang]['notloggedin']);
@@ -747,8 +747,28 @@
 			}
 		});
 		
+		function statuscallback(isloggedin, ispremium, premiumend) {
+			if (isloggedin) {
+				if (ispremium) {
+					$('#premiuminfo').text(langstrings[lang]['ispremium'] + premiumend);
+				} else {
+					$('#premiuminfo').html(langstrings[lang]['notpremium']);
+				}
+			}
+		}
 		
-		includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
+		function loginstatuscallback(result, username, token) {
+			if (result == true) {
+				includeScript('http://account.cacaoweb.org/status?token=' + token, 'statusscript');
+			} else {
+				// TODO: dire que l'on n'est pas logge?
+			}
+		}
+		
+		$().ready(function () {
+			includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinlocalscript');
+			includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
+		})
 		
 
     </script>

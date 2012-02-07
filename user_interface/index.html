@@ -309,21 +309,7 @@
 			}
 		}
 		
-		var parselinks = {
-			isMegavideolink : function(link) {
-				return (link.indexOf("megavideo.com/") > -1 && (link.indexOf("/v/") > -1 || link.indexOf("v=") > -1));
-			},
-			getMegavideoID : function(link) {
-				var ff = link.split("v=");
-				if (!ff[1]) {
-					ff = link.split("/e/");
-					if (!ff[1]) {
-						ff = link.split("/v/");
-					}
-				}
-				return ff[1].substring(0, 8);
-			},
-			
+		var parselinks = {			
 			isVideobblink : function(link) {
 				return (link.indexOf("videobb.com/") > -1 && (link.indexOf("video/") > -1 || link.indexOf("v=") > -1 || 
 						link.indexOf("/e/") > -1 || link.indexOf("/v/") > -1 || link.indexOf("/embed/") > -1));
@@ -590,12 +576,12 @@
 				
 		function logincallback(result) {
 			if (result == 1) {
-				includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
+				includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinscript');
 			} else {
 				alert("username or password is wrong");
 			}
 		}
-		function isloggedincallback(result, user) {
+		function loginstatuscallback(result, user, token) {
 			if (result) {
 				username = user;
 				document.getElementById('loginbutton').style.display = "none";
@@ -638,9 +624,7 @@
 				} else {
 					var videoid = url.substr(pos + 8);
 				}
-				if (url.indexOf("provider=mv") > -1) {
-					play("http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=" + videoid);
-				} else if (url.indexOf("provider=bb") > -1) {
+				if (url.indexOf("provider=bb") > -1) {
 					play("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=vz") > -1) {
 					play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
@@ -659,7 +643,7 @@
 		
 		/* initialization */
 		init();
-		/** callback is isloggedincallback(isloggedin, username) */
+		/** callback is loginstatuscallback(isloggedin, username, token) */
 		includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinscript');
 
 		
