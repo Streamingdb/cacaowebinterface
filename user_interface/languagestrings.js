@@ -237,12 +237,12 @@ langstrings['fr']['vn'] = "vietnamien";
 */
 
 langstrings['it'] = new Array();
-langstrings['it']['management'] = 'Mio Cacaoweb';
+langstrings['it']['management'] = 'Cacaoweb - interfaccia amministrativa';
 langstrings['it']['searchplaceholder'] = 'Cerca...';
 langstrings['it']['searchhints'] = '<small>Ricerca Film, Serie TV o incolla un link</small>';
 langstrings['it']['linknotrecognized'] = 'Questo tipo di link non è ancora supportato da cacaoweb';
 langstrings['it']['typeoflinks'] = '<small>Esempio :<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>megavideo: http://megavideo.com/?v=TUF78DFD<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
-langstrings['it']['outdated'] = 'La tua versione cacaoweb è obsoleta, scarica l\'ultima versione <a href="http://www.cacaoweb.org/?noredirect=yes">qui</a>';
+langstrings['it']['outdated'] = 'La tua versione è obsoleta, scarica l\'ultima release <a href="http://www.cacaoweb.org/?noredirect=yes">qui</a>';
 langstrings['it']['nospaceleft'] = 'Non c\'è spazio sul tuo Hard Disk. Cacaoweb non funziona correttamente.';
 langstrings['it']['noconnectivity'] = 'Per funzionare cacaoweb necessità di una connessione a internet.';
 langstrings['it']['permissionproblem'] = 'Cacaoweb è bloccato dal tuo sistema operativo o antivirus (problema di autorizzazioni)';
@@ -255,7 +255,7 @@ langstrings['it']['season'] = 'Stagione';
 langstrings['it']['episode'] = 'Episodio';
 langstrings['it']['subtitles'] = 'sottotitoli';
 langstrings['it']['cacaowebtitle'] = 'Cacaoweb - Guarda Film o Serie TV Online in Streaming';
-langstrings['it']['supportedplatforms'] = 'Supported platforms';
+langstrings['it']['supportedplatforms'] = 'Piattaforme Supportate';
 langstrings['it']['download'] = 'download';
 
 /** admin page */
@@ -271,10 +271,10 @@ langstrings['it']['smallremoteupload'] = '<small>URL del file:</small>';
 langstrings['it']['browse'] = 'Browse';
 langstrings['it']['remoteupload'] = 'Upload Remoto';
 langstrings['it']['choose'] = 'Scegli file';
-langstrings['it']['smalllargefile'] = '<small>Per caricare file più grandi di 2 GB devi utilizzare Google Chrome o Safari</small>';
+langstrings['it']['smalllargefile'] = '<small>Per caricare file più grandi di 2 GB devi utilizzare Google Chrome o Safari o l\'FTP</small>';
 langstrings['it']['uploadmeta'] = 'Informazioni video (per il motore di ricerca)';
 langstrings['it']['smallfilelink'] = '<small>link cacaoweb</small>';
-langstrings['it']['movie'] = 'Movie';
+langstrings['it']['movie'] = 'Film';
 langstrings['it']['tvshow'] = 'Serie TV';
 langstrings['it']['anime'] = 'Anime';
 langstrings['it']['documentary'] = 'Documentario';
@@ -323,7 +323,7 @@ langstrings['it']['help'] = "Aiuto";
 langstrings['it']['forum'] = "Forum";
 langstrings['it']['download'] = "Download";
 langstrings['it']['developers'] = "Developers";
-langstrings['it']['makemoney'] = "Fare Soldi";
+langstrings['it']['makemoney'] = "Guadagna Soldi";
 langstrings['it']['howtomakemoney'] = "Come guadagnare soldi?";
 langstrings['it']['smallfilelink'] = "<small>cacaoweb link</small>";
 langstrings['it']['ftpuploaddescr'] = "<p>Fai l\'upload dei tuoi file con un client ftp (come filezilla) su ftpupload.cacaoweb.org. Per autenticarti usa username e password che utilizzi per cacaoweb.</p><p>Prima che il file appaia in Miei Upload potrebbero essere necessarie un paio d\'ore. Ottenuto il link cacaoweb è necessario aggiornare i metadati (titolo,tipo,episodio, ecc.). Questo garantisce l\'indicizzazione del file nel motore di ricerca.</p><br>";
