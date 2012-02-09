@@ -94,7 +94,7 @@
 			<small id="supportedplatforms">Supported platforms</small> 
 			<ul>
 				<li class="megavideoico" title="megavideo"></li>
-				<li class="megauploadico" title="megaupload"></li>
+				<li class="putlockerico" title="putlocker"></li>
 				<li class="videobbico" title="videobb"></li>
 				<li class="videozerico" title="videozer"></li>
 				<li class="mixtureico" title="mixturevideo"></li>
@@ -359,7 +359,7 @@
 			},
 			
 			isMixturelink : function(link) {
-				return (link.indexOf("mixturecloud.com/") > -1 && (link.indexOf("video=") > -1 || link.indexOf("/video/") > -1));
+				return ((link.indexOf("mixturecloud.com/") > -1 || link.indexOf("mixturevideo.com/") > -1) && (link.indexOf("video=") > -1 || link.indexOf("/video/") > -1));
 			},
 			getMixtureID : function(link) {
 				var ff = link.split("video=");
@@ -367,6 +367,14 @@
 					ff = link.split("/video/");
 				}
 				return ff[1].substring(0, 6);;
+			},
+			
+			isPutlockerlink : function(link) {
+				return (link.indexOf("putlocker.com/") > -1 && link.indexOf("/file/") > -1);
+			},
+			getPutlockerID : function(link) {
+				var ff = link.split("/file/");
+				return ff[1];
 			},
 		
 		};
@@ -399,6 +407,9 @@
 			} else if (parselinks.isMixturelink(searchitem)) { 
 				var mixtureid = parselinks.getMixtureID(searchitem);
 				return ("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + mixtureid);
+			} else if (parselinks.isPutlockerlink(searchitem)) { 
+				var mixtureid = parselinks.getPutlockerID(searchitem);
+				return ("http://127.0.0.1:4001/putlocker/putlocker.caml?videoid=" + mixtureid);
 			} else if (searchitem.indexOf('megaupload.com/?d=') > -1) { // megaupload
 				var pos1 = searchitem.indexOf('d=');
 				var megauploadid = searchitem.substr(pos1 + 2, 8);
@@ -630,6 +641,8 @@
 					play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=mi") > -1) {
 					play("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + videoid);
+				} else if (url.indexOf("provider=pu") > -1) {
+					play("http://127.0.0.1:4001/putlocker/putlocker.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=mu") > -1) {
 					//play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
 					

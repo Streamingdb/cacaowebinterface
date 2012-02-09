@@ -336,6 +336,8 @@
 						link = "http://videozer.com/video/" + item.videoid;
 					} else if (item.provider == "mixture") {
 						link = "http://mixturecloud.com/video=" + item.videoid;
+					} else if (item.provider == "putlocker") {
+						link = "http://putlocker.com/file/" + item.videoid;
 					}
 					var rowlinks = "<div class='linkdisplay' style='display:none'><input name=\"link\" id=\"link\" value=\"" + link + "\" size=\"80\"></input></div>";
 					var showlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\"><span>" + langstrings[lang]['showlink'] + "</span></a></div>";
