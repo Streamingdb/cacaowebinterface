@@ -48,6 +48,7 @@
 							<input name="currency_code" value="EUR" type="hidden">
 							<input name="cpp_header_image" value="http://cacaoweb.org/images/logonew.png" type="hidden">
 							<input name="item_name_1" value="50 Credits" type="hidden">
+							<input name="item_number_1" value="CRED" type="hidden">
 							<input name="quantity_1" value="1" type="hidden">
 							<input name="amount_1" value="5" type="hidden">
 							<input name="custom" value="empty" type="hidden">
@@ -625,7 +626,10 @@
 			}
 			$('input:hidden[name=amount_1]').val(price);
 			$('input:hidden[name=item_name_1]').val(amount + ' Credits');
+			$('input:hidden[name=item_number_1]').val('CRED' + amount);
+			$('input:hidden[name=custom]').val(username);
 		});
+		
 		
 		
 		$("#buycredits-form").dialog({
@@ -661,8 +665,7 @@
 					bValid = bValid && checkRegexp($("#email"),/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. albert@ducon.com");
 					bValid = bValid && checkRegexp($("#registerpassword"), /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9");
 					if (bValid) {
-						includeScript('http://uploads.cacaoweb.org/register.php?' + "username=" + $("#registername").val() + "&password=" + $("#registerpassword").val() + "&email=" + $("#email").val(), 'registerscript');
-						username = $("#registername").val();
+						includeScript('http://127.0.0.1:4001/register?username=' + $("#registername").val() + '&password=' + $("#registerpassword").val() + '&email=' + $("#email").val(), 'registerscript');
 						currentauthdialog = $(this);
 					}
 				},
@@ -683,8 +686,7 @@
 			buttons: {
 				'Login': function() {
 					$("#loginname").removeClass('ui-state-error');
-					includeScript('http://uploads.cacaoweb.org/login.php?' + "username=" + $("#loginname").val() + "&password=" + $("#loginpassword").val(), 'loginscript');
-					username = $("#loginname").val();
+					includeScript('http://127.0.0.1:4001/login?username=' + $("#loginname").val() + "&password=" + $("#loginpassword").val(), 'loginscript');
 					currentauthdialog = $(this);
 				},
 				'Cancel': function() {
@@ -698,10 +700,9 @@
 		
 		function registercallback(result) {
 			if (result == 1) {
-				$(".auth-buttons").hide();
-				$(".auth-notification").text(langstrings[lang]['welcome'] + username + " !");
-				$(".auth-notification").css('font-size', '12px');
+				alert(langstrings[lang]['registersuccessful']);
 				currentauthdialog.dialog('close');
+				login();
 			} else {
 				$("#registername").addClass('ui-state-error');
 				$(".validateTips").text('Username already exists, please choose another one.').addClass('ui-state-highlight');
@@ -713,7 +714,7 @@
 		function logincallback(result) {
 			if (result == 1) {
 				currentauthdialog.dialog('close');
-				includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
+				includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinscript');
 			} else {
 				$("#loginname").addClass('ui-state-error');
 				$("#validateTipsLogin").text('Username or password is wrong').addClass('ui-state-highlight');
@@ -721,21 +722,6 @@
 					$("#validateTipsLogin").removeClass('ui-state-highlight', 1500);
 				}, 500);
 			}
-		}
-		function isloggedincallback(result, user, money, freevidshits, freevidscreditsearned, paidvidscreditsearned) {
-			if (result == 1) {
-				username = user;
-				money = money;
-				$(".auth-buttons").hide();
-				$(".auth-notification").html(langstrings[lang]['welcome']  + user + " ! " + langstrings[lang]['mymoney'].replace('{1}', money));
-				$(".auth-notification").css('font-size', '12px');
-				$("#uploadviewsstatistics").html('<p>' + langstrings[lang]['statistics'] + ' :</p><p><i>' + langstrings[lang]['freeviewsearnings'] + ' : ' + freevidscreditsearned + ' credits (' + freevidshits + ' ' + langstrings[lang]['views'] + ')</i></p><p><i>' + langstrings[lang]['paidviewsearnings'] + ' : ' + paidvidscreditsearned + ' credits</i></p>');
-				$("input[name=custom]").val(user);
-			} else {
-				$(".auth-buttons").show();
-				$(".auth-notification").text(langstrings[lang]['notloggedin']);
-			}
-			$(".authbox").show();
 		}
 		
 		
@@ -749,27 +735,33 @@
 			}
 		});
 		
-		function statuscallback(isloggedin, ispremium, premiumend) {
+		function statuscallback(isloggedin, ispremium, premiumend, money) {
 			if (isloggedin) {
 				if (ispremium) {
 					$('#premiuminfo').text(langstrings[lang]['ispremium'] + premiumend);
 				} else {
 					$('#premiuminfo').html(langstrings[lang]['notpremium']);
 				}
+				$(".auth-notification").html(langstrings[lang]['welcome']  + username + " ! " + langstrings[lang]['mymoney'].replace('{1}', money));
+				$(".auth-notification").css('font-size', '12px');
 			}
 		}
 		
-		function loginstatuscallback(result, username, token) {
+		function loginstatuscallback(result, user, token) {
 			if (result == true) {
+				username = user;
+				$(".auth-buttons").hide();
+				$("input[name=custom]").val(username);
 				includeScript('http://account.cacaoweb.org/status?token=' + token, 'statusscript');
 			} else {
-				// TODO: dire que l'on n'est pas logge?
+				$(".auth-buttons").show();
+-				$(".auth-notification").text(langstrings[lang]['notloggedin']);
 			}
+			$(".authbox").show();
 		}
 		
 		$().ready(function () {
 			includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinlocalscript');
-			includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
 		})
 		
 

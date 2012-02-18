@@ -399,17 +399,17 @@
 				}
 				return ("http://127.0.0.1:4001/" + cacaolink);
 			} else if (parselinks.isVideobblink(searchitem)) { 
-				var videobbid = parselinks.getVideobbID(searchitem);
-				return ("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videobbid);
+				var videoid = parselinks.getVideobbID(searchitem);
+				return ("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videoid);
 			} else if (parselinks.isVideozerlink(searchitem)) { 
-				var videozerid = parselinks.getVideozerID(searchitem);
-				return ("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videozerid);
+				var videoid = parselinks.getVideozerID(searchitem);
+				return ("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
 			} else if (parselinks.isMixturelink(searchitem)) { 
-				var mixtureid = parselinks.getMixtureID(searchitem);
-				return ("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + mixtureid);
+				var videoid = parselinks.getMixtureID(searchitem);
+				return ("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + videoid);
 			} else if (parselinks.isPutlockerlink(searchitem)) { 
-				var mixtureid = parselinks.getPutlockerID(searchitem);
-				return ("http://127.0.0.1:4001/putlocker/putlocker.caml?videoid=" + mixtureid);
+				var videoid = parselinks.getPutlockerID(searchitem);
+				return ("http://127.0.0.1:4001/putlocker/putlocker.caml?videoid=" + videoid);
 			} else if (searchitem.indexOf('megaupload.com/?d=') > -1) { // megaupload
 				var pos1 = searchitem.indexOf('d=');
 				var megauploadid = searchitem.substr(pos1 + 2, 8);
@@ -626,7 +626,7 @@
 		function init() {
 			//includeScript('http://search.cacaoweb.org/featured?lang=' + lang, 'featuredscript');
 			var url = window.location.href;
-			if (url.indexOf("play=") > -1) {
+			if (url.indexOf("videoid=") > -1) {
 				/* we need to play a video straight away */
 				var pos = url.indexOf("videoid=");
 				var pos1 = url.indexOf("&", pos);

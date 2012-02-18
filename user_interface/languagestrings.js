@@ -100,6 +100,7 @@ langstrings['en']['ftpuploaddescr'] = "<p>Upload your files on ftpupload.cacaowe
 langstrings['en']['uploadyourfiles'] = "Upload and manage your files";
 langstrings['en']['notpremium'] = "You are not a premium user yet. <a href=\"http://cacaoweb.org/buypremium.html\">Click here to become premium</a>";
 langstrings['en']['ispremium'] = "Your premium account finishes on : ";
+langstrings['en']['registersuccessful'] = "You have registered successfully. You can now login";
 langstrings['en']['en'] = "english";
 langstrings['en']['fr'] = "french";
 langstrings['en']['it'] = "italian";
@@ -216,6 +217,7 @@ langstrings['fr']['ftpuploaddescr'] = "<p>Téléversez vos fichier sur ftpupload
 langstrings['fr']['uploadyourfiles'] = "Téléversez et gérer vos fichiers";
 langstrings['fr']['notpremium'] = "Vous n'avez pas encore de compte premium. <a href=\"http://cacaoweb.org/buypremium.html\">Cliquez ici pour devenir premium</a>";
 langstrings['fr']['ispremium'] = "Votre compte premium s'arrête au : ";
+langstrings['fr']['registersuccessful'] = "Vous vous êtes enregistré avec succès. Vous pouvez maintenant vous identifier.";
 langstrings['fr']['en'] = "anglais";
 langstrings['fr']['fr'] = "français";
 langstrings['fr']['it'] = "italien";
@@ -330,6 +332,7 @@ langstrings['it']['ftpuploaddescr'] = "<p>Fai l\'upload dei tuoi file con un cli
 langstrings['it']['uploadyourfiles'] = "Upload and manage your files";
 langstrings['it']['notpremium'] = "You are not a premium user yet. <a href=\"http://cacaoweb.org/buypremium.html\">Click here to become premium</a>";
 langstrings['it']['ispremium'] = "Your premium account finishes on : ";
+langstrings['it']['registersuccessful'] = "You have registered successfully. You can now login";
 langstrings['it']['en'] = "inglese";
 langstrings['it']['fr'] = "francese";
 langstrings['it']['it'] = "italiano";
@@ -445,6 +448,7 @@ langstrings['pl']['ftpuploaddescr'] = "<p>Wyślij swoje pliki na ftpupload.cacao
 langstrings['pl']['uploadyourfiles'] = "Upload and manage your files";
 langstrings['pl']['notpremium'] = "You are not a premium user yet. <a href=\"http://cacaoweb.org/buypremium.html\">Click here to become premium</a>";
 langstrings['pl']['ispremium'] = "Your premium account finishes on : ";
+langstrings['pl']['registersuccessful'] = "You have registered successfully. You can now login";
 langstrings['pl']['en'] = "angielski";
 langstrings['pl']['fr'] = "francuski";
 langstrings['pl']['it'] = "włoski";
@@ -561,6 +565,7 @@ langstrings['es']['ftpuploaddescr'] = "<p>Sube tus archivos a ftpupload.cacaoweb
 langstrings['es']['uploadyourfiles'] = "Upload and manage your files";
 langstrings['es']['notpremium'] = "You are not a premium user yet. <a href=\"http://cacaoweb.org/buypremium.html\">Click here to become premium</a>";
 langstrings['es']['ispremium'] = "Your premium account finishes on : ";
+langstrings['es']['registersuccessful'] = "You have registered successfully. You can now login";
 langstrings['es']['es'] = "inglés";
 langstrings['es']['fr'] = "francés";
 langstrings['es']['it'] = "italiano";
