@@ -735,14 +735,14 @@
 			}
 		});
 		
-		function statuscallback(isloggedin, ispremium, premiumend, money) {
+		function statuscallback(isloggedin, ispremium, premiumend) {
 			if (isloggedin) {
 				if (ispremium) {
 					$('#premiuminfo').text(langstrings[lang]['ispremium'] + premiumend);
 				} else {
 					$('#premiuminfo').html(langstrings[lang]['notpremium']);
 				}
-				$(".auth-notification").html(langstrings[lang]['welcome']  + username + " ! " + langstrings[lang]['mymoney'].replace('{1}', money));
+				$(".auth-notification").html(langstrings[lang]['welcome']  + username + " ! " + langstrings[lang]['mymoney']);
 				$(".auth-notification").css('font-size', '12px');
 			}
 		}
