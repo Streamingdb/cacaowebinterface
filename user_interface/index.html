@@ -142,6 +142,23 @@
 			</div>
 			<div id="messagezoneplaymode" class="message center"></div>
 			<div id="adzone" class="center"></div>
+			<div id="mostwatchedzone" class="center">
+				<!-- <h1>Most watched</h1>
+				<div id="columnsgroup" class="center">
+					<div class="column2">
+						<ul>
+							<li>sdf</li>
+							<li>tyu</li>
+						</ul>
+					</div>
+					<div class="column2">
+						<ul>
+							<li>sdf</li>
+							<li>tyu</li>
+						</ul>
+					</div>
+				</div>-->
+			</div>
 		</div>
 		<div class="footer_push"></div><!-- needed for sticky footer -->
 		
@@ -158,7 +175,7 @@
 	<script type="text/javascript">	
 	
 		document.getElementById('mana').innerHTML = langstrings[lang]['management'] + '<span class="i"></span>';
-		document.getElementById('messagezoneplaymode').innerHTML = langstrings[lang]['searchhints'];
+		//document.getElementById('messagezoneplaymode').innerHTML = langstrings[lang]['searchhints'];
 		//document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
 		document.getElementById('smallsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
 		document.getElementById('bigsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
@@ -198,6 +215,13 @@
 			script.src = filename;
 			script.type = 'text/javascript';
 			htmlDoc.appendChild(script);
+		}
+		function escapestring(str) {
+			if (str) {
+				return str.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g,'\\$1')
+			} else {
+				return str;
+			}
 		}
 		function callbackWarnings(result) {
 			var warnings = document.getElementById('warningarea');
@@ -244,6 +268,8 @@
 			document.getElementById('searchresultsnext').style.display = "none";
 			
 			document.getElementById('linkarea').style.display = "none";
+			
+			document.getElementById('mostwatchedzone').style.display = "none";
 		}
 		/** sets the page in search results mode */
 		function searchmode() {
@@ -260,6 +286,8 @@
 			document.getElementById('searchresultsnext').style.display = "block";
 			
 			document.getElementById('linkarea').style.display = "none";
+			
+			document.getElementById('mostwatchedzone').style.display = "none";
 		}
 		function linkmode() {
 			document.getElementById('messagezoneplaymode').style.display = "none";
@@ -275,6 +303,8 @@
 			document.getElementById('searchresultsnext').style.display = "none";
 		
 			document.getElementById('linkarea').style.display = "block";
+			
+			document.getElementById('mostwatchedzone').style.display = "none";
 		}
 			
 		
@@ -580,6 +610,43 @@
 				document.getElementById('footercontent').appendChild(entry1);
 			} 
 		}
+		
+		/** display the most watched */
+		
+		function processmostwatchedresults(results) {
+			var elt = document.getElementById('mostwatchedzone');
+			var header = document.createElement('h1');
+			header.innerHTML = "Most watched:";
+			var colgroup = document.createElement('div');
+			colgroup.className = "center";
+			colgroup.id = "columnsgroup";
+			elt.appendChild(header);
+			elt.appendChild(colgroup);
+			var col1 = document.createElement('div');
+			col1.className = "column";
+			colgroup.appendChild(col1);
+			var col2 = document.createElement('div');
+			col2.className = "column";
+			colgroup.appendChild(col2);
+			// TODO: escape the title
+			for (var i = 0; i < results.length / 2; i++) {
+				var title = results[i].title;
+				var entry = document.createElement('li');
+				entry.innerHTML = '<a href="javascript:search(\'' + escapestring(title) + '\')">' + title + '</a>';
+				col1.appendChild(entry);
+			}
+			for (var i = Math.floor(results.length / 2); i < results.length; i++) {
+				var title = results[i].title;
+				var entry = document.createElement('li');
+				entry.innerHTML = '<a href="javascript:search(\'' + escapestring(title) + '\')">' + title + '</a>';
+				col2.appendChild(entry);
+			}
+		}
+		
+		
+		/** displays the related contents */
+		
+		
 
 		
 		/** login and registration management */
@@ -649,6 +716,9 @@
 				} else if (url.indexOf("provider=cacao") > -1 || ismd5(videoid)) {
 					play("http://127.0.0.1:4001/" + videoid);
 				}
+			} else {
+				// shows the most watched
+				includeScript('http://search.cacaoweb.org/mostwatched?lang=' + lang, 'mostwatchedscript');
 			}
 		}
 		

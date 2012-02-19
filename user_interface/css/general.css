@@ -60,6 +60,11 @@ table {
 	border-spacing: 0;
 }
 
+h1 {
+	font-size: 14px;
+	padding-bottom: 3px;
+}
+
 /* @end */
 
 /* @group General */
@@ -585,3 +590,13 @@ a {
 .mixtureico { width:16px; height:16px; background-position:-63px 0px; }
 
 
+.mostwatchedcolumns {
+
+}
+.column {
+	float: left;
+	padding: 15px;
+}
+#columnsgroup {
+	width: 300px;
+}
