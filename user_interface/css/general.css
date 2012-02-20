@@ -125,7 +125,6 @@ a {
 	padding-top: 10px;
 }
 .footercontent li a, #sidebar_inner li a {
-	color: #ccc;
 	text-decoration: none;
 }
 .footercontent li img, #sidebar_inner li img {
@@ -502,13 +501,11 @@ a {
 }
 
 #sidebar_inner {
-	width: 240px;
+	width: 230px;
 	height: 360px;
 	/*background: #1d1d1d;*/
 	float: right;
 }
-
-
 
 
 /* search results */

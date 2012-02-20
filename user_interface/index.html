@@ -256,6 +256,8 @@
 		}
 		/** sets the page in play mode */
 		function playmode() {
+			document.getElementById('warningarea').style.display = "block";
+			
 			document.getElementById('messagezoneplaymode').style.display = "none";
 		
 			document.getElementById('toplogo').style.display = "block";
@@ -273,6 +275,8 @@
 		}
 		/** sets the page in search results mode */
 		function searchmode() {
+			document.getElementById('warningarea').style.display = "none";
+			
 			document.getElementById('messagezoneplaymode').style.display = "none";
 		
 			document.getElementById('toplogo').style.display = "block";
@@ -290,6 +294,8 @@
 			document.getElementById('mostwatchedzone').style.display = "none";
 		}
 		function linkmode() {
+			document.getElementById('warningarea').style.display = "none";
+			
 			document.getElementById('messagezoneplaymode').style.display = "none";
 		
 			document.getElementById('toplogo').style.display = "block";
@@ -307,6 +313,19 @@
 			document.getElementById('mostwatchedzone').style.display = "none";
 		}
 			
+		function processrelatedresults(results) {
+			var elt = document.getElementById('sidebar_inner');
+			elt.innerHTML = "";
+			var header = document.createElement('h1');
+			header.innerHTML = "You might also like:";
+			elt.appendChild(header);
+			for (var i = 0; i < results.length; i++) {
+				var title = results[i].title;
+				var entry = document.createElement('li');
+				entry.innerHTML = '<a href="javascript:search(\'' + escapestring(title) + '\')">' + title + '</a>';
+				elt.appendChild(entry);
+			}
+		}
 		
 		function play(link) {
 			playmode();
@@ -315,6 +334,9 @@
 
 			document.getElementById('player').innerHTML = playerobj;
 			document.getElementById('playerarea').style.display = 'block';
+			
+			var fileid = extractfileid(link);
+			includeScript('http://search.cacaoweb.org/related?lang=' + lang + '&fileid=' + fileid, 'mostwatchedscript');
 		}
 		
 		/* parsesearchresults is called as a callback */
@@ -409,6 +431,20 @@
 		
 		};
 		
+		function extractfileid(link) {
+			var cacaohash = link;
+			var pos1 = link.indexOf('f=');
+			if (pos1 > -1) {
+				cacaohash = link.substr(pos1 + 2);
+			} else {
+				var pos2 = link.lastIndexOf('/');
+				if (pos2 > -1) {
+					cacaolink = link.substr(pos2 + 1);
+				}
+			}
+			return cacaohash;
+		}
+		
 		function generateCacaoLink(searchitem) {
 			var iscacaoid = ismd5(searchitem);
 			if (searchitem.indexOf('http://') == -1 && !iscacaoid) { // search
@@ -417,17 +453,8 @@
 				}
 				return "";
 			} else if (searchitem.indexOf('127.0.0.1') > -1 || searchitem.indexOf('localhost') > -1 || iscacaoid) { // cacao
-				var cacaolink = searchitem;
-				var pos1 = searchitem.indexOf('f=');
-				if (pos1 > -1) {
-					cacaolink = searchitem.substr(pos1 + 2);
-				} else {
-					var pos2 = searchitem.lastIndexOf('/');
-					if (pos2 > -1) {
-						cacaolink = searchitem.substr(pos2 + 1);
-					}
-				}
-				return ("http://127.0.0.1:4001/" + cacaolink);
+				var cacaohash = extractfileid(searchitem);
+				return ("http://127.0.0.1:4001/" + cacaohash);
 			} else if (parselinks.isVideobblink(searchitem)) { 
 				var videoid = parselinks.getVideobbID(searchitem);
 				return ("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videoid);
@@ -615,6 +642,7 @@
 		
 		function processmostwatchedresults(results) {
 			var elt = document.getElementById('mostwatchedzone');
+			elt.innerHTML = "";
 			var header = document.createElement('h1');
 			header.innerHTML = "Most watched:";
 			var colgroup = document.createElement('div');
@@ -628,7 +656,6 @@
 			var col2 = document.createElement('div');
 			col2.className = "column";
 			colgroup.appendChild(col2);
-			// TODO: escape the title
 			for (var i = 0; i < results.length / 2; i++) {
 				var title = results[i].title;
 				var entry = document.createElement('li');
