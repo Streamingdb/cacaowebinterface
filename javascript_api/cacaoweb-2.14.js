@@ -236,7 +236,7 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 				player += '<param name="wmode" value="direct">';
 				player += '<embed src="' + this.playerurl + '" ';
 				player += 'flashvars="file=' + this.link + '" ';
-				player += 'width="' + this.width + '" height="' + this.height + '" allowFullScreen="true" name="' + this.id + 'flash" AllowScriptAccess="always" wmode="direct" />';
+				player += 'width="' + this.width + '" height="' + this.height + '" allowFullScreen="true" name="' + this.id + 'flash" AllowScriptAccess="always" wmode="direct" type="application/x-shockwave-flash" />';
 				player += '</object>';
 				this.container.innerHTML = player;
 				this.flashobjectadded = true;
