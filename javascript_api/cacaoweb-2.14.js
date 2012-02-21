@@ -1,8 +1,8 @@
-﻿var Cacaoweb = {	  
+var Cacaoweb = {	  
 	/**
 	 * javascript parameters
 	 */
-	version: "2.13",
+	version: "2.14",
 	timerTasksInterval: 0.5,
 	lasttimeclientrunning: 0,
 	lasttimestatuscheck: 0,
@@ -223,6 +223,8 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 			this.height = Cacaoweb.videoheight;
 			this.missingpluginimageurl = Cacaoweb.missingpluginimageurl;
 			
+			this.subtitlesoptions = {};
+			this.flashobjectadded = false; // tells if we have added the flash object or not yet
 			
 
 			this.insertFlash = function() {
@@ -237,6 +239,10 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 				player += 'width="' + this.width + '" height="' + this.height + '" allowFullScreen="true" name="' + this.id + 'flash" AllowScriptAccess="always" wmode="direct" />';
 				player += '</object>';
 				this.container.innerHTML = player;
+				this.flashobjectadded = true;
+				if (this.subtitlesoptions != {}) {
+					this.subtitles(this.subtitlesoptions);
+				}
 			}
 
 						
@@ -257,8 +263,9 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 			}
 
 			/**
-			 * check if cacaoweb is running on the host computer
-			 * if yes calls realplay, if no show the missing plugin image
+			 * play a link
+			 * also checks if cacaoweb is running on the host computer
+			 * if cacaoweb is running, it calls realplay to show the player, if not then it show the missing plugin image
 			 */
 			this.play = function (link) {
 				if (Cacaoweb.status == 'On') {
@@ -334,8 +341,20 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 			}
 			
 			this.subtitles = function(subsoptions) {
-				// TODO
-				return this;
+				if (this.flashobjectadded) { // the flash object player has been added to the DOM
+					var flashplayer = getFlashPlayer(this.id + "flash");
+					if (flashplayer && flashplayer.subtitles) {
+						return flashplayer.subtitles(subsoptions.subtitlesurl, subsoptions.subtitleslanguage, subsoptions.subtitlesoffset);
+					} else { 
+						// the flash player object has not been added to the DOM yet
+						// or the functions attached to the flash player object have not been registered yet 
+						// (it takes time for the browser to do these things)
+						var that = this;
+						setTimeout(function() { that.subtitles(subsoptions) }, 1000);
+					}
+				} else { // in this case, it means we haven't called play() yet, thus we are doing player setup
+					this.subtitlesoptions = subsoptions;
+				}
 			}
 
 			/**
@@ -398,7 +417,9 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 
 		/**
 		 * a fonction exposed by the object cacaoplayer (which is also a function)
-		 * it's basically an alias to the fonction cacaoplayer()
+		 * this is the function called when we call "cacaoplayer(id_of_the_cacao_div)" from javascript
+		 * it returns a new object or an existing object if already created before
+		 * this object has a bunch of useful functions on it for the comsumers of the API to use
 		 */
 		cacaoplayer.getPlayer = function(id) {
 			var _container = document.getElementById(id);

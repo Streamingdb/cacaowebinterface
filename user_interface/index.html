@@ -101,7 +101,7 @@
 			</ul>
 		</div>
 		<div id="content">
-			<div id="warningarea" class="hidden"></div>
+			<div id="warningarea" class="warning" style="display:none"></div>
 			<div id="mainsearch" class="center">
 				<div class="logo">
 					<a href="#"><img src="img/logo.png" alt="cacaoweb"></a>
@@ -227,22 +227,15 @@
 			var warnings = document.getElementById('warningarea');
 			if (result == 'outdated') {
 				warnings.innerHTML = langstrings[lang]['outdated'];
-				warnings.className = "warning";
 			} else if (result == 'noudp') {
 				warnings.innerHTML = langstrings[lang]['noconnectivity'];
-				warnings.className = "warning";
 			} else if (result == 'permissionproblem') {
 				warnings.innerHTML = langstrings[lang]['permissionproblem'];
-				warnings.className = "warning";
 			} else if (result == 'nospaceleft') {
 				warnings.innerHTML = langstrings[lang]['nospaceleft'];
-				warnings.className = "warning";
 			} else if (result == 'badrouter') {
 				warnings.innerHTML = langstrings[lang]['natnotp2pfriendly'];
-				warnings.className = "warning";
-			} else {
-				warnings.className = "hidden";
-			}
+			} 
 		}
 		function updateWarnings() {
 			var i = Math.floor(Math.random() * 1000000);
@@ -256,7 +249,9 @@
 		}
 		/** sets the page in play mode */
 		function playmode() {
-			document.getElementById('warningarea').style.display = "block";
+			if (document.getElementById('warningarea').innerHTML != "") {
+				document.getElementById('warningarea').style.display = "block";
+			}
 			
 			document.getElementById('messagezoneplaymode').style.display = "none";
 		
@@ -317,7 +312,7 @@
 			var elt = document.getElementById('sidebar_inner');
 			elt.innerHTML = "";
 			var header = document.createElement('h1');
-			header.innerHTML = "You might also like:";
+			header.innerHTML = langstrings[lang]['youmightlike'];
 			elt.appendChild(header);
 			for (var i = 0; i < results.length; i++) {
 				var title = results[i].title;
@@ -644,7 +639,7 @@
 			var elt = document.getElementById('mostwatchedzone');
 			elt.innerHTML = "";
 			var header = document.createElement('h1');
-			header.innerHTML = "Most watched:";
+			header.innerHTML = langstrings[lang]['mostwatched'];
 			var colgroup = document.createElement('div');
 			colgroup.className = "center";
 			colgroup.id = "columnsgroup";
