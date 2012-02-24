@@ -120,6 +120,43 @@
 				<div id="didyoumean">
 				</div>
 				<div id="searchresults">
+					<!-- <div class="tvshowsearchentry">
+						<div class="searchshowtitle">Cold Case Affaires classées</div>
+						<div class="seasonsresults">
+							<div class="seasonresult">
+								<div class="seasonnumber"><a href="#" onclick="togglesearchresultsseason(event, this)">Season 1</a></div>
+								<div class="seasonepisodes" style="display:none">
+									<div class="episoderesult">
+										<div class="episodenumber"><a href="#" onclick="togglesearchresultsepisode(event, this)">Episode 1</a></div>
+										<div class="episodelinks" style="display:none">
+											<div class="episodelink"><a href="javascript:launch()">Play Link 1</a> - language english, subtitles polish</div>
+											<div class="episodelink"><a href="javascript:launch()">Play Link 2</a> - language english, subtitles polish</div>
+											<div class="episodelink"><a href="javascript:launch()">Play Link 3</a> - language english, subtitles polish</div>
+										</div>
+									</div>
+									<div class="episoderesult">
+										<div class="episodenumber"><a href="#" onclick="togglesearchresultsepisode(event, this)">Episode 2</a></div>
+										<div class="episodelinks" style="display:none">
+											<div class="episodelink"><a href="javascript:launch()">Play Link 1</a> - language english, subtitles polish</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="seasonresult">
+								<div class="seasonnumber"><a href="#" onclick="togglesearchresultsseason(event, this)">Season 2</a></div>
+								<div class="seasonepisodes" style="display:none">
+									<div class="episoderesult">
+										<div class="episodenumber"><a href="#" onclick="togglesearchresultsepisode(event, this)">Episode 1</a></div>
+										<div class="episodelinks" style="display:none">
+											<div class="episodelink"><a href="javascript:launch()">Play Link 1</a> - language english, subtitles polish</div>
+											<div class="episodelink"><a href="javascript:launch()">Play Link 2</a> - language english, subtitles polish</div>
+											<div class="episodelink"><a href="javascript:launch()">Play Link 3</a> - language english, subtitles polish</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> -->
 					<!-- <div class="searchentry">
 						<div class="searchheader" id="merde" ><a href="#" onclick="play('http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=fasdfs')">Cold Case Affaires classées S02E04.mp4</a></div>
 						<div class="searchsummary" id="merde" >Cold Case Affaires classéesEpisode 2 saison 2 langue fr sous titres</div>
@@ -223,6 +260,16 @@
 				return str;
 			}
 		}
+		function toggle(elt) {
+			if (elt.style.display == "none") {
+				elt.style.display = "block";
+			} else {
+				elt.style.display = "none";
+			}
+		}
+		
+		
+		
 		function callbackWarnings(result) {
 			var warnings = document.getElementById('warningarea');
 			if (result == 'outdated') {
@@ -337,7 +384,7 @@
 		/* parsesearchresults is called as a callback */
 		function submitSearch(pos) {
 			currentsearchpos = pos;
-			includeScript('http://search.cacaoweb.org/?searchterm=' + encodeURIComponent(currentsearchterm.toLowerCase()) + '&lang=' + searchlang + '&pos=' + pos, 'searchscript');
+			includeScript('http://search.cacaoweb.org/search_v1?searchterm=' + encodeURIComponent(currentsearchterm.toLowerCase()) + '&lang=' + searchlang + '&pos=' + pos, 'searchscript');
 		}
 		
 		function ismd5(s) {
@@ -527,6 +574,23 @@
 			processUserEntry();
 		}
 		
+		function togglesearchresultsseason(e, o) {
+			var elts = o.parentNode.parentNode.childNodes;
+			for (var i = 0; i < elts.length; i++) {
+				if (elts[i].className == "seasonepisodes") {
+					toggle(elts[i]);
+				}
+			}
+		}
+		function togglesearchresultsepisode(e, o) {
+			var elts = o.parentNode.parentNode.childNodes;
+			for (var i = 0; i < elts.length; i++) {
+				if (elts[i].className == "episodelinks") {
+					toggle(elts[i]);
+				}
+			}
+		}
+		
 		function parsesearchresults(results) {
 			document.getElementById('searchhints').innerHTML = langstrings[lang]['searchhints'];;
 			searchmode();
@@ -537,33 +601,47 @@
 				document.getElementById('searchresultsnext').style.display = 'none';
 			}
 			
-			if (results.showsresults.length == 10) {
-				document.getElementById('searchresultsnext').style.display = '';
-				var newpos = parseInt(currentsearchpos) + 10;
-				document.getElementById('searchresultsnext').innerHTML = '<a href="#" onclick="submitSearch(\'' + newpos + '\')">' + langstrings[lang]['next'] + '</a>';
-			} else {
-				document.getElementById('searchresultsnext').style.display = 'none';
-			}
-			if (currentsearchpos >= 10) { 
-				document.getElementById('searchresultsprevious').style.display = '';
-				var newpos = parseInt(currentsearchpos) - 10;
-				document.getElementById('searchresultsprevious').innerHTML = '<a href="#" onclick="submitSearch(\'' + newpos + '\')">' + langstrings[lang]['previous'] + '</a>';
-			} else {
-				document.getElementById('searchresultsprevious').style.display = 'none';
-			}
 			for (var i = 0; i < results.showsresults.length; i++) { 
+				function buildepisodelink(episodelink) {
+					var summary = '';
+					if (episodelink.lang) {
+						summary = langstrings[lang][episodelink.lang];
+					}
+					if (episodelink.subs) {
+						summary = summary + ', ' + langstrings[lang]['subtitles'] + ' ' + langstrings[lang][episodelink.subs];
+					}
+					if (summary != "") {
+						summary = " - (" + summary + ")";
+					}
+					return ('<div class="episodelink"><a href="javascript:play(\'' + episodelink.link + '\')">' + langstrings[lang]['playvideolink'] + '</a> ' + summary + '</div>');
+				}
+				function buildepisode(episode) {
+					var episodelinks = '';
+					for (var j = 0; j < episode.episodelinks.length; j++) {
+						episodelinks = episodelinks + buildepisodelink(episode.episodelinks[j]);
+					}
+					return ('<div class="episoderesult searchheader"><div class="episodenumber"><a href="#" onclick="togglesearchresultsepisode(event, this)">' + langstrings[lang]['episode'] + ' ' + episode.episode + '</a></div><div class="episodelinks" style="display:none">' + episodelinks + '</div></div>');
+				}
+				function buildseason(season) {
+					var episodes = '';
+					for (var j = season.episodes.length - 1; j >= 0; j--) {
+						episodes = episodes + buildepisode(season.episodes[j]);
+					}
+					return ('<div class="seasonresult searchheader"><div class="seasonnumber"><a href="#" onclick="togglesearchresultsseason(event, this)">' + langstrings[lang]['season'] + ' ' + season.season + '</a></div><div class="seasonepisodes" style="display:none">' + episodes + '</div></div>');
+				}
+				function buildtvshow(tvshow) {
+					var seasons = '';
+					for (var j = tvshow.seasons.length - 1; j >= 0; j--) {
+						seasons = seasons + buildseason(tvshow.seasons[j]);
+					}
+					return ('<div class="searchshowtitle">' + tvshow.showtitle + '</div><div class="seasonsresults">' + seasons + '</div>');
+				}
+				
 				var show = results.showsresults[i];
 				var entry;
 				entry = document.createElement('div');
-				entry.setAttribute('class', "searchentry");
-				var summary = show.showname + ' ' + langstrings[lang]['season'] + ' ' + show.season + ' ' + langstrings[lang]['episode'] + ' ' + show.episode;
-				if (show.lang) {
-					summary = summary + ' ' + langstrings[lang][show.lang];
-				}
-				if (show.subs) {
-					summary = summary + ' ' + langstrings[lang]['subtitles'] + ': ' + langstrings[lang][show.subs];
-				}
-				entry.innerHTML = '<div class="searchheader"><a href="javascript:play(\'' + show.link + '\')">' + show.showname + ' S' + show.season + 'E' + show.episode + '</a></div><div class="searchsummary">' + summary + '</div><div class="searchlink" style="display:none">' + show.link + '</div><div class="searchshowlink"><a href="#" onclick="showlink(event, this)">' + langstrings[lang]['showlink'] + '</a></div>';
+				entry.setAttribute('class', "tvshowsearchentry");
+				entry.innerHTML = buildtvshow(results.showsresults[i]);
 				searchresults.appendChild(entry);
 			} 
 			for (var i = 0; i < results.moviesresults.length; i++) { 

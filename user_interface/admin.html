@@ -744,6 +744,9 @@
 				}
 				$(".auth-notification").html(langstrings[lang]['welcome']  + username + " ! " + langstrings[lang]['mymoney']);
 				$(".auth-notification").css('font-size', '12px');
+			} else {
+				$(".auth-buttons").show();
+-				$(".auth-notification").text(langstrings[lang]['notloggedin']);
 			}
 		}
 		

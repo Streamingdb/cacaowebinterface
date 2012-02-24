@@ -539,9 +539,30 @@ a {
 	font-size: 10px;
 	color: DimGray;
 }
-.searchentry .searchsummary{
+.searchentry .searchsummary {
 	font-size: 10px;
 	color: #fff;
+}
+.tvshowsearchentry {
+	padding-bottom: 10px;
+}
+.searchshowtitle {
+	font-size: 18px;
+	color: #0098ff;
+	padding-bottom: 3px;
+}
+.seasonnumber {
+	font-size: 16px;
+}
+.seasonepisodes {
+	padding: 5px;
+}
+.episodenumber { 
+	font-size: 14px;
+}
+.episodelinks {
+	padding-left: 5px;
+	padding-bottom: 3px;
 }
 
 #searchresultsnext a {
@@ -555,6 +576,9 @@ a {
 	color: #fff;
 }
 
+#didyoumean {
+	padding: 10px;
+}
 #didyoumean a {
 	color: #0098ff;
 	line-height:1.2em;
