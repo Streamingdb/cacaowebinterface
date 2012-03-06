@@ -116,9 +116,8 @@
 					<div id="searchhints" class="message"></div>
 				</div>
 			</div>
-			<div id="searchresultsarea">
-				<div id="didyoumean">
-				</div>
+			<div id="searchresultsarea" style="display:none">
+				<div id="didyoumean"></div>
 				<div id="searchresults">
 					<!-- <div class="tvshowsearchentry">
 						<div class="searchshowtitle">Cold Case Affaires classées</div>
@@ -164,12 +163,21 @@
 						<div class="searchshowlink" ><a href="#" onclick="showlink(event)">show video link</a></div>
 					</div> -->
 				</div>
-				<div id="searchresultsprevious" style="display:none"><a href="#"></a></div>
-				<div id="searchresultsnext" style="display:none"><a href="#"></a></div>
 			</div>
 			<div id="linkarea" class="center" style="display:none">
 			</div>
 			<div id="playerarea" style="display:none">
+				<div id="playerhead">
+					<fieldset class="rating" onclick="ratefile(event, this)">
+						<legend id="ratequality">Rate the quality of this video:</legend>
+						<input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="HD quality">5 stars</label>
+						<input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="good quality">4 stars</label>
+						<input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="decent">3 stars</label>
+						<input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="watchable but very bad">2 stars</label>
+						<input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="not watchable">1 star</label>
+					</fieldset>
+					<div class="reportfake"><a id="reportfake" href="javascript:reportfake();">Not the right video? report as fake</a></div>
+				</div>
 				<div id="player">
 				</div>
 				<div id="sidebar">
@@ -177,7 +185,6 @@
 					</div>
 				</div>
 			</div>
-			<div id="messagezoneplaymode" class="message center"></div>
 			<div id="adzone" class="center"></div>
 			<div id="mostwatchedzone" class="center">
 				<!-- <h1>Most watched</h1>
@@ -212,7 +219,7 @@
 	<script type="text/javascript">	
 	
 		document.getElementById('mana').innerHTML = langstrings[lang]['management'] + '<span class="i"></span>';
-		//document.getElementById('messagezoneplaymode').innerHTML = langstrings[lang]['searchhints'];
+		document.getElementById('searchhints').innerHTML = langstrings[lang]['searchhints'];
 		//document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
 		document.getElementById('smallsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
 		document.getElementById('bigsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
@@ -229,6 +236,8 @@
 		document.getElementById('devmenu').innerHTML = langstrings[lang]['developers'];
 		document.getElementById('moneymenu').innerHTML = langstrings[lang]['makemoney'];
 		document.getElementById('supportedplatforms').innerHTML = langstrings[lang]['supportedplatforms'];
+		document.getElementById('ratequality').innerHTML = langstrings[lang]['ratequality'];
+		document.getElementById('reportfake').innerHTML = langstrings[lang]['reportfake'];
 		
 		
 		if (lang == 'it') {
@@ -237,6 +246,7 @@
 		
 		var currentsearchpos = 0;
 		var currentsearchterm = '';
+		var currentfileid = '';
 		var username = '';
 		var updateWarningsInterval = 20.0;
 			
@@ -268,6 +278,19 @@
 			}
 		}
 		
+		function reportfake() {
+			includeScript('http://user.cacaoweb.org/fakereport.php?fileid=' + currentfileid + "&username=" + encodeURIComponent(username), "fakereportscript");
+			alert("this fake file was reported successfully");
+		}
+		function ratefile(e, o) {
+			var field;
+			for (var y = 0; y < o.childNodes.length; y++) {  
+				field = o.childNodes[y];
+				if (field.checked) {
+					includeScript('http://user.cacaoweb.org/ratefile.php?fileid=' + currentfileid + "&username=" + encodeURIComponent(username) + "&rating=" + field.value, "ratingscript");
+				}
+			}  
+		}
 		
 		
 		function callbackWarnings(result) {
@@ -299,17 +322,14 @@
 			if (document.getElementById('warningarea').innerHTML != "") {
 				document.getElementById('warningarea').style.display = "block";
 			}
-			
-			document.getElementById('messagezoneplaymode').style.display = "none";
 		
 			document.getElementById('toplogo').style.display = "block";
 			document.getElementById('topsearchbox').style.display = "block";
 			document.getElementById('mainsearch').style.display = "none";
 			document.getElementById('footercontent').style.display = "none";
 			
+			document.getElementById('searchresultsarea').style.display = "none";
 			document.getElementById('searchresults').innerHTML = "";
-			document.getElementById('searchresultsprevious').style.display = "none";
-			document.getElementById('searchresultsnext').style.display = "none";
 			
 			document.getElementById('linkarea').style.display = "none";
 			
@@ -318,8 +338,6 @@
 		/** sets the page in search results mode */
 		function searchmode() {
 			document.getElementById('warningarea').style.display = "none";
-			
-			document.getElementById('messagezoneplaymode').style.display = "none";
 		
 			document.getElementById('toplogo').style.display = "block";
 			document.getElementById('topsearchbox').style.display = "block";
@@ -327,9 +345,8 @@
 			document.getElementById('footer').style.display = "none";
 			document.getElementById('footercontent').style.display = "none";
 			
+			document.getElementById('searchresultsarea').style.display = "block";
 			document.getElementById('searchresults').innerHTML = "";
-			document.getElementById('searchresultsprevious').style.display = "block";
-			document.getElementById('searchresultsnext').style.display = "block";
 			
 			document.getElementById('linkarea').style.display = "none";
 			
@@ -337,8 +354,6 @@
 		}
 		function linkmode() {
 			document.getElementById('warningarea').style.display = "none";
-			
-			document.getElementById('messagezoneplaymode').style.display = "none";
 		
 			document.getElementById('toplogo').style.display = "block";
 			document.getElementById('topsearchbox').style.display = "block";
@@ -346,9 +361,8 @@
 			document.getElementById('footer').style.display = "none";
 			document.getElementById('footercontent').style.display = "none";
 			
+			document.getElementById('searchresultsarea').style.display = "none";
 			document.getElementById('searchresults').innerHTML = "";
-			document.getElementById('searchresultsprevious').style.display = "none";
-			document.getElementById('searchresultsnext').style.display = "none";
 		
 			document.getElementById('linkarea').style.display = "block";
 			
@@ -378,6 +392,7 @@
 			document.getElementById('playerarea').style.display = 'block';
 			
 			var fileid = extractfileid(link);
+			currentfileid = fileid;
 			includeScript('http://search.cacaoweb.org/related?lang=' + lang + '&fileid=' + fileid, 'mostwatchedscript');
 		}
 		
@@ -613,7 +628,16 @@
 					if (summary != "") {
 						summary = " - (" + summary + ")";
 					}
-					return ('<div class="episodelink"><a href="javascript:play(\'' + episodelink.link + '\')">' + langstrings[lang]['playvideolink'] + '</a> ' + summary + '</div>');
+					var ratingstars = '';
+					if (episodelink.rating) {
+						ratingstars = '<div class="stars">';
+						var n = Math.round(episodelink.rating);
+						for (var j = 0; j < n; j++) {
+							ratingstars += '&#9733 ';
+						}
+						ratingstars += '</div>';
+					}
+					return ('<div class="episodelink"><a href="javascript:play(\'' + episodelink.link + '\')">' + langstrings[lang]['playvideolink'] + '</a> ' + summary + ratingstars + '</div>');
 				}
 				function buildepisode(episode) {
 					var episodelinks = '';
@@ -627,7 +651,11 @@
 					for (var j = season.episodes.length - 1; j >= 0; j--) {
 						episodes = episodes + buildepisode(season.episodes[j]);
 					}
-					return ('<div class="seasonresult searchheader"><div class="seasonnumber"><a href="#" onclick="togglesearchresultsseason(event, this)">' + langstrings[lang]['season'] + ' ' + season.season + '</a></div><div class="seasonepisodes" style="display:none">' + episodes + '</div></div>');
+					if (season.season == -1) {
+						return '<div class="seasonepisodes">' + episodes + '</div>';
+					} else {
+						return ('<div class="seasonresult searchheader"><div class="seasonnumber"><a href="#" onclick="togglesearchresultsseason(event, this)">' + langstrings[lang]['season'] + ' ' + season.season + '</a></div><div class="seasonepisodes" style="display:none">' + episodes + '</div></div>');
+					}
 				}
 				function buildtvshow(tvshow) {
 					var seasons = '';
@@ -802,6 +830,7 @@
 				} else {
 					var videoid = url.substr(pos + 8);
 				}
+				var fullrequest = url.substr(pos + 8);
 				if (url.indexOf("provider=bb") > -1) {
 					play("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=vz") > -1) {
@@ -814,7 +843,7 @@
 					//play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
 					
 				} else if (url.indexOf("provider=cacao") > -1 || ismd5(videoid)) {
-					play("http://127.0.0.1:4001/" + videoid);
+					play("http://127.0.0.1:4001/?f=" + fullrequest);
 				}
 			} else {
 				// shows the most watched

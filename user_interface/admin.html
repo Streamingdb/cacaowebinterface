@@ -483,13 +483,14 @@
 			}
 			addNewBoolDiv("cone", natdetails.udp.cone);
 			addNewBoolDiv("connected", natdetails.udp.connected);
-			addNewBoolDiv("using upnp", natdetails.udp.upnpactivated);
+			var div0 = '<div class="detailslabel">upnp status:</div><div class="detailsvalue">' + natdetails.udp.upnpstatus + '</div>';
+			$("#natdetailsudp").append(div0);
 			
 			var div1 = '<div class="detailslabel">port preserving:</div><div class="detailsvalue">' + getYesOrNo(natdetails.tcp.portpreserving) + '</div>';
 			$("#natdetailstcp").append(div1);
 			var div2 = '<div class="detailslabel">NAT type:</div><div class="detailsvalue">' + natdetails.tcp.nattype + '</div>';
 			$("#natdetailstcp").append(div2);
-			var div3 = '<div class="detailslabel">using upnp:</div><div class="detailsvalue">' + getYesOrNo(natdetails.tcp.upnpactivated) + '</div>';
+			var div3 = '<div class="detailslabel">upnp status:</div><div class="detailsvalue">' + natdetails.tcp.upnpstatus + '</div>';
 			$("#natdetailstcp").append(div3);
 		
 		}
@@ -651,28 +652,34 @@
 			height: 350,
 			width: 350,
 			modal: true,
-			buttons: {
-				'Create new user': function() {
-					var bValid = true;
-					allFields.removeClass('ui-state-error');
+			buttons: [
+				{
+					text: langstrings[lang]['create'],
+					click: function() {
+						var bValid = true;
+						allFields.removeClass('ui-state-error');
 
-					bValid = bValid && checkLength($("#registername"), "username", 3, 16);
-					bValid = bValid && checkLength($("#email"), "email", 6, 80);
-					bValid = bValid && checkLength($("#registerpassword"), "password", 4, 16);
+						bValid = bValid && checkLength($("#registername"), "username", 3, 16);
+						bValid = bValid && checkLength($("#email"), "email", 6, 80);
+						bValid = bValid && checkLength($("#registerpassword"), "password", 4, 16);
 
-					bValid = bValid && checkRegexp($("#registername"), /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter.");
-					// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
-					bValid = bValid && checkRegexp($("#email"),/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. albert@ducon.com");
-					bValid = bValid && checkRegexp($("#registerpassword"), /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9");
-					if (bValid) {
-						includeScript('http://127.0.0.1:4001/register?username=' + $("#registername").val() + '&password=' + $("#registerpassword").val() + '&email=' + $("#email").val(), 'registerscript');
-						currentauthdialog = $(this);
+						bValid = bValid && checkRegexp($("#registername"), /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter.");
+						// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+						bValid = bValid && checkRegexp($("#email"),/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. albert@ducon.com");
+						bValid = bValid && checkRegexp($("#registerpassword"), /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9");
+						if (bValid) {
+							includeScript('http://127.0.0.1:4001/register?username=' + $("#registername").val() + '&password=' + $("#registerpassword").val() + '&email=' + $("#email").val(), 'registerscript');
+							currentauthdialog = $(this);
+						}
 					}
 				},
-				'Cancel': function() {
-					$(this).dialog('close');
-				}
-			},
+				{
+					text: langstrings[lang]['cancel'],
+					click: function() {
+						$(this).dialog('close');
+					}
+				},
+			],
 			close: function() {
 				allFields.val('').removeClass('ui-state-error');
 			}

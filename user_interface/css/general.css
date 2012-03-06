@@ -21,9 +21,6 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -72,14 +69,17 @@ h1 {
 body {
 	background: #313131;
 	color: #efefef;
-	font: 12px Arial, Helvetica, Geneva, sans-serif;
+	font: 80% sans-serif;
 	list-style-type: none;
 }
 a {
 	color: #0098ff;
 	text-decoration: none;
 }
-.clearfix {
+a:hover {
+	color: #6CC2FC;
+}
+.clear {
 	display: block;
 	height: 1px;
 	margin-top: -1px;
@@ -233,7 +233,8 @@ a {
 
 .message {
 	padding-top: 20px;
-	font-size: 18px;
+	font: 100%;
+	font-size: 24px;
 }
 .warning {
     margin: 0 auto;
@@ -241,7 +242,6 @@ a {
 	font-weight: bold;
 	background-color: firebrick;
 	border: 1px solid #ff8040; 
-	padding: 7px; 
 	display: inline;
 }
 
@@ -487,7 +487,97 @@ a {
 #playerarea {
 	margin-bottom: 50px;
 }
+#playerhead {
+	padding-bottom: 30px;
+}
+
+
+
+/* Star ratings */
+
+.rating {
+    float:left;
+	padding-right: 40px;
+}
+
+.rating legend {
+	float: left;
+	padding-top: 10px;
+	padding-right: 5px;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: "\2605  ";
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+
+.stars {
+	display: inline;
+	padding-left: 10px;
+    color: gold;
+    text-shadow:1px 1px goldenrod, 1px 1px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+
+.reportfake {
+	padding-top: 10px;
+}
+.reportfake a {
+	color: #FF1000;
+}
+.reportfake a:hover {
+	color: #FF5A4F;
+}
 #player {
+	clear: both;
 	width: 640px;
 	height: 360px;
 	float: left;
@@ -510,10 +600,11 @@ a {
 
 /* search results */
 
-#searchresultsarea { /* TODO: this absolute positioning is bad */
-	position: absolute;
-	left: 295px;
+#searchresultsarea { 
+	position: relative;
+	left: 50px;
 	width: 500px;
+	clear: both;
 }
 .searchentry {
 	padding: 5px;
@@ -551,44 +642,31 @@ a {
 	color: #0098ff;
 	padding-bottom: 3px;
 }
+.seasonsresults {
+	padding-left: 10px;
+}
 .seasonnumber {
 	font-size: 16px;
 }
 .seasonepisodes {
 	padding: 5px;
+	padding-left: 15px;
 }
 .episodenumber { 
 	font-size: 14px;
 }
 .episodelinks {
-	padding-left: 5px;
+	padding-left: 15px;
 	padding-bottom: 3px;
 }
 
-#searchresultsnext a {
-	float: right;
-	padding-right: 50px;
-}
-#searchresultsprevious a {
-	float: left;
-}
-#searchresultsnext a, #searchresultsprevious a {
-	color: #fff;
-}
 
 #didyoumean {
 	padding: 10px;
 }
-#didyoumean a {
-	color: #0098ff;
-	line-height:1.2em;
-}
 
 #adzone {
 	margin-top: 30px;
-}
-#adzone a {
-	color: #0098ff;
 }
 
 
@@ -621,3 +699,6 @@ a {
 #columnsgroup {
 	width: 300px;
 }
+
+
+

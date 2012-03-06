@@ -10,7 +10,7 @@ langstrings['en']['management'] = 'My cacaoweb';
 langstrings['en']['searchplaceholder'] = 'Search...';
 langstrings['en']['searchhints'] = '<small>Search for Movies, TV shows, Anime or paste a link</small>';
 langstrings['en']['linknotrecognized'] = 'This type of link is not recognized by cacaoweb';
-langstrings['en']['typeoflinks'] = '<small>Examples :<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>megavideo: http://megavideo.com/?v=TUF78DFD<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
+langstrings['en']['typeoflinks'] = '<small>Examples :<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
 langstrings['en']['outdated'] = 'Your version of cacaoweb is outdated, download the latest version <a href="http://www.cacaoweb.org/?noredirect=yes">here</a>';
 langstrings['en']['nospaceleft'] = 'There is no space left on your media storage. cacaoweb will not work properly.';
 langstrings['en']['noconnectivity'] = 'There is no internet connectivity for cacaoweb and it will not work';
@@ -27,6 +27,8 @@ langstrings['en']['cacaowebtitle'] = 'cacaoweb - watch your favorite TV shows an
 langstrings['en']['supportedplatforms'] = 'Supported platforms';
 langstrings['en']['download'] = 'download';
 langstrings['en']['playvideolink'] = 'Play video link';
+langstrings['en']['ratequality'] = 'Rate the quality of this video:';
+langstrings['en']['reportfake'] = 'Wrong video? report as fake';
 
 /** admin page */
 langstrings['en']['cacaowebadmin'] = 'cacaoweb - Administration Interface';
@@ -80,12 +82,8 @@ langstrings['en']['name'] = "Name";
 langstrings['en']['password'] = "Password";
 langstrings['en']['login'] = "Login";
 langstrings['en']['create'] = "Create my account";
+langstrings['en']['cancel'] = "Cancel";
 langstrings['en']['register'] = "register";
-langstrings['en']['paidcontentsmall'] = "<small>Paid content</small>";
-langstrings['en']['previewsmall'] = "<small>Preview allowed</small>";
-langstrings['en']['numberofcreditssmall'] = "<small>Credits required</small>";
-langstrings['en']['freeviewsearnings'] = "Free views earnings";
-langstrings['en']['paidviewsearnings'] = "Paid views earnings";
 langstrings['en']['views'] = "views";
 langstrings['en']['statistics'] = "Statistics";
 langstrings['en']['share'] = "Share";
@@ -128,7 +126,7 @@ langstrings['en']['vn'] = "vietnamese";
 langstrings['fr'] = new Array();
 langstrings['fr']['management'] = 'Mon cacaoweb';
 langstrings['fr']['searchplaceholder'] = 'Recherchez...';
-langstrings['fr']['searchhints'] = '<small>Recherchez des séries, films, mangas ou collez un lien<br>... ou bien <a href="http://cacaoweb.org/makemoney_fr.html">gagnez de l\'argent</a> !</small>';
+langstrings['fr']['searchhints'] = '<small>Recherchez des séries, films, mangas ou collez un lien</small>';
 langstrings['fr']['linknotrecognized'] = 'Ce type de lien n\'est pas reconnu par cacaoweb';
 langstrings['fr']['typeoflinks'] = '<small>Exemples de liens reconnus:<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>megavideo: http://megavideo.com/?v=TUF78DFD<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
 langstrings['fr']['outdated'] = 'Votre version de cacaoweb n\'est pas à jour, téléchargez la dernière version <a href="http://www.cacaoweb.org/?noredirect=yes">ici</a>';
@@ -147,6 +145,8 @@ langstrings['fr']['cacaowebtitle'] = 'cacaoweb - regardez vos séries et films f
 langstrings['fr']['supportedplatforms'] = 'Plateformes supportées';
 langstrings['fr']['download'] = 'télécharger';
 langstrings['fr']['playvideolink'] = 'Jouer le lien vidéo';
+langstrings['fr']['ratequality'] = 'Votre avis sur la qualité de cette vidéo:';
+langstrings['fr']['reportfake'] = 'Mauvaise vidéo? le signaler';
 
 /** admin page */
 langstrings['fr']['cacaowebadmin'] = 'cacaoweb - Interface d\'administration';
@@ -200,12 +200,8 @@ langstrings['fr']['name'] = "Nom";
 langstrings['fr']['password'] = "Mot de passe";
 langstrings['fr']['login'] = "S'identifier";
 langstrings['fr']['create'] = "Créer mon compte";
+langstrings['fr']['cancel'] = "Annuler";
 langstrings['fr']['register'] = "s'enregistrer";
-langstrings['fr']['paidcontentsmall'] = "<small>Contenu payant</small>";
-langstrings['fr']['previewsmall'] = "<small>Aperçu autorisé</small>";
-langstrings['fr']['numberofcreditssmall'] = "<small>Crédits requis</small>";
-langstrings['fr']['freeviewsearnings'] = "Gains de vos contenus gratuits";
-langstrings['fr']['paidviewsearnings'] = "Gains de vos contenus payants";
 langstrings['fr']['views'] = "vues";
 langstrings['fr']['statistics'] = "Statistiques";
 langstrings['fr']['share'] = "Partager";
@@ -266,6 +262,8 @@ langstrings['it']['cacaowebtitle'] = 'Cacaoweb - Guarda Film o Serie TV Online i
 langstrings['it']['supportedplatforms'] = 'Supported platforms';
 langstrings['it']['download'] = 'download';
 langstrings['it']['playvideolink'] = 'Play video link';
+langstrings['it']['ratequality'] = 'Rate the quality of this video:';
+langstrings['it']['reportfake'] = 'Wrong video? report as fake';
 
 /** admin page */
 langstrings['it']['cacaowebadmin'] = 'Cacaoweb - Interfaccia di Amministrazione';
@@ -318,12 +316,8 @@ langstrings['it']['name'] = "Nome";
 langstrings['it']['password'] = "Password";
 langstrings['it']['login'] = "Login";
 langstrings['it']['create'] = "Crea account";
+langstrings['it']['cancel'] = "Cancella";
 langstrings['it']['register'] = "registrati";
-langstrings['it']['paidcontentsmall'] = "<small>Contenuto a pagamento</small>";
-langstrings['it']['previewsmall'] = "<small>Permesso di anteprima</small>";
-langstrings['it']['numberofcreditssmall'] = "<small>Crediti richiesti</small>";
-langstrings['it']['freeviewsearnings'] = "Guadagni visualizzazioni gratuite";
-langstrings['it']['paidviewsearnings'] = "Guadagni visualizzazioni a pagamento";
 langstrings['it']['views'] = "visualizzazioni";
 langstrings['it']['statistics'] = "Statistiche";
 langstrings['it']['share'] = "Condividi";
@@ -385,6 +379,8 @@ langstrings['pl']['cacaowebtitle'] = 'cacaoweb - Oglądaj swobodnie swoje ulubio
 langstrings['pl']['supportedplatforms'] = 'Supported platforms';
 langstrings['pl']['download'] = 'download';
 langstrings['pl']['playvideolink'] = 'Play video link';
+langstrings['pl']['ratequality'] = 'Rate the quality of this video:';
+langstrings['pl']['reportfake'] = 'Wrong video? report as fake';
 
 /** admin page */
 langstrings['pl']['cacaowebadmin'] = 'cacaoweb - Administracja Interfejsem';
@@ -437,12 +433,8 @@ langstrings['pl']['name'] = "Login";
 langstrings['pl']['password'] = "Hasło";
 langstrings['pl']['login'] = "Zaloguj się";
 langstrings['pl']['create'] = "Utwórz konto";
+langstrings['pl']['cancel'] = "Cancel";
 langstrings['pl']['register'] = "Zarejestruj się";
-langstrings['pl']['paidcontentsmall'] = "<small>Płatna zawartość</small>";
-langstrings['pl']['previewsmall'] = "<small>Podgląd dostępny</small>";
-langstrings['pl']['numberofcreditssmall'] = "<small>Wymaga kredytów:</small>";
-langstrings['pl']['freeviewsearnings'] = "Zarobki zawartości darmowej";
-langstrings['pl']['paidviewsearnings'] = "Zarobki zawartości płatnej";
 langstrings['pl']['views'] = "odsłon";
 langstrings['pl']['statistics'] = "Statystyki";
 langstrings['pl']['share'] = "Poleć";
@@ -485,7 +477,7 @@ Carlos Precioso    kalprestito@yahoo.es
 langstrings['es'] = new Array();
 langstrings['es']['management'] = 'Mi cacaoweb';
 langstrings['es']['searchplaceholder'] = 'Buscar...';
-langstrings['es']['searchhints'] = '<small>Busca Películas, Programas de TV, Anime o pega un enlace<br />... o <a href="http://cacaoweb.org/makemoney.html">haz dinero</a>!</small>';
+langstrings['es']['searchhints'] = '<small>Busca Películas, Programas de TV, Anime o pega un enlace</small>';
 langstrings['es']['linknotrecognized'] = 'cacaoweb no reconoce este tipo de enlaces';
 langstrings['es']['typeoflinks'] = '<small>Ejemplos:<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>megavideo: http://megavideo.com/?v=TUF78DFD<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
 langstrings['es']['outdated'] = 'Hay una nueva versión de cacaoweb. Descárgala <a href="http://www.cacaoweb.org/?noredirect=yes">aquí</a>';
@@ -504,6 +496,8 @@ langstrings['es']['cacaowebtitle'] = 'cacaoweb - mira tus programas de TV y pel�
 langstrings['es']['supportedplatforms'] = 'Supported platforms';
 langstrings['es']['download'] = 'download';
 langstrings['es']['playvideolink'] = 'Play video link';
+langstrings['es']['ratequality'] = 'Rate the quality of this video:';
+langstrings['es']['reportfake'] = 'Wrong video? report as fake';
 
 /** admin page */
 langstrings['es']['cacaowebadmin'] = 'cacaoweb - Interfaz de Administración';
@@ -557,12 +551,8 @@ langstrings['es']['name'] = "Nombre";
 langstrings['es']['password'] = "Contraseña";
 langstrings['es']['login'] = "Iniciar sesión";
 langstrings['es']['create'] = "Crear mi cuenta";
+langstrings['es']['cancel'] = "Cancel";
 langstrings['es']['register'] = "registrarse";
-langstrings['es']['paidcontentsmall'] = "<small>Contenido de pago</small>";
-langstrings['es']['previewsmall'] = "<small>Adelanto disponible</small>";
-langstrings['es']['numberofcreditssmall'] = "<small>Necesitas más créditos</small>";
-langstrings['es']['freeviewsearnings'] = "Ganancias de repr. gratis";
-langstrings['es']['paidviewsearnings'] = "Ganancias de repr. pagadas.";
 langstrings['es']['views'] = "reproducciones";
 langstrings['es']['statistics'] = "Estadísticas";
 langstrings['es']['share'] = "Compartir";
