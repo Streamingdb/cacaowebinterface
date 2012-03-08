@@ -684,7 +684,16 @@
 				if (movie.subs) {
 					summary = summary + ' ' + langstrings[lang]['subtitles'] + ': ' + langstrings[lang][movie.subs];
 				}
-				entry.innerHTML = '<div class="searchheader"><a href="javascript:play(\'' + movie.link + '\')">' + movie.moviename + '</a></div><div class="searchsummary">' + summary + '</div><div class="searchlink" style="display:none">' + movie.link + '</div><div class="searchshowlink"><a href="#" onclick="showlink(event, this)">' + langstrings[lang]['showlink'] + '</a></div>';
+				var ratingstars = '';
+				if (movie.rating) {
+					ratingstars = '<div class="stars">';
+					var n = Math.round(movie.rating);
+					for (var j = 0; j < n; j++) {
+						ratingstars += '&#9733 ';
+					}
+					ratingstars += '</div>';
+				}
+				entry.innerHTML = '<div class="searchheader"><a href="javascript:play(\'' + movie.link + '\')">' + movie.moviename + '</a>' + ratingstars + '</div><div class="searchsummary">' + summary + '</div><div class="searchlink" style="display:none">' + movie.link + '</div><div class="searchshowlink"><a href="#" onclick="showlink(event, this)">' + langstrings[lang]['showlink'] + '</a></div>';
 				searchresults.appendChild(entry);
 			} 
 			if (results.didyoumeanresults.length > 0) { document.getElementById('didyoumean').innerHTML = '<p>' + langstrings[lang]['didyoumean'] + '</p>'; }
