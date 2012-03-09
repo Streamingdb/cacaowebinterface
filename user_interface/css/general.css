@@ -695,9 +695,10 @@ a:hover {
 .column {
 	float: left;
 	padding: 15px;
+	width: 40%;
 }
 #columnsgroup {
-	width: 300px;
+	width: 350px;
 }
 
 
