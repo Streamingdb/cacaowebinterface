@@ -4,20 +4,19 @@
 <body>
 
 
-<div id="mymovie" cacaolink="http://127.0.0.1:4001/71aae77fa48b65d4f139b8098ec09f5a"></div>
+<div id="mymovie" cacaolink="http://127.0.0.1:4001/?f=71aae77fa48b65d4f139b8098ec09f5a"></div>
 
 <div>
 	<ul>
 		<li><a href="#" onclick='cacaoplayer("mymovie").play("http://127.0.0.1:4001/71aae77fa48b65d4f139b8098ec09f5a");'>Play link 1</a></li>
 		<li><a href="#" onclick='cacaoplayer("mymovie").play("http://127.0.0.1:4001/?f=99be9614f9f29dabb9105baf0fa51609");'>Play link 2</a></li>
 		<li><a href="#" onclick='cacaoplayer("mymovie").play("http://127.0.0.1:4001/a5f944bf491b1a05cf4a69fb27ce90c8");'>Play link 3</a></li>
-		<li><a href="#" onclick='cacaoplayer("mymovie").play("http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=PTHE7UWL");'>Play link 4</a></li>
 		<li><a href="#" onclick='changesubs()'>change subs</a></li>
 	</ul>
 </div>
 
 
-<script src="cacaoweb-2.14.js"></script>
+<script src="cacaoweb-2.15.js"></script>
 <script>
 
 	function changesubs() {
@@ -25,7 +24,7 @@
 	}
 	cacaoplayer("mymovie").setup({ playerurl: "player.swf" });
 	cacaoplayer("mymovie").subtitles({ subtitlesurl : "http://127.0.0.1:4001/?f=39bf73af7297076afd6f67c0b74879c7" });
-    cacaoplayer("mymovie").play();
+    //cacaoplayer("mymovie").play();
 
 </script>
 

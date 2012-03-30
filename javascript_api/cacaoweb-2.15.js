@@ -2,7 +2,7 @@ var Cacaoweb = {
 	/**
 	 * javascript parameters
 	 */
-	version: "2.14",
+	version: "2.15",
 	timerTasksInterval: 0.5,
 	lasttimeclientrunning: 0,
 	lasttimestatuscheck: 0,
@@ -228,7 +228,7 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 			
 
 			this.insertFlash = function() {
-				var player = '<object id="' + this.id + 'flash" width="' + this.width + '" height="' + this.height + '">';
+				var player = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="' + this.id + 'flash" width="' + this.width + '" height="' + this.height + '">';
 				player += '<param name="allowFullScreen" value="true" />';
 				player += '<param name="flashvars" value="file=' + this.link + '" />';
 				player += '<param name="movie" value="' + this.playerurl + '" />';
@@ -255,7 +255,7 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 				}
 				var flashplayer = getFlashPlayer(this.id + "flash");
 				if (flashplayer) {
-					flashplayer.play(this.link);
+					flashplayer.playMedia(this.link);
 				} else { // first create the flash object
 					this.insertFlash.call(this);
 				}

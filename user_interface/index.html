@@ -376,9 +376,12 @@
 			document.getElementById('player').innerHTML = playerobj;
 			document.getElementById('playerarea').style.display = 'block';
 			
-			var fileid = extractfileid(link);
-			currentfileid = fileid;
-			includeScript('http://search.cacaoweb.org/related?lang=' + lang + '&fileid=' + fileid, 'mostwatchedscript');
+			
+			if (link.indexOf('127.0.0.1') > -1) { // condition pour savoir si c'est un lien cacaoweb
+				var fileid = extractfileid(link);
+				currentfileid = fileid;
+				includeScript('http://search.cacaoweb.org/related?lang=' + lang + '&fileid=' + fileid, 'mostwatchedscript');
+			}
 		}
 		
 		/* parsesearchresults is called as a callback */
