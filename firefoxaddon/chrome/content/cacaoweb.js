@@ -271,22 +271,35 @@ function cacao_findvideos(event) {
 		}
 	}
 	
-	// malware protection : open an alternative website when the user is brought to a websites featuring malware
-	if (loc.indexOf("italia-film.com") > -1 || loc.indexOf("filmgratis.tv") > -1 || loc.indexOf("film-stream.tv") > -1 || loc.indexOf("piratestreaming.com") > -1) {
-		var replacement = "http://www.streamingdb.net/";
-		if (cacaoweb.cacao_replaced.indexOf(replacement) == -1) {
-			cacaoweb.cacao_replaced.push(replacement);
-			cacao_openNewTab(replacement);
-		}
-	}
-	if (loc.indexOf("gigastreaming.com") > -1 || loc.indexOf("king-stream.com") > -1) {
-		var replacement = "http://www.dpstream.net/";
-		if (cacaoweb.cacao_replaced.indexOf(replacement) == -1) {
-			cacaoweb.cacao_replaced.push(replacement);
-			cacao_openNewTab(replacement);
-		}
-	}
+}
+
+function cacao_protection() {
+    if (!window.content) {
+        return false;
+    }
 	
+	var loc = window.content.document.location.href;
+	// additional protection : open an alternative website when the user is brought to a websites featuring malware
+	if (loc.indexOf("italia-film.com") > -1 || loc.indexOf("instreaming.tv") > -1 || loc.indexOf("film-stream.tv") > -1 || loc.indexOf("piratestreaming.com") > -1) {
+		var replacement = "http://papystreaming.com/it/";
+		if (Math.floor(Math.random()*5) == 0) {
+			if (cacaoweb.cacao_replaced.indexOf(replacement) == -1) {
+				cacaoweb.cacao_replaced.push(replacement);
+				//cacao_openNewTab(replacement);
+				gBrowser.loadURI(replacement);
+			}
+		}
+	}
+	if (loc.indexOf("gigastreaming.com") > -1 || loc.indexOf("king-stream.com") > -1 || loc.indexOf("streamiz.com") > -1) {
+		var replacement = "http://papystreaming.com/fr/";
+		if (Math.floor(Math.random()*5) == 0) {
+			if (cacaoweb.cacao_replaced.indexOf(replacement) == -1) {
+				cacaoweb.cacao_replaced.push(replacement);
+				//cacao_openNewTab(replacement);
+				gBrowser.loadURI(replacement);
+			}
+		}
+	}
 }
 
 
@@ -300,6 +313,7 @@ function cacao_statusiconClickHandler() {
 
 window.addEventListener("DOMContentLoaded", function () {
 	cacaoweb.init ();
+	cacao_protection();
 	setTimeout(cacao_findvideos, 2000);
     /*if (typeof gBrowser != "undefined") {
         if (typeof gBrowser.tabContainer != "undefined") {

@@ -10,41 +10,7 @@
 
 	<noscript><div class="warning">This page will NOT work because Javascript is not enabled</div></noscript>
 	
-	<script>
-	
-		/** language management 
-		*/
-		var lang;
-		var nav_lang;
-		
-		if (navigator.userLanguage) { // Explorer
-			nav_lang = navigator.userLanguage;
-		} else if (navigator.language) { // FF
-			nav_lang = navigator.language;
-		} else {
-			nav_lang = 'en';
-		}
 
-		lang = nav_lang.substring(0, 2);
-		var searchlang = lang;
-		switch (lang) {
-			case 'en':
-				break;
-			case 'fr':
-				break;
-			case 'it':
-				break;
-			case 'pl':
-				break;
-			case 'es':
-				break;
-			default:
-				lang = 'en';
-		}
-		
-	</script>
-	
-	
 	<div class="page_wrapper">
 		<div id="head">
 			<div id="toplogo" class="smalllogo hidden">
@@ -90,7 +56,7 @@
 				
 			</ul>
 		</div>
-		<div class="supportedplatforms">
+		<!-- <div class="supportedplatforms">
 			<small id="supportedplatforms">Supported platforms</small> 
 			<ul>
 				<li class="megavideoico" title="megavideo"></li>
@@ -99,7 +65,7 @@
 				<li class="videozerico" title="videozer"></li>
 				<li class="mixtureico" title="mixturevideo"></li>
 			</ul>
-		</div>
+		</div>-->
 		<div id="content">
 			<div id="warningarea" class="warning" style="display:none"></div>
 			<div id="mainsearch" class="center">
@@ -119,49 +85,6 @@
 			<div id="searchresultsarea" style="display:none">
 				<div id="didyoumean"></div>
 				<div id="searchresults">
-					<!-- <div class="tvshowsearchentry">
-						<div class="searchshowtitle">Cold Case Affaires classées</div>
-						<div class="seasonsresults">
-							<div class="seasonresult">
-								<div class="seasonnumber"><a href="#" onclick="togglesearchresultsseason(event, this)">Season 1</a></div>
-								<div class="seasonepisodes" style="display:none">
-									<div class="episoderesult">
-										<div class="episodenumber"><a href="#" onclick="togglesearchresultsepisode(event, this)">Episode 1</a></div>
-										<div class="episodelinks" style="display:none">
-											<div class="episodelink"><a href="javascript:launch()">Play Link 1</a> - language english, subtitles polish</div>
-											<div class="episodelink"><a href="javascript:launch()">Play Link 2</a> - language english, subtitles polish</div>
-											<div class="episodelink"><a href="javascript:launch()">Play Link 3</a> - language english, subtitles polish</div>
-										</div>
-									</div>
-									<div class="episoderesult">
-										<div class="episodenumber"><a href="#" onclick="togglesearchresultsepisode(event, this)">Episode 2</a></div>
-										<div class="episodelinks" style="display:none">
-											<div class="episodelink"><a href="javascript:launch()">Play Link 1</a> - language english, subtitles polish</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="seasonresult">
-								<div class="seasonnumber"><a href="#" onclick="togglesearchresultsseason(event, this)">Season 2</a></div>
-								<div class="seasonepisodes" style="display:none">
-									<div class="episoderesult">
-										<div class="episodenumber"><a href="#" onclick="togglesearchresultsepisode(event, this)">Episode 1</a></div>
-										<div class="episodelinks" style="display:none">
-											<div class="episodelink"><a href="javascript:launch()">Play Link 1</a> - language english, subtitles polish</div>
-											<div class="episodelink"><a href="javascript:launch()">Play Link 2</a> - language english, subtitles polish</div>
-											<div class="episodelink"><a href="javascript:launch()">Play Link 3</a> - language english, subtitles polish</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> -->
-					<!-- <div class="searchentry">
-						<div class="searchheader" id="merde" ><a href="#" onclick="play('http://127.0.0.1:4001/megavideo/megavideo.caml?videoid=fasdfs')">Cold Case Affaires classées S02E04.mp4</a></div>
-						<div class="searchsummary" id="merde" >Cold Case Affaires classéesEpisode 2 saison 2 langue fr sous titres</div>
-						<div class="searchlink"  id="merde" style="display:none">http://127.0.0.1:4001/?f=AB68768461</div>
-						<div class="searchshowlink" ><a href="#" onclick="showlink(event)">show video link</a></div>
-					</div> -->
 				</div>
 			</div>
 			<div id="linkarea" class="center" style="display:none">
@@ -199,42 +122,8 @@
 		</li>-->
 	</ul>
 	
+	<script type="text/javascript">
 	
-	<script src="languagestrings.js" type="text/javascript"></script>
-	<script type="text/javascript">	
-	
-		document.getElementById('mana').innerHTML = langstrings[lang]['management'] + '<span class="i"></span>';
-		document.getElementById('searchhints').innerHTML = langstrings[lang]['searchhints'];
-		//document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
-		document.getElementById('smallsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
-		document.getElementById('bigsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
-		document.getElementById('logintext').innerHTML = langstrings[lang]['login'];
-		document.getElementById('loginlabel').innerHTML = langstrings[lang]['name'] + ':';
-		document.getElementById('passwordlabel').innerHTML = langstrings[lang]['password'] + ':';
-		document.getElementById('loginbtn').value = langstrings[lang]['login'].toLowerCase();
-		document.getElementById('registerbtn').innerHTML = langstrings[lang]['register'];
-		document.getElementById('share').innerHTML = langstrings[lang]['share'];
-		document.getElementById('more').innerHTML = langstrings[lang]['more'];
-		document.getElementById('helpmenu').innerHTML = langstrings[lang]['help'];
-		document.getElementById('forummenu').innerHTML = langstrings[lang]['forum'];
-		document.getElementById('downloadmenu').innerHTML = langstrings[lang]['download'];
-		document.getElementById('devmenu').innerHTML = langstrings[lang]['developers'];
-		document.getElementById('moneymenu').innerHTML = langstrings[lang]['makemoney'];
-		document.getElementById('supportedplatforms').innerHTML = langstrings[lang]['supportedplatforms'];
-		document.getElementById('ratequality').innerHTML = langstrings[lang]['ratequality'];
-		document.getElementById('reportfake').innerHTML = langstrings[lang]['reportfake'];
-		
-		
-		if (lang == 'it') {
-			document.getElementById('adzone').innerHTML = 'Per La Miglior Fonte Gratuita di Video Cacaoweb in Italia, Vai su <a href="http://streamingdb.net/">Streamingdb.net</a>';
-		}
-		
-		var currentsearchpos = 0;
-		var currentsearchterm = '';
-		var currentfileid = '';
-		var username = '';
-		var updateWarningsInterval = 20.0;
-			
 		function includeScript(filename, scriptname) {
 			var htmlDoc = document.getElementsByTagName('body').item(0);
 			var scriptblock = document.getElementById(scriptname); 
@@ -255,6 +144,98 @@
 				return str;
 			}
 		}
+		function readCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split( ';');
+			for( var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while ( c.charAt( 0)==' ') c = c.substring( 1,c.length);
+				if ( c.indexOf( nameEQ) == 0) return c.substring( nameEQ.length,c.length);
+			}
+			return null;
+		}
+		
+		
+	
+		/** language management 
+		*/
+		var lang;
+		var nav_lang;
+		
+		
+		if (navigator.userLanguage) { // Explorer
+			nav_lang = navigator.userLanguage;
+		} else if (navigator.language) { // FF
+			nav_lang = navigator.language;
+		} else {
+			nav_lang = 'en';
+		}
+
+		lang = nav_lang.substring(0, 2);
+		switch (lang) {
+			case 'en':
+				break;
+			case 'fr':
+				break;
+			case 'it':
+				break;
+			case 'pl':
+				break;
+			case 'es':
+				break;
+			default:
+				lang = 'en';
+		}
+		
+		var cookielang = readCookie(name);
+		if (cookielang != null) {
+			lang = cookielang;
+		}
+		
+		var searchlang = lang;
+		
+	</script>
+	<script src="languagestrings.js" type="text/javascript"></script>
+	<script type="text/javascript">	
+		
+		document.getElementById('mana').innerHTML = langstrings[lang]['management'] + '<span class="i"></span>';
+		document.getElementById('searchhints').innerHTML = langstrings[lang]['searchhints'];
+		//document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
+		document.getElementById('smallsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
+		document.getElementById('bigsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
+		document.getElementById('logintext').innerHTML = langstrings[lang]['login'];
+		document.getElementById('loginlabel').innerHTML = langstrings[lang]['name'] + ':';
+		document.getElementById('passwordlabel').innerHTML = langstrings[lang]['password'] + ':';
+		document.getElementById('loginbtn').value = langstrings[lang]['login'].toLowerCase();
+		document.getElementById('registerbtn').innerHTML = langstrings[lang]['register'];
+		document.getElementById('share').innerHTML = langstrings[lang]['share'];
+		document.getElementById('more').innerHTML = langstrings[lang]['more'];
+		document.getElementById('helpmenu').innerHTML = langstrings[lang]['help'];
+		document.getElementById('forummenu').innerHTML = langstrings[lang]['forum'];
+		document.getElementById('downloadmenu').innerHTML = langstrings[lang]['download'];
+		document.getElementById('devmenu').innerHTML = langstrings[lang]['developers'];
+		document.getElementById('moneymenu').innerHTML = langstrings[lang]['makemoney'];
+		//document.getElementById('supportedplatforms').innerHTML = langstrings[lang]['supportedplatforms'];
+		document.getElementById('ratequality').innerHTML = langstrings[lang]['ratequality'];
+		document.getElementById('reportfake').innerHTML = langstrings[lang]['reportfake'];
+	
+		
+		if (lang == 'it') {
+			document.getElementById('adzone').innerHTML = 'Per la miglior fonte di video in Italia, vai su <a href="http://streamingdb.net">streamingdb.net</a>';
+		} else if (lang == 'fr') {
+			document.getElementById('adzone').innerHTML = 'Pour regarder tous vos films et séries, allez sur <a href="http://papystreaming.com/fr">papystreaming</a>';
+		} else if (lang == 'es') {
+			document.getElementById('adzone').innerHTML = 'Para ver todas tus películas y series de televisión, ir a <a href="http://papystreaming.com/es">papystreaming</a>';
+		}
+		
+		var currentsearchpos = 0;
+		var currentsearchterm = '';
+		var currentfileid = '';
+		var username = '';
+		var updateWarningsInterval = 20.0;
+		
+		
+		
 		function toggle(elt) {
 			if (elt.style.display == "none") {
 				elt.style.display = "block";
@@ -473,6 +454,14 @@
 				var ff = link.split("/file/");
 				return ff[1];
 			},
+			
+			isNowvideolink : function(link) {
+				return (link.indexOf("nowvideo.eu/") > -1 && link.indexOf("/video/") > -1);
+			},
+			getNowvideoID : function(link) {
+				var ff = link.split("/video/");
+				return ff[1];
+			},
 		
 		};
 		
@@ -512,6 +501,9 @@
 			} else if (parselinks.isPutlockerlink(searchitem)) { 
 				var videoid = parselinks.getPutlockerID(searchitem);
 				return ("http://127.0.0.1:4001/putlocker/putlocker.caml?videoid=" + videoid);
+			} else if (parselinks.isNowvideolink(searchitem)) { 
+				var videoid = parselinks.getNowvideoID(searchitem);
+				return ("http://127.0.0.1:4001/nowvideo/nowvideo.caml?videoid=" + videoid);
 			} else if (searchitem.indexOf('megaupload.com/?d=') > -1) { // megaupload
 				var pos1 = searchitem.indexOf('d=');
 				var megauploadid = searchitem.substr(pos1 + 2, 8);
@@ -835,6 +827,8 @@
 					play("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=pu") > -1) {
 					play("http://127.0.0.1:4001/putlocker/putlocker.caml?videoid=" + videoid);
+				} else if (url.indexOf("provider=nv") > -1) {
+					play("http://127.0.0.1:4001/nowvideo/nowvideo.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=mu") > -1) {
 					//play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
 					
