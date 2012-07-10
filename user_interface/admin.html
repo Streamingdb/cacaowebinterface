@@ -568,7 +568,7 @@
 					$(xml).find("results").each(function() {
 						tcpnattype = $(this).text();
 					});
-					checkNetwork()
+					checkNetwork();
 				}
 			});
 		}
@@ -585,7 +585,7 @@
 							$('#h2newupload').html("The upload service is currently offline for maintenance. It will be back soon.");
 						}
 					});
-					checkNAT()
+					checkNAT();
 				}
 			});
 			
@@ -664,10 +664,10 @@
 				case "50":
 					price = 5;
 					break;
-				case "150":
+				case "100":
 					price = 10;
 					break;
-				case "400":
+				case "200":
 					price = 20;
 					break;
 				default:

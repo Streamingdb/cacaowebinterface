@@ -223,7 +223,7 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 			this.height = Cacaoweb.videoheight;
 			this.missingpluginimageurl = Cacaoweb.missingpluginimageurl;
 			
-			this.subtitlesoptions = {};
+			this.subtitlesoptions = null;
 			this.flashobjectadded = false; // tells if we have added the flash object or not yet
 			
 
@@ -240,7 +240,7 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 				player += '</object>';
 				this.container.innerHTML = player;
 				this.flashobjectadded = true;
-				if (this.subtitlesoptions != {}) {
+				if (this.subtitlesoptions != null) {
 					this.subtitles(this.subtitlesoptions);
 				}
 			}
