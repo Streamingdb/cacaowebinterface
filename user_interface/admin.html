@@ -24,6 +24,17 @@
 				<div><h2><a href='http://cacaoweb.org/makemoney.html' class='button pink round glass' id="makemoney"></a></h2></div>
 			</div>
 			
+			<div class="languagediv clear">
+				<label for="language" id="mylanguage">My language:</label>
+				<select id="language" onchange="languagechange(this);">
+					<option value=""></option>
+					<option value="en">English</option>
+					<option value="fr">Français</option>
+					<option value="es">Español</option>
+					<option value="it">Italiano</option>
+					<option value="pl">Polski</option>
+				</select>
+			</div>
 			<div class="authbox" style="display:none">
 				<div class="auth-notification clear"></div>
 				<div class="clear" id="premiuminfo"></div>
@@ -34,8 +45,8 @@
 						</div>
 						<div class="form-field clear">
 							<input name="form[radio]" id="radio1" class="radio" type="radio" value="50" checked="true"><label for="radio1">50 credits = 5€</label>
-							<input name="form[radio]" id="radio2" class="radio" type="radio" value="150"><label for="radio2">150 credits = 10€</label>
-							<input name="form[radio]" id="radio3" class="radio" type="radio" value="400"><label for="radio3">400 credits = 20€</label>
+							<input name="form[radio]" id="radio2" class="radio" type="radio" value="100"><label for="radio2">100 credits = 10€</label>
+							<input name="form[radio]" id="radio3" class="radio" type="radio" value="200"><label for="radio3">200 credits = 20€</label>
 							<div class="clear">
 								<button name="submit" type="submit" id="submitpaypal"></button>
 							</div>	
@@ -123,8 +134,45 @@
 		
 
 	
-	<script src="languagestrings.js"></script>
 	<script>	
+	
+		function includeScript(filename, scriptname) {
+			var htmlDoc = document.getElementsByTagName('body').item(0);
+			var scriptblock = document.getElementById(scriptname); 
+			if (scriptblock) {
+				htmlDoc.removeChild(scriptblock);
+			}
+			var script = document.createElement("script");
+		
+			script.id = scriptname;
+			script.src = filename;
+			script.type = 'text/javascript';
+			htmlDoc.appendChild(script);
+		}
+		function escapestring(str) {
+			if (str) {
+				return str.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g,'\\$1')
+			} else {
+				return str;
+			}
+		}
+		function createCookie(name, value, days) {
+			var date = new Date();
+			date.setTime(date.getTime()+(days*24*60*60*1000));
+			var expires = "; expires="+date.toGMTString();
+			document.cookie = name + "=" + value + expires + "; path=/; ";
+		}
+		function readCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split( ';');
+			for( var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while ( c.charAt( 0)==' ') c = c.substring( 1,c.length);
+				if ( c.indexOf( nameEQ) == 0) return c.substring( nameEQ.length,c.length);
+			}
+			return null;
+		}
+		
 		var lang;
 		var fb_lang;
 		if (navigator.userLanguage) { // Explorer
@@ -148,26 +196,37 @@
 				lang = 'en';
 		}
 		
+		var cookielang = readCookie('cacaolang');
+		if (cookielang != null) {
+			lang = cookielang;
+		}
+		
+	</script>
+	<script src="languagestrings.js"></script>
+	<script>
 		/** 
 		  translation of the interface strings
 		*/
 		
-		//document.getElementsByTagName('title').item(0).innerHTML = langstrings[lang]['cacaowebadmin'];
-		document.getElementById('h2mydownloads').innerHTML = langstrings[lang]['mydownloads'];
-		document.getElementById('h2myuploads').innerHTML = langstrings[lang]['myuploads'];
-		//document.getElementById('h2newupload').innerHTML = langstrings[lang]['newupload'];
-		document.getElementById('h2cacaowebstatus').innerHTML = langstrings[lang]['h2cacaowebstatus'];
-		document.getElementById('cacaowebactions').innerHTML = langstrings[lang]['cacaowebactions'];
-		document.getElementById('turnoff').innerHTML = langstrings[lang]['turnoff'];
-		document.getElementById('uninstall').innerHTML = langstrings[lang]['uninstall'];
-		document.getElementById('backmainpage').innerHTML = langstrings[lang]['backmainpage'];
-		document.getElementById('loginbtn').innerHTML = langstrings[lang]['login'];
-		document.getElementById('createbtn').innerHTML = langstrings[lang]['create'];
-		document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
-		document.getElementById('submitpaypal').innerHTML = langstrings[lang]['buywithpaypal'];
-		document.getElementById('uploadyourfiles').innerHTML = langstrings[lang]['uploadyourfiles'];
-		document.getElementById('makemoney').innerHTML = langstrings[lang]['makemoney'];
+		function initializelanguagestrings() {
+			//document.getElementsByTagName('title').item(0).innerHTML = langstrings[lang]['cacaowebadmin'];
+			document.getElementById('h2mydownloads').innerHTML = langstrings[lang]['mydownloads'];
+			document.getElementById('h2myuploads').innerHTML = langstrings[lang]['myuploads'];
+			//document.getElementById('h2newupload').innerHTML = langstrings[lang]['newupload'];
+			document.getElementById('h2cacaowebstatus').innerHTML = langstrings[lang]['h2cacaowebstatus'];
+			document.getElementById('cacaowebactions').innerHTML = langstrings[lang]['cacaowebactions'];
+			document.getElementById('turnoff').innerHTML = langstrings[lang]['turnoff'];
+			document.getElementById('uninstall').innerHTML = langstrings[lang]['uninstall'];
+			document.getElementById('backmainpage').innerHTML = langstrings[lang]['backmainpage'];
+			document.getElementById('loginbtn').innerHTML = langstrings[lang]['login'];
+			document.getElementById('createbtn').innerHTML = langstrings[lang]['create'];
+			document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
+			document.getElementById('submitpaypal').innerHTML = langstrings[lang]['buywithpaypal'];
+			document.getElementById('uploadyourfiles').innerHTML = langstrings[lang]['uploadyourfiles'];
+			document.getElementById('makemoney').innerHTML = langstrings[lang]['makemoney'];
+		}
 		
+		initializelanguagestrings();
 		
 			
 	</script>
@@ -180,26 +239,15 @@
 		$("label[for=name]").text(langstrings[lang]['name']);
 		$("label[for=password]").text(langstrings[lang]['password']);
 	
-		function includeScript(filename, scriptname) {
-			var htmlDoc = document.getElementsByTagName('body').item(0);
-			var scriptblock = document.getElementById(scriptname); 
-			if (scriptblock) {
-				htmlDoc.removeChild(scriptblock);
-			}
-			var script = document.createElement("script");
+
+		function languagechange(elt) {
+			var idx = elt.selectedIndex;
+			lang = elt.options[idx].value;
+			searchlang = lang;
+			initializelanguagestrings();
+			createCookie('cacaolang', lang, 3650);
+		}
 		
-			script.id = scriptname;
-			script.src = filename;
-			script.type = 'text/javascript';
-			htmlDoc.appendChild(script);
-		}
-		function escapestring(str) {
-			if (str) {
-				return str.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g,'\\$1')
-			} else {
-				return str;
-			}
-		}
 		function ajaxrequest(link) {
 			$.ajax({
 				url: link,

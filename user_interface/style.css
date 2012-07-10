@@ -145,7 +145,7 @@ div.linkdisplay { clear:left; padding-left: 5px; padding-top: 3px; }
 }
 #mainleftcolumn {
 	float: left;
-	width: 600px;
+	width: 700px;
 }
 #mainrightcolumn {
 	float: right;
@@ -187,6 +187,8 @@ fieldset { padding:0; border:0; margin-top:25px; }
 .detailsvalue { width: 230px; }
 
 #menubuttons div { padding: 10px; float: left; }
+
+#mylanguage { float: left; padding-right: 5px;}
 		
 /**
   end page Admin 

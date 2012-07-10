@@ -3,7 +3,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>cacaoweb@cacaoweb.org</em:id>
 		<em:name>cacaoweb</em:name>
-		<em:version>1.0.26</em:version>
+		<em:version>1.0.27</em:version>
 		<em:type>2</em:type>
 		<em:description>Watch videos without limit</em:description>
 		<em:creator>http://www.cacaoweb.org/</em:creator>
@@ -26,7 +26,7 @@
 	      <Description>
 	        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
 	        <em:minVersion>0.8</em:minVersion>
-	        <em:maxVersion>20.0.*</em:maxVersion>
+	        <em:maxVersion>30.*</em:maxVersion>
 	      </Description>
 	    </em:targetApplication>
 	    <!-- Flock -->
