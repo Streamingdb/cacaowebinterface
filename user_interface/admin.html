@@ -174,13 +174,16 @@
 		}
 		
 		var lang;
-		var fb_lang;
+		var nav_lang;
+		
 		if (navigator.userLanguage) { // Explorer
-			fb_lang = navigator.userLanguage;
+			nav_lang = navigator.userLanguage;
 		} else if (navigator.language) { // FF
-			fb_lang = navigator.language;
+			nav_lang = navigator.language;
+		} else {
+			nav_lang = 'en';
 		}
-		lang = fb_lang.substring(0, 2);
+		lang = nav_lang.substring(0, 2);
 		switch (lang) {
 			case 'en':
 				break;
