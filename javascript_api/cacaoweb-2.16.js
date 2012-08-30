@@ -68,7 +68,8 @@ var Cacaoweb = {
 			alert("cacaoweb is not available for your platform");
 		}
 		
-		setTimeout(function() { window.open(uri, '_newtab') },  0 ); // timeout could be 500 in case of direct download to make the user at ease
+		window.location = uri;
+		//setTimeout(function() { window.open(uri, '_newtab') },  0 ); // timeout could be 500 in case of direct download to make the user at ease
 	},
 	
 	/**
