@@ -1,0 +1,69 @@
+
+
+html, body { 	
+	background-color: #000000; 
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 11px; 
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	color: #ffffff;
+}
+
+.container {
+	padding: 20px 20px 20px 20px;
+}
+
+label {
+	float: left;
+	padding-right: 10px;
+	font-weight: bold;
+}
+
+.plus {
+	float: left;
+	padding-right: 5px;
+	cursor: pointer;
+}
+
+
+.hidden {
+	display: none;
+}
+#totalup {
+	margin-bottom: 5px;
+}
+.swarm {
+	clear: both;
+}
+.swarmdata {
+	position: relative;
+	left: 20px;
+	margin-bottom: 10px;
+}
+.swarmdata > label {
+	width: 150px;
+}
+.swarmdatarow {
+	margin-top: 5px;
+	clear: both;
+}
+.connected {
+	color: red;
+}
+.swarmdatarow > div {
+	float: left;
+	margin: 0 5px 0 5px;
+}
+.ipaddresscol {
+	width: 100px;
+}
+.nattypecol {
+	width: 100px;
+}
+.connectionscol {
+	width: 60px;
+}
+.numcol {
+	width: 50px;
+}

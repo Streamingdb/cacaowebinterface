@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Realtime P2P information</title>
+	<meta charset=utf-8 />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	<link rel="stylesheet" href="debugstyle.css" />
+	<link rel="stylesheet" href="buttons.css" />
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-darkness/jquery-ui.css" />
+</head>
+<body>
+
+
+	<noscript>This page will NOT work because Javascript is not enabled</noscript>
+	
+	
+	<div class="container">
+		<h2>DHT Info</h2>
+		<div class="dhtinfo">
+			<div id="knownpeers">
+				<label>known peers:</label>
+				<div></div>
+			</div>
+			<div id="averagertt">
+				<label>average rtt:</label>
+				<div></div>
+			</div>
+		</div>
+		<h2>Swarms Info</h2>
+		<div id="swarmsinfo">
+			<div id="totaldown">
+					<label>total download rate:</label>
+					<div></div>
+			</div>
+			<div id="totalup">
+					<label>total upload rate:</label>
+					<div></div>
+			</div>
+			<div class="swarm">
+				<div class="plus">+</div>
+				<label>swarm:</label>
+				<div id="B4684DDCF8B96BD04F2A397A046F340E">B4684DDCF8B96BD04F2A397A046F340E</div>
+				<div class="swarmdata hidden">
+					<label>down connections:</label>
+					<div>12</div>
+					<label>up connections:</label>
+					<div>3</div>
+					<div class="swarmdatarow">
+						<div class="ipaddresscol">90.60.30.148</div>
+						<div class="nattypecol">Open</div>
+						<div class="connectionscol">4/5</div>
+						<div class="bwdowncol">115.23</div>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+	
+	<script>
+		function updaterealtimeinfo () {
+			$.ajax({
+			  url: "http://127.0.0.1:4001/realtimeinfo",
+			  dataType: "json",
+			  success: function( data ) {
+				$("#knownpeers > div").text(data.DHT.knownpeers);
+				$("#averagertt > div").text(data.DHT.averagertt.join(" ; "));
+				
+				
+				$("#totalup > div").text(data.Fileswarming.totaluploadrate);
+				$("#totaldown > div").text(data.Fileswarming.totaldownloadrate);
+				
+				$.each(data.Fileswarming.fileswarms, function (index, swarm) {
+					var swarmdatadiv = null;
+					if ($('#' + swarm.swarmid).length > 0) {
+						swarmdatadiv = $('#' + swarm.swarmid).siblings(".swarmdata");
+					} else {
+						var swarmdiv = $('<div class="swarm"></div>');
+						$(swarmdiv).append('<div class="plus">+</div>');
+						$(swarmdiv).append('<label>swarm:</label>');
+						$(swarmdiv).append('<div id=' + swarm.swarmid + '>' + swarm.swarmid + '</div>');
+						swarmdatadiv = $('<div class="swarmdata hidden"></div>');
+						$(swarmdiv).append(swarmdatadiv);
+						$('#swarmsinfo').append(swarmdiv);
+					}
+					
+					
+					$(swarmdatadiv).empty();
+					$(swarmdatadiv).append('<label>down connections:</label><div>' + swarm.numberofdownconnections + '</div>');
+					$(swarmdatadiv).append('<label>up connections:</label><div>' + swarm.numberofupconnections + '</div>');
+					$(swarmdatadiv).append('<label>current download rate:</label><div>' + swarm.currentdownloadrate + '</div>');
+					$(swarmdatadiv).append('<label>current upload rate:</label><div>' + swarm.currentuploadrate + '</div>');
+					// now updating the rows
+					if (swarm.numberofdownconnections > 0 || swarm.numberofupconnections > 0) {
+						$(swarmdatadiv).show();
+					}
+					$.each(swarm.peersentrieslistlist, function (indexpeer, peer) {
+						// ajouter toutes les lignes
+						var connected = "";
+						if (peer.numberofconnections > 0) {
+							connected = " connected";
+						}
+						var swarmdatarow = $('<div class="swarmdatarow' + connected + '"></div>');
+						var ip = "Unknown";
+						if (peer.ipaddress) {
+							ip = peer.ipaddress;
+						}
+						$(swarmdatarow).append('<div class="ipaddresscol">' + ip + '</div><div class="nattypecol">' + peer.nattype + '</div><div class="connectionscol">' + peer.connectionsuccesses + ' / ' + peer.connectionattempts + '</div><div class="numcol">' + peer.numberofconnections + '</div><div class="numcol">' + peer.averageinstantiationtime + '</div><div class="numcol">' + peer.bw_shortage + '</div><div class="numcol">' + peer.bw_down + '</div><div class="numcol">' + peer.bw_up + '</div>');
+						$(swarmdatadiv).append(swarmdatarow);
+					});				
+				});
+				
+				setupEvents();
+				
+			  }
+			});
+		}
+		
+		
+		function setupEvents() {
+			$(".swarm > .plus").click(function () {				
+				if ($(this).text() == "+") {
+					$(this).text("-");
+				} else {
+					$(this).text("+");
+				}
+				
+				$(this).siblings(".swarmdata").toggle();
+			});
+		}
+		
+		setupEvents();
+		updaterealtimeinfo ();
+		//setInterval(function () { updaterealtimeinfo (); }, 2000);
+	
+	
+	</script>
+</body>
+</html>
