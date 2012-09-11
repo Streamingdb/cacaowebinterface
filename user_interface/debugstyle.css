@@ -30,7 +30,7 @@ label {
 .hidden {
 	display: none;
 }
-#totalup {
+.spacer {
 	margin-bottom: 5px;
 }
 .swarm {

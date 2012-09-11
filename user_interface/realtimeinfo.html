@@ -36,6 +36,11 @@
 					<label>total upload rate:</label>
 					<div></div>
 			</div>
+			<div id="ratelimiting">
+					<label>rate limiting:</label>
+					<div></div>
+			</div>
+			<div class="spacer"></div>
 			<div class="swarm">
 				<div class="plus">+</div>
 				<label>swarm:</label>
@@ -65,18 +70,24 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 	
 	<script>
+		var hostprefix = "";
+		if (window.location.href.indexOf("http://") == -1) {
+			hostprefix = "http://127.0.0.1:4001/";
+		}
 		function updaterealtimeinfo () {
 			$.ajax({
-			  url: "http://127.0.0.1:4001/realtimeinfo",
+			  url: hostprefix + "realtimeinfo",
 			  dataType: "json",
 			  success: function( data ) {
 				$("#knownpeers > div").text(data.DHT.knownpeers);
 				$("#averagertt > div").text(data.DHT.averagertt.join(" ; "));
 				
-				
 				$("#totalup > div").text(data.Fileswarming.totaluploadrate);
 				$("#totaldown > div").text(data.Fileswarming.totaldownloadrate);
+				$("#ratelimiting > div").text(data.Fileswarming.ratelimiting);
 				
+				// TODO: hide swarms with no activity
+				// TODO: remove swarms that don't exist anymore
 				$.each(data.Fileswarming.fileswarms, function (index, swarm) {
 					var swarmdatadiv = null;
 					if ($('#' + swarm.swarmid).length > 0) {

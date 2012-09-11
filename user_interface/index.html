@@ -437,14 +437,17 @@
 			},
 			
 			isMixturelink : function(link) {
-				return ((link.indexOf("mixturecloud.com/") > -1 || link.indexOf("mixturevideo.com/") > -1) && (link.indexOf("video=") > -1 || link.indexOf("/video/") > -1));
+				return ((link.indexOf("mixturecloud.com/") > -1 || link.indexOf("mixturevideo.com/") > -1) && (link.indexOf("video=") > -1 || link.indexOf("/video/") > -1 || link.indexOf("/media/") > -1));
 			},
 			getMixtureID : function(link) {
 				var ff = link.split("video=");
 				if (!ff[1]) {
 					ff = link.split("/video/");
 				}
-				return ff[1].substring(0, 6);;
+				if (!ff[1]) {
+					ff = link.split("/media/");
+				}
+				return ff[1];
 			},
 			
 			isPutlockerlink : function(link) {

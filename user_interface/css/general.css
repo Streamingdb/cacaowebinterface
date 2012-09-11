@@ -485,12 +485,38 @@ a:hover {
 	margin: 30px auto 0 auto;
 }
 #playerarea {
-	margin-bottom: 50px;
 }
 #playerhead {
 	padding-bottom: 30px;
 }
+#player {
+	width: 640px;
+	height: 360px;
+	float: left;
+	background: #000;
+}
 
+#sidebar {
+	width: 260px;
+	height: 360px;
+	float: left;
+}
+
+#sidebar_inner {
+	width: 230px;
+	height: 360px;
+	/*background: #1d1d1d;*/
+	float: right;
+}
+
+#didyoumean {
+	padding: 10px;
+}
+
+#adzone {
+	padding-top: 30px;
+	clear: both;
+}
 
 
 /* Star ratings */
@@ -576,26 +602,7 @@ a:hover {
 .reportfake a:hover {
 	color: #FF5A4F;
 }
-#player {
-	clear: both;
-	width: 640px;
-	height: 360px;
-	float: left;
-	background: #000;
-}
 
-#sidebar {
-	width: 260px;
-	height: 360px;
-	float: left;
-}
-
-#sidebar_inner {
-	width: 230px;
-	height: 360px;
-	/*background: #1d1d1d;*/
-	float: right;
-}
 
 
 /* search results */
@@ -661,13 +668,7 @@ a:hover {
 }
 
 
-#didyoumean {
-	padding: 10px;
-}
 
-#adzone {
-	margin-top: 30px;
-}
 
 
 /* link area */

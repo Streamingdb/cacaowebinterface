@@ -15,26 +15,13 @@
 		
 			
 	<div id="maincontent">
-		
 		<div id="mainleftcolumn">
-		
 			<div id="menubuttons">
 				<div><h2><a href='index.html' data-icon='&#9756' class='button blue round glass' id="backmainpage">Back</a></h2></div>
 				<div><h2><a href='http://user.cacaoweb.org/' class='button orange round glass' id="uploadyourfiles"></a></h2></div>
 				<div><h2><a href='http://cacaoweb.org/makemoney.html' class='button pink round glass' id="makemoney"></a></h2></div>
 			</div>
 			
-			<div class="languagediv clear">
-				<label for="language" id="mylanguage">My language:</label>
-				<select id="language" onchange="languagechange(this);">
-					<option value=""></option>
-					<option value="en">English</option>
-					<option value="fr">Français</option>
-					<option value="es">Español</option>
-					<option value="it">Italiano</option>
-					<option value="pl">Polski</option>
-				</select>
-			</div>
 			<div class="authbox" style="display:none">
 				<div class="auth-notification clear"></div>
 				<div class="clear" id="premiuminfo"></div>
@@ -93,6 +80,17 @@
 						<input type="email" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" placeholder="optional email address"/>
 					</fieldset>
 					</form>
+				</div>
+				<div class="languagediv clear">
+					<label for="language" id="mylanguage">My language:</label>
+					<select id="language" onchange="languagechange(this);">
+						<option value=""></option>
+						<option value="en">English</option>
+						<option value="fr">Français</option>
+						<option value="es">Español</option>
+						<option value="it">Italiano</option>
+						<option value="pl">Polski</option>
+					</select>
 				</div>
 			</div>
 			
@@ -239,6 +237,13 @@
 	<script src="jquery.progressbar.min.js"></script>
 
 	<script>
+	
+		var hostprefix = "";
+		if (window.location.href.indexOf("http://") == -1) {
+			hostprefix = "http://127.0.0.1:4001/";
+		}
+		
+		
 		$("label[for=name]").text(langstrings[lang]['name']);
 		$("label[for=password]").text(langstrings[lang]['password']);
 	
@@ -278,19 +283,19 @@
 		
 		function deleteDownload(provider, videoid) {
 			$.ajax({
-				url: provider + "/delete.caml?videoid=" + videoid,
+				url: hostprefix + provider + "/delete.caml?videoid=" + videoid,
 				success: getdownloads()
 			});
 		}
 		function deleteFileDownload(fileid) { // TODO: faire tout ca avec un this et un obj, c'est mieux
 			$.ajax({
-				url: "file/delete.caml?fileid=" + fileid,
+				url: hostprefix + "file/delete.caml?fileid=" + fileid,
 				success: getdownloads()
 			});
 		}
 		function removePublishedFile(fileid) {
 			$.ajax({
-				url: "file/delete.caml?fileid=" + fileid,
+				url: hostprefix + "file/delete.caml?fileid=" + fileid,
 				success: function () { getcurrentuploads(); getalluploads(); }
 			});
 		}
@@ -360,7 +365,6 @@
 					var div = document.createElement("div"); // obligé de créer un objet dans le DOM pour que la progressbar fonctionne
 					div.className = "row";
 					div.setAttribute('rowdownid', item.fileid);
-					div.setAttribute("colspan", "4");
 					div.innerHTML = rowtitle + rowprogress + rowdelete + vlcplayback + rowdownload + showlink + rowlinks;
 					$("#mydownloads").append(div);
 					$(div).find(".downloadprogressbar").progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
@@ -484,14 +488,14 @@
 		
 		function getdownloads() {
 			$.ajax({
-				url: "downloads",
+				url: hostprefix + "downloads",
 				dataType: "xml",
 				success: parseXMLdownloads
 			});
 		}		
 		function getcurrentuploads() {
 			$.ajax({
-				url: "uploads",
+				url: hostprefix + "uploads",
 				dataType: "xml",
 				success: parseXMLuploads
 			});
@@ -549,7 +553,7 @@
 		/* chain of ajax calls to update anything (i'm trying as a chain because it doesn't work properly) */
 		function checkNetwork() {
 			$.ajax({
-				url: "getdhtnetworkstatus",
+				url: hostprefix + "getdhtnetworkstatus",
 				dataType: "xml",
 				success: function(xml) {
 					$(xml).find("results").each(function() {
@@ -565,7 +569,7 @@
 		}
 		function checkNAT() {
 			$.ajax({
-				url: "gettcpnattype",
+				url: hostprefix + "gettcpnattype",
 				dataType: "xml",
 				success: function(xml) {
 					$(xml).find("results").each(function() {
@@ -577,7 +581,7 @@
 		}
 		function checkCacaoReplication() {
 			$.ajax({
-				url: "replicationactivated",
+				url: hostprefix + "replicationactivated",
 				dataType: "xml",
 				success: function(xml) {
 					$(xml).find("results").each(function() {
@@ -601,7 +605,7 @@
 		getcurrentuploads();
 		checkCacaoReplication();
 		setInterval('checkCacaoReplication()', 2000);
-		includeScript('http://127.0.0.1:4001/natstatus', 'natstatus');
+		includeScript(hostprefix + 'natstatus', 'natstatus');
 		
 		
 		
@@ -719,7 +723,7 @@
 						bValid = bValid && checkRegexp($("#email"),/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. albert@ducon.com");
 						bValid = bValid && checkRegexp($("#registerpassword"), /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9");
 						if (bValid) {
-							includeScript('http://127.0.0.1:4001/register?username=' + $("#registername").val() + '&password=' + $("#registerpassword").val() + '&email=' + $("#email").val(), 'registerscript');
+							includeScript(hostprefix + 'register?username=' + $("#registername").val() + '&password=' + $("#registerpassword").val() + '&email=' + $("#email").val(), 'registerscript');
 							currentauthdialog = $(this);
 						}
 					}
@@ -738,13 +742,13 @@
 		
 		$("#login-form").dialog({
 			autoOpen: false,
-			height: 350,
+			height: 250,
 			width: 350,
 			modal: true,
 			buttons: {
 				'Login': function() {
 					$("#loginname").removeClass('ui-state-error');
-					includeScript('http://127.0.0.1:4001/login?username=' + $("#loginname").val() + "&password=" + $("#loginpassword").val(), 'loginscript');
+					includeScript(hostprefix + 'login?username=' + $("#loginname").val() + "&password=" + $("#loginpassword").val(), 'loginscript');
 					currentauthdialog = $(this);
 				},
 				'Cancel': function() {
@@ -772,7 +776,7 @@
 		function logincallback(result) {
 			if (result == 1) {
 				currentauthdialog.dialog('close');
-				includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinscript');
+				includeScript(hostprefix + 'isloggedin', 'isloggedinscript');
 			} else {
 				$("#loginname").addClass('ui-state-error');
 				$("#validateTipsLogin").text('Username or password is wrong').addClass('ui-state-highlight');
@@ -801,7 +805,6 @@
 					$('#premiuminfo').html(langstrings[lang]['notpremium']);
 				}
 				$(".auth-notification").html(langstrings[lang]['welcome']  + username + " ! " + langstrings[lang]['mymoney']);
-				$(".auth-notification").css('font-size', '12px');
 			} else {
 				$(".auth-buttons").show();
 -				$(".auth-notification").text(langstrings[lang]['notloggedin']);
@@ -822,7 +825,7 @@
 		}
 		
 		$().ready(function () {
-			includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinlocalscript');
+			includeScript(hostprefix + 'isloggedin', 'isloggedinlocalscript');
 		})
 		
 
