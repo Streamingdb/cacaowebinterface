@@ -4,11 +4,11 @@
 html, body { 	
 	background-color: #000000; 
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-	font-size: 11px; 
+	font-size: 12px; 
 	height: 100%;
 	padding: 0px;
 	margin: 0px;
-	color: #FFFFFF;
+	color: #C9C9C9;
 }
 img {  
 	border-style: none;
