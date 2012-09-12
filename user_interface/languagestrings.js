@@ -214,7 +214,7 @@ langstrings['fr']['makemoney'] = "Gagner de l'argent";
 langstrings['fr']['howtomakemoney'] = "Comment gagner de l'argent?";
 langstrings['fr']['smallfilelink'] = "<small>lien cacaoweb</small>";
 langstrings['fr']['ftpuploaddescr'] = "<p>Téléversez vos fichier sur ftpupload.cacaoweb.org avec un client ftp (comme filezilla). Utilisez votre identifiant et mot de passe cacaoweb pour vous identifier.</p><p>Il faut parfois plusieurs heures pour que le fichier apparaisse dans \"Mes téléversements\". Une fois que c'est bon vous récupérez le lien cacaoweb et téléversez les metadata du fichier (titre, type, épisode, etc.), de cette façon votre fichier sera accessible à partir de moteur de recherche.</p><br>";
-langstrings['fr']['uploadyourfiles'] = "Téléversez et gérer vos fichiers";
+langstrings['fr']['uploadyourfiles'] = "Téléverser et gérer vos fichiers";
 langstrings['fr']['notpremium'] = "Vous n'avez pas encore de compte premium. <a href=\"http://cacaoweb.org/buypremium.html\">Cliquez ici pour devenir premium</a>";
 langstrings['fr']['ispremium'] = "Votre compte premium s'arrête au : ";
 langstrings['fr']['registersuccessful'] = "Vous vous êtes enregistré avec succès. Vous pouvez maintenant vous identifier.";

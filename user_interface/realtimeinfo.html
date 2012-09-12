@@ -128,7 +128,7 @@
 						if (peer.ipaddress) {
 							ip = peer.ipaddress;
 						}
-						$(swarmdatarow).append('<div class="ipaddresscol">' + ip + '</div><div class="nattypecol">' + peer.nattype + '</div><div class="connectionscol">' + peer.connectionsuccesses + ' / ' + peer.connectionattempts + '</div><div class="numcol">' + peer.numberofconnections + '</div><div class="numcol">' + peer.averageinstantiationtime + '</div><div class="numcol">' + peer.bw_shortage + '</div><div class="numcol">' + peer.bw_down + '</div><div class="numcol">' + peer.bw_up + '</div>');
+						$(swarmdatarow).append('<div class="ipaddresscol">' + ip + '</div><div class="numcol">' + peer.peerid + '</div><div class="nattypecol">' + peer.nattype + '</div><div class="connectionscol">' + peer.connectionsuccesses + ' / ' + peer.connectionattempts + '</div><div class="numcol">' + peer.numberofconnections + '</div><div class="numcol">' + peer.averageinstantiationtime + '</div><div class="numcol">' + peer.bw_shortage + '</div><div class="numcol">' + peer.bw_down + '</div><div class="numcol">' + peer.bw_up + '</div>');
 						$(swarmdatadiv).append(swarmdatarow);
 					});				
 				});
