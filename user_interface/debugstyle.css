@@ -15,16 +15,12 @@ html, body {
 }
 
 label {
-	float: left;
+    float: left;
+    clear: left;
 	padding-right: 10px;
 	font-weight: bold;
 }
 
-.plus {
-	float: left;
-	padding-right: 5px;
-	cursor: pointer;
-}
 
 
 .hidden {
@@ -33,8 +29,21 @@ label {
 .spacer {
 	margin-bottom: 5px;
 }
+
+
+.plus {
+	float: left;
+	padding-right: 5px;
+	cursor: pointer;
+}
+#swarminfo label {
+    clear: left;
+}
 .swarm {
 	clear: both;
+}
+.swarm > label {
+    clear: none;
 }
 .swarmdata {
 	position: relative;
