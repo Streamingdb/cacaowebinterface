@@ -57,6 +57,9 @@ label {
 	margin-top: 5px;
 	clear: both;
 }
+.headerrow {
+	font-style: italic;
+}
 .connected {
 	color: red;
 }
@@ -68,11 +71,12 @@ label {
 	width: 100px;
 }
 .nattypecol {
-	width: 100px;
+	width: 80px;
 }
 .connectionscol {
 	width: 60px;
 }
 .numcol {
 	width: 50px;
+	text-align: right;
 }

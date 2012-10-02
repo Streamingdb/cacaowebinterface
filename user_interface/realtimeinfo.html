@@ -40,6 +40,10 @@
 					<label>rate limiting:</label>
 					<div></div>
 			</div>
+			<div id="numberofswarms">
+					<label>number of swarms:</label>
+					<div></div>
+			</div>
 			<div class="spacer"></div>
 			<div class="swarm">
 				<div class="plus">+</div>
@@ -82,6 +86,7 @@
 				$("#knownpeers > div").text(data.DHT.knownpeers);
 				$("#averagertt > div").text(data.DHT.averagertt.join(" ; "));
 				
+				$("#numberofswarms > div").text(data.Fileswarming.fileswarms.length);
 				$("#totalup > div").text(data.Fileswarming.totaluploadrate);
 				$("#totaldown > div").text(data.Fileswarming.totaldownloadrate);
 				if (data.Fileswarming.ratelimiting > 0) {
@@ -91,7 +96,6 @@
 					$("#ratelimiting").hide();
 				}
 				
-				// TODO: hide swarms with no activity
 				// TODO: remove swarms that don't exist anymore
 				$.each(data.Fileswarming.fileswarms, function (index, swarm) {
 					var swarmdatadiv = null;
@@ -116,6 +120,13 @@
 					// now updating the rows
 					if (swarm.numberofdownconnections > 0 || swarm.numberofupconnections > 0) {
 						$(swarmdatadiv).show();
+						if (swarm.numberofdownconnections > 0) {
+							var swarmdatarow = $('<div class="swarmdatarow headerrow"></div>');
+							$(swarmdatarow).append('<div class="ipaddresscol">ip address</div></div><div class="nattypecol">NAT type</div><div class="numcol">full</div><div class="connectionscol">succ / att</div><div class="connectionscol">dsucc / datt</div><div class="numcol">conns</div><div class="numcol">inst. time</div><div class="numcol">duration</div><div class="numcol">shortage</div><div class="numcol">down</div><div class="numcol">up</div><div class="numcol">bandwidth</div><div class="numcol">tot. down</div>');
+							$(swarmdatadiv).append(swarmdatarow);
+						}
+					} else {
+						$(swarmdatadiv).parent().hide();
 					}
 					$.each(swarm.peersentrieslistlist, function (indexpeer, peer) {
 						// ajouter toutes les lignes
@@ -128,7 +139,7 @@
 						if (peer.ipaddress) {
 							ip = peer.ipaddress;
 						}
-						$(swarmdatarow).append('<div class="ipaddresscol">' + ip + '</div><div class="numcol">' + peer.peerid + '</div><div class="nattypecol">' + peer.nattype + '</div><div class="connectionscol">' + peer.connectionsuccesses + ' / ' + peer.connectionattempts + '</div><div class="numcol">' + peer.numberofconnections + '</div><div class="numcol">' + peer.averageinstantiationtime + '</div><div class="numcol">' + peer.bw_shortage + '</div><div class="numcol">' + peer.bw_down + '</div><div class="numcol">' + peer.bw_up + '</div>');
+						$(swarmdatarow).append('<div class="ipaddresscol">' + ip + '</div><div class="nattypecol">' + peer.nattype + '</div><div class="numcol">' + peer.full + '</div><div class="connectionscol">' + peer.connectionsuccesses + ' / ' + peer.connectionattempts + '</div><div class="connectionscol">' + peer.downsuccesses + ' / ' + peer.downattempts + '</div><div class="numcol">' + peer.numberofconnections + '</div><div class="numcol">' + peer.averageinstantiationtime + '</div><div class="numcol">' + peer.averageduration + '</div><div class="numcol">' + peer.bw_shortage + '</div><div class="numcol">' + peer.bw_down + '</div><div class="numcol">' + peer.bw_up + '</div><div class="numcol">' + peer.bw + '</div><div class="numcol">' + peer.total_down + '</div>');
 						$(swarmdatadiv).append(swarmdatarow);
 					});				
 				});
@@ -152,9 +163,17 @@
 			});
 		}
 		
-		setupEvents();
+		function setup() {
+			$(".swarm").each(function(index) {
+				$(this).remove();
+			});
+			
+			setupEvents();
+		}
+		
+		setup();
 		updaterealtimeinfo ();
-		//setInterval(function () { updaterealtimeinfo (); }, 2000);
+		setInterval(function () { updaterealtimeinfo (); }, 2000);
 	
 	
 	</script>

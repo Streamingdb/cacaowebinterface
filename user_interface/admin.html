@@ -296,7 +296,7 @@
 		function removePublishedFile(fileid) {
 			$.ajax({
 				url: hostprefix + "file/delete.caml?fileid=" + fileid,
-				success: function () { getcurrentuploads(); getalluploads(); }
+				success: function () { getcurrentuploads(); }
 			});
 		}
 
