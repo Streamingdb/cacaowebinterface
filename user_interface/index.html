@@ -459,7 +459,7 @@
 			},
 			
 			isNowvideolink : function(link) {
-				return (link.indexOf("nowvideo.eu/") > -1 && link.indexOf("/video/") > -1);
+				return (link.indexOf("nowvideo.") > -1 && link.indexOf("/video/") > -1);
 			},
 			getNowvideoID : function(link) {
 				var ff = link.split("/video/");
