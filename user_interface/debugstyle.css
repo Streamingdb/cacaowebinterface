@@ -21,6 +21,9 @@ label {
 	font-weight: bold;
 }
 
+h2 {
+	clear: both;
+}
 
 
 .hidden {
@@ -67,6 +70,14 @@ label {
 	float: left;
 	margin: 0 5px 0 5px;
 }
+.conndatarow {
+	margin-top: 5px;
+	clear: both;
+}
+.conndatarow > div {
+	float: left;
+	margin: 0 5px 0 5px;
+}
 .ipaddresscol {
 	width: 100px;
 }
@@ -79,4 +90,7 @@ label {
 .numcol {
 	width: 50px;
 	text-align: right;
+}
+.url {
+	width: 300px;
 }

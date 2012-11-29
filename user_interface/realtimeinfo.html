@@ -64,6 +64,17 @@
 			</div>
 		
 		</div>
+		<h2>HTTP Server</h2>
+		<div id="httpserverinfo">
+			<div id="openconnectionsinfo">
+				<label>number of open connections:</label>
+				<div></div>
+			</div>
+			<div id="httpconnections">
+			
+			</div>
+		
+		</div>
 	</div>
 	
 	
@@ -96,6 +107,16 @@
 					$("#ratelimiting").hide();
 				}
 				
+				
+				$("#openconnectionsinfo > div").text(data.HTTPServer.openconnections);
+				var conndatadiv = $('#httpconnections');
+				$(conndatadiv).empty();
+				$.each(data.HTTPServer.connections, function (index, conn) {
+					var conndatarow = $('<div class="conndatarow"></div>');
+					$(conndatarow).append('<div class="numcol">' + conn.timecreated + '</div><div class="numcol">' + conn.lastactive + '</div><div class="url">' + conn.path + '</div><div class="nattypecol">' + conn.state + '</div>');
+					$(conndatadiv).append(conndatarow);
+				});
+				
 				// TODO: remove swarms that don't exist anymore
 				$.each(data.Fileswarming.fileswarms, function (index, swarm) {
 					var swarmdatadiv = null;
@@ -106,7 +127,7 @@
 						$(swarmdiv).append('<div class="plus">+</div>');
 						$(swarmdiv).append('<label>swarm:</label>');
 						$(swarmdiv).append('<div id=' + swarm.swarmid + '>' + swarm.swarmid + '</div>');
-						swarmdatadiv = $('<div class="swarmdata hidden"></div>');
+						swarmdatadiv = $('<div class="swarmdata"></div>');
 						$(swarmdiv).append(swarmdatadiv);
 						$('#swarmsinfo').append(swarmdiv);
 					}
@@ -117,9 +138,11 @@
 					$(swarmdatadiv).append('<label>up connections:</label><div>' + swarm.numberofupconnections + '</div>');
 					$(swarmdatadiv).append('<label>current download rate:</label><div>' + swarm.currentdownloadrate + '</div>');
 					$(swarmdatadiv).append('<label>current upload rate:</label><div>' + swarm.currentuploadrate + '</div>');
+					$(swarmdatadiv).append('<label>full rep:</label><div>' + swarm.fullrep + '</div>');
+					$(swarmdatadiv).append('<label>partial rep:</label><div>' + swarm.partialrep + '</div>');
 					// now updating the rows
-					if (swarm.numberofdownconnections > 0 || swarm.numberofupconnections > 0) {
-						$(swarmdatadiv).show();
+					if (swarm.numberofdownconnections > 0 || swarm.numberofupconnections > 0 || swarm.partialrep > 0) {
+						$(swarmdatadiv).parent().show();
 						if (swarm.numberofdownconnections > 0) {
 							var swarmdatarow = $('<div class="swarmdatarow headerrow"></div>');
 							$(swarmdatarow).append('<div class="ipaddresscol">ip address</div></div><div class="nattypecol">NAT type</div><div class="numcol">full</div><div class="connectionscol">succ / att</div><div class="connectionscol">dsucc / datt</div><div class="numcol">conns</div><div class="numcol">inst. time</div><div class="numcol">duration</div><div class="numcol">shortage</div><div class="numcol">down</div><div class="numcol">up</div><div class="numcol">bandwidth</div><div class="numcol">tot. down</div>');

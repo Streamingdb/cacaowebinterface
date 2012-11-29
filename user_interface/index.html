@@ -162,14 +162,7 @@
 		var lang;
 		var nav_lang;
 		
-		
-		if (navigator.userLanguage) { // Explorer
-			nav_lang = navigator.userLanguage;
-		} else if (navigator.language) { // FF
-			nav_lang = navigator.language;
-		} else {
-			nav_lang = 'en';
-		}
+		nav_lang = navigator.userLanguage || navigator.language || 'en';
 
 		lang = nav_lang.substring(0, 2);
 		switch (lang) {
@@ -221,7 +214,7 @@
 	
 		
 		if (lang == 'it') {
-			document.getElementById('adzone').innerHTML = 'Per la miglior fonte di video in Italia, vai su <a href="http://streamingdb.net">streamingdb.net</a>';
+			document.getElementById('adzone').innerHTML = 'Per la miglior fonte di video in Italia, vai su <a href="http://papystreaming.com/it">papystreaming</a>';
 		} else if (lang == 'fr') {
 			document.getElementById('adzone').innerHTML = 'Pour regarder tous vos films et séries, allez sur <a href="http://papystreaming.com/fr">papystreaming</a>';
 		} else if (lang == 'es') {
