@@ -381,53 +381,6 @@
 		}
 		
 		var parselinks = {			
-			isVideobblink : function(link) {
-				return (link.indexOf("videobb.com/") > -1 && (link.indexOf("video/") > -1 || link.indexOf("v=") > -1 || 
-						link.indexOf("/e/") > -1 || link.indexOf("/v/") > -1 || link.indexOf("/embed/") > -1));
-			},
-			getVideobbID : function(link) {
-				var videoid = "";
-				var ff = link.split("video/");
-				if (!ff[1]) {
-					ff = link.split("?v=");
-					if (!ff[1]) {
-						ff = link.split("/e/");
-						if (!ff[1]) {
-							ff = link.split("/embed/");
-						}
-					}
-				}
-				if (!ff[1]) {
-				} else {
-					videoid = ff[1].substring(0, 12);
-				}
-			
-				return videoid;
-			},
-			
-			isVideozerlink : function(link) {
-				return (link.indexOf("videozer.com/") > -1 && (link.indexOf("video/") > -1 || link.indexOf("v=") > -1 || 
-						link.indexOf("/e/") > -1 || link.indexOf("/v/") > -1 || link.indexOf("/embed/") > -1));
-			},
-			getVideozerID : function(link) {
-				var videoid = "";
-				var ff = link.split("video/");
-				if (!ff[1]) {
-					ff = link.split("?v=");
-					if (!ff[1]) {
-						ff = link.split("/e/");
-						if (!ff[1]) {
-							ff = link.split("/embed/");
-						}
-					}
-				}
-				if (!ff[1]) {
-				} else {
-					videoid = ff[1].substring(0, 12);
-				}
-			
-				return videoid;
-			},
 			
 			isMixturelink : function(link) {
 				return ((link.indexOf("mixturecloud.com/") > -1 || link.indexOf("mixturevideo.com/") > -1) && (link.indexOf("video=") > -1 || link.indexOf("/video/") > -1 || link.indexOf("/media/") > -1));
@@ -458,6 +411,14 @@
 				var ff = link.split("/video/");
 				return ff[1];
 			},
+			
+			isMoevideoslink : function(link) {
+				return (link.indexOf("moevideo") > -1 && link.indexOf("/online/") > -1);
+			},
+			getMoevideosID : function(link) {
+				var ff = link.split("/online/");
+				return ff[1];
+			},
 		
 		};
 		
@@ -485,12 +446,6 @@
 			} else if (searchitem.indexOf('127.0.0.1') > -1 || searchitem.indexOf('localhost') > -1 || iscacaoid) { // cacao
 				var cacaohash = extractfileid(searchitem);
 				return ("http://127.0.0.1:4001/" + cacaohash);
-			} else if (parselinks.isVideobblink(searchitem)) { 
-				var videoid = parselinks.getVideobbID(searchitem);
-				return ("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videoid);
-			} else if (parselinks.isVideozerlink(searchitem)) { 
-				var videoid = parselinks.getVideozerID(searchitem);
-				return ("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
 			} else if (parselinks.isMixturelink(searchitem)) { 
 				var videoid = parselinks.getMixtureID(searchitem);
 				return ("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + videoid);
@@ -500,6 +455,9 @@
 			} else if (parselinks.isNowvideolink(searchitem)) { 
 				var videoid = parselinks.getNowvideoID(searchitem);
 				return ("http://127.0.0.1:4001/nowvideo/nowvideo.caml?videoid=" + videoid);
+			} else if (parselinks.isMoevideoslink(searchitem)) { 
+				var videoid = parselinks.getMoevideosID(searchitem);
+				return ("http://127.0.0.1:4001/moevideos/moevideos.caml?videoid=" + videoid);
 			} else if (searchitem.indexOf('megaupload.com/?d=') > -1) { // megaupload
 				var pos1 = searchitem.indexOf('d=');
 				var megauploadid = searchitem.substr(pos1 + 2, 8);
@@ -815,16 +773,14 @@
 					var videoid = url.substr(pos + 8);
 				}
 				var fullrequest = url.substr(pos + 8);
-				if (url.indexOf("provider=bb") > -1) {
-					play("http://127.0.0.1:4001/videobb/videobb.caml?videoid=" + videoid);
-				} else if (url.indexOf("provider=vz") > -1) {
-					play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
-				} else if (url.indexOf("provider=mi") > -1) {
+				if (url.indexOf("provider=mi") > -1) {
 					play("http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=pu") > -1) {
 					play("http://127.0.0.1:4001/putlocker/putlocker.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=nv") > -1) {
 					play("http://127.0.0.1:4001/nowvideo/nowvideo.caml?videoid=" + videoid);
+				} else if (url.indexOf("provider=mo") > -1) {
+					play("http://127.0.0.1:4001/moevideos/moevideos.caml?videoid=" + videoid);
 				} else if (url.indexOf("provider=mu") > -1) {
 					//play("http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid);
 					
