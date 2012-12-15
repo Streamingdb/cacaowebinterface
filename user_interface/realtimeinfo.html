@@ -25,6 +25,18 @@
 				<label>average rtt:</label>
 				<div class="valuediv"></div>
 			</div>
+			<div id="bwdown">
+				<label>total udp bw down:</label>
+				<div class="valuediv"></div>
+			</div>
+			<div id="bwup">
+				<label>total udp bw up:</label>
+				<div class="valuediv"></div>
+			</div>
+			<div id="bwrouteddown">
+				<label>routed udp bw down:</label>
+				<div class="valuediv"></div>
+			</div>
 		</div>
 		<h2>Swarms Info</h2>
 		<div id="swarmsinfo">
@@ -96,6 +108,9 @@
 			  success: function( data ) {
 				$("#knownpeers > div").text(data.DHT.knownpeers);
 				$("#averagertt > div").text(data.DHT.averagertt.join(" ; "));
+				$("#bwdown > div").text((data.DHT.bwdown / 1000.0).toFixed(2));
+				$("#bwup > div").text((data.DHT.bwup / 1000.0).toFixed(2));
+				$("#bwrouteddown > div").text((data.DHT.bwroutedservicedown / 1000.0).toFixed(2));
 				
 				$("#numberofswarms > div").text(data.Fileswarming.fileswarms.length);
 				$("#totalup > div").text(data.Fileswarming.totaluploadrate);
