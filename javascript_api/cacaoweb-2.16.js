@@ -254,6 +254,8 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 					this.link = link;
 				}
 				var flashplayer = getFlashPlayer(this.id + "flash");
+                // the following 2 calls have different semantics: the first plays through javascript, the second through flash built in mechanism
+                // this can cause consistency issues (for example you can't pass subtitles with the first call)
 				if (flashplayer) {
 					flashplayer.playMedia(this.link);
 				} else { // first create the flash object

@@ -39,11 +39,11 @@
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="linksbox" color="#4FFF4F" autoNamed="false">
+                    <DOMLayer name="linksbox" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMSymbolInstance libraryItemName="linksbox" name="mylinksbox" centerPoint3DX="335" centerPoint3DY="160">
+                                        <DOMSymbolInstance libraryItemName="linksbox" name="mylinksbox" selected="true" centerPoint3DX="335" centerPoint3DY="160">
                                              <matrix>
                                                   <Matrix tx="190" ty="70"/>
                                              </matrix>
@@ -95,11 +95,11 @@
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="video" color="#FF800A" current="true" isSelected="true" autoNamed="false">
+                    <DOMLayer name="video" color="#FF800A" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMVideoInstance libraryItemName="myVideo" name="myClassicVideo" selected="true" frameRight="3200" frameBottom="2400">
+                                        <DOMVideoInstance libraryItemName="myVideo" name="myClassicVideo" frameRight="3200" frameBottom="2400">
                                              <matrix>
                                                   <Matrix a="4" d="3.0001220703125"/>
                                              </matrix>

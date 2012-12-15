@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="linksbox" itemID="4eee8386-00000638" sourceLibraryItemHRef="Symbol 1" lastModified="1325201734" lastUniqueIdentifier="14">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="linksbox" itemID="4eee8386-00000638" sourceLibraryItemHRef="Symbol 1" lastModified="1343242802" lastUniqueIdentifier="14">
   <timeline>
     <DOMTimeline name="linksbox">
       <layers>
@@ -92,14 +92,14 @@
                   </matrix>
                   <textRuns>
                     <DOMTextRun>
-                      <characters>http://localhost:4001/f=4eab479cbae79af840bf9480284920</characters>
+                      <characters>http://localhost:4001/?f=4eab479cbae79af840bf9480284920</characters>
                       <textAttrs>
                         <DOMTextAttrs aliasText="false" rotation="true" lineSpacing="2.4" size="10" bitmapSize="200" face="ArialMT" fillColor="#333333"/>
                       </textAttrs>
                     </DOMTextRun>
                   </textRuns>
                 </DOMDynamicText>
-                <DOMDynamicText name="embedlabel" selected="true" width="248.25" height="16" isSelectable="false">
+                <DOMDynamicText name="embedlabel" width="248.25" height="16" isSelectable="false">
                   <matrix>
                     <Matrix tx="5.25" ty="71"/>
                   </matrix>

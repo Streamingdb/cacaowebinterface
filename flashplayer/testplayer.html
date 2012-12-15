@@ -4,7 +4,7 @@
 <body>
 
 
-<div id="mymovie" cacaolink="http://127.0.0.1:4001/?f=71aae77fa48b65d4f139b8098ec09f5a"></div>
+<div id="mymovie" cacaolink="http://127.0.0.1:4001/?f=52fd53af16f35cd48dc473b493716989&subtitlesurl=http://127.0.0.1:4001/?f=f3190d43f11058d6db0807daf4073944"></div>
 
 <div>
 	<ul>
@@ -16,15 +16,15 @@
 </div>
 
 
-<script src="cacaoweb-2.15.js"></script>
+<script src="cacaoweb-2.16.js"></script>
 <script>
 
 	function changesubs() {
 		cacaoplayer("mymovie").subtitles({ subtitlesurl : "http://127.0.0.1:4001/?f=39bf73af7297076afd6f67c0b74879c7" });
 	}
 	cacaoplayer("mymovie").setup({ playerurl: "player.swf" });
-	cacaoplayer("mymovie").subtitles({ subtitlesurl : "http://127.0.0.1:4001/?f=39bf73af7297076afd6f67c0b74879c7" });
-    //cacaoplayer("mymovie").play();
+	//cacaoplayer("mymovie").subtitles({ subtitlesurl : "http://127.0.0.1:4001/?f=39bf73af7297076afd6f67c0b74879c7" });
+  cacaoplayer("mymovie").play();
 
 </script>
 
