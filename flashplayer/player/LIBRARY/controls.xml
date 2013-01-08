@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="controls" itemID="4d46d886-000000b3" sourceLibraryItemHRef="Symbol 1" sourceLastModified="4294963696" lastModified="1324933573" lastUniqueIdentifier="4">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="controls" itemID="4d46d886-000000b3" lastModified="1324933573" lastUniqueIdentifier="4">
   <timeline>
     <DOMTimeline name="controls">
       <layers>
@@ -48,7 +48,7 @@
                     <Point x="7.25" y="7.25"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMDynamicText name="mydurationtext" width="55.35" height="11" isSelectable="false">
+                <DOMDynamicText name="mydurationtext" width="55.35" height="11.15" isSelectable="false">
                   <matrix>
                     <Matrix tx="152.65" ty="16.3"/>
                   </matrix>
@@ -61,7 +61,7 @@
                     </DOMTextRun>
                   </textRuns>
                 </DOMDynamicText>
-                <DOMDynamicText name="mytimetext" width="42.65" height="11" isSelectable="false">
+                <DOMDynamicText name="mytimetext" width="42.65" height="11.15" isSelectable="false">
                   <matrix>
                     <Matrix tx="106" ty="16.3"/>
                   </matrix>
