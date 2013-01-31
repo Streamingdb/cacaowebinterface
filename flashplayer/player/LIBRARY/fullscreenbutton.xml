@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="fullscreenbutton" itemID="4b040fe6-00000608" sourceLibraryItemHRef="Symbol 1" sourceLastModified="4294963696" lastModified="1296980648">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="fullscreenbutton" itemID="4b040fe6-00000608" lastModified="1296980648">
   <timeline>
     <DOMTimeline name="fullscreenbutton">
       <layers>
@@ -84,7 +84,7 @@
                     </StrokeStyle>
                   </strokes>
                   <edges>
-                    <Edge strokeStyle="1" edges="!93 -177/99 -177!99 -177/219 -177!219 -177/132 -86!132 -86/90 -42!219 -59/219 -86!219 -86/219 -177!6 -111/-165 -111!-165 -111/-165 153!-165 153/180 153!180 153/180 26"/>
+                    <Edge strokeStyle="1" edges="!93 -177/99 -177!99 -177/219 -177!219 -177/219 -86!219 -86/219 -59!219 -177/132 -86!132 -86/90 -42!6 -111/-165 -111!-165 -111/-165 153!-165 153/180 153!180 153/180 26"/>
                     <Edge cubics="!-165 -111(;-165,-111 -165,153 -165,153q-165 -111 -165 153);"/>
                     <Edge cubics="!-165 153(;-165,153 180,153 180,153q-165 153 180 153);"/>
                     <Edge cubics="!180 153(;180,153 180,26 180,26q180 153 180 26);"/>

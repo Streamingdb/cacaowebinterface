@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="linksbutton" itemID="4efcb4ef-000002c9" sourceLibraryItemHRef="Symbol 1" lastModified="1325184239">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="linksbutton" itemID="4efcb4ef-000002c9" lastModified="1325184239">
   <timeline>
     <DOMTimeline name="linksbutton">
       <layers>
@@ -32,7 +32,7 @@
                     <Edge cubics="!175 1951(;175,1951 701,1951 701,1951q175 1951 701 1951)701,1951;"/>
                   </edges>
                 </DOMShape>
-                <DOMDynamicText name="linkstext" selected="true" width="42.5" height="20" isSelectable="false">
+                <DOMDynamicText name="linkstext" selected="true" width="42.5" height="20.1" isSelectable="false">
                   <matrix>
                     <Matrix tx="2" ty="15.35"/>
                   </matrix>
@@ -45,7 +45,7 @@
                     </DOMTextRun>
                   </textRuns>
                 </DOMDynamicText>
-                <DOMDynamicText width="35" height="20" isSelectable="false">
+                <DOMDynamicText width="35" height="20.1" isSelectable="false">
                   <matrix>
                     <Matrix tx="5.35" ty="-1.35"/>
                   </matrix>
