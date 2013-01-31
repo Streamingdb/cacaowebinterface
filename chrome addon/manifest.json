@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "cacaoweb",
+  "description": "cacaoweb removes limits associated with common file hosting platforms",
+  "version": "1.12",
+  
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["cacaoweb.js"]
+    }
+  ],
+  
+  "icons": { "16": "icon16.png",
+             "48": "icon48.png" },
+  
+  "update_url": "http://cacaoweb.org/chromeextension/updates.xml"
+}

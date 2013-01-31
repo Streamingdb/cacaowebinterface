@@ -2,7 +2,7 @@ var Cacaoweb = {
 	/**
 	 * javascript parameters
 	 */
-	version: "2.15",
+	version: "2.16",
 	timerTasksInterval: 0.5,
 	lasttimeclientrunning: 0,
 	lasttimestatuscheck: 0,
@@ -149,7 +149,7 @@ var Cacaoweb = {
 	},
 
 	/**
-	 * Fonction appelée en callback de checkInstalled (par le client cacaoweb s'il est en route)
+	 * Fonction appelée en callback de checkStatus (lorsque le client cacaoweb est en route en local)
 	 */
 	callbackIsRunning: function() {
 		Cacaoweb.lasttimeclientrunning = (new Date()).getTime();
@@ -190,7 +190,7 @@ Cacaoweb.checkStatus();
 if (typeof cacaoplayer == "undefined") { // to prevent the API from being included more than once
 
 	var cacaoplayer = function(id) {
-		if (cacaoplayer.getPlayer){ // TODO: remove it?
+		if (cacaoplayer.getPlayer) { // TODO: remove this?
 			return cacaoplayer.getPlayer(id);
 		}
 	};
