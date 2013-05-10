@@ -1,13 +1,13 @@
 statusbarpanel#cacao_mgttext[status="no_items"] {
-	list-style-image: url("chrome://cacaoweb/skin/icon.png");
+	list-style-image: url("chrome://cacaoweb/skin/cacaoweb.png");
 	opacity:0.5;
 }
 statusbarpanel#cacao_mgttext[status="has_items"] {
-	list-style-image: url("chrome://cacaoweb/skin/icon.png");
+	list-style-image: url("chrome://cacaoweb/skin/cacaoweb.png");
 	opacity:1;
 }
 #aboutImg {
-  	list-style-image: url("chrome://cacaoweb/skin/iconMain.png");
+  	list-style-image: url("chrome://cacaoweb/skin/cacaoweb-64.png");
 }
 
 #cacao_mgttext{
