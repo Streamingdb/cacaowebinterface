@@ -48,7 +48,7 @@
 					<ul>
 						<li><a href="http://forum.cacaoweb.org/" target="_newtab" id="helpmenu"></a></li>
 						<li><a href="http://forum.cacaoweb.org/" target="_newtab" id="forummenu"></a></li>
-						<li><a href="http://cacaoweb.org/?noredirect#download" target="_newtab" id="downloadmenu"></a></li>
+						<li><a href="http://cacaoweb.org/?noredirect" target="_newtab" id="downloadmenu"></a></li>
 						<li><a href="http://cacaoweb.org/?noredirect#dev" target="_newtab" id="devmenu"></a></li>
 						<li><a href="http://cacaoweb.org/?noredirect#money" target="_newtab" id="moneymenu"></a></li>
 					</ul>
@@ -194,8 +194,6 @@
 		document.getElementById('mana').innerHTML = langstrings[lang]['management'] + '<span class="i"></span>';
 		document.getElementById('searchhints').innerHTML = langstrings[lang]['searchhints'];
 		//document.getElementsByTagName('title')[0].innerHTML = langstrings[lang]['cacaowebtitle'];
-		document.getElementById('smallsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
-		document.getElementById('bigsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
 		document.getElementById('logintext').innerHTML = langstrings[lang]['login'];
 		document.getElementById('loginlabel').innerHTML = langstrings[lang]['name'] + ':';
 		document.getElementById('passwordlabel').innerHTML = langstrings[lang]['password'] + ':';
@@ -310,6 +308,8 @@
 			document.getElementById('linkarea').style.display = "none";
 			
 			document.getElementById('mostwatchedzone').style.display = "none";
+			
+			document.getElementById('smallsearchbar').focus();
 		}
 		function linkmode() {
 			document.getElementById('warningarea').style.display = "none";
@@ -800,6 +800,9 @@
 		/** callback is loginstatuscallback(isloggedin, username, token) */
 		includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinscript');
 
+		
+		document.getElementById('bigsearchbar').focus();
+		
 		
 	</script>
 	

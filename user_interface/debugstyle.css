@@ -33,6 +33,10 @@ h2 {
 	margin-bottom: 5px;
 }
 
+.dhtinfo > div {
+	clear: both;
+}
+
 
 .plus {
 	float: left;

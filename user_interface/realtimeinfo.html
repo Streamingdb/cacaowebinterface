@@ -25,6 +25,14 @@
 				<label>average rtt:</label>
 				<div class="valuediv"></div>
 			</div>
+			<div id="mainbucketssize">
+				<label>main buckets size:</label>
+				<div class="valuediv"></div>
+			</div>
+			<div id="dhtuptime">
+				<label>dht uptime:</label>
+				<div class="valuediv"></div>
+			</div>
 			<div id="bwdown">
 				<label>total udp bw down:</label>
 				<div class="valuediv"></div>
@@ -35,6 +43,10 @@
 			</div>
 			<div id="bwrouteddown">
 				<label>routed udp bw down:</label>
+				<div class="valuediv"></div>
+			</div>
+			<div id="bwrefilldown">
+				<label>refill bw down:</label>
 				<div class="valuediv"></div>
 			</div>
 		</div>
@@ -108,9 +120,12 @@
 			  success: function( data ) {
 				$("#knownpeers > div").text(data.DHT.knownpeers);
 				$("#averagertt > div").text(data.DHT.averagertt.join(" ; "));
+				$("#mainbucketssize > div").text(data.DHT.mainbucketssize.join(" ; "));
+				$("#dhtuptime > div").text(data.DHT.dhtuptime);
 				$("#bwdown > div").text((data.DHT.bwdown / 1000.0).toFixed(2));
 				$("#bwup > div").text((data.DHT.bwup / 1000.0).toFixed(2));
 				$("#bwrouteddown > div").text((data.DHT.bwroutedservicedown / 1000.0).toFixed(2));
+				$("#bwrefilldown > div").text((data.DHT.bwrefillbucketsdown / 1000.0).toFixed(2));
 				
 				$("#numberofswarms > div").text(data.Fileswarming.fileswarms.length);
 				$("#totalup > div").text(data.Fileswarming.totaluploadrate);
