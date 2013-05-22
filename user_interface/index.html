@@ -699,7 +699,7 @@
 			var col2 = document.createElement('div');
 			col2.className = "column";
 			colgroup.appendChild(col2);
-			for (var i = 0; i < results.length / 2; i++) {
+			for (var i = 0; i < Math.floor(results.length / 2); i++) {
 				var title = results[i].title;
 				var entry = document.createElement('li');
 				entry.innerHTML = '<a href="javascript:search(\'' + escapestring(title) + '\')">' + title + '</a>';

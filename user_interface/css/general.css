@@ -692,6 +692,7 @@ a:hover {
 	float: left;
 	padding: 15px;
 	width: 40%;
+	text-align: left;
 }
 #columnsgroup {
 	width: 350px;
