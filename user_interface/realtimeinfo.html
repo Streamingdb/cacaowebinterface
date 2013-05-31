@@ -170,12 +170,15 @@
 					$(swarmdatadiv).append('<label>current upload rate:</label><div>' + swarm.currentuploadrate + '</div>');
 					$(swarmdatadiv).append('<label>full rep:</label><div>' + swarm.fullrep + '</div>');
 					$(swarmdatadiv).append('<label>partial rep:</label><div>' + swarm.partialrep + '</div>');
+					$.each(swarm.chunkscounts, function (indexpeer, peerscount) {
+						$(swarmdatadiv).append('<label>' + peerscount[0] + '</label><div>' + peerscount[1] + '</div>');
+					});
 					// now updating the rows
 					if (swarm.numberofdownconnections > 0 || swarm.numberofupconnections > 0 || swarm.partialrep > 0) {
 						$(swarmdatadiv).parent().show();
 						if (swarm.numberofdownconnections > 0) {
 							var swarmdatarow = $('<div class="swarmdatarow headerrow"></div>');
-							$(swarmdatarow).append('<div class="ipaddresscol">ip address</div></div><div class="nattypecol">NAT type</div><div class="numcol">full</div><div class="connectionscol">succ / att</div><div class="connectionscol">dsucc / datt</div><div class="numcol">conns</div><div class="numcol">inst. time</div><div class="numcol">duration</div><div class="numcol">shortage</div><div class="numcol">down</div><div class="numcol">up</div><div class="numcol">bandwidth</div><div class="numcol">tot. down</div>');
+							$(swarmdatarow).append('<div class="ipaddresscol">ip address</div></div><div class="nattypecol">NAT type</div><div class="numcol">chunk pos</div><div class="numcol">full</div><div class="connectionscol">succ / att</div><div class="connectionscol">dsucc / datt</div><div class="numcol">conns</div><div class="numcol">inst. time</div><div class="numcol">duration</div><div class="numcol">shortage</div><div class="numcol">down</div><div class="numcol">up</div><div class="numcol">bandwidth</div><div class="numcol">tot. down</div>');
 							$(swarmdatadiv).append(swarmdatarow);
 						}
 					} else {
@@ -192,7 +195,7 @@
 						if (peer.ipaddress) {
 							ip = peer.ipaddress;
 						}
-						$(swarmdatarow).append('<div class="ipaddresscol">' + ip + '</div><div class="nattypecol">' + peer.nattype + '</div><div class="numcol">' + peer.full + '</div><div class="connectionscol">' + peer.connectionsuccesses + ' / ' + peer.connectionattempts + '</div><div class="connectionscol">' + peer.downsuccesses + ' / ' + peer.downattempts + '</div><div class="numcol">' + peer.numberofconnections + '</div><div class="numcol">' + peer.averageinstantiationtime + '</div><div class="numcol">' + peer.averageduration + '</div><div class="numcol">' + peer.bw_shortage + '</div><div class="numcol">' + peer.bw_down + '</div><div class="numcol">' + peer.bw_up + '</div><div class="numcol">' + peer.bw + '</div><div class="numcol">' + peer.total_down + '</div>');
+						$(swarmdatarow).append('<div class="ipaddresscol">' + ip + '</div><div class="nattypecol">' + peer.nattype + '</div><div class="numcol">' + peer.chunkpos + '</div><div class="numcol">' + peer.full + '</div><div class="connectionscol">' + peer.connectionsuccesses + ' / ' + peer.connectionattempts + '</div><div class="connectionscol">' + peer.downsuccesses + ' / ' + peer.downattempts + '</div><div class="numcol">' + peer.numberofconnections + '</div><div class="numcol">' + peer.averageinstantiationtime + '</div><div class="numcol">' + peer.averageduration + '</div><div class="numcol">' + peer.bw_shortage + '</div><div class="numcol">' + peer.bw_down + '</div><div class="numcol">' + peer.bw_up + '</div><div class="numcol">' + peer.bw + '</div><div class="numcol">' + peer.total_down + '</div>');
 						$(swarmdatadiv).append(swarmdatarow);
 					});				
 				});
