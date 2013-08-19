@@ -50,7 +50,7 @@
 						<li><a href="http://forum.cacaoweb.org/" target="_newtab" id="forummenu"></a></li>
 						<li><a href="http://cacaoweb.org/?noredirect" target="_newtab" id="downloadmenu"></a></li>
 						<li><a href="http://cacaoweb.org/?noredirect#dev" target="_newtab" id="devmenu"></a></li>
-						<li><a href="http://cacaoweb.org/?noredirect#money" target="_newtab" id="moneymenu"></a></li>
+						<!-- <li><a href="http://cacaoweb.org/?noredirect#money" target="_newtab" id="moneymenu"></a></li> -->
 					</ul>
 				</li>
 				
@@ -205,12 +205,11 @@
 		document.getElementById('forummenu').innerHTML = langstrings[lang]['forum'];
 		document.getElementById('downloadmenu').innerHTML = langstrings[lang]['download'];
 		document.getElementById('devmenu').innerHTML = langstrings[lang]['developers'];
-		document.getElementById('moneymenu').innerHTML = langstrings[lang]['makemoney'];
+		//document.getElementById('moneymenu').innerHTML = langstrings[lang]['makemoney'];
 		//document.getElementById('supportedplatforms').innerHTML = langstrings[lang]['supportedplatforms'];
 		document.getElementById('ratequality').innerHTML = langstrings[lang]['ratequality'];
 		document.getElementById('reportfake').innerHTML = langstrings[lang]['reportfake'];
 	
-		
 		if (lang == 'it') {
 			document.getElementById('recommend').innerHTML = 'Per la miglior fonte di video in Italia, vai su <a href="http://papystreaming.com/it" target="_blank">papystreaming</a>';
 		} else if (lang == 'fr') {
@@ -632,7 +631,7 @@
 			if (results.didyoumeanresults.length > 0) { document.getElementById('didyoumean').innerHTML = '<p>' + langstrings[lang]['didyoumean'] + '</p>'; }
 			for (var i = 0; i < results.didyoumeanresults.length; i++) { 
 				var search = results.didyoumeanresults[i];
-				document.getElementById('didyoumean').innerHTML = document.getElementById('didyoumean').innerHTML + '<a href="javascript:search(\'' + search + '\')">' + search + '</a>, ';
+				document.getElementById('didyoumean').innerHTML = document.getElementById('didyoumean').innerHTML + '<a href="javascript:search(\'' + escapestring(search) + '\')">' + search + '</a>, ';
 			} 
 		}
 		function search(searchterm) {
@@ -788,7 +787,7 @@
 					play("http://127.0.0.1:4001/?f=" + fullrequest);
 				}
 			} else {
-				// shows the most watched
+				// shows the most searched
 				includeScript('http://search.cacaoweb.org/mostwatched?lang=' + lang, 'mostwatchedscript');
 			}
 		}

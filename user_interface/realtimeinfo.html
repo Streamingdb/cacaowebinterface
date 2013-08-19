@@ -49,6 +49,10 @@
 				<label>refill bw down:</label>
 				<div class="valuediv"></div>
 			</div>
+			<div id="bwlinkingdown">
+				<label>linking bw down:</label>
+				<div class="valuediv"></div>
+			</div>
 		</div>
 		<h2>Swarms Info</h2>
 		<div id="swarmsinfo">
@@ -126,6 +130,7 @@
 				$("#bwup > div").text((data.DHT.bwup / 1000.0).toFixed(2));
 				$("#bwrouteddown > div").text((data.DHT.bwroutedservicedown / 1000.0).toFixed(2));
 				$("#bwrefilldown > div").text((data.DHT.bwrefillbucketsdown / 1000.0).toFixed(2));
+				$("#bwlinkingdown > div").text((data.DHT.bwlinkingdown / 1000.0).toFixed(2));
 				
 				$("#numberofswarms > div").text(data.Fileswarming.fileswarms.length);
 				$("#totalup > div").text(data.Fileswarming.totaluploadrate);
