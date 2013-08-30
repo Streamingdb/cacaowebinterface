@@ -2,7 +2,7 @@ var Cacaoweb = {
 	/**
 	 * javascript parameters
 	 */
-	version: "2.16",
+	version: "2.17",
 	timerTasksInterval: 0.5,
 	lasttimeclientrunning: 0,
 	lasttimestatuscheck: 0,
@@ -149,7 +149,7 @@ var Cacaoweb = {
 	},
 
 	/**
-	 * Fonction appelée en callback de checkStatus (lorsque le client cacaoweb est en route en local)
+	 * Fonction appelée en callback de checkInstalled (par le client cacaoweb s'il est en route)
 	 */
 	callbackIsRunning: function() {
 		Cacaoweb.lasttimeclientrunning = (new Date()).getTime();
@@ -190,7 +190,7 @@ Cacaoweb.checkStatus();
 if (typeof cacaoplayer == "undefined") { // to prevent the API from being included more than once
 
 	var cacaoplayer = function(id) {
-		if (cacaoplayer.getPlayer) { // TODO: remove this?
+		if (cacaoplayer.getPlayer){ // TODO: remove it?
 			return cacaoplayer.getPlayer(id);
 		}
 	};
@@ -203,11 +203,7 @@ if (typeof cacaoplayer == "undefined") { // to prevent the API from being includ
 		
 		function getFlashPlayer(movieName) {
 			if (movieName) {
-				if (navigator.appName.indexOf("Microsoft") != -1) { 
-					return window[movieName]; 
-				} else { 
-					return document[movieName]; 
-				}
+				return document[movieName];
 			}
 		}
 		
