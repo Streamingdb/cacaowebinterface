@@ -40,7 +40,7 @@
                     <Point x="15.8" y="11.5"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="soundbutton" name="mysoundbutton">
+                <DOMSymbolInstance libraryItemName="soundbutton" name="mysoundbutton" selected="true" centerPoint3DX="260.75" centerPoint3DY="22.5">
                   <matrix>
                     <Matrix tx="239.25" ty="17.4"/>
                   </matrix>

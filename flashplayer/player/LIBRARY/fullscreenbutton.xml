@@ -1,8 +1,8 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="fullscreenbutton" itemID="4b040fe6-00000608" lastModified="1296980648">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="fullscreenbutton" itemID="4b040fe6-00000608" lastModified="1360080354">
   <timeline>
-    <DOMTimeline name="fullscreenbutton">
+    <DOMTimeline name="fullscreenbutton" currentFrame="9" guides='&lt;guidelines&gt;&lt;guideline direction="h"&gt;-15&lt;/guideline&gt;&lt;guideline direction="v"&gt;19&lt;/guideline&gt;&lt;/guidelines&gt;'>
       <layers>
-        <DOMLayer name="button" color="#9933CC" autoNamed="false">
+        <DOMLayer name="button" color="#9933CC" locked="true" autoNamed="false">
           <frames>
             <DOMFrame index="0" duration="9" keyMode="9728">
               <elements>
@@ -13,7 +13,7 @@
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle1="1" edges="!243 -203/243 197!243 197/-197 197!-197 197/-197 -203!-197 -203/243 -203"/>
+                    <Edge fillStyle1="1" edges="!243 197/-197 197!-197 197/-197 -203!-197 -203/243 -203!243 -203/243 197"/>
                     <Edge cubics="!-197 -203(;-197,-203 243,-203 243,-203q-197 -203 243 -203);"/>
                     <Edge cubics="!243 197(;243,197 -197,197 -197,197q243 197 -197 197);"/>
                     <Edge cubics="!243 -203(;243,-203 243,197 243,197q243 -203 243 197);"/>
@@ -31,14 +31,18 @@
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle1="1" edges="!248 -225|248 215!248 215|-192 215!-192 215|-192 -225!-192 -225|248 -225"/>
+                    <Edge fillStyle1="1" edges="!260 200S2/-240 200!-240 200/-240 -200!-240 -200/260 -200!260 -200/260 200"/>
+                    <Edge cubics="!-240 -200(;-240,-200 260,-200 260,-200q-240 -200 260 -200);"/>
+                    <Edge cubics="!260 200(;260,200 -240,200 -240,200q260 200 -240 200);"/>
+                    <Edge cubics="!260 -200(;260,-200 260,200 260,200q260 -200 260 200);"/>
+                    <Edge cubics="!-240 200(;-240,200 -240,-200 -240,-200q-240 200 -240 -200);"/>
                   </edges>
                 </DOMShape>
               </elements>
             </DOMFrame>
           </frames>
         </DOMLayer>
-        <DOMLayer name="fullscreen" color="#4FFF4F" locked="true" current="true" isSelected="true" autoNamed="false">
+        <DOMLayer name="fullscreen" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
           <frames>
             <DOMFrame index="0" duration="9" keyMode="9728">
               <Actionscript>
@@ -56,17 +60,17 @@
                     </StrokeStyle>
                   </strokes>
                   <edges>
-                    <Edge strokeStyle="1" edges="!93 -177S4/99 -177!99 -177/219 -177!219 -177/219 -86!219 -86/219 -59!219 -177/132 -86!132 -86/90 -42!6 -111/-165 -111!-165 -111/-165 153!-165 153/180 153!180 153/180 26"/>
-                    <Edge cubics="!-165 -111(;-165,-111 -165,153 -165,153q-165 -111 -165 153);"/>
+                    <Edge strokeStyle="1" edges="!120 -60|220 -160!220 -160/140 -160!220 -160|220 -80!-160 -20/-165 153!-165 153/180 153!180 153/180 -20!-200 -80/-200 -160!-200 -160|-120 -160!-100 -60|-200 -160!80 -120/-60 -120"/>
+                    <Edge cubics="!-160 -20(;-160,-20 -165,153 -165,153p-160 -20q-165 153);"/>
                     <Edge cubics="!-165 153(;-165,153 180,153 180,153q-165 153 180 153);"/>
-                    <Edge cubics="!180 153(;180,153 180,26 180,26q180 153 180 26);"/>
-                    <Edge cubics="!-165 -111(;-165,-111 6,-111 6,-111q-165 -111 6 -111);"/>
-                    <Edge cubics="!93 -177(;93,-177 99,-177 99,-177q93 -177 99 -177);"/>
-                    <Edge cubics="!99 -177(;99,-177 219,-177 219,-177q99 -177 219 -177);"/>
-                    <Edge cubics="!219 -177(;219,-177 219,-86 219,-86q219 -177 219 -86);"/>
-                    <Edge cubics="!219 -86(;219,-86 219,-59 219,-59q219 -86 219 -59)219,-59;"/>
-                    <Edge cubics="!219 -177(;219,-177 132,-86 132,-86q219 -177 132 -86);"/>
-                    <Edge cubics="!132 -86(;132,-86 90,-42 90,-42q132 -86 90 -42);"/>
+                    <Edge cubics="!180 153(;180,153 180,-20 180,-20p180 153q180 -20);"/>
+                    <Edge cubics="!220 -160(;220,-160 140,-160 140,-160p220 -160q140 -160);"/>
+                    <Edge cubics="!220 -160(;220,-160 220,-80 220,-80q220 -160 220 -80);"/>
+                    <Edge cubics="!120 -60(;120,-60 220,-160 220,-160q120 -60 220 -160);"/>
+                    <Edge cubics="!-200 -160(;-200,-160 -200,-80 -200,-80p-200 -160q-200 -80);"/>
+                    <Edge cubics="!-200 -160(;-200,-160 -120,-160 -120,-160q-200 -160 -120 -160);"/>
+                    <Edge cubics="!-100 -60(;-100,-60 -200,-160 -200,-160q-100 -60 -200 -160);"/>
+                    <Edge cubics="!80 -120(;80,-120 -60,-120 -60,-120p80 -120q-60 -120);"/>
                   </edges>
                 </DOMShape>
               </elements>
@@ -78,23 +82,25 @@
                     <StrokeStyle index="1">
                       <SolidStroke scaleMode="normal" weight="2">
                         <fill>
-                          <SolidColor color="#0099FF"/>
+                          <SolidColor color="#2E9EFB"/>
                         </fill>
                       </SolidStroke>
                     </StrokeStyle>
                   </strokes>
                   <edges>
-                    <Edge strokeStyle="1" edges="!93 -177/99 -177!99 -177/219 -177!219 -177/219 -86!219 -86/219 -59!219 -177/132 -86!132 -86/90 -42!6 -111/-165 -111!-165 -111/-165 153!-165 153/180 153!180 153/180 26"/>
-                    <Edge cubics="!-165 -111(;-165,-111 -165,153 -165,153q-165 -111 -165 153);"/>
+                    <Edge strokeStyle="1" edges="!120 -60|220 -160!220 -160/140 -160!220 -160|220 -80!180 153/180 -20!-200 -81/-200 -160!-200 -160|-120 -160!-100 -60|-200 -160!-160 -20/-165 153"/>
+                    <Edge strokeStyle="1" edges="!-165 153S4/180 153"/>
+                    <Edge strokeStyle="1" edges="!80 -120/-60 -120"/>
+                    <Edge cubics="!-160 -20(;-160,-20 -165,153 -165,153p-160 -20q-165 153);"/>
                     <Edge cubics="!-165 153(;-165,153 180,153 180,153q-165 153 180 153);"/>
-                    <Edge cubics="!180 153(;180,153 180,26 180,26q180 153 180 26);"/>
-                    <Edge cubics="!-165 -111(;-165,-111 6,-111 6,-111q-165 -111 6 -111);"/>
-                    <Edge cubics="!93 -177(;93,-177 99,-177 99,-177q93 -177 99 -177);"/>
-                    <Edge cubics="!99 -177(;99,-177 219,-177 219,-177q99 -177 219 -177);"/>
-                    <Edge cubics="!219 -177(;219,-177 219,-86 219,-86q219 -177 219 -86);"/>
-                    <Edge cubics="!219 -86(;219,-86 219,-59 219,-59q219 -86 219 -59)219,-59;"/>
-                    <Edge cubics="!219 -177(;219,-177 132,-86 132,-86q219 -177 132 -86);"/>
-                    <Edge cubics="!132 -86(;132,-86 90,-42 90,-42q132 -86 90 -42);"/>
+                    <Edge cubics="!180 153(;180,153 180,-20 180,-20p180 153q180 -20);"/>
+                    <Edge cubics="!220 -160(;220,-160 140,-160 140,-160p220 -160q140 -160);"/>
+                    <Edge cubics="!220 -160(;220,-160 220,-80 220,-80q220 -160 220 -80);"/>
+                    <Edge cubics="!120 -60(;120,-60 220,-160 220,-160q120 -60 220 -160);"/>
+                    <Edge cubics="!-200 -160(;-200,-160 -120,-160 -120,-160q-200 -160 -120 -160);"/>
+                    <Edge cubics="!-100 -60(;-100,-60 -200,-160 -200,-160q-100 -60 -200 -160);"/>
+                    <Edge cubics="!80 -120(;80,-120 -60,-120 -60,-120p80 -120q-60 -120);"/>
+                    <Edge cubics="!-200 -160(;-200,-160 -200,-81 -200,-81q-200 -160 -200 -81);"/>
                   </edges>
                 </DOMShape>
               </elements>
