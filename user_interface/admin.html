@@ -417,6 +417,7 @@
 		  if the row is already here then just the progress bar is updated
 		*/
 		function addtomyuploads(rowid, fileid, title, season, episode, progress) {
+			if (progress > 100) { progress = 100; };
 			if ($("div[rowupid=" + escapestring(rowid) + "]").length > 0) {
 				if (progress > -1) { $("div[rowupid=" + escapestring(rowid) + "]").find(".uploadprogressbar").progressBar(progress); }
 			} else {

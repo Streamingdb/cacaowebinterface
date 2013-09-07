@@ -3,7 +3,7 @@
 
   "name": "cacaoweb",
   "description": "cacaoweb removes limits associated with common file hosting platforms",
-  "version": "1.12",
+  "version": "1.16",
   
   "content_scripts": [
     {

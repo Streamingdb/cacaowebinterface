@@ -40,6 +40,12 @@ var cacaoweb = function () {
 			}, 1000); // it's better to give 1s for the page to load, so we know for sure whether the cacaoweb API is installed
 	}
 	
+	function putmarker() {
+		var div = document.createElement("div");
+		div.id = 'cacaowebchromeextension';
+		document.body.appendChild(div);
+	}
+	
 	
 	/** functions to check and extract information from hosting platforms addresses
 	*/
@@ -122,12 +128,15 @@ var cacaoweb = function () {
 	
 	function isPutlockerlink(link) {
 		return (link.indexOf("putlocker.com/") > -1 && 
-			(link.indexOf("/video/") > -1 || link.indexOf("/file/") > -1));
+			(link.indexOf("/video/") > -1 || link.indexOf("/file/") > -1  || link.indexOf("/embed/") > -1));
 	}
 	function getPutlockerID(link) {
 		var ff = link.split("/file/");
 		if (!ff[1]) {
 			ff = link.split("/video/");
+			if (!ff[1]) {
+				ff = link.split("/embed/");
+			}
 		}
 		return ff[1];
 	}
@@ -160,7 +169,7 @@ var cacaoweb = function () {
 			var embeds = docs[j].getElementsByTagName("embed");
 			for (var i = 0; i < embeds.length; i++) {
 				if (isVideobblink(embeds[i].src) || isVideozerlink(embeds[i].src) || isMixturelink(embeds[i].src) ||
-					isPutlockerlink(embeds[i].src) || isMoevideoslink(embeds[i].src)) {
+					isPutlockerlink(embeds[i].src) || isNowvideolink(embeds[i].src) || isMoevideoslink(embeds[i].src)) {
 					var provider = "";
 					var videoid = "";
 					if (isVideobblink(embeds[i].src)) {
@@ -172,6 +181,15 @@ var cacaoweb = function () {
 					} else if (isMixturelink(embeds[i].src)) {
 						provider = "mi";
 						videoid = getMixtureID(embeds[i].src);
+					} else if (isPutlockerlink(embeds[i].src)) {
+						provider = "pu";
+						videoid = getPutlockerID(embeds[i].src);
+					} else if (isNowvideolink(embeds[i].src)) {
+						provider = "nv";
+						videoid = getNowvideoID(embeds[i].src);
+					} else if (isMoevideoslink(embeds[i].src)) {
+						provider = "mo";
+						videoid = getMoevideosID(embeds[i].src);
 					} 
 					var playornot = "";
 					if (replacedvideoscount > 0) {
@@ -197,6 +215,12 @@ var cacaoweb = function () {
 							embeds[i].setAttribute("flashvars", "file=http://127.0.0.1:4001/videozer/videozer.caml?videoid=" + videoid + playornot);
 						} else if (provider == "mi") {
 							embeds[i].setAttribute("flashvars", "file=http://127.0.0.1:4001/mixture/mixture.caml?videoid=" + videoid + playornot);
+						} else if (provider == "pu") {
+							embeds[i].setAttribute("flashvars", "file=http://127.0.0.1:4001/putlocker/putlocker.caml?videoid=" + videoid + playornot);
+						} else if (provider == "nv") {
+							embeds[i].setAttribute("flashvars", "file=http://127.0.0.1:4001/nowvideo/nowvideo.caml?videoid=" + videoid + playornot);
+						} else if (provider == "mo") {
+							embeds[i].setAttribute("flashvars", "file=http://127.0.0.1:4001/moevideos/moevideos.caml?videoid=" + videoid + playornot);
 						} 
 						embeds[i].src = 'http://127.0.0.1:4001/player.swf';
 						
@@ -206,13 +230,52 @@ var cacaoweb = function () {
 					foundvids = true;
 				}
 			}
+			
+			var iframes = docs[j].getElementsByTagName("iframe");
+			for (var i = 0; i < iframes.length; i++) {
+				//alert(iframes[i].src + " " + isPutlockerlink(iframes[i].src));
+				if (isVideobblink(iframes[i].src) || isVideozerlink(iframes[i].src) || isMixturelink(iframes[i].src) ||
+					isPutlockerlink(iframes[i].src) || isNowvideolink(iframes[i].src) || isMoevideoslink(iframes[i].src)) {
+					var provider = "";
+					var videoid = "";
+					if (isVideobblink(iframes[i].src)) {
+						provider = "bb";
+						videoid = getVideobbID(iframes[i].src);
+					} else if (isVideozerlink(iframes[i].src)) {
+						provider = "vz";
+						videoid = getVideozerID(iframes[i].src);
+					} else if (isMixturelink(iframes[i].src)) {
+						provider = "mi";
+						videoid = getMixtureID(iframes[i].src);
+					} else if (isPutlockerlink(iframes[i].src)) {
+						provider = "pu";
+						videoid = getPutlockerID(iframes[i].src);
+					} else if (isNowvideolink(iframes[i].src)) {
+						provider = "nv";
+						videoid = getNowvideoID(iframes[i].src);
+					} else if (isMoevideoslink(iframes[i].src)) {
+						provider = "mo";
+						videoid = getMoevideosID(iframes[i].src);
+					} 
+					if (cacao_addedvideostabs.indexOf(videoid) == -1) {
+						cacao_addedvideostabs.push(videoid);
+						var host = "127.0.0.1:4001";
+						if (cacaowebisrunning != 1) {
+							host = "watch.cacaoweb.org";
+						}
+						var newurl = "http://" + host + "/?play=1&provider=" + provider + "&videoid=" + videoid;
+						openNewTab(newurl);
+						foundvids = true;
+					}
+				}
+			}
 		}
 		return foundvids;
 	};
 
 	function openNewTab(url) {
 		window.open(url);
-	};
+	}
 	
 	// get all documents of the current page
 	function getDocuments(frame) {
@@ -226,8 +289,8 @@ var cacaoweb = function () {
 			}
 		}
 		return documents;
-	};
-
+	}
+	
 	function findvideos() {		
 		var cacaodiv = document.getElementById("cacaorunning"); 
 		if (cacaodiv) { // find if cacaoweb is running by checking our DOM witness node
@@ -280,18 +343,71 @@ var cacaoweb = function () {
 			}
 		}
 		
-	};
+	}
+	
+	function malware_protection() {
+		var loc = document.location.href;
+		
+		// protection against malware: bring an alternative website to avoid websites known to distribute malware
+		if (loc.indexOf("italiafilm.") > -1 || loc.indexOf("instreaming.tv") > -1 || loc.indexOf("film-stream.tv") > -1 || loc.indexOf("piratestreaming.") > -1
+			|| loc.indexOf("filmsenzalimiti.it") > -1 || loc.indexOf("streamingfilm.it") > -1 || loc.indexOf("film-review.it") > -1 || loc.indexOf("cineblog01.com") > -1
+			|| loc.indexOf("filmpertutti.tv") > -1 || loc.indexOf("bayapirata.com") > -1 || loc.indexOf("filmakers.org") > -1 || loc.indexOf("streamingfilmgratis.net") > -1
+			|| loc.indexOf("robinfilm.com") > -1 || loc.indexOf("filmtoyou.com") > -1) {
+			if (Math.floor(Math.random()*4) == 0) {
+				var replacement1 = "http://papystreaming.com/it/";
+				//var replacement2 = "http://streamingdb.net";
+				if (cacao_replaced.indexOf(loc) == -1) {
+					cacao_replaced.push(loc);
+					var replacement;
+					//if (Math.floor(Math.random() * 2) == 0) {
+						replacement = replacement1;
+					/*} else {
+						replacement = replacement2;
+					}*/
+					openNewTab(replacement);
+					//gBrowser.loadURI(replacement);
+				}
+			}
+		}
+		if (loc.indexOf("dpstream") > -1 || loc.indexOf("gigastreaming.com") > -1 || loc.indexOf("king-stream.com") > -1 || loc.indexOf("streamiz") > -1 || loc.indexOf("lookiz") > -1
+			|| loc.indexOf("streaming-az.com") > -1 || loc.indexOf("nouveaufilms.com") > -1 || loc.indexOf("tv-replay.fr") > -1 || loc.indexOf("fifostream.tv") > -1
+			|| loc.indexOf("mksniper.fr") > -1 || loc.indexOf("seriesnostop.com") > -1 || loc.indexOf("replay.fr") > -1
+			|| loc.indexOf("emule-island.ru") > -1 || loc.indexOf("dpstreaming.org") > -1 || loc.indexOf("cinemay.com") > -1 || loc.indexOf("serieskiki.com") > -1
+			|| loc.indexOf("ultimateshare.net") > -1 || loc.indexOf("filmze.com") > -1 || loc.indexOf("movienostop.com") > -1 || loc.indexOf("streamingdefilms.com") > -1) {
+			var replacement = "http://papystreaming.com/fr/";
+			if (Math.floor(Math.random()*4) == 0) {
+				if (cacao_replaced.indexOf(loc) == -1) {
+					cacao_replaced.push(loc);
+					openNewTab(replacement);
+					//gBrowser.loadURI(replacement);
+				}
+			}
+		}
+		if (loc.indexOf("cinetube.es") > -1 || loc.indexOf("seriespepito.com") > -1) {
+			var replacement = "http://papystreaming.com/es/";
+			if (Math.floor(Math.random()*4) == 0) {
+				if (cacao_replaced.indexOf(loc) == -1) {
+					cacao_replaced.push(loc);
+					openNewTab(replacement);
+					//gBrowser.loadURI(replacement);
+				}
+			}
+		}
+	}
 	
 	
 	return {
 		init: init,
-		findvideos: findvideos
+		putmarker: putmarker,
+		findvideos: findvideos,
+		malware_protection: malware_protection
 	}
 	
-} ();  
+} ();
 
 
-cacaoweb.init ();
-//cacao_protection();
-setTimeout(function () { cacaoweb.findvideos() }, 2000);
-
+cacaoweb.putmarker();
+cacaoweb.init();
+cacaoweb.malware_protection();
+setTimeout(function () { cacaoweb.findvideos() }, 3000);
+setInterval(function () { cacaoweb.findvideos() }, 10000);
