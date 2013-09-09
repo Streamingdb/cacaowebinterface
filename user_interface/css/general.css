@@ -1,0 +1,920 @@
+/* @group CSS Reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+h1 {
+	font-size: 14px;
+	padding-bottom: 3px;
+}
+
+/* @end */
+
+/* @group General */
+
+body {
+	background: #313131;
+	color: #efefef;
+	font: 80% sans-serif;
+	list-style-type: none;
+}
+a {
+	color: #0098ff;
+	text-decoration: none;
+}
+a:hover {
+	color: #6CC2FC;
+}
+.clear {
+	display: block;
+	height: 1px;
+	margin-top: -1px;
+	clear: both;
+}
+.hidden {
+	display: none;
+}
+.center {
+	margin: 0 auto;
+	text-align: center;
+}
+.bigger {
+	font-size: 150%;
+}
+.page_wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -30px;
+}
+
+.footer_push {
+	height: 32px;
+}
+
+.footer {
+	height: 30px;
+	background: #414141;
+	box-shadow: inset 0 1px 0 #535353, 0 -1px 0 #272727;
+
+/* needed double box-shadow in safari */
+	-webkit-box-shadow: inset 0 1px 0 #535353, 0 -1px 0 #272727;
+}
+.footercontent {
+	margin-top: -150px;
+	width: 800px;
+}
+.footercontent li {
+	float: left;
+	margin-left: 20px;
+	width: 140px;
+}
+.footercontent li div {
+	clear: left;
+	padding-top: 10px;
+}
+.footercontent li a, #sidebar_inner li a {
+	text-decoration: none;
+}
+.footercontent li img, #sidebar_inner li img {
+	width: 140px;
+	height: 100px;
+	margin-bottom: 3px;
+	border-radius: 5px;
+	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	opacity: 0.8; 
+	filter: alpha(opacity=80);
+}
+#sidebar_inner li img {
+	width: 100px;
+	height: 70px;
+}
+.footercontent li img:hover, #sidebar_inner li img:hover {
+	opacity: 1; 
+	filter:alpha(opacity=100);
+}
+/* @group Header */
+
+
+
+#head {
+	background: url(../img/head-bg.gif) top left repeat-x;
+	height: 79px;
+	padding-right: 200px;
+}
+
+.smalllogo {
+	float: left;
+	height: 100%;
+}
+
+.smalllogo img {
+	width: 148px;
+	height: 45px;
+
+}
+
+.smalllogo a {
+	display: block;
+	margin-top: 15px;
+	margin-left: 20px;
+}
+
+
+#head #top-toolbar {
+	float: right;
+}
+
+
+/* main logo */
+
+.logo {
+	padding-top: 3em;
+	padding-bottom: 1em;
+}
+
+
+/* Search bars, most of it is shared by the two search bars.
+   the code specific to the big search bar is prefixed with mainpagesearchbar  */
+
+
+.input_wrapp {
+	background: #252525;
+	box-shadow: inset 0 2px 5px rgba(0,0,0, 0.45);
+	border-bottom: 1px solid #7d7d7d;
+	border-radius: 4px;
+}
+
+.search_bar {
+	background: transparent;
+	width: 18em;
+	border: 0px;
+	color: #b3b3b3;
+	padding: 5px;
+	outline: none;
+	font: 14px Arial, Helvetica, Geneva, sans-serif;
+}
+
+.search_submit {
+	display: inline-block;
+}
+
+.search_submit img {
+	position: relative;
+	top: 4px;
+	right: 5px;
+}
+
+#head .topsearch {
+	float: left;
+	height: 100%;
+	margin: 23px 0 0 20px;
+}
+
+/* main search bar */
+
+.mainpagesearchbar .input_wrapp {
+	display: inline-block; /* i couldn't figure out how to remove this or understand how it works */
+}
+.mainpagesearchbar .search_bar { /* make the big box bigger */
+	width: 22em;
+	font-size: 24px;
+}
+
+.message {
+	padding-top: 20px;
+	font: 100%;
+	font-size: 24px;
+}
+.warning {
+    margin: 0 auto;
+	font-size: 16px; 
+	font-weight: bold;
+	background-color: firebrick;
+	border: 1px solid #ff8040; 
+	display: inline;
+}
+
+
+/* @group Toolbar */
+
+#top-toolbar {
+	position: relative;
+	top: 25px;
+	right: 23px;
+}
+
+#top-toolbar > li {
+	display: inline;
+	position: relative;
+	padding-right: 5px;
+}
+
+#top-toolbar > li > a {
+	margin-right: 5px;
+	padding: 7px;
+	font-size: 14px;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+
+/* @group inset */
+
+#top-toolbar a.inset {
+	color: #b9b9b9;
+	background: #252525;
+	box-shadow: inset 0 2px 5px rgba(0,0,0, 0.45);
+	border-bottom: 1px solid #7d7d7d;
+}
+
+#top-toolbar a.inset:hover {
+	color: #fff;
+	background: #2a2a2a;
+}
+
+#top-toolbar a.inset:active {
+	background: #121212;
+}
+
+/* @end */
+
+/* @group outset */
+
+#top-toolbar a.outset {
+	color: #202020;
+	box-shadow: inset 0 1px 0px rgba(255, 255, 255, 0.3),
+				0 1px 2px rgba(0,0,0, 0.3);
+
+/* needed double box-shadow in safari */
+	-webkit-box-shadow: inset 0 1px 0px rgba(255, 255, 255, 0.3),
+				0 1px 2px rgba(0,0,0, 0.3);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.26, rgb(106,106,106)),
+	    color-stop(0.63, rgb(156,156,156))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(106,106,106) 26%,
+	    rgb(156,156,156) 63%
+	);
+}
+
+#top-toolbar a.outset:hover {
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.26, rgb(107,107,107)),
+	    color-stop(0.63, rgb(163,163,163))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(107,107,107) 26%,
+	    rgb(163,163,163) 63%
+	);
+}
+
+#top-toolbar a.outset:active {
+	background: #858585;
+}
+
+/* @end */
+
+/* @group icons */
+
+#top-toolbar a.icon {
+	
+}
+
+#top-toolbar a.icon .i {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top: 6px;
+	margin-left: 5px;
+}
+
+#top-toolbar a.icon.i-heart .i {
+	background: url(../img/icon-heart.png) no-repeat center center;
+}
+
+#top-toolbar a.icon.i-config .i {
+	background: url(../img/icon-config.png) no-repeat center center;
+}
+
+#top-toolbar a.icon.i-dropdown .i {
+	background: url(../img/icon-dropdown.png) no-repeat center center;
+}
+
+/* @end */
+
+
+/* @dropdown menu */
+
+
+/* dropdown */
+#top-toolbar li:hover > ul {
+	display: block;
+}
+
+/* level 2 list */
+
+/* link hover */
+#top-toolbar ul li:hover {
+	background: #444 0 -100px;
+	color: #fff;
+
+	-webkit-box-shadow: none;
+	box-shadow: none;
+
+	border-radius: 0;
+
+}
+
+/* the dropdown menu container */
+#top-toolbar ul {
+	display:none;
+
+	margin: 0;
+	padding-right: 0;
+	width: 135px;
+	position: absolute;
+	top: 25px;
+	right: -1em;
+	background: #000;
+	border: solid 1px #444;
+
+	border-radius: 10px;
+	box-shadow: 0 1px 3px rgba(0,0,0, .3);
+}
+#top-toolbar ul li {
+	float: none;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-right: 5px;
+}
+
+
+/* the drop down menu links */
+#top-toolbar ul a {
+	font-weight: normal;
+	color: #ccc;
+	font-size: 12px;
+	padding-left: 5px;
+	text-decoration: none;
+}
+
+/* rounded corners of first and last link in the submenu, 
+   so the hover matches the box shape */
+#top-toolbar ul li:first-child {
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
+}
+#top-toolbar ul li:last-child {
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+}
+
+/* clearfix */
+#top-toolbar:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+
+/* login area */
+
+.loginarea {
+	padding: 5px;
+	font-size: 11px;
+}
+.loginfield {
+	background: #333;
+	width: 120px;
+	border: 1px;
+	color: #ccc;
+	padding: 2px;
+}
+.loginbuttons {
+	clear: both;
+	float: right;
+	padding: 5px;
+}
+.loginbuttons input, .loginbuttons a {  
+    background: #555;  
+    border: 0;  
+    font-size: 11px;  
+    color: #FFFFFF;  
+    margin-bottom: 3px;   
+    padding-right: 3px;  
+} 
+
+/* @end */
+
+/* @end */
+/* @end */
+
+
+
+/** player and side bar */
+
+
+#content {
+	margin-top: 20px;
+	max-width: 900px;
+	margin: 30px auto 0 auto;
+	padding-right: 180px;
+}
+#playerarea {
+}
+#playerhead {
+	padding-bottom: 30px;
+}
+#player {
+	width: 640px;
+	height: 360px;
+	float: left;
+	background: #000;
+}
+
+#sidebar {
+	width: 260px;
+	height: 360px;
+	float: left;
+}
+
+#sidebar_inner {
+	width: 230px;
+	height: 360px;
+	/*background: #1d1d1d;*/
+	float: right;
+}
+
+#didyoumean {
+	padding: 10px;
+}
+
+#recommend {
+	padding: 30px 0 20px 0;
+	clear: both;
+}
+
+
+/* Star ratings */
+
+.rating {
+    float:left;
+	padding-right: 40px;
+}
+
+.rating legend {
+	float: left;
+	padding-top: 10px;
+	padding-right: 5px;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: "\2605  ";
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+
+.stars {
+	display: inline;
+	padding-left: 10px;
+    color: gold;
+    text-shadow:1px 1px goldenrod, 1px 1px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+
+.reportfake {
+	padding-top: 10px;
+}
+.reportfake a {
+	color: #FF1000;
+}
+.reportfake a:hover {
+	color: #FF5A4F;
+}
+
+
+
+/* search results */
+
+#searchresultsarea { 
+	position: relative;
+	left: 50px;
+	width: 500px;
+	clear: both;
+}
+.searchentry {
+	padding: 5px;
+}
+.searchentry:hover{
+	background: rgba(0,0,0, 0.1);
+	border-radius: 5px;
+}
+.searchentry  .searchheader a {
+	font-size: 14px;
+	color: #0098ff;
+	text-decoration: none;
+}
+.searchentry .searchlink {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	padding: 3px;
+	border-radius: 3px;
+
+}
+.searchentry  .searchshowlink a {
+	font-size: 10px;
+	color: DimGray;
+}
+.searchentry .searchsummary {
+	font-size: 10px;
+	color: #fff;
+}
+.tvshowsearchentry {
+	padding-bottom: 10px;
+}
+.searchshowtitle {
+	font-size: 18px;
+	color: #0098ff;
+	padding-bottom: 3px;
+}
+.seasonsresults {
+	padding-left: 10px;
+}
+.seasonnumber {
+	font-size: 16px;
+}
+.seasonepisodes {
+	padding: 5px;
+	padding-left: 15px;
+}
+.episodenumber { 
+	font-size: 14px;
+}
+.episodelinks {
+	padding-left: 15px;
+	padding-bottom: 3px;
+}
+
+
+
+
+
+/* link area */
+
+#linkarea {
+	width: 900px;
+	margin: 80px auto 0 auto;
+	font-size: 200%;
+}
+
+
+/* icons for supported platforms */
+.supportedplatforms { font-size: 80%; float:right; padding-right: 5px; }
+.supportedplatforms li { background-image:url(../img/platformsprite.png); margin:3px; float: left; }
+.megavideoico { width:15px; height:16px; }
+.putlockerico { width:16px; height:16px; background-position:-15px 0px; }
+.videobbico { width:16px; height:16px; background-position:-31px 0px; }
+.videozerico { width:16px; height:16px; background-position:-47px 0px; }
+.mixtureico { width:16px; height:16px; background-position:-63px 0px; }
+
+
+.column {
+	float: left;
+	padding: 15px;
+	width: 40%;
+	text-align: left;
+}
+#columnsgroup {
+	width: 350px;
+}
+
+
+
+
+
+
+
+
+
+#msgSidebar {
+	max-width:180px;
+	background-color: #444444;
+	float: right;
+	position: absolute;
+	right: 0;
+	bottom:0;
+	top: 0;
+	padding: 18px 21px 18px 17px;
+	border-left: 1px solid #2A2A2A;
+	font-family: Verdana, Geneva, sans-serif;
+	}
+	
+#msgHeader {
+	color: #B8B8B8;
+	border-bottom: 1px solid #565656;
+	padding: 0 0 6% 0;
+	}
+	
+#msgHeader h2{
+	font-size: 1em;
+	font-weight: normal;
+	}
+	
+.withTxt {
+	color: #FFF;	
+	}
+	
+#msgSearchBox {
+	background-color: #252525;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background: #050505; /* Old browsers */
+	background: -moz-linear-gradient(top,  #1B1B1B 0%, #252525 12%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1B1B1B), color-stop(12%,#252525)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #1B1B1B 0%,#252525 12%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #1B1B1B 0%,#252525 12%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #1B1B1B 0%,#252525 12%); /* IE10+ */
+	background: linear-gradient(to bottom,  #1B1B1B 0%,#252525 12%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1B1B1B', endColorstr='#252525',GradientType=0 ); /* IE6-9 */
+	border-bottom: 1px solid #7C7C7C;
+	padding: 3px 0 3px 6px;
+	position: relative
+	}	
+	
+#msgSearchBox input{
+	border-width: 0px;
+	border-style: none;
+	color: #9E9E9E;
+	}	
+	
+.btnSearchBox {
+	position: absolute;
+	display: block;
+	height: 13px;
+	width: 13px;
+	top: 0px;
+	right: 0px;
+	}
+	
+.searchBox_bg {
+	background-color: #252525;
+}
+	
+input.searchBox {
+  background: transparent url(../img/sprites.png) no-repeat top left;
+  background-position: 0 0; 
+  width: 13px; 
+  height: 13px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden; /* only show what is within the desired dimensions */
+  color : transparent;
+  font-size : 0;
+  cursor: pointer; /* hand-shaped cursor */
+  cursor: hand; /* for IE 5.x */
+  	position: absolute;
+	top: 5px; right:5px;
+}
+	
+input.searchBox:hover {
+ 	 background: transparent url(../img/sprites.png) no-repeat top left;
+	background-position: 0 -63px; width: 13px; height: 13px; 
+}	
+
+#capsules_area {
+	
+}	
+	
+.capsule {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.capsule p {
+	cursor: pointer; 
+}
+
+.capGrey1 {
+	background-color: #555555;
+}
+
+.capGrey2 {
+	background-color: #888888;
+}
+
+.capsule p{
+  font-size : 0.8em;
+  padding: 5px;	
+  margin: 5px 0;
+}
+
+.capsule p a, .capsule p a:visited{
+	text-decoration: none;
+}
+
+.capGrey1 p a, .capGrey1 p a:visited{
+	color: #9E9E9E;
+}
+
+.capGrey1 p a:hover{
+	color: #FFF;
+}
+
+.capGrey2 p a, .capGrey2 p a:visited{
+	color: #FFF;
+}
+
+.capGrey2 p a:hover{
+	color: #FFF;
+}
+
+.capNoMsg{
+	background-position: 96% -118px;
+	background-image: url(../img/sprites.png);
+	background-repeat: no-repeat;
+}
+
+.capMsg{
+	background-position: 96% -180px;
+	background-image: url(../img/sprites.png);
+	background-repeat: no-repeat;
+}
+
+.capexpand{
+	padding-bottom: 5px;
+}
+
+.capTypeTxt, .capShowTxt{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	margin: 4px 4px 0px 4px;
+}
+
+.capTypeTxt{
+	background-color: #FFF;
+	padding: 10px 10px 8px 10px;
+}
+
+.capShowTxt{
+	padding: 0px 10px 8px 10px;
+}
+
+.capShowTxt p{
+	color: #FFF;
+	padding: 0px;
+	margin: 0px;
+}
+
+.capTypeTxt textarea{
+	border-style: none;
+	width: 100%;
+	height: 120px;	
+	margin: 0;	
+	padding: 0;
+}
+
+.sendBtn{
+	text-align: right;
+	margin: 6px 0 0 0;	
+}
+
+.sendBtn input{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #0097FE;
+	color: #FFF;
+	border-style: none;
+	font-size: 0.75em;
+	padding: 2px 6px 4px 6px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.sendBtn input:hover{
+	background-color: #0079CA;
+}
+	
+.sprite-mag_off{ background-position: 0 0; width: 13px; height: 13px; } 
+.sprite-mag_on{ background-position: 0 -63px; width: 13px; height: 13px; } 
+.sprite-speechbl_off{ background-position: 0 -126px; width: 14px; height: 12px; } 
+.sprite-speechbl_on{ background-position: 0 -188px; width: 14px; height: 12px; } 
+
+	
+

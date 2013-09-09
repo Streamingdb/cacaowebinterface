@@ -1,338 +1,138 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>cacaoweb</title>
+	<title>cacaoweb Manager</title>
 	<meta charset=utf-8 />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="buttons.css" />
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-darkness/jquery-ui.css" />
 </head>
 <body>
 
 
 	<noscript>This page will NOT work because Javascript is not enabled</noscript>
-	
-	
-	<div id="logo"><a href="http://www.cacaoweb.org/?noredirect=yes"><img src="logo.png" /></a></div>
-	
+		
 			
-		<div id="maincontent">
+	<div id="maincontent">
+		<div id="mainleftcolumn">
+			<div id="menubuttons">
+				<div><h2><a href='index.html' data-icon='&#9756' class='button blue round glass' id="backmainpage">Back</a></h2></div>
+				<div><h2><a href='http://user.cacaoweb.org/' class='button orange round glass' id="uploadyourfiles"></a></h2></div>
+				<!-- <div><h2><a href='http://cacaoweb.org/makemoney.html' class='button pink round glass' id="makemoney"></a></h2></div> -->
+			</div>
 			
-			<div id="mainleftcolumn">
-				
-				<div class="authbox" style="display:none">
-					<div class="auth-notification"></div>
-					<div class="buycredits hidden">
-						<form action="https://www.paypal.com/cgi-bin/webscr" id="depositform" method="post">
-							<div class="form-field clear">
-								<p id="numberofcreditstobuy"></p>
-							</div>
-							<div class="form-field clear">
-								<div class="form-radio-item">
-									<input name="form[radio]" id="radio1" class="radio" type="radio" value="20"><label for="radio1">20 credits = 2€</label>
-								</div>
-								<div class="form-radio-item">
-									<input name="form[radio]" id="radio1" class="radio" type="radio" value="50"><label for="radio1">50 credits = 5€</label>
-								</div>
-								<div class="form-radio-item">
-									<input name="form[radio]" id="radio2" class="radio" type="radio" value="150"><label for="radio2">150 credits = 10€</label>
-								</div>
-								<div class="form-radio-item">
-									<input name="form[radio]" id="radio3" class="radio" type="radio" value="400"><label for="radio3">400 credits = 20€</label>
-								</div>
-							</div>
-								
+			<div class="authbox" style="display:none">
+				<div class="auth-notification clear"></div>
+				<div class="clear" id="premiuminfo"></div>
+				<div id="buycredits-form" class="buycredits hidden">
+					<form action="https://www.paypal.com/cgi-bin/webscr" id="depositform" method="post">
+						<div class="form-field clear">
+							<p id="numberofcreditstobuy"></p>
+						</div>
+						<div class="form-field clear">
+							<input name="form[radio]" id="radio1" class="radio" type="radio" value="50" checked="true"><label for="radio1">50 credits = 5€</label>
+							<input name="form[radio]" id="radio2" class="radio" type="radio" value="100"><label for="radio2">100 credits = 10€</label>
+							<input name="form[radio]" id="radio3" class="radio" type="radio" value="200"><label for="radio3">200 credits = 20€</label>
 							<div class="clear">
-								<input name="submit" type="submit" id="submitpaypal" value="" />
-							</div><!-- /.form-field -->			
+								<button name="submit" type="submit" id="submitpaypal"></button>
+							</div>	
+						</div><!-- /.form-field -->		
 
-
-							<div id="paypalcart">
-								<input name="cmd" value="_cart" type="hidden">
-								<input name="upload" value="1" type="hidden">
-								<input name="business" value="contact@cacaoweb.org" type="hidden">
-								<input name="currency_code" value="EUR" type="hidden">
-								<input name="cpp_header_image" value="http://cacaoweb.org/images/logo.png" type="hidden">
-								<input name="item_name_1" value="50 Credits" type="hidden">
-								<input name="quantity_1" value="1" type="hidden">
-								<input name="amount_1" value="5" type="hidden">
-							</div>							
-						
-						</form>
-					</div>
-					<div class="auth-buttons">
-						<button onclick="javascript:login()" id="loginbtn"></button>
-						<button onclick="javascript:register()" id="createbtn"></button>
-					</div>
-					<div id="login-form" title="Login">
-						<p id="validateTipsLogin"></p>
-						<form>
-						<fieldset>
-							<label for="name"></label>
-							<input type="text" name="name" id="loginname" class="text ui-widget-content ui-corner-all" />
-							<label for="password"></label>
-							<input type="password" id="loginpassword" value="" class="text ui-widget-content ui-corner-all" />
-						</fieldset>
-						</form>
-					</div>
-					<div id="createuser-form" title="">
-						<p class="validateTips"></p>
-
-						<form>
-						<fieldset>
-							<label for="name"></label>
-							<input type="text" name="name" id="registername" class="text ui-widget-content ui-corner-all" />
-							<label for="password"></label>
-							<input type="password" name="password" id="registerpassword" value="" class="text ui-widget-content ui-corner-all" />
-							<label for="email">Email</label>
-							<input type="email" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" placeholder="optional email address"/>
-						</fieldset>
-						</form>
-					</div>
+						<div id="paypalcart">
+							<input name="cmd" value="_cart" type="hidden">
+							<input name="upload" value="1" type="hidden">
+							<input name="business" value="contact@cacaoweb.org" type="hidden">
+							<input name="currency_code" value="EUR" type="hidden">
+							<input name="cpp_header_image" value="http://cacaoweb.org/images/logonew.png" type="hidden">
+							<input name="item_name_1" value="50 Credits" type="hidden">
+							<input name="item_number_1" value="CRED" type="hidden">
+							<input name="quantity_1" value="1" type="hidden">
+							<input name="amount_1" value="5" type="hidden">
+							<input name="custom" value="empty" type="hidden">
+						</div>
+					</form>
 				</div>
-				
-				<div id="downloads">
-					<h2 id="h2mydownloads"></h2>
-					<div id="mydownloads"></div>
+				<div class="auth-buttons">
+					<button onclick="javascript:login()" id="loginbtn"></button>
+					<button onclick="javascript:register()" id="createbtn"></button>
 				</div>
-			
-				<div id="uploads">
-					<h2 id="h2myuploads"></h2>
-					<div id="myuploads" class="myuploads">
-					</div>
-					<div id="uploadslistnavigation">
-						<div id="uploadslistprevious" style="display:none"><a href="#">< Back</a></div>
-						<div id="uploadslistnext" style="display:none"><a href="#">Next ></a></div>
-					</div>
+				<div id="login-form" title="Login">
+					<p id="validateTipsLogin"></p>
+					<form>
+					<fieldset>
+						<label for="name"></label>
+						<input type="text" name="name" id="loginname" class="text ui-widget-content ui-corner-all" />
+						<label for="password"></label>
+						<input type="password" id="loginpassword" value="" class="text ui-widget-content ui-corner-all" />
+					</fieldset>
+					</form>
 				</div>
-				
-				<h2 id="h2newupload"></h2>
-				<div id="upload-tabs">
-					<ul>
-						<li><a href="#tabs-browse" id="browse-tab"></a></li>
-						<li><a href="#tabs-remote" id="remote-upload-tab"></a></li>
-					</ul>
-					<div id="tabs-browse">
-						<div class="addupload">
-							<div id="upload_frame">
-							
-							</div>
-							<p>
-								<label for="file" id="smallupload"></label>
-								<div id="filewithpath">
-									<input name="file" id="file" size="40"></input>
-									<button tabindex="1" value="Choose" onclick="javascript:choose()" id="choose"></button>
-								</div>
-								<form method='POST' enctype='multipart/form-data' accept-charset="UTF-8" action='' id="formupload" style="display:none">
-									<input name="file" type="file" size="40" value="" />
-									<p id="smalllargefile"></p>
-								</form>
-							</p>
-						</div>
-						<div class="restrictedinfo">
-							<div class="meta-fields">
-								<p>
-								<label for="paidcontent" id="paidcontentsmall"></label>
-								<input name="paidcontent" id="paidcontent" type="checkbox" />
-								</p>
-								<div id="paidcontentdetails">
-									<p>
-									<label for="preview" id="previewsmall"></label>
-									<input name="preview" id="preview" type="checkbox" checked="true" />
-									</p>
-									<p>
-									<label for="numberofcredits" id="numberofcreditssmall"></label>
-									<select id="numberofcredits">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="5">5</option>
-										<option value="10">10</option>
-										<option value="20">20</option>
-									</select>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="tabs-remote">
-						<div class="addupload">
-							<p>
-								<label for="file" id="smallremoteupload"></label>
-								<input name="url" id="url" size="50"></input>
-							</p>
-							<p>
-								<small><div id="examplesupload"></div><br>http://megavideo.com/?v=TUF78DFD<br>http://www.videobb.com/video/uGR5SO24apvI<br>http://myspace.someserver.com/myvideo.mp4</small>
-							</p>
-						</div>
-					</div>
-					<div class="filemeta">
-						<h3 id="uploadmeta"></h3>
-						<div class="meta-fields">
-							<p>
-								<label for="contenttype" id='smallcontenttype'><small></small></label>
-								<select id="contenttype">
-									<option value="" id="blank"></option>
-									<option value="movie" id="movie"></option>
-									<option value="tvshow" id="tvshow"></option>
-									<option value="anime" id="anime"></option>
-									<option value="documentary" id="documentary"></option>
-									<option value="music" id="music"></option>
-									<option value="file" id="filecategory"></option>
-								</select>
-							</p>
-							<p>
-								<label for="language" id="smalllanguage"></label>
-								<select id="language">
-									<option value=""></option>
-									<option value="en">English</option>
-									<option value="fr">Français</option>
-									<option value="es">Español</option>
-									<option value="it">Italiano</option>
-									<option value="pt">Português</option>
-									<option value="de">Deutsch</option>
-									<option value="hu">Magyar</option>
-									<option value="pl">Polski</option>
-									<option value="ru">Россию</option>
-									<option value="ar">العربية</option>
-									<option value="cn">越南</option>
-									<option value="hi">हिन्दी</option>
-									<option value="jp">日本</option>
-									<option value="vn">Việt</option>
-								</select>
-							</p>
-							<p>
-								<label for="subtitles" id="smallsubtitles"></label>
-								<select id="subtitles">
-									<option value=""></option>
-									<option value="en">English</option>
-									<option value="fr">Français</option>
-									<option value="es">Español</option>
-									<option value="it">Italiano</option>
-									<option value="pt">Português</option>
-									<option value="de">Deutsch</option>
-									<option value="hu">Magyar</option>
-									<option value="pl">Polski</option>
-									<option value="ru">Россию</option>
-									<option value="ar">العربية</option>
-									<option value="cn">越南</option>
-									<option value="hi">हिन्दी</option>
-									<option value="jp">日本</option>
-									<option value="vn">Việt</option>
-								</select>
-							</p>
-							<p id="titlefield">
-								<label for="title" id="smalltitle"></label>
-								<input type="text" name="title" id="title" tabindex="2" size="50" />
-							</p>
-							<div id="tvshowdetails" style="display:none">
-								<p>
-									<label for="season" id="smallseason"></label>
-									<input id="season" type="text" maxlength="2" size="2"  type="number" min="1" max="20"/>
-								</p>
-								<p>
-									<label for="episode" id="smallepisode"></label>
-									<input id="episode" type="text" maxlength="2" size="2" type="number" min="1" />
-								</p>
-							</div>
-							<p>
-								<label>&nbsp;</label>
-								<button id="submit" onclick="submit()"></button>
-							</p>
-						</div>
-					</div>
+				<div id="createuser-form" title="">
+					<p class="validateTips"></p>
+					<form>
+					<fieldset>
+						<label for="name"></label>
+						<input type="text" name="name" id="registername" class="text ui-widget-content ui-corner-all" />
+						<label for="password"></label>
+						<input type="password" name="password" id="registerpassword" value="" class="text ui-widget-content ui-corner-all" />
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" placeholder="optional email address"/>
+					</fieldset>
+					</form>
+				</div>
+				<div class="languagediv clear">
+					<label for="language" id="mylanguage">My language:</label>
+					<select id="language" onchange="languagechange(this);">
+						<option value=""></option>
+						<option value="en">English</option>
+						<option value="fr">Français</option>
+						<option value="es">Español</option>
+						<option value="it">Italiano</option>
+						<option value="pl">Polski</option>
+					</select>
 				</div>
 			</div>
-			<div id="mainrightcolumn">
-				<h2 id="h2cacaowebstatus"></h2>
-				<div id="cacaowebstatus"></div>
-				
-				<h2 id="cacaowebactions"></h2>
-				<p><a href="javascript:quit()" id="turnoff"></a></p>
-				<p><a href="javascript:uninstall()" id="uninstall"></a></p>
 			
-				<h2><a href="index.html" id="backmainpage"></a></h2>
-				
+			<div id="downloads">
+				<h2 id="h2mydownloads"></h2>
+				<div id="mydownloads"></div>
 			</div>
+		
+			<div id="uploads">
+				<h2 id="h2myuploads"></h2>
+				<div id="uploadviewsstatistics">
+				</div>
+				<div id="myuploads" class="myuploads">
+				</div>
+				<div id="uploadslistnavigation">
+					<div id="uploadslistprevious" style="display:none"><a href="#">< Back</a></div>
+					<div id="uploadslistnext" style="display:none"><a href="#">Next ></a></div>
+				</div>
+			</div>
+
 		</div>
+		<div id="mainrightcolumn">
+			<h2 id="h2cacaowebstatus"></h2>
+			<div id="cacaowebnatdetails">
+				<p>UDP</p>
+				<div id="natdetailsudp"></div>
+				<p>TCP</p>
+				<div id="natdetailstcp"></div>
+			</div>
+			<div id="cacaowebstatus"></div>
+			
+			<h2 id="cacaowebactions"></h2>
+			<p><a href="javascript:quit()" id="turnoff"></a></p>
+			<p><a href="javascript:uninstall()" id="uninstall"></a></p>
+			
+						
+		</div>
+	</div>
 		
 
 	
-	<script src="languagestrings.js"></script>
 	<script>	
-		var lang;
-		var fb_lang;
-		if (navigator.userLanguage) { // Explorer
-			fb_lang = navigator.userLanguage;
-		} else if (navigator.language) { // FF
-			fb_lang = navigator.language;
-		}
-		lang = fb_lang.substring(0, 2);
-		switch (lang) {
-			case 'en':
-				break;
-			case 'fr':
-				break;
-			case 'it':
-				break;
-			case 'pl':
-				break;
-			default:
-				lang = 'en';
-		}
-		
-		/** 
-		  translation of the interface strings
-		*/
-		
-		//document.getElementsByTagName('title').item(0).innerHTML = langstrings[lang]['cacaowebadmin'];
-		document.getElementById('h2mydownloads').innerHTML = langstrings[lang]['mydownloads'];
-		document.getElementById('h2myuploads').innerHTML = langstrings[lang]['myuploads'];
-		//document.getElementById('h2newupload').innerHTML = langstrings[lang]['newupload'];
-		document.getElementById('examplesupload').innerHTML = langstrings[lang]['examples'];
-		document.getElementById('smallupload').innerHTML = langstrings[lang]['smallupload'];
-		document.getElementById('smallremoteupload').innerHTML = langstrings[lang]['smallremoteupload'];
-		document.getElementById('choose').innerHTML = langstrings[lang]['choose'];
-		document.getElementById('smalllargefile').innerHTML = langstrings[lang]['smalllargefile'];
-		document.getElementById('remote-upload-tab').innerHTML = langstrings[lang]['remoteupload'];
-		document.getElementById('browse-tab').innerHTML = langstrings[lang]['browse'];
-		document.getElementById('uploadmeta').innerHTML = langstrings[lang]['uploadmeta'];
-		document.getElementById('movie').innerHTML = langstrings[lang]['movie'];
-		document.getElementById('tvshow').innerHTML = langstrings[lang]['tvshow'];
-		document.getElementById('anime').innerHTML = langstrings[lang]['anime'];
-		document.getElementById('documentary').innerHTML = langstrings[lang]['documentary'];
-		document.getElementById('music').innerHTML = langstrings[lang]['music'];
-		document.getElementById('filecategory').innerHTML = langstrings[lang]['file'];
-		document.getElementById('smallcontenttype').innerHTML = langstrings[lang]['smallcontenttype'];
-		document.getElementById('smalllanguage').innerHTML = langstrings[lang]['smalllanguage'];
-		document.getElementById('smallsubtitles').innerHTML = langstrings[lang]['smallsubtitles'];
-		document.getElementById('smalltitle').innerHTML = langstrings[lang]['smalltitle'];
-		document.getElementById('smallseason').innerHTML = langstrings[lang]['smallseason'];
-		document.getElementById('smallepisode').innerHTML = langstrings[lang]['smallepisode'];
-		document.getElementById('submit').innerHTML = langstrings[lang]['submit'];
-		document.getElementById('h2cacaowebstatus').innerHTML = langstrings[lang]['h2cacaowebstatus'];
-		document.getElementById('cacaowebactions').innerHTML = langstrings[lang]['cacaowebactions'];
-		document.getElementById('turnoff').innerHTML = langstrings[lang]['turnoff'];
-		document.getElementById('uninstall').innerHTML = langstrings[lang]['uninstall'];
-		document.getElementById('backmainpage').innerHTML = langstrings[lang]['backmainpage'];
-		document.getElementById('loginbtn').innerHTML = langstrings[lang]['login'];
-		document.getElementById('createbtn').innerHTML = langstrings[lang]['create'];
-		document.getElementById('paidcontentsmall').innerHTML = langstrings[lang]['paidcontentsmall'];
-		document.getElementById('previewsmall').innerHTML = langstrings[lang]['previewsmall'];
-		document.getElementById('numberofcreditssmall').innerHTML = langstrings[lang]['numberofcreditssmall'];
-		document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
-		document.getElementById('submitpaypal').value = langstrings[lang]['buywithpaypal'];;
-		
-			
-			
-	</script>
-	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-	<script src="jquery.progressbar.min.js"></script>
-
-	<script>
-		$("label[for=name]").text(langstrings[lang]['name']);
-		$("label[for=password]").text(langstrings[lang]['password']);
 	
 		function includeScript(filename, scriptname) {
 			var htmlDoc = document.getElementsByTagName('body').item(0);
@@ -347,6 +147,115 @@
 			script.type = 'text/javascript';
 			htmlDoc.appendChild(script);
 		}
+		function escapestring(str) {
+			if (str) {
+				return str.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g,'\\$1')
+			} else {
+				return str;
+			}
+		}
+		function createCookie(name, value, days) {
+			var date = new Date();
+			date.setTime(date.getTime()+(days*24*60*60*1000));
+			var expires = "; expires="+date.toGMTString();
+			document.cookie = name + "=" + value + expires + "; path=/; ";
+		}
+		function readCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split( ';');
+			for( var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while ( c.charAt( 0)==' ') c = c.substring( 1,c.length);
+				if ( c.indexOf( nameEQ) == 0) return c.substring( nameEQ.length,c.length);
+			}
+			return null;
+		}
+		
+		var lang;
+		var nav_lang;
+		
+		if (navigator.userLanguage) { // Explorer
+			nav_lang = navigator.userLanguage;
+		} else if (navigator.language) { // FF
+			nav_lang = navigator.language;
+		} else {
+			nav_lang = 'en';
+		}
+		lang = nav_lang.substring(0, 2);
+		switch (lang) {
+			case 'en':
+				break;
+			case 'fr':
+				break;
+			case 'it':
+				break;
+			case 'pl':
+				break;
+			case 'es':
+				break;
+			default:
+				lang = 'en';
+		}
+		
+		var cookielang = readCookie('cacaolang');
+		if (cookielang != null) {
+			lang = cookielang;
+		}
+		
+	</script>
+	<script src="languagestrings.js"></script>
+	<script>
+		/** 
+		  translation of the interface strings
+		*/
+		
+		function initializelanguagestrings() {
+			//document.getElementsByTagName('title').item(0).innerHTML = langstrings[lang]['cacaowebadmin'];
+			document.getElementById('h2mydownloads').innerHTML = langstrings[lang]['mydownloads'];
+			document.getElementById('h2myuploads').innerHTML = langstrings[lang]['myuploads'];
+			//document.getElementById('h2newupload').innerHTML = langstrings[lang]['newupload'];
+			document.getElementById('h2cacaowebstatus').innerHTML = langstrings[lang]['h2cacaowebstatus'];
+			document.getElementById('cacaowebactions').innerHTML = langstrings[lang]['cacaowebactions'];
+			document.getElementById('turnoff').innerHTML = langstrings[lang]['turnoff'];
+			document.getElementById('uninstall').innerHTML = langstrings[lang]['uninstall'];
+			document.getElementById('backmainpage').innerHTML = langstrings[lang]['backmainpage'];
+			document.getElementById('loginbtn').innerHTML = langstrings[lang]['login'];
+			document.getElementById('createbtn').innerHTML = langstrings[lang]['create'];
+			document.getElementById('numberofcreditstobuy').innerHTML = langstrings[lang]['numberofcreditstobuy'];
+			document.getElementById('submitpaypal').innerHTML = langstrings[lang]['buywithpaypal'];
+			document.getElementById('uploadyourfiles').innerHTML = langstrings[lang]['uploadyourfiles'];
+			//document.getElementById('makemoney').innerHTML = langstrings[lang]['makemoney'];
+		}
+		
+		initializelanguagestrings();
+		
+			
+	</script>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+	<script src="jquery.progressbar.min.js"></script>
+
+	<script>
+	
+		var hostprefix = "";
+		if (window.location.href.indexOf("http://") == -1) {
+			hostprefix = "http://127.0.0.1:4001/";
+		}
+		
+		
+		$("label[for=name]").text(langstrings[lang]['name']);
+		$("label[for=password]").text(langstrings[lang]['password']);
+	
+
+		function languagechange(elt) {
+			var idx = elt.selectedIndex;
+			lang = elt.options[idx].value;
+			searchlang = lang;
+			initializelanguagestrings();
+			createCookie('cacaolang', lang, 3650);
+		}
+		
 		function ajaxrequest(link) {
 			$.ajax({
 				url: link,
@@ -374,20 +283,20 @@
 		
 		function deleteDownload(provider, videoid) {
 			$.ajax({
-				url: provider + "/delete.caml?videoid=" + videoid,
+				url: hostprefix + provider + "/delete.caml?videoid=" + videoid,
 				success: getdownloads()
 			});
 		}
 		function deleteFileDownload(fileid) { // TODO: faire tout ca avec un this et un obj, c'est mieux
 			$.ajax({
-				url: "file/delete.caml?fileid=" + fileid,
+				url: hostprefix + "file/delete.caml?fileid=" + fileid,
 				success: getdownloads()
 			});
 		}
 		function removePublishedFile(fileid) {
 			$.ajax({
-				url: "file/delete.caml?fileid=" + fileid,
-				success: function () { getcurrentuploads(); getalluploads(); }
+				url: hostprefix + "file/delete.caml?fileid=" + fileid,
+				success: function () { getcurrentuploads(); }
 			});
 		}
 
@@ -456,15 +365,14 @@
 					var div = document.createElement("div"); // obligé de créer un objet dans le DOM pour que la progressbar fonctionne
 					div.className = "row";
 					div.setAttribute('rowdownid', item.fileid);
-					div.setAttribute("colspan", "4");
 					div.innerHTML = rowtitle + rowprogress + rowdelete + vlcplayback + rowdownload + showlink + rowlinks;
 					$("#mydownloads").append(div);
 					$(div).find(".downloadprogressbar").progressBar(item.progress, { showText: false, boxImage: 'progressbar.gif', barImage: 'progressbg_red.gif'});
 				}
 			});
 			$.each(downloads, function (i, item) {
-				if ($("div[rowdownid=" + item.videoid + "]").length > 0) {
-					$("div[rowdownid=" + item.videoid + "]").find(".downloadprogressbar").progressBar(item.progress);
+				if ($("div[rowdownid=" + escapestring(item.videoid) + "]").length > 0) {
+					$("div[rowdownid=" + escapestring(item.videoid) + "]").find(".downloadprogressbar").progressBar(item.progress);
 				} else {
 					var rowtitle = '<div class="title">' + item.title + '</div>';
 					var rowprogress = '<div class="progress"><div class="downloadprogressbar"></div></div>';
@@ -480,6 +388,12 @@
 						link = "http://megavideo.com/?v=" + item.videoid;
 					} else if (item.provider == "videobb") {
 						link = "http://videobb.com/video/" + item.videoid;
+					} else if (item.provider == "videozer") {
+						link = "http://videozer.com/video/" + item.videoid;
+					} else if (item.provider == "mixture") {
+						link = "http://mixturecloud.com/video=" + item.videoid;
+					} else if (item.provider == "putlocker") {
+						link = "http://putlocker.com/file/" + item.videoid;
 					}
 					var rowlinks = "<div class='linkdisplay' style='display:none'><input name=\"link\" id=\"link\" value=\"" + link + "\" size=\"80\"></input></div>";
 					var showlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\"><span>" + langstrings[lang]['showlink'] + "</span></a></div>";
@@ -503,8 +417,9 @@
 		  if the row is already here then just the progress bar is updated
 		*/
 		function addtomyuploads(rowid, fileid, title, season, episode, progress) {
-			if ($("div[rowupid=" + rowid + "]").length > 0) {
-				if (progress > -1) { $("div[rowupid=" + rowid + "]").find(".uploadprogressbar").progressBar(progress); }
+			if (progress > 100) { progress = 100; };
+			if ($("div[rowupid=" + escapestring(rowid) + "]").length > 0) {
+				if (progress > -1) { $("div[rowupid=" + escapestring(rowid) + "]").find(".uploadprogressbar").progressBar(progress); }
 			} else {
 				var showdetails = '';
 				if (season > 0 && episode > 0) {
@@ -514,8 +429,9 @@
 				var rowprogress = '<div class="progress"><div class="uploadprogressbar"></div></div>';
 				var rowdelete = "<div class='delete'><a class='deletebutton' href='#' title='delete' onclick=\"removePublishedFile('" + fileid + "')\"></a></div>";
 				var rowshowlink = "<div class='showlink'><a href='#' onclick=\"toggleLink(event, this)\">" + langstrings[lang]['showlink'] + "</a></div>";
-				var rowlinks = "<div class='linkdisplay' style='display:none'><div>" + langstrings[lang]['smalllink'] + "</div><input name=\"link\" id=\"link\" size=\"80\"></input><div>" + langstrings[lang]['smallembed'] + "</div><textarea name=\"embed\" id=\"embed\" rows=\"4\" cols=\"60\"></textarea></div>";
+				var rowlinks = "<div class='linkdisplay' style='display:none'><div>" + langstrings[lang]['smalllink'] + "</div><input name=\"link\" id=\"link\" size=\"80\"></input><div><small>" + langstrings[lang]['smallembed'] + "</small></div><textarea name=\"embed\" id=\"embed\" rows=\"4\" cols=\"60\"></textarea><div><small>Web</small> " + langstrings[lang]['smalllink'] + "</div><input name=\"externallink\" id=\"externallink\" size=\"80\"></input></div>";
 				var link = 'http://127.0.0.1:4001/?f=' + fileid;
+				var externallink = 'http://watch.cacaoweb.org/?play=1&videoid=' + fileid;
 				var embed = '<object width="640" height="360"><param name="allowFullScreen" value="true" /><param name="flashvars" value="file=' + link + '" /><param name="movie" value="http://cacaoweb.org/player.swf" /><embed src="http://cacaoweb.org/player.swf" flashvars="file=' + link + '" width="640" height="360" allowFullScreen="true" /></object>';
 				var div = document.createElement("div"); // obligé de créer un objet dans le DOM pour que la progressbar fonctionne
 				div.className = "row";
@@ -524,10 +440,11 @@
 				div.innerHTML = rowtitle  + rowprogress + rowdelete + rowshowlink + rowlinks;
 				$("#myuploads").append(div);
 				if (fileid != '') {
-					$(div).find(".linkdisplay > input").val(link);
+					$(div).find(".linkdisplay > #link").val(link);
+					$(div).find(".linkdisplay > #externallink").val(externallink);
 					$(div).find(".linkdisplay > textarea").val(embed);
 				}
-				if (progress == -1) { progress = 100; }; // TODO: a enlever car ce doit etre calcule par moi meme 
+				if (progress == -1) { progress = 100; }; // TODO: a enlever car ça doit être calculé par moi même 
 				$(div).find(".uploadprogressbar").progressBar(progress, { showText: false, boxImage: 'progressbar.gif', barImage: { 0:	'progressbg_red.gif', 30: 'progressbg_orange.gif', 70: 'progressbg_green.gif' }});
 			}
 		
@@ -572,228 +489,20 @@
 		
 		function getdownloads() {
 			$.ajax({
-				url: "downloads",
+				url: hostprefix + "downloads",
 				dataType: "xml",
 				success: parseXMLdownloads
 			});
 		}		
 		function getcurrentuploads() {
 			$.ajax({
-				url: "uploads",
+				url: hostprefix + "uploads",
 				dataType: "xml",
 				success: parseXMLuploads
 			});
 		}
 		
 
-		
-		/**
-		  after the function "getalluploads()" is called,
-		  the remote server answers with a script that first sets up variables "remoteuploads", "directuploads", "transcodeduploads" 
-		  and then calls the function "getuploadscallback()"
-		  to parse the variable "remoteuploads" and shows the result to the user
-		 */
-		var currentuploadposition = 0;
-		function getuploadscallback() {
-			$.each(remoteuploads, function (i, item) {
-				var realtitle = '';
-				if (item.title == '') {
-					var provider = '';
-					if (item.provider == 0) { provider = 'http://megavideo.com/?v='; } else { provider = 'http://videobb.com/video/'; }
-					realtitle = provider + item.videoid;
-				} else {
-					realtitle = item.title;
-				}
-				
-				var rowid = '';
-				if (item.fileid == '') { rowid = item.videoid; } else { rowid = item.fileid; }
-
-				var progress = 10;
-				if (item.fileid != '') { progress = 100; }
-				
-				addtomyuploads(rowid, item.fileid, realtitle, item.season, item.episode, progress);
-			});
-			$.each(directuploads, function (i, item) {
-				addtomyuploads(item.fileid, item.fileid, item.title, item.season, item.episode, -1);
-			});
-			$.each(transcodeduploads, function (i, item) {
-				addtomyuploads(item.fileid, item.fileid, item.title, item.season, item.episode, 100);
-			});
-			
-			/** shows the next and previous links to page the list of uploads */
-			if (remoteuploads.length + directuploads.length + transcodeduploads.length > 30) {
-				var newpos = currentuploadposition + 30;
-				$('#uploadslistnext').html('<a href="#" onclick="getalluploads(\'' + newpos + '\')">' + langstrings[lang]['next'] + '</a>');
-				$('#uploadslistnext').show();
-			} else {
-				$('#uploadslistnext').hide();
-			}
-			if (currentuploadposition > 0) {
-				var newpos = currentuploadposition - 30;
-				$('#uploadslistprevious').html('<a href="#" onclick="getalluploads(\'' + newpos + '\')">' + langstrings[lang]['previous'] + '</a>');
-				$('#uploadslistprevious').show();
-			} else {
-				$('#uploadslistprevious').hide();
-			}
-		}
-		function getalluploads(pos) {
-			currentuploadposition = pos;
-			includeScript('http://uploads.cacaoweb.org/getuploads.php?pos=' + pos, 'getuploadscript');
-		}
-		function uploadcallback() {
-			getalluploads(currentuploadposition);
-			alert("upload done successfully");
-		}
-		
-		$(function () {
-			/** callback is isloggedincallback(isloggedin, username, money) */
-			includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
-			getalluploads(0);
-		});
-	
-		
-		
-		
-		
-		
-		
-	
-		/** 
-		  upload management
-		*/
-		
-		function submit() {
-			var selectedtab = $( "#upload-tabs" ).tabs( "option", "selected" );
-			if (selectedtab == 0) { // Browse
-				if ($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') { // si le fichier est une vidéo, on envoie au service de transcodage
-					var uploadid = Math.floor(Math.random() * 1000000000);
-					var actionurl = "http://h264stage.com/uploadscripts/upload?cacaowebupload=1&uploadid=" + uploadid + '&user=' + encodeURIComponent(username) + '&contenttype=' + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + $('#title').val() + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
-					if ($('#paidcontent').is(':checked')) {
-						var previewallowed = 0;
-						if ($('#preview').is(':checked')) { previewallowed = 1; }
-						actionurl = actionurl + '&numberofcredits=' + $('#numberofcredits').val() + '&previewallowed=' + previewallowed;
-					}
-					$("#upload_frame").append('<iframe name="myiframe' + uploadid + '" style="display:none"></iframe>');
-					$("#formupload").attr('target', 'myiframe' + uploadid);
-					$("#formupload").attr('action', actionurl);
-					$("#formupload").submit();
-					$("#upload_frame").append('<iframe height="30px" width="500px" frameborder="0" border="0" src="http://h264stage.com/uploadprogressframe.php?uploadid=' + uploadid + '" scrolling="no" scrollbar="no" allowtransparency="true"></iframe>'); 
-				} else if ($('#file').val() != '') { // sinon upload direct
-					$.ajax({
-						url: "upload?filepath=" + encodeURIComponent($('#file').val()) + '&restricted=' + $('#paidcontent').is(':checked') + '&previewallowed=' + $('#preview').is(':checked'),
-						success: function(fileid) {
-							if (fileid == "") {
-								alert("upload failed");
-							} else {
-								var actionstring = "fileid=" + fileid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val() + '&numberofcredits=' + $('#numberofcredits').val();
-								includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
-							}
-						}
-					});	
-				}
-			} else if (selectedtab == 1) { // Remote Upload
-				var url = $('#url').val();
-				if (url.indexOf('megavideo.com/?v=') > -1) { // megavideo
-					var pos1 = url.indexOf('v=');
-					var megavideoid = url.substr(pos1 + 2);
-					var actionstring = "providertype=0&videoid=" + megavideoid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
-					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
-					$.ajax({
-						url: "remoteupload?provider=0&videoid=" + megavideoid,
-						success: function(data) {}
-					});	
-				} else if (url.indexOf('videobb.com/video/') > -1) { // videobb
-					var pos1 = url.lastIndexOf('/');
-					var videobbid = url.substr(pos1 + 1);
-					var actionstring = "providertype=1&videoid=" + videobbid + "&contenttype=" + $('#contenttype').val() + '&language=' + $('#language').val() + '&subtitles=' + $('#subtitles').val() + '&title=' + encodeURIComponent($('#title').val()) + '&season=' + $('#season').val() + '&episode=' + $('#episode').val();
-					includeScript('http://uploads.cacaoweb.org/upload.php?' + actionstring, 'upload');
-					$.ajax({
-						url: "remoteupload?provider=1&videoid=" + videobbid,
-						success: function(data) {}
-					});	
-				} else if (url.indexOf('http://') > -1 && url.indexOf('videobb.com') == -1 && url.indexOf('megavideo.com') == -1) { // http direct
-					/* TODO */
-					
-				} else { // type inconnu
-					alert(langstrings[lang]['linknotrecognized']);
-				}
-			}
-		}
-			
-		function choose() {
-			if ($('#contenttype').val() == '') {
-				alert("choose a category first");
-			} else {
-				$.ajax({
-						url: "openfiledialogforupload",
-						success: function(path) {
-								$('#file').val(path);
-							}
-				});
-			}
-		}
-	
-		/** 
-		  dynamic features for video metadata upload, update the shows list when needed
-		*/
-		function getshowscallback() {
-			$('#title').remove();
-			var select = $("<select></select>").attr('id','title');
-			$.each(shows, function(id, show) {
-				select.append('<option value="' + show.showname + '">' + show.showname  + '</option>');
-			});
-			$('#titlefield').append(select);
-		}
-		function updatefields() {
-			var newcontenttype = $('#contenttype').val();
-			if (newcontenttype == 'tvshow') {
-				document.getElementById('smalltitle').innerHTML = langstrings[lang]['smallshowtitle'];
-				$('#tvshowdetails').show("fast");
-				var contentlang = $('#language').val();
-				if (contentlang == 'fr' || contentlang == 'en') {
-					includeScript('http://uploads.cacaoweb.org/getshows.php?lang=' + contentlang, 'getshows');
-				} else {
-					$('#title').remove();
-					var input = $("<input></input>").attr('type', 'text').attr('id', 'title').attr('size', '40');
-					$('#titlefield').append(input);
-				}
-			} else {
-				document.getElementById('smalltitle').innerHTML = langstrings[lang]['smalltitle'];
-				$('#title').remove();
-				var input = $("<input></input>").attr('type', 'text').attr('id', 'title').attr('size', '40');
-				$('#titlefield').append(input);
-				$('#tvshowdetails').hide("fast");
-			}
-		}
-		$('#contenttype').change(function() {
-			updatefields();
-		});
-		
-		$('#language').change(function() {
-			updatefields();
-		});
-		
-		$('#paidcontent').change(function() {
-			if ($('#paidcontent').is(':checked')) {
-				$('#paidcontentdetails').show();
-			} else {
-				$('#paidcontentdetails').hide();
-			}
-		});
-		
-		/** change the type of upload because in case of videos the file needs to be sent to the transcoding service */
-		$('#contenttype').change(function() {
-			if (($('#contenttype').val() == 'movie' || $('#contenttype').val() == 'tvshow' || $('#contenttype').val() == 'anime' || $('#contenttype').val() == 'documentary') && $("#upload-tabs").tabs("option", "selected") == 0) {
-				$("#filewithpath").hide();
-				$("#formupload").show();
-			} else {
-				$("#formupload").hide();
-				$("#filewithpath").show();
-			}
-		});
-		
-		
-		
 		
 		
 		/**
@@ -804,48 +513,100 @@
 		var tcpnattype;
 		
 		function updatestatus() {
+			var erroricon = "<a href='index.html' data-icon='&#9888' class='button pink back glass icon'>Warning</a>";
 			if (dhtnetworkstatus == 'NATNotCone') {
-				$("#cacaowebstatus").html(langstrings[lang]['natnotcone']);
+				$("#cacaowebstatus").html(erroricon + langstrings[lang]['natnotcone']);
 			} else if (dhtnetworkstatus == 'DHTNotConnected') {
-				$("#cacaowebstatus").html(langstrings[lang]['notconnected']);
+				$("#cacaowebstatus").html(erroricon + langstrings[lang]['notconnected']);
 			} else if (tcpnattype == 'Bad') {
-				$("#cacaowebstatus").html(langstrings[lang]['natnotp2pfriendly']);
+				$("#cacaowebstatus").html(erroricon + langstrings[lang]['natnotp2pfriendly']);
 			} else {
 				$("#cacaowebstatus").html(langstrings[lang]['workingfine']);
 			}
 		}
 		
-		function checkstatus() {
+		
+		function processNatDetails() {
+			function getYesOrNo(v) {
+				if (v)
+					return "yes";
+				else
+					return "no";
+			}
+			function addNewBoolDiv(param, value) {
+				var div = '<div class="detailslabel">' + param + ':</div><div class="detailsvalue">' + getYesOrNo(value) + '</div>';
+				$("#natdetailsudp").append(div);
+			}
+			addNewBoolDiv("cone", natdetails.udp.cone);
+			addNewBoolDiv("connected", natdetails.udp.connected);
+			var div0 = '<div class="detailslabel">upnp status:</div><div class="detailsvalue">' + natdetails.udp.upnpstatus + '</div>';
+			$("#natdetailsudp").append(div0);
+			
+			var div1 = '<div class="detailslabel">port preserving:</div><div class="detailsvalue">' + getYesOrNo(natdetails.tcp.portpreserving) + '</div>';
+			$("#natdetailstcp").append(div1);
+			var div2 = '<div class="detailslabel">NAT type:</div><div class="detailsvalue">' + natdetails.tcp.nattype + '</div>';
+			$("#natdetailstcp").append(div2);
+			var div3 = '<div class="detailslabel">upnp status:</div><div class="detailsvalue">' + natdetails.tcp.upnpstatus + '</div>';
+			$("#natdetailstcp").append(div3);
+		
+		}
+		
+		/* chain of ajax calls to update anything (i'm trying as a chain because it doesn't work properly) */
+		function checkNetwork() {
 			$.ajax({
-				url: "getdhtnetworkstatus",
+				url: hostprefix + "getdhtnetworkstatus",
 				dataType: "xml",
 				success: function(xml) {
 					$(xml).find("results").each(function() {
 						dhtnetworkstatus = $(this).text();
 						updatestatus();
 					});
-				}
+					getdownloads();
+					getcurrentuploads();
+				},error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("local error in ajax request");
+				} 
 			});
+		}
+		function checkNAT() {
 			$.ajax({
-				url: "gettcpnattype",
+				url: hostprefix + "gettcpnattype",
 				dataType: "xml",
 				success: function(xml) {
 					$(xml).find("results").each(function() {
 						tcpnattype = $(this).text();
-						updatestatus();
 					});
+					checkNetwork();
 				}
 			});
+		}
+		function checkCacaoReplication() {
+			$.ajax({
+				url: hostprefix + "replicationactivated",
+				dataType: "xml",
+				success: function(xml) {
+					$(xml).find("results").each(function() {
+						if ($(this).text() == "true") {
+							$('#upload-tabs').show();
+						} else {
+							$('#upload-tabs').hide();
+							$('#h2newupload').html("The upload service is currently offline for maintenance. It will be back soon.");
+						}
+					});
+					checkNAT();
+				}
+			});
+			
 			// TODO: il faudrait ajouter un call pour errors
-			getdownloads();
-			getcurrentuploads();
+
 		}
 		
-		checkstatus();
-		setInterval('checkstatus()', 2000);
 		
-		
-		
+		getdownloads();
+		getcurrentuploads();
+		checkCacaoReplication();
+		setInterval('checkCacaoReplication()', 2000);
+		includeScript(hostprefix + 'natstatus', 'natstatus');
 		
 		
 		
@@ -853,14 +614,14 @@
 		  all types of jquery controls initialization
 		*/
 		$("button").button();
-		$("#upload-tabs" ).tabs();
 		
 		
 		
+
 		
 		/** 
 		  authentication and account management functions like login and register 
-		*/
+		  */
 		
 		function register() {
 			$('#createuser-form').dialog('open');
@@ -868,7 +629,13 @@
 		function login() {
 			$('#login-form').dialog('open');
 		}
-
+		/** 
+		  credits management 
+		  */
+		function showcreditsform() {
+			$('#buycredits-form').dialog('open');
+		}
+		
 		function updateTips( t ) {
 			var tips = $( ".validateTips" );
 			tips
@@ -898,23 +665,17 @@
 				return true;
 			}
 		}
-		function showcreditsform() {
-			$(".buycredits").toggle();
-		}
 		$("#depositform").submit(function() {
 			var amount = $('input:radio[name=form[radio]]:checked').val();
 			var price;
 			switch (amount) {
-				case "20":
-					price = 2;
-					break;
 				case "50":
 					price = 5;
 					break;
-				case "150":
+				case "100":
 					price = 10;
 					break;
-				case "400":
+				case "200":
 					price = 20;
 					break;
 				default:
@@ -922,7 +683,20 @@
 			}
 			$('input:hidden[name=amount_1]').val(price);
 			$('input:hidden[name=item_name_1]').val(amount + ' Credits');
+			$('input:hidden[name=item_number_1]').val('CRED' + amount);
+			$('input:hidden[name=custom]').val(username);
 		});
+		
+		
+		
+		$("#buycredits-form").dialog({
+			autoOpen: false,
+			height: 250,
+			width: 250,
+			modal: true
+		});
+		
+		
 		
 		var username;
 		var money;
@@ -934,29 +708,34 @@
 			height: 350,
 			width: 350,
 			modal: true,
-			buttons: {
-				'Create new user': function() {
-					var bValid = true;
-					allFields.removeClass('ui-state-error');
+			buttons: [
+				{
+					text: langstrings[lang]['create'],
+					click: function() {
+						var bValid = true;
+						allFields.removeClass('ui-state-error');
 
-					bValid = bValid && checkLength($("#registername"), "username", 3, 16);
-					bValid = bValid && checkLength($("#email"), "email", 6, 80);
-					bValid = bValid && checkLength($("#registerpassword"), "password", 4, 16);
+						bValid = bValid && checkLength($("#registername"), "username", 3, 16);
+						bValid = bValid && checkLength($("#email"), "email", 6, 80);
+						bValid = bValid && checkLength($("#registerpassword"), "password", 4, 16);
 
-					bValid = bValid && checkRegexp($("#registername"), /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter.");
-					// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
-					bValid = bValid && checkRegexp($("#email"),/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. albert@ducon.com");
-					bValid = bValid && checkRegexp($("#registerpassword"), /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9");
-					if (bValid) {
-						includeScript('http://uploads.cacaoweb.org/register.php?' + "username=" + $("#registername").val() + "&password=" + $("#registerpassword").val() + "&email=" + $("#email").val(), 'registerscript');
-						username = $("#registername").val();
-						currentauthdialog = $(this);
+						bValid = bValid && checkRegexp($("#registername"), /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter.");
+						// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+						bValid = bValid && checkRegexp($("#email"),/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. albert@ducon.com");
+						bValid = bValid && checkRegexp($("#registerpassword"), /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9");
+						if (bValid) {
+							includeScript(hostprefix + 'register?username=' + $("#registername").val() + '&password=' + $("#registerpassword").val() + '&email=' + $("#email").val(), 'registerscript');
+							currentauthdialog = $(this);
+						}
 					}
 				},
-				'Cancel': function() {
-					$(this).dialog('close');
-				}
-			},
+				{
+					text: langstrings[lang]['cancel'],
+					click: function() {
+						$(this).dialog('close');
+					}
+				},
+			],
 			close: function() {
 				allFields.val('').removeClass('ui-state-error');
 			}
@@ -964,14 +743,13 @@
 		
 		$("#login-form").dialog({
 			autoOpen: false,
-			height: 350,
+			height: 250,
 			width: 350,
 			modal: true,
 			buttons: {
 				'Login': function() {
 					$("#loginname").removeClass('ui-state-error');
-					includeScript('http://uploads.cacaoweb.org/login.php?' + "username=" + $("#loginname").val() + "&password=" + $("#loginpassword").val(), 'loginscript');
-					username = $("#loginname").val();
+					includeScript(hostprefix + 'login?username=' + $("#loginname").val() + "&password=" + $("#loginpassword").val(), 'loginscript');
 					currentauthdialog = $(this);
 				},
 				'Cancel': function() {
@@ -985,10 +763,9 @@
 		
 		function registercallback(result) {
 			if (result == 1) {
-				$(".auth-buttons").hide();
-				$(".auth-notification").text(langstrings[lang]['welcome'] + username + " !");
-				$(".auth-notification").css('font-size', '12px');
+				alert(langstrings[lang]['registersuccessful']);
 				currentauthdialog.dialog('close');
+				login();
 			} else {
 				$("#registername").addClass('ui-state-error');
 				$(".validateTips").text('Username already exists, please choose another one.').addClass('ui-state-highlight');
@@ -999,9 +776,8 @@
 		}
 		function logincallback(result) {
 			if (result == 1) {
-				getalluploads();
 				currentauthdialog.dialog('close');
-				includeScript('http://uploads.cacaoweb.org/isloggedin.php', 'isloggedinscript');
+				includeScript(hostprefix + 'isloggedin', 'isloggedinscript');
 			} else {
 				$("#loginname").addClass('ui-state-error');
 				$("#validateTipsLogin").text('Username or password is wrong').addClass('ui-state-highlight');
@@ -1010,19 +786,48 @@
 				}, 500);
 			}
 		}
-		function isloggedincallback(result, user, money) {
-			if (result == 1) {
-				username = user;
-				money = money;
-				$(".auth-buttons").hide();
-				$(".auth-notification").html(langstrings[lang]['welcome']  + user + " ! " + langstrings[lang]['mymoney'].replace('{1}', money));
-				$(".auth-notification").css('font-size', '12px');
+		
+		
+		$(function () {
+			var url = window.location.href;
+			if (url.indexOf("register") > -1) {
+				register();
+			}
+			if (url.indexOf("buycredits") > -1) {
+				showcreditsform();
+			}
+		});
+		
+		function statuscallback(isloggedin, ispremium, premiumend) {
+			if (isloggedin) {
+				if (ispremium) {
+					$('#premiuminfo').text(langstrings[lang]['ispremium'] + premiumend);
+				} else {
+					$('#premiuminfo').html(langstrings[lang]['notpremium']);
+				}
+				$(".auth-notification").html(langstrings[lang]['welcome']  + username + " ! " + langstrings[lang]['mymoney']);
 			} else {
 				$(".auth-buttons").show();
-				$(".auth-notification").text(langstrings[lang]['notloggedin']);
+-				$(".auth-notification").text(langstrings[lang]['notloggedin']);
+			}
+		}
+		
+		function loginstatuscallback(result, user, token) {
+			if (result == true) {
+				username = user;
+				$(".auth-buttons").hide();
+				$("input[name=custom]").val(username);
+				includeScript('http://account.cacaoweb.org/status?token=' + token, 'statusscript');
+			} else {
+				$(".auth-buttons").show();
+-				$(".auth-notification").text(langstrings[lang]['notloggedin']);
 			}
 			$(".authbox").show();
 		}
+		
+		$().ready(function () {
+			includeScript(hostprefix + 'isloggedin', 'isloggedinlocalscript');
+		})
 		
 
     </script>

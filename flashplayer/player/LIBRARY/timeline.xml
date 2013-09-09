@@ -1,0 +1,56 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="timeline" itemID="4b022ec4-00000189" lastModified="1296490488" lastUniqueIdentifier="6">
+  <timeline>
+    <DOMTimeline name="timeline">
+      <layers>
+        <DOMLayer name="progressbar" color="#9933CC" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="progressbar" name="myprogressbar" centerPoint3DX="-121.5" centerPoint3DY="-6.6">
+                  <matrix>
+                    <Matrix a="0.350021362304688" tx="-176.75" ty="-13.2"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="137.4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="loadbar" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="loadbar" name="myloadbar" selected="true" centerPoint3DX="-116.65" centerPoint3DY="-6.55">
+                  <matrix>
+                    <Matrix a="0.37506103515625" d="0.79998779296875" tx="-175.95" ty="-11.85"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="159.95" y="10"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="loadbarcontainer" color="#4FFF4F" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="loadbarfull" name="myloadbarfull" centerPoint3DX="-18" centerPoint3DY="-6.9">
+                  <matrix>
+                    <Matrix a="1.00006103515625" d="1.01268005371094" tx="-176" ty="-11.95"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point y="7.9"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

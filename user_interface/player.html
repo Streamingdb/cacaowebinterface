@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>cacaoweb</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+	<link rel="stylesheet" href="css/general.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="css/player.css" type="text/css" media="screen">
+</head>
+<body>
+	<div id="page_wrapper" class="search">
+		<div id="head">
+			<div id="toplogo" class="smalllogo">
+				<a href="http://www.cacaoweb.org/?noredirect=yes"><img src="img/logo.png" alt="cacaoweb"></a>
+			</div>
+			<div id="topsearchbox" class="topsearch">
+				<div class="input_wrapp">
+					<input id="smallsearchbar" class="search_bar" name="search_bar" onkeypress="searchboxkeypress(event, this);" type="text" />
+					<a class="search_submit" href="#" onclick="searchbuttonclick(event, this);">
+						<img src="img/mag-glass.png" alt="Search">
+					</a>
+				</div>
+			</div>
+			<ul id="top-toolbar">
+				<li id="auth-notification"></li>
+				<li id="loginbutton"><a onclick="keepDropdownMenu(event, this)" class="outset">Login<span id="logintext"></span><span class="i"></span></a>
+					<ul>
+						<div class="loginarea">
+						<form onsubmit="submitlogin(event)">
+							<label for="login" id="loginlabel"></label>
+							<input class="loginfield" id="logininput" name="login" type="text" />
+							<label for="password" id="passwordlabel"></label>
+							<input class="loginfield" id="passwordinput" name="password" type="password" />
+							<div class="loginbuttons">
+								<input type="submit" name="submit" id="loginbtn" />
+								<a id="registerbtn" href="javascript:register()"></a>
+							</div>
+						</form>
+						</div>
+					</ul>
+				</li>
+				<li><a href="admin.html" class="inset icon i-heart"><span id="share">Share</span><span class="i"></span></a></li>
+				<li><a id="mana" href="admin.html" class="inset icon i-config">My cacaoweb<span class="i"></span></a></li>
+				<li><a onclick="keepDropdownMenu(event, this)" class="outset icon i-dropdown"><span id="more">More</span><span class="i"></span></a>
+					<ul>
+						<li><a href="http://forum.cacaoweb.org/" target="_newtab" id="helpmenu"></a></li>
+						<li><a href="http://forum.cacaoweb.org/" target="_newtab" id="forummenu"></a></li>
+						<li><a href="http://cacaoweb.org/?noredirect#download" target="_newtab" id="downloadmenu"></a></li>
+						<li><a href="http://cacaoweb.org/?noredirect#dev" target="_newtab" id="devmenu"></a></li>
+						<li><a href="http://cacaoweb.org/?noredirect#money" target="_newtab" id="moneymenu"></a></li>
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+		<div id="content">
+			<div id="video"></div>
+			<div id="sidebar">
+				<div id="sidebar_inner">
+				
+				</div>
+			</div>
+		</div>
+		<div id="footer_push"></div><!-- needed for sticky footer -->
+	</div> <!-- end wrapper -->
+	<div id="footer"></div>
+</body>
+</html>

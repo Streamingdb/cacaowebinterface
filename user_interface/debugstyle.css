@@ -1,0 +1,100 @@
+
+
+html, body { 	
+	background-color: #000000; 
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 11px; 
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	color: #ffffff;
+}
+
+.container {
+	padding: 20px 20px 20px 20px;
+}
+
+label {
+    float: left;
+    clear: left;
+	padding-right: 10px;
+	font-weight: bold;
+}
+
+h2 {
+	clear: both;
+}
+
+
+.hidden {
+	display: none;
+}
+.spacer {
+	margin-bottom: 5px;
+}
+
+.dhtinfo > div {
+	clear: both;
+}
+
+
+.plus {
+	float: left;
+	padding-right: 5px;
+	cursor: pointer;
+}
+#swarminfo label {
+    clear: left;
+}
+.swarm {
+	clear: both;
+}
+.swarm > label {
+    clear: none;
+}
+.swarmdata {
+	position: relative;
+	left: 20px;
+	margin-bottom: 10px;
+}
+.swarmdata > label {
+	width: 150px;
+}
+.swarmdatarow {
+	margin-top: 5px;
+	clear: both;
+}
+.headerrow {
+	font-style: italic;
+}
+.connected {
+	color: red;
+}
+.swarmdatarow > div {
+	float: left;
+	margin: 0 5px 0 5px;
+}
+.conndatarow {
+	margin-top: 5px;
+	clear: both;
+}
+.conndatarow > div {
+	float: left;
+	margin: 0 5px 0 5px;
+}
+.ipaddresscol {
+	width: 100px;
+}
+.nattypecol {
+	width: 80px;
+}
+.connectionscol {
+	width: 60px;
+}
+.numcol {
+	width: 50px;
+	text-align: right;
+}
+.url {
+	width: 300px;
+}

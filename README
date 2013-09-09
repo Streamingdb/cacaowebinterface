@@ -1,15 +1,12 @@
   
   
   The files present in this project are all part of the cacaoweb project.
-
-  You need Firefox to view and test the files index.html and admin.html properly. Other browser will not work for testing purposes. 
-  
   
   
   Directories :
   
-    user_interface : 
-	all the files used in the web user interface. The user interface can mostly be tested independently of the cacaoweb program, this is valid for the file index.html which is the main page of the user interface. The admin.html page, which is the management area, is yet testable independently without some minor annoyances.
+    firefox_addon :
+	the firefox addon, currently only replaces megavideo and videobb videos but needs to be updated to handle other types of hosts supported by cacaoweb
 	
     flashplayer :
 	the flash player. It would be good to have the player.fla file under some kind of textual format. Upgrading the project to Flash CS5 should fix this, currently this project is authored with Flash CS4.
@@ -17,5 +14,11 @@
     http_api : 
 	the cacaoweb program exposes functions accessible through an http API. The list of functions can be found roughly between the lines 200-500. More documentation to be written on this. To call a function, you make an http GET request to the relevant functions, for example in a default cacaoweb installation you can call http://127.0.0.1:4001/version in your web browser to get the version of cacaoweb or you can call http://127.0.0.1:4001/digest if you want to get the md5 of the current cacaoweb executable.
 	
+    javascript_api :
+	the javascript API for webmasters. It allows integration of cacaoweb player, features like playlist, through a simple javascript interface.
+	
+	
+    user_interface : 
+	all the files used in the web user interface. The user interface can mostly be tested independently of the cacaoweb program, this is valid for the file index.html which is the main page of the user interface. The admin.html page, which is the management area, is yet testable independently without some minor annoyances. You need Firefox to view and test the files index.html and admin.html properly. Other browser will not work for testing purposes.
 	
 	
