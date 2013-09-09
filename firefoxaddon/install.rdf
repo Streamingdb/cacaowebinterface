@@ -5,6 +5,7 @@
 		<em:name>cacaoweb</em:name>
 		<em:version>1.0.30</em:version>
 		<em:type>2</em:type>
+		<em:bootstrap>true</em:bootstrap>
 		<em:description>Watch videos without limit</em:description>
 		<em:creator>http://www.cacaoweb.org/</em:creator>
 		<em:iconURL>chrome://cacaoweb/skin/cacaoweb-64.png</em:iconURL>
