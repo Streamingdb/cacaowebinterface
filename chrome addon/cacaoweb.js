@@ -409,5 +409,5 @@ var cacaoweb = function () {
 cacaoweb.putmarker();
 cacaoweb.init();
 cacaoweb.malware_protection();
-setTimeout(function () { cacaoweb.findvideos() }, 3000);
+setTimeout(function () { cacaoweb.findvideos() }, 2500);
 setInterval(function () { cacaoweb.findvideos() }, 10000);
