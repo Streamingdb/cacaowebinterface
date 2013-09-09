@@ -10,7 +10,7 @@ langstrings['en']['management'] = 'My cacaoweb';
 langstrings['en']['searchplaceholder'] = 'Search...';
 langstrings['en']['searchhints'] = '';
 langstrings['en']['linknotrecognized'] = 'This type of link is not recognized by cacaoweb';
-langstrings['en']['typeoflinks'] = '<small>Examples :<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
+langstrings['en']['typeoflinks'] = '<small>Examples :<br>cacaoweb: http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>nowvideo: http://nowvideo.ch/video/uGR5SO24apvI<br>putlocker: http://putlocker.com/file/HDU748DS</small>';
 langstrings['en']['outdated'] = 'Your version of cacaoweb is outdated, download the latest version <a href="http://www.cacaoweb.org/?noredirect=yes">here</a>';
 langstrings['en']['nospaceleft'] = 'There is no space left on your media storage. cacaoweb will not work properly.';
 langstrings['en']['noconnectivity'] = 'There is no internet connectivity for cacaoweb and it will not work';
@@ -29,6 +29,7 @@ langstrings['en']['download'] = 'download';
 langstrings['en']['playvideolink'] = 'Play video link';
 langstrings['en']['ratequality'] = 'Rate the quality of this video:';
 langstrings['en']['reportfake'] = 'Wrong video? report as fake';
+langstrings['en']['chromeextension'] = 'Click here to watch this video in Google Chrome';
 
 /** admin page */
 langstrings['en']['cacaowebadmin'] = 'cacaoweb - Administration Interface';
@@ -125,10 +126,10 @@ langstrings['en']['vn'] = "vietnamese";
 
 langstrings['fr'] = new Array();
 langstrings['fr']['management'] = 'Mon cacaoweb';
-langstrings['fr']['searchplaceholder'] = 'Recherchez...';
-langstrings['fr']['searchhints'] = '<small>Recherchez ou collez un lien</small>';
+langstrings['fr']['searchplaceholder'] = 'Recherchez films, séries...';
+langstrings['fr']['searchhints'] = '<small>Recherchez films, séries, anime ou collez un lien</small>';
 langstrings['fr']['linknotrecognized'] = 'Ce type de lien n\'est pas reconnu par cacaoweb';
-langstrings['fr']['typeoflinks'] = '<small>Exemples de liens reconnus:<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>megavideo: http://megavideo.com/?v=TUF78DFD<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
+langstrings['fr']['typeoflinks'] = '<small>Exemples de liens reconnus:<br>cacaoweb: http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>nowvideo: http://nowvideo.ch/video/uGR5SO24apvI<br>putlocker: http://putlocker.com/file/HDU748DS</small>';
 langstrings['fr']['outdated'] = 'Votre version de cacaoweb n\'est pas à jour, téléchargez la dernière version <a href="http://www.cacaoweb.org/?noredirect=yes">ici</a>';
 langstrings['fr']['nospaceleft'] = 'Il n\'y a plus de place sur votre système de stockage, cacaoweb ne va plus fonctionner correctement.';
 langstrings['fr']['noconnectivity'] = 'cacaoweb n\'a pas de connectivité internet et donc ne fonctionne pas';
@@ -147,6 +148,7 @@ langstrings['fr']['download'] = 'télécharger';
 langstrings['fr']['playvideolink'] = 'Jouer le lien vidéo';
 langstrings['fr']['ratequality'] = 'Votre avis sur la qualité de cette vidéo:';
 langstrings['fr']['reportfake'] = 'Mauvaise vidéo? le signaler';
+langstrings['fr']['chromeextension'] = 'Cliquez ici pour regarder cette vidéo avec Google Chrome';
 
 /** admin page */
 langstrings['fr']['cacaowebadmin'] = 'cacaoweb - Interface d\'administration';
@@ -242,10 +244,10 @@ langstrings['fr']['vn'] = "vietnamien";
 
 langstrings['it'] = new Array();
 langstrings['it']['management'] = 'Mio Cacaoweb';
-langstrings['it']['searchplaceholder'] = 'Cerca...';
-langstrings['it']['searchhints'] = '<small>Ricerca Film, Serie TV o incolla un link</small>';
+langstrings['it']['searchplaceholder'] = 'Cerca films, serie...';
+langstrings['it']['searchhints'] = '<small>Ricerca Film, Serie TV, Anime o incolla un link</small>';
 langstrings['it']['linknotrecognized'] = 'Questo tipo di link non è ancora supportato da cacaoweb';
-langstrings['it']['typeoflinks'] = '<small>Esempio :<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>megavideo: http://megavideo.com/?v=TUF78DFD<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
+langstrings['it']['typeoflinks'] = '<small>Esempio :<br>cacaoweb: http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>nowvideo: http://nowvideo.ch/video/uGR5SO24apvI<br>putlocker: http://putlocker.com/file/HDU748DS</small>';
 langstrings['it']['outdated'] = 'La tua versione cacaoweb è obsoleta, scarica l\'ultima versione <a href="http://www.cacaoweb.org/?noredirect=yes">qui</a>';
 langstrings['it']['nospaceleft'] = 'Non c\'è spazio sul tuo Hard Disk. Cacaoweb non funziona correttamente.';
 langstrings['it']['noconnectivity'] = 'Per funzionare cacaoweb necessità di una connessione a internet.';
@@ -264,6 +266,7 @@ langstrings['it']['download'] = 'download';
 langstrings['it']['playvideolink'] = 'Play video link';
 langstrings['it']['ratequality'] = 'Rate the quality of this video:';
 langstrings['it']['reportfake'] = 'Wrong video? report as fake';
+langstrings['it']['chromeextension'] = 'Clicca qui per guardare il video con Google Chrome';
 
 /** admin page */
 langstrings['it']['cacaowebadmin'] = 'Cacaoweb - Interfaccia di Amministrazione';
@@ -362,7 +365,7 @@ langstrings['pl']['management'] = 'Mój cacaoweb';
 langstrings['pl']['searchplaceholder'] = 'Wyszukaj...';
 langstrings['pl']['searchhints'] = '<small>Wyszukaj filmy, programy telewizyjne, albo wklej link</small>';
 langstrings['pl']['linknotrecognized'] = 'Typ linku nie jest obsługiwany przez cacaoweb';
-langstrings['pl']['typeoflinks'] = '<small>Przykłady :<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>megavideo: http://megavideo.com/?v=TUF78DFD<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
+langstrings['pl']['typeoflinks'] = '<small>Przykłady :<br>cacaoweb: http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>nowvideo: http://nowvideo.ch/video/uGR5SO24apvI<br>putlocker: http://putlocker.com/file/HDU748DS</small>';
 langstrings['pl']['outdated'] = 'Nowa wersja cacaoweb wydana, pobierz najnowszą wersję <a href="http://www.cacaoweb.org/?noredirect=yes">tutaj</a>';
 langstrings['pl']['nospaceleft'] = 'Brak miejsca na dysku. Cacaoweb może działać niepoprawnie.';
 langstrings['pl']['noconnectivity'] = 'Nie ma połączenia z internetem dla cacaoweb, program nie będzie działać';
@@ -381,6 +384,7 @@ langstrings['pl']['download'] = 'download';
 langstrings['pl']['playvideolink'] = 'Play video link';
 langstrings['pl']['ratequality'] = 'Rate the quality of this video:';
 langstrings['pl']['reportfake'] = 'Wrong video? report as fake';
+langstrings['pl']['chromeextension'] = 'Click here to watch this video in Google Chrome';
 
 /** admin page */
 langstrings['pl']['cacaowebadmin'] = 'cacaoweb - Administracja Interfejsem';
@@ -479,7 +483,7 @@ langstrings['es']['management'] = 'Mi cacaoweb';
 langstrings['es']['searchplaceholder'] = 'Buscar...';
 langstrings['es']['searchhints'] = '<small>Busca Películas, Programas de TV, Anime o pega un enlace</small>';
 langstrings['es']['linknotrecognized'] = 'cacaoweb no reconoce este tipo de enlaces';
-langstrings['es']['typeoflinks'] = '<small>Ejemplos:<br>cacaoweb: http://127.0.0.1:4001/25614a53c9bcd3c537bb28a11174785f<br>megavideo: http://megavideo.com/?v=TUF78DFD<br>videobb: http://www.videobb.com/video/uGR5SO24apvI<br>videozer: http://www.videozer.com/video/0LiG5H</small>';
+langstrings['es']['typeoflinks'] = '<small>Ejemplos:<br>cacaoweb: http://127.0.0.1:4001/?f=25614a53c9bcd3c537bb28a11174785f<br>nowvideo: http://nowvideo.ch/video/uGR5SO24apvI<br>putlocker: http://putlocker.com/file/HDU748DS</small>';
 langstrings['es']['outdated'] = 'Hay una nueva versión de cacaoweb. Descárgala <a href="http://www.cacaoweb.org/?noredirect=yes">aquí</a>';
 langstrings['es']['nospaceleft'] = 'No queda espacio en tu disco duro. cacaoweb podría no funcionar bien.';
 langstrings['es']['noconnectivity'] = 'No existe ninguna conexión a internet para cacaoweb, y no funcionará';
@@ -498,6 +502,7 @@ langstrings['es']['download'] = 'download';
 langstrings['es']['playvideolink'] = 'Play video link';
 langstrings['es']['ratequality'] = 'Rate the quality of this video:';
 langstrings['es']['reportfake'] = 'Wrong video? report as fake';
+langstrings['es']['chromeextension'] = "Haga clic aquí para ver este video con Google Chrome";
 
 /** admin page */
 langstrings['es']['cacaowebadmin'] = 'cacaoweb - Interfaz de Administración';

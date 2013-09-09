@@ -5,6 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<link rel="stylesheet" href="css/general.css" type="text/css" media="screen">
+	<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/gebbadcnkcgcfgpbmcdleckpejgopimf">
 </head>
 <body>
 
@@ -18,7 +19,7 @@
 			</div>
 			<div id="topsearchbox" class="topsearch hidden">
 				<div class="input_wrapp">
-					<input id="smallsearchbar" class="search_bar" name="search_bar" onkeypress="searchboxkeypress(event, this);" type="text" />
+					<input id="smallsearchbar" class="search_bar" name="search_bar" onkeypress="searchboxkeypress(event, this);" type="text" placeholder="" />
 					<a class="search_submit" href="#" onclick="searchbuttonclick(event, this);">
 						<img src="img/mag-glass.png" alt="Search">
 					</a>
@@ -68,6 +69,7 @@
 		</div>-->
 		<div id="content">
 			<div id="warningarea" class="warning" style="display:none"></div>
+			<div id="extensionarea" class="center bigger" style="display:none"><a href="javascript:chrome.webstore.install()" id="chromeextension"></a></div>
 			<div id="mainsearch" class="center">
 				<div class="logo">
 					<a href="#"><img src="img/logo.png" alt="cacaoweb"></a>
@@ -209,11 +211,13 @@
 		//document.getElementById('supportedplatforms').innerHTML = langstrings[lang]['supportedplatforms'];
 		document.getElementById('ratequality').innerHTML = langstrings[lang]['ratequality'];
 		document.getElementById('reportfake').innerHTML = langstrings[lang]['reportfake'];
+		document.getElementById('chromeextension').innerHTML = langstrings[lang]['chromeextension'];
+		document.getElementById('smallsearchbar').setAttribute('placeholder', langstrings[lang]['searchplaceholder']);
 	
 		if (lang == 'it') {
 			document.getElementById('recommend').innerHTML = 'Per la miglior fonte di video in Italia, vai su <a href="http://papystreaming.com/it" target="_blank">papystreaming</a>';
 		} else if (lang == 'fr') {
-			document.getElementById('recommend').innerHTML = 'Pour regarder tous vos films et séries, allez sur <a href="http://papystreaming.com/fr" target="_blank">papystreaming</a>';
+			document.getElementById('recommend').innerHTML = 'Pour regarder tous vos films et séries sans limites, allez sur <a href="http://papystreaming.com/fr" target="_blank">papystreaming</a>';
 		} else if (lang == 'es') {
 			document.getElementById('recommend').innerHTML = 'Para ver todas tus películas y series de televisión, ir a <a href="http://papystreaming.com/es" target="_blank">papystreaming</a>';
 		}
@@ -760,6 +764,18 @@
 		
 		/** initialisation, check the url to know whether some video has to be played */
 		function init() {
+			if (window.top !== window.self) window.top.location.replace(window.self.location.href);
+			// check if the cacaoweb chrome extension is installed
+			if (typeof chrome !== "undefined" && typeof chrome.app !== "undefined") {
+				var extensionmarker = document.getElementById('cacaowebchromeextension'); 
+				if (extensionmarker) {
+					// extension is installed.
+				} else {
+					document.getElementById('extensionarea').style.display = "block";
+					linkmode();
+					return;
+				}
+			}
 			//includeScript('http://search.cacaoweb.org/featured?lang=' + lang, 'featuredscript');
 			var url = window.location.href;
 			if (url.indexOf("videoid=") > -1) {
@@ -790,12 +806,13 @@
 				// shows the most searched
 				includeScript('http://search.cacaoweb.org/mostwatched?lang=' + lang, 'mostwatchedscript');
 			}
+			
+			
 		}
 		
-		
-		
-		/* initialization */
-		init();
+		/* initialization  */
+		setTimeout(function () { init() }, 500); // we wait to make sure the extension is installed
+
 		/** callback is loginstatuscallback(isloggedin, username, token) */
 		includeScript('http://127.0.0.1:4001/isloggedin', 'isloggedinscript');
 

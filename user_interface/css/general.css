@@ -87,6 +87,9 @@ a:hover {
 	margin: 0 auto;
 	text-align: center;
 }
+.bigger {
+	font-size: 150%;
+}
 .page_wrapper {
 	min-height: 100%;
 	height: auto !important;
